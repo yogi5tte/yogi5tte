@@ -32,7 +32,7 @@ public class HomeController {
 	public ModelAndView detail(@PathVariable int idx) {
 		ModelAndView mav = new ModelAndView("main/detail");
 		InfoDTO dto = infoDAO.selectInfo(idx);
-		
+		System.out.println(idx);
 		mav.addObject("dto", dto);
 		return mav;
 	}
