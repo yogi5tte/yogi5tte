@@ -15,6 +15,12 @@
 <script src="${cpath }/resources/js/mypage/mypage.js"></script> 
 
 </head>
+<c:if test="${empty header.referer }">
+	<script>
+		alert('정상적인 접근이 아닙니다')
+		location.href = '${cpath}'
+	</script>
+</c:if>
 <body class="pc">
 
     <div class="wrap">
@@ -219,7 +225,7 @@ const btns-wrap__edit-btn = document.queryselector('.btns-wrap__edit-btn')
 const modifying_section = document.queryselector('.modifying-section')
 
 btns-wrap__edit-btn.addEventListener('click', (event) => {
-	modifying_section.classList.remove('hidden')
+   modifying_section.classList.remove('hidden')
 })
 </script>
 
