@@ -48,6 +48,12 @@ public class UserController {
 		
 	}
 	
+	@PostMapping("/join3") // login
+	public String join(User_nonsocialDTO dto) throws NoSuchAlgorithmException {
+		int row = userService.join(dto);
+		System.out.println(row != 0 ? "가입 성공" : "가입 실패");
+		return "redirect:"+ "/";
+	}
 	
 	
 	@GetMapping("/login")
