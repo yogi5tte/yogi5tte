@@ -1,16 +1,17 @@
 'use strict';
 // 스크롤시 헤더 변경되는 함수
 function scrollHandler(event) {
-	   let target = document.documentElement
-	   const header = document.querySelector('.header')
+	let target = document.documentElement
+	console.log(target)
+	const header = document.querySelector('.header')
 	   
-	   if(target.scrollTop > 0) {
-	      header.classList.add('scroll')
-	   }
-	   else {
-	      header.classList.remove('scroll')
-	   }
+	if(target.scrollTop > 0) {
+		header.classList.add('scroll')
 	}
+	else {
+		header.classList.remove('scroll')
+	}
+}
 // 대문페이지 숙소 유형 선택하는 함수
 function mainLiHandler(event) {
    liarray.forEach(li => li.classList.remove('selected'))
@@ -141,7 +142,6 @@ function clickListHandler(event) {
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {
-		console.log(json)
 		json.forEach(dto => product_list.appendChild(listConvert(dto)))
 	})
 	const area_pop = document.querySelector('.area_pop')

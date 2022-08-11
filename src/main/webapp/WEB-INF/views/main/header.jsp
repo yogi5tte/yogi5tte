@@ -34,7 +34,6 @@
                   		<c:if test="${not empty login }">	
                         <a href="${cpath }/reservation/reservation_approve">예약내역</a>
                         </c:if>
-                        
                     </li>
                     <li>
                  	<c:if test="${empty login }">
@@ -45,17 +44,12 @@
                         <a href="${cpath }/user/mypage">${login.nickName}환영합니다.</a>
                         <a href="${cpath }/logout">[로그아웃]</a>
                         </c:if>
-                       
                     </li>
                 </ul>
                 <!-- //Search -->
             </section>
         </header>
 
-   <!--    스크롤시 headder 변경  -->
-    <script>
-       window.addEventListener('scroll', scrollHandler)
-    </script>
-
-</body>
-</html>
+<script>
+	window.addEventListener('scroll', scrollHandler)
+</script>
