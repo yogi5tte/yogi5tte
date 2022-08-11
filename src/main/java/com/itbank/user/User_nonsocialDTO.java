@@ -10,7 +10,7 @@ package com.itbank.user;
 //	    
 //	);
 public class User_nonsocialDTO {
-	private String email, password, name, nickName, phoneNumber;
+	private String email, password, nickName;
 	private int idx, type;
 	
 	
@@ -26,23 +26,11 @@ public class User_nonsocialDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	public String getNickName() {
 		return nickName;
 	}
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
-	}
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
 	}
 	public int getIdx() {
 		return idx;

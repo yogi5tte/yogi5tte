@@ -18,6 +18,19 @@ public class UserService {
 		System.out.println("dto:"+ dto.getPassword());
 		return dao.login(dto) ;
 	}
+
+
+		
+	public int join(User_nonsocialDTO dto) {
+		return dao.join(dto);
+	}
+		
+		
+		
+		
+	
+
+
 	
 	
 	
