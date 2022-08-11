@@ -14,7 +14,7 @@ package com.itbank.room;
 public class MotelDTO {
 	
 	private int idx, price, human_count;		// 2001부터 시작하는 idx
-	private String name, week, room_img, city, district;	// 테마
+	private String name, week, room_img, city, district, seller_text;	// 테마
 	public int getIdx() {
 		return idx;
 	}
@@ -62,6 +62,12 @@ public class MotelDTO {
 	}
 	public void setDistrict(String district) {
 		this.district = district;
+	}
+	public String getSeller_text() {
+		return seller_text;
+	}
+	public void setSeller_text(String seller_text) {
+		this.seller_text = seller_text;
 	}
 	
 }

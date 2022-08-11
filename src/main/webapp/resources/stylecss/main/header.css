@@ -27,7 +27,7 @@ header section h1 {
     width: 125px;
     height: 36px;
     margin: 0;
-    background: url('../../image/요기오때흰색로고.png') no-repeat;
+    background: url('../../image/yogiwhite.png') no-repeat;
     background-size: 100px auto;
 }
 header section h1 a {
@@ -38,7 +38,7 @@ header.scroll .gnb_pc li a, header.scroll .gnb_pc li button {
     color: rgba(0,0,0,0.87);
 }
 header.scroll section h1{
-    background: url('../../image/요기오때빨간색로고.png') no-repeat;
+    background: url('../../image/yogired.png') no-repeat;
     background-size: 100px auto
 }
 header section .btn_menu {

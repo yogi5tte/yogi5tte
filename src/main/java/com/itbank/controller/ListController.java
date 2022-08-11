@@ -19,9 +19,8 @@ public class ListController {
 		return roomService.selectList();
 	}
 	
-//	@GetMapping("/listload/{target}")
-//	public List<MotelDTO> list(@PathVariable String target) {
-//		System.out.println(target);
-//		return roomService.selectList(target);
+//	@GetMapping("/main/list")
+//	public List<MotelDTO> mainList() {
+//		return roomService.showList();
 //	}
 }

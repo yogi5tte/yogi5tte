@@ -22,7 +22,7 @@ button {
 }
 .layer_fix section {
     width: 336px;
-    margin: 180px auto;
+    margin: 250px auto;
 }
 .fix_title {
     margin-bottom: 16px;
@@ -33,7 +33,7 @@ button {
     display: inline-block;
     width: 120px;
     height: 50px;
-    background: url('../../image/요기오때빨간색로고.png') no-repeat;
+    background: url('../../image/yogired.png') no-repeat;
     background-size: 116px auto;
 }
 .layer_fix .fix_title .logo a {

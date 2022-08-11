@@ -14,14 +14,14 @@ function scrollHandler(event) {
 }
 // 대문페이지 숙소 유형 선택하는 함수
 function mainLiHandler(event) {
-   liarray.forEach(li => li.classList.remove('selected'))
+	liarray.forEach(li => li.classList.remove('selected'))
 
-   let target = event.target
+	let target = event.target
    
     while(target.classList.contains('ml') == false) {
-        target = target.parentNode
+    	target = target.parentNode
     }
-   target.classList.add('selected')               
+	target.classList.add('selected')               
 //   const index = liarray.indexOf(event.target)            
 }
 // 대문페이지 이벤트 이미지 슬라이드되는 함수
@@ -108,12 +108,12 @@ function listConvert(dto) {
 				<div class="name">
 					<strong> ${dto.name} </strong>
 					<p class="score">
-						<em>dto.reviewValue</em>&nbsp;<span>추천해요</span>&nbsp;(dto.reviewNum)
+						<em>dto.reviewValue</em>&nbsp;<span>${dto.seller_text}</span>&nbsp;(dto.reviewNum)
 				    </p>
 					<p>${dto.city} ${dto.district}</p>
 				</div>
 				<div class="price">
-					<p><b>${dto.price}원</b></p>
+					<p><b>숙박 ${dto.price}원</b></p>
 				</div>
 			</div>
 		</a>
@@ -147,8 +147,48 @@ function clickListHandler(event) {
 	const area_pop = document.querySelector('.area_pop')
 	area_pop.style.display = 'none'
 }
+//메인페이지 검색 함수
+function searchHandler(event) {
+	event.preventDefault()
+	const product_list = document.getElementById('product_list_area')
+	let cat = (document.querySelector('.main_link > ul > li.selected').innerText)
+	let loc = (document.querySelector('.main_link > .selectctg > .btn_loc > span').innerText)
+	let peo = (document.querySelector('.main_link > .selectctg > .btn_many > span').innerText).split('명')[0]
+	
+	sessionStorage.setItem('cat', cat)
+	sessionStorage.setItem('loc', loc)
+	sessionStorage.setItem('peo', peo)
+	
+//	let form = document.createElement('form')
+//	form.innerHTML += `<input type="hidden" name="cat" value="${cat}">
+//					   <input type="hidden" name="loc" value="${loc}">
+//					   <input type="hidden" name="peo" value="${peo}">`
+//	const formData = new FormData(form)
+//		
+//	const url = cpath + '/main/list'
+//	const opt = {
+//		method: 'POST',
+//		body: formData
+//	}
+//	fetch(url, opt)
+//	.then(resp => resp.json())
+//	.then(json => {
+//		console.log(json)
+//		json.forEach(dto => product_list.appendChild(listConvert(dto)))
+//	})
+	
+	if(loc != '다음 숙소는 어디로?' && peo != '몇명에서 떠나시나요?') {
+		location.href = cpath + '/main/list'
+	}
+	else {
+		alert('지역과 인원수를 선택해주세요!')
+	}
+}
+
 // 메인페이지 에서 검색후 목록으로 왔을때 목록 출력하는 함수
 function listHandler(event) {
+	const product_list = document.getElementById('product_list_area')
+	product_list.innerHTML = ''
 	// 숙소 유형 카테고리 change
 	const title = document.querySelector('.sub_top > h2')
 	title.innerText = `${sessionStorage.getItem('cat')}`
@@ -171,9 +211,15 @@ function listHandler(event) {
 		loc.innerHTML += `<span>${sessionStorage.getItem('loc')}</span>해운대/재송`
 	}
 	
-	const product_list = document.getElementById('product_list_area')
-	product_list.innerHTML = ''
-		
+//	const url = cpath + '/listload'
+	
+//	fetch(url)
+//	.then(resp => resp.json())
+//	.then(json => {
+//		console.log(json)
+//		json.forEach(dto => product_list.appendChild(listConvert(dto)))
+//	})
+
 }
 // 모달 제거하는 함수
 function closeModal() {
@@ -312,10 +358,6 @@ function move_prev(event) {
    const selectDivArray = Array.from(document.querySelectorAll('.gallery_btm_wrap > div'))
    selectDivArray.forEach(div => div.classList.remove('selectView'))
    selectDiv.classList.add('selectView')
-   
-
-	
-	
 }
 // 상세페이지 이미지 슬라이더
 function move_next(event) {
@@ -326,14 +368,11 @@ function move_next(event) {
    
    const topWrap = document.querySelector('.gallery_top_wrap')
    let topNum = +topWrap.dataset.num
-
-   
    
    if(btmNum < 1309) {
       btmNum += 119
       btmWrap.style.transitionDuration = '0.3s'
       btmWrap.dataset.num = btmNum
-      
       
       if(btmNum < 1071) btmWrap.style.transform = `translateX(${-btmNum}px)`
       
@@ -342,7 +381,6 @@ function move_next(event) {
       topNum += 490
       topWrap.dataset.num = topNum
       topWrap.style.transform = `translateX(${-topNum}px`
-      
    }
    
    let viewNum = btmNum == 1309 ? 12 :(119 + btmNum) / 119
@@ -357,13 +395,11 @@ function move_next(event) {
 function interceptorHandler(event) {
    let login = sessionStorage.getItem('login')
    
-   
    if(login == null) {
       alert('로그인 먼저 하시오')
       location.href = cpath + '/user/login'
    }
-   else{
-	  
+   else {
       location.href = cpath + '/rsvn/reservation'
    }
 }
@@ -405,28 +441,8 @@ function dtopenModal(event) {
 	selectDivArray.forEach(div => div.classList.remove('selectView'))
 	selectDiv.classList.add('selectView')
 }
-// 메인페이지 검색 함수
-function searchHandler(event) {
-	event.preventDefault()
-	
-	let cat = (document.querySelector('.main_link > ul > li.selected').innerText)
-	let loc = (document.querySelector('.main_link > .selectctg > .btn_loc > span').innerText)
-	let peo = (document.querySelector('.main_link > .selectctg > .btn_many > span').innerText).split('명')[0]
-	
-	sessionStorage.setItem('cat', cat)
-	sessionStorage.setItem('loc', loc)
-	sessionStorage.setItem('peo', peo)
-	
-	if(loc != '다음 숙소는 어디로?' && peo != '몇명에서 떠나시나요?') {
-		location.href = cpath + '/main/list'
-	}
-	else {
-		alert('지역과 인원수를 선택해주세요!')
-	}
-	
-}
 
-function scrollHandler(event) {
+function detailscrollHandler(event) {
 	if(event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight) {
 		const Ul = document.querySelector('.review_scroll > ul')
 		for(let i= 0; i < 5; i++) {

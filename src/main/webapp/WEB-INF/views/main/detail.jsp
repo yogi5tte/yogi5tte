@@ -384,9 +384,7 @@
 	prevBtn.onclick = move_prev
 	
 	const reviewBox = document.querySelector('.review_scroll')
-	reviewBox.addEventListener('scroll',scrollHandler)
-	
-	
+	reviewBox.addEventListener('scroll',detailscrollHandler)
 </script>
 
 <!-- 달력 호출 함수 -->

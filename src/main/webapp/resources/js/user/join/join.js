@@ -46,7 +46,7 @@ function chkHandler(event) {
    	}
    	
    	// 하위 6개 버튼이 모두 체크되면
-	allflag = (item[0].checked && item[1].checked && item[2].checked && item[3].checked && item[4].checked && item[5].checked)
+	let allflag = (item[0].checked && item[1].checked && item[2].checked && item[3].checked && item[4].checked && item[5].checked)
 	if(allflag) {
 		checkAll.checked = true // 전체 동의 체크박스도 체크해라
 	}

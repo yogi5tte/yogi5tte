@@ -2,6 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 
+<c:if test="${empty header.referer }">
+	<script>
+		alert('정상적인 접근이 아닙니다')
+		location.href = '${cpath}'
+	</script>
+</c:if>
+
 <link rel="stylesheet" href="${cpath }/resources/stylecss/main/common.css">
 <link rel="stylesheet" href="${cpath }/resources/stylecss/main/list.css">
 	
@@ -188,11 +195,11 @@
 	loArray.forEach(lo => lo.addEventListener('mouseover', loHandler))
 	dloOneArray.forEach(dto => dto.addEventListener('click', clickListHandler))
 	
-	window.addEventListener('load', listHandler)
 	overlay.addEventListener('click', closeModal)
 	mapbtn.addEventListener('click', openModal)
 	dnbtn.addEventListener('click', listDncount)
    	upbtn.addEventListener('click', listUpcount)
+   	window.addEventListener('load', listHandler)
 </script>
 
 <script>

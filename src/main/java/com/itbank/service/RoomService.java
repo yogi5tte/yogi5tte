@@ -17,16 +17,8 @@ public class RoomService {
 		return motelDAO.selectList();
 	}
 
-//	public List<MotelDTO> showList() {
-//		return motelDAO.showList();
-//	}
-	
-//	public List<MotelDTO> selectList(String target) {
-//		return motelDAO.selectList(target);
-//	}
-
-//	public List<MotelDTO> selectList(MotelDTO dto) {
-//		return motelDAO.selectList(dto);
-//	}
+	public List<MotelDTO> showList() {
+		return motelDAO.showList();
+	}
 
 }

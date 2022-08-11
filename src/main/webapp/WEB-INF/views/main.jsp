@@ -106,7 +106,6 @@
     	countbtn.addEventListener('click', clickmany)
 		loarray.forEach(lo => lo.addEventListener('click', locationHandler))
 		subtn.addEventListener('click', searchHandler)
-		
     </script>
     
     <script>
@@ -129,13 +128,14 @@
 	   },
 	   "startDate": new Date(),
 	   "endDate": new Date(),
-	   "drops": "auto"
+	   "drops": "auto",
+	   "minDate": new Date()
 	   
 	}, function (start, end, label) {
 	   console.log('New date range selected:' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
-	   const startDate = start.format('YYYY-MM-DD')
-	   const endDate = end.format('YYYY-MM-DD')
 	});
+	const dateBtn = document.querySelector('.applyBtn')
+	dateBtn.addEventListener('click', getDateHandler)
 </script>
 
 <%@ include file="main/footer.jsp" %>
