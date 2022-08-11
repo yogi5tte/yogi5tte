@@ -1,0 +1,138 @@
+@charset="UTF-8";
+
+button {
+    cursor: pointer;
+}
+.layer_fix {
+    display: block;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 400;
+    width: 100%;
+    min-width: 320px;
+    height: 100%;
+    background: #fff;
+    font-size: 15px;
+    line-height: 38px;
+    color: rgba(0,0,0,0.87);        
+}
+.layer_fix section {
+    width: 336px;
+    margin: 180px auto;
+}
+.fix_title {
+    margin-bottom: 16px;
+    height: 44px;
+    text-align: center;
+}
+.layer_fix .fix_title .logo {
+    display: inline-block;
+    width: 120px;
+    height: 50px;
+    background: url('../../image/요기오때빨간색로고.png') no-repeat;
+    background-size: 116px auto;
+}
+.layer_fix .fix_title .logo a {
+    display: block;
+    text-indent: -9999px
+}
+.layer_fix .btn_start {
+    width: 100%;
+    height: 50px;
+    margin-left: 19px;
+    background: url('../../image/kakao_login.png') no-repeat;
+    border: none;
+}
+.space_or {
+    position: relative;
+    height: 56px;
+    margin-bottom: 8px;
+}
+.space_or span {
+    position: absolute;
+    width: 60px;
+    margin: 0 0 0 -25px;
+    font-size: 16px;
+    line-height: 56px;
+    left: 50%;
+    z-index: 10;
+    background: #fff;
+    color: rgba(0,0,0,0.38);
+    text-align: center;
+}
+.space_or:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background: rgba(0,0,0,0.08);
+}
+.inp_type_1 {
+    position: relative;
+    height: 48px;
+    padding: 5px 0 5px 20px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(0,0,0,0.26);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.inp_type_1 input {
+    position: relative;
+    top: 11px;
+    width: 100%;
+    height: 20px;
+    font-size: 18px;
+    border: none;
+    vertical-align: top;
+}
+input:focus {
+	outline: none;
+}
+.layer_fix .btn_link {
+    display: block;
+    width: 100%;
+    height: 56px;
+    font-size: 16px;
+    margin-top: 16px;
+    border-radius: 6px;
+    color: #fff;
+    border: none;
+    background: rgb(255,0,85);
+}
+.layer_fix .link_half div {
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+}
+.layer_fix .link_half div a {
+    font-size: 16px;
+    margin-top: 16px;
+    border-radius: 6px;
+    color: #fff;
+    text-align: center;
+    border: none;
+    background: rgb(255,0,85);
+}
+.layer_fix .link_half {
+    overflow: hidden;
+    position: relative;
+    height: 56px;
+}
+.layer_fix .link_half div { 
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    height: 56px;
+    text-align: center;
+    margin: 10px auto;
+}
+.layer_fix .link_half div a {
+    font-size: 16px;
+    background: none;
+    color: rgba(0,0,0,0.87);
+}
