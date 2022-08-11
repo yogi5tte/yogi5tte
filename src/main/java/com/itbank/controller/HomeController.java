@@ -30,7 +30,7 @@ public class HomeController {
 	
 	@GetMapping("main/detail/{idx}")
 	public ModelAndView detail(@PathVariable int idx) {
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView("main/detail");
 		InfoDTO dto = infoDAO.selectInfo(idx);
 		
 		mav.addObject("dto", dto);

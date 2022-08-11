@@ -57,7 +57,7 @@
             display: inline-block;
             width: 112px;
             height: 44px;
-            background: url('resources/image/요기오때빨간색로고.png') no-repeat;
+            background: url('../../../image/요기오때빨간색로고.png') no-repeat;
             background-size: 100px auto;
             text-indent: -9999px;
         }

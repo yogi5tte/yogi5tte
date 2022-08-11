@@ -34,7 +34,7 @@
 							<div class="iscroll_02">
 								<div class="scroller">
 									<ul class="city_child on">
-									    <li><p>강남/역삼/삼성/논현</p></li>
+									    <li><p class="on">강남/역삼/삼성/논현</p></li>
 									    <li><p>서초/신사/방배</p></li>
 									    <li><p>잠실/방이</p></li>
 									    <li><p>잠실새내/신천</p></li>
@@ -166,12 +166,9 @@
 	const btnArray = Array.from(document.querySelectorAll('.btn_wrap > button'))
 	const ctg = document.querySelector('.btn_area')
 	const areaPop = document.querySelector('.area_pop')
-	
-	
 	const loArray = Array.from(document.querySelectorAll('.city > li > p'))
 	const dloArray = Array.from(document.querySelectorAll('.city_child'))
-	const dloOneArray = Array.from(document.querySelectorAll('.city_child > li'))
-	
+	const dloOneArray = Array.from(document.querySelectorAll('.city_child > li > p'))
 	const overlay = document.querySelector('.overlay')
 	const mapbtn = document.querySelector('.btn_map')
 	const dnbtn = document.querySelector('.filter_wrap > section > .cnt_people > .dn')
@@ -189,9 +186,8 @@
 	
 	btnArray.forEach(btn => btn.addEventListener('click', btnHandler))
 	loArray.forEach(lo => lo.addEventListener('mouseover', loHandler))
-	// 지역 선택하면 해당 지역 목록만 출력하는 함수
 	dloOneArray.forEach(dto => dto.addEventListener('click', clickListHandler))
-	// 메인페이지에서 검색후 넘어왔을때 해당 목록 출력하는 함수
+	
 	window.addEventListener('load', listHandler)
 	overlay.addEventListener('click', closeModal)
 	mapbtn.addEventListener('click', openModal)
