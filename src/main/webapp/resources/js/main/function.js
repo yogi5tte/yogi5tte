@@ -123,19 +123,20 @@ function listConvert(dto) {
 function clickListHandler(event) {
 	const product_list = document.getElementById('product_list_area')
 	product_list.innerHTML = ''
-	const area_pop = document.querySelector('.area_pop')
+	
 	// 지역 선택시 버튼 텍스트 바뀌는 기능
 	let city = document.querySelector('.city > li > p.on').innerText
-//	document.querySelector('.city_child > li > p.on').classList.remove('on')
+	
+	dloOneArray.forEach(dlo => dlo.classList.remove('on'))
+	event.target.classList.add('on')
+	
 	let target = event.target.innerText
-//	target.classList.add('on')
 	
 	let btn_area = document.querySelector('.btn_area')
 	btn_area.innerHTML = ''
 	btn_area.innerHTML += `<span>${city}</span>${target}`
 		
 	const url = cpath + '/listload'
-//	const url = cpath + '/listload/' + target
 	
 	fetch(url)
 	.then(resp => resp.json())
@@ -143,6 +144,7 @@ function clickListHandler(event) {
 		console.log(json)
 		json.forEach(dto => product_list.appendChild(listConvert(dto)))
 	})
+	const area_pop = document.querySelector('.area_pop')
 	area_pop.style.display = 'none'
 }
 // 메인페이지 에서 검색후 목록으로 왔을때 목록 출력하는 함수
@@ -159,15 +161,19 @@ function listHandler(event) {
 		loc.innerHTML += `<span>${sessionStorage.getItem('loc')}</span>강남/역삼/삼성/논현`
 	}
 	else {
+		loArray.forEach(lo => lo.classList.remove('on'))
+		loArray[1].classList.add('on')
+		dloArray.forEach(dlo => dlo.classList.remove('on'))
+		dloArray[1].classList.add('on')
+		dloOneArray.forEach(dlo => dlo.classList.remove('on'))
+		let dlooneArray = document.querySelectorAll('.city_child.on > li > p')
+		dlooneArray[0].classList.add('on')
 		loc.innerHTML += `<span>${sessionStorage.getItem('loc')}</span>해운대/재송`
 	}
 	
 	const product_list = document.getElementById('product_list_area')
 	product_list.innerHTML = ''
 		
-//	const url = cpath + '/listload'	
-	
-	
 }
 // 모달 제거하는 함수
 function closeModal() {
