@@ -455,6 +455,28 @@ function dtopenModal(event) {
 	selectDiv.classList.add('selectView')
 }
 function detailscrollHandler(event) {
+// 메인페이지 검색 함수
+function searchHandler(event) {
+	event.preventDefault()
+	
+	let cat = (document.querySelector('.main_link > ul > li.selected').innerText)
+	let loc = (document.querySelector('.main_link > .selectctg > .btn_loc > span').innerText)
+	let peo = (document.querySelector('.main_link > .selectctg > .btn_many > span').innerText).split('명')[0]
+	
+	sessionStorage.setItem('cat', cat)
+	sessionStorage.setItem('loc', loc)
+	sessionStorage.setItem('peo', peo)
+	
+	if(loc != '다음 숙소는 어디로?' && peo != '몇명에서 떠나시나요?') {
+		location.href = cpath + '/main/list'
+	}
+	else {
+		alert('지역과 인원수를 선택해주세요!')
+	}
+	
+}
+
+function reviewScrollHandler(event) {
 	if(event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight) {
 		const Ul = document.querySelector('.review_scroll > ul')
 		for(let i= 0; i < 5; i++) {
@@ -475,6 +497,8 @@ function detailscrollHandler(event) {
 		}
 	}
 }
+
+
 
 // 숙소 정보 모달 
 function closeModal() {
