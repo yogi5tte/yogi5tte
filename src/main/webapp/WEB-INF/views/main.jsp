@@ -12,10 +12,10 @@
 			    <h2>어떤 숙소 찾으세요?</h2>
 			    <div class="main_link">
 			        <ul>
-			            <li class="selected ml"><a href="#"><span class="ico_01"></span><p>모텔</p></a></li> 
+			            <li class="selected ml"><a href="${cpath }/main/detail"><span class="ico_01"></span><p>모텔</p></a></li> 
 			            <li class="ml"><a href="#"><span class="ico_02"></span><p>호텔·리조트</p></a></li>
 			            <li class="ml"><a href="#"><span class="ico_03"></span><p>펜션</p></a></li>
-					</ul>			            
+					</ul>	        
 		        	<div class="selectctg">
 		        		<div class="btn_loc">
 		        			<span>다음 숙소는 어디로?</span>

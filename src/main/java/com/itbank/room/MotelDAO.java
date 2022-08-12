@@ -14,6 +14,11 @@ public interface MotelDAO {
 	@Select("select * from room order by idx")
 	List<MotelDTO> selectList();
 
+	@Select("select * "
+			+ "from room a, info b "
+			+ "where b.idx = #{idx}")
+	List<MotelDTO> selectRoom(int idx);
+
 //	@Select("select * from room where ")
 //	List<MotelDTO> showList();
 	
