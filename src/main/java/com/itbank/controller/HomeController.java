@@ -33,6 +33,7 @@ public class HomeController {
 		ModelAndView mav = new ModelAndView("main/detail");
 		InfoDTO info = infoDAO.selectInfo(idx);
 		List<MotelDTO> mtRoom = motelDAO.selectRoom(idx);
+		System.out.println(idx);
 		mav.addObject("info", info);
 		mav.addObject("room", mtRoom);
 		return mav;
