@@ -98,20 +98,27 @@ function loHandler(event) {
 function listConvert(dto) {
 	const li = document.createElement('li')
 	li.className = 'list_1'
-	li.setAttribute('idx', dto.idx)
+	
+	if(dto.city == 2) {
+		dto.city = '부산'
+	}
+	else {
+		dto.city = '서울'
+	}
+	
 	li.innerHTML += `
 		<a href="#">
-			<p class="pic"><img class="lazy" src=${dto.room_img}></p>
+			<p class="pic"><img class="lazy" src=${dto.product_img}></p>
 			<div class="stage">
 				<div class="name">
 					<strong> ${dto.name} </strong>
 					<p class="score">
 						<em>dto.reviewValue</em>&nbsp;<span>${dto.seller_text}</span>&nbsp;(dto.reviewNum)
 				    </p>
-					<p>${dto.city} ${dto.district}</p>
+					<p>${dto.city} / ${dto.gu}</p>
 				</div>
 				<div class="price">
-					<p><b>숙박 ${dto.price}원</b></p>
+					<p><b>${dto.price}원</b></p>
 				</div>
 			</div>
 		</a>
@@ -138,7 +145,7 @@ function clickListHandler(event) {
 	btn_area.innerHTML = ''
 	btn_area.innerHTML += `<span>${city}</span>${target}`
 		
-	const url = cpath + '/listload/' + idx	
+	const url = cpath + '/listload/' + idx
 	
 	fetch(url)
 	.then(resp => resp.json())

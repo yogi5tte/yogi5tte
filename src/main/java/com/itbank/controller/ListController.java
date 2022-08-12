@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itbank.room.MotelDTO;
@@ -15,7 +16,8 @@ public class ListController {
 	@Autowired private RoomService roomService;
 	
 	@GetMapping("/listload/{idx}")
-	public List<MotelDTO> list(int idx) {
+	public List<MotelDTO> list(@PathVariable int idx) {
+		
 		return roomService.selectList(idx);
 	}
 	

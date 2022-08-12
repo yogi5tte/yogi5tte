@@ -15,7 +15,9 @@ public class RoomService {
 	@Autowired private MotelDAO motelDAO;
 	
 	public List<MotelDTO> selectList(int idx) {
-		return motelDAO.selectList(idx);
+		List<MotelDTO> list = motelDAO.selectList(idx);
+		
+		return list;
 	}
 
 //	public List<MotelDTO> showList(HashMap<String, String> param) {

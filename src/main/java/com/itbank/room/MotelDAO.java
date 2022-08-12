@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MotelDAO {
 
-	@Select("select * from info order by idx where category=#{idx}")
+	@Select("select i.name, i.seller_text, i.product_img, i.review_count, p.pType, r.price, r.human_count, l.city, l.gu"
+			+ " from info i, location l, product p, room r"
+			+ " where p.idx = i.idx and p.location_idx = l.idx and r.info_idx = i.idx and l.category = #{idx}")
 	List<MotelDTO> selectList(int idx);
 
 	@Select("select * "
