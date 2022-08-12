@@ -454,7 +454,6 @@ function dtopenModal(event) {
 	selectDivArray.forEach(div => div.classList.remove('selectView'))
 	selectDiv.classList.add('selectView')
 }
-function detailscrollHandler(event) {
 // 메인페이지 검색 함수
 function searchHandler(event) {
 	event.preventDefault()
@@ -515,7 +514,7 @@ function getDateHandler(event) {
 	 let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
 	 let difference = endDate.getTime() - startDate.getTime()
 	
-	 if( difference/(1000 * 3600 * 24)  > 8){
+	 if( difference/(1000 * 3600 * 24)  > 8) {
 		 alert('최대 7박까지만 가능합니다')
 		 location.reload()
 	 }
