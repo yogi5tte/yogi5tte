@@ -14,9 +14,9 @@ public class ListController {
 
 	@Autowired private RoomService roomService;
 	
-	@GetMapping("/listload")
-	public List<MotelDTO> list() {
-		return roomService.selectList();
+	@GetMapping("/listload/{idx}")
+	public List<MotelDTO> list(int idx) {
+		return roomService.selectList(idx);
 	}
 	
 //	@GetMapping("/main/list")

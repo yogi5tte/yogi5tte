@@ -17,10 +17,10 @@
 				<!-- 상단 -->
 				<div class="sub_top_wrap">
 					<div class="sub_top">
-						<h2></h2>
+						<h2>모텔</h2>
 						<div class="area">
 							<div class="btn_area">
-<!-- 								<span>서울</span>강남/역삼/삼성/논현 -->
+								<span>서울</span>강남/역삼/삼성/논현
 							</div>
 						</div>
 					</div>
@@ -41,28 +41,28 @@
 							<div class="iscroll_02">
 								<div class="scroller">
 									<ul class="city_child on">
-									    <li><p class="on">강남/역삼/삼성/논현</p></li>
-									    <li><p>서초/신사/방배</p></li>
-									    <li><p>잠실/방이</p></li>
-									    <li><p>잠실새내/신천</p></li>
-									    <li><p>영등포/여의도</p></li>
-									    <li><p>구로/금천/오류/신도림</p></li>
-									    <li><p>강서/화곡/까치산역/목동</p></li>
-									    <li><p>천호/길동/둔촌</p></li>
-									    <li><p>서울대/신림/사당/동작</p></li>
-									    <li><p>종로/대학로</p></li>
+									    <li><p class="on" idx="1001">강남/역삼/삼성/논현</p></li>
+									    <li><p idx="1002">서초/신사/방배</p></li>
+									    <li><p idx="1003">잠실/방이</p></li>
+									    <li><p idx="1004">잠실새내/신천</p></li>
+									    <li><p idx="1005">영등포/여의도</p></li>
+									    <li><p idx="1006">구로/금천/오류/신도림</p></li>
+									    <li><p idx="1007">강서/화곡/까치산역/목동</p></li>
+									    <li><p idx="1008">천호/길동/둔촌</p></li>
+									    <li><p idx="1009">서울대/신림/사당/동작</p></li>
+									    <li><p idx="1010">종로/대학로</p></li>
 									</ul>
 									<ul class="city_child">
-									    <li><p>해운대/재송</p></li>
-									    <li><p>송정/기장/정관</p></li>
-									    <li><p>서면/초읍/양정/부산시민공원/범천</p></li>
-									    <li><p>남포동/부산역/송도/영도/범일동</p></li>
-									    <li><p>광안리/수영/민락</p></li>
-									    <li><p>경성대/대연/용호/문현</p></li>
-									    <li><p>동래/온천장/부산대/구서/사직</p></li>
-									    <li><p>연산/토곡</p></li>
-									    <li><p>사상(공항경전철)/학장/엄궁</p></li>
-									    <li><p>강서/하단/사하/명지/신호/다대포</p></li>
+									    <li><p idx="2001">해운대/재송</p></li>
+									    <li><p idx="2002">송정/기장/정관</p></li>
+									    <li><p idx="2003">서면/초읍/양정/부산시민공원/범천</p></li>
+									    <li><p idx="2004">남포동/부산역/송도/영도/범일동</p></li>
+									    <li><p idx="2005">광안리/수영/민락</p></li>
+									    <li><p idx="2006">경성대/대연/용호/문현</p></li>
+									    <li><p idx="2007">동래/온천장/부산대/구서/사직</p></li>
+									    <li><p idx="2008">연산/토곡</p></li>
+									    <li><p idx="2009">사상(공항경전철)/학장/엄궁</p></li>
+									    <li><p idx="2010">강서/하단/사하/명지/신호/다대포</p></li>
 									</ul>
 								</div>
 							</div>
@@ -199,7 +199,7 @@
 	mapbtn.addEventListener('click', openModal)
 	dnbtn.addEventListener('click', listDncount)
    	upbtn.addEventListener('click', listUpcount)
-   	window.addEventListener('load', listHandler)
+   	window.addEventListener('load', listLoadHandler)
 </script>
 
 <script>

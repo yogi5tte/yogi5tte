@@ -1,5 +1,6 @@
 package com.itbank.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,12 @@ public class RoomService {
 	
 	@Autowired private MotelDAO motelDAO;
 	
-	public List<MotelDTO> selectList() {
-		return motelDAO.selectList();
+	public List<MotelDTO> selectList(int idx) {
+		return motelDAO.selectList(idx);
 	}
 
-	public List<MotelDTO> showList() {
-		return motelDAO.showList();
-	}
+//	public List<MotelDTO> showList(HashMap<String, String> param) {
+//		return motelDAO.showList(param);
+//	}
 
 }

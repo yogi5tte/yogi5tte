@@ -2,7 +2,6 @@
 // 스크롤시 헤더 변경되는 함수
 function scrollHandler(event) {
 	let target = document.documentElement
-	console.log(target)
 	const header = document.querySelector('.header')
 	   
 	if(target.scrollTop > 0) {
@@ -96,7 +95,6 @@ function loHandler(event) {
    dloArray.forEach(dlo => dlo.classList.remove('on'))
    dloArray[index].classList.add('on')
 }
-
 function listConvert(dto) {
 	const li = document.createElement('li')
 	li.className = 'list_1'
@@ -130,6 +128,9 @@ function clickListHandler(event) {
 	
 	dloOneArray.forEach(dlo => dlo.classList.remove('on'))
 	event.target.classList.add('on')
+//	console.log(event.target.getAttribute('idx'))
+	
+	let idx = event.target.getAttribute('idx')
 	
 	let target = event.target.innerText
 	
@@ -137,7 +138,7 @@ function clickListHandler(event) {
 	btn_area.innerHTML = ''
 	btn_area.innerHTML += `<span>${city}</span>${target}`
 		
-	const url = cpath + '/listload'
+	const url = cpath + '/listload/' + idx	
 	
 	fetch(url)
 	.then(resp => resp.json())
@@ -159,13 +160,13 @@ function searchHandler(event) {
 	sessionStorage.setItem('loc', loc)
 	sessionStorage.setItem('peo', peo)
 	
-//	let form = document.createElement('form')
+//	const form = document.createElement('form')
 //	form.innerHTML += `<input type="hidden" name="cat" value="${cat}">
 //					   <input type="hidden" name="loc" value="${loc}">
 //					   <input type="hidden" name="peo" value="${peo}">`
 //	const formData = new FormData(form)
 //		
-//	const url = cpath + '/main/list'
+//	const url = cpath + '/main'
 //	const opt = {
 //		method: 'POST',
 //		body: formData
@@ -184,6 +185,19 @@ function searchHandler(event) {
 		alert('지역과 인원수를 선택해주세요!')
 	}
 }
+
+function listLoadHandler(event) {
+	const product_list = document.getElementById('product_list_area')
+	product_list.innerHTML = ''
+		
+	let city = document.querySelector('.city > li > p.on').innerText
+	let target = document.querySelector('.city_child > li > p.on').innerText
+	
+	let btn_area = document.querySelector('.btn_area')
+	btn_area.innerHTML = ''
+	btn_area.innerHTML += `<span>${city}</span>${target}`	
+}
+
 
 // 메인페이지 에서 검색후 목록으로 왔을때 목록 출력하는 함수
 function listHandler(event) {
@@ -390,7 +404,6 @@ function move_next(event) {
    selectDiv.classList.add('selectView')
 }
 
-
 // 예약 인터셉터 핸들러
 function interceptorHandler(event) {
    let login = sessionStorage.getItem('login')
@@ -441,7 +454,6 @@ function dtopenModal(event) {
 	selectDivArray.forEach(div => div.classList.remove('selectView'))
 	selectDiv.classList.add('selectView')
 }
-
 function detailscrollHandler(event) {
 	if(event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight) {
 		const Ul = document.querySelector('.review_scroll > ul')
