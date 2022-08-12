@@ -24,7 +24,7 @@ public class InfoDTO {
 	private int product_idx;
 	private String product_img;
 	private int review_count;
-	private double longtitue;
+	private double longtitude;
 	private double latitude;
 	public int getIdx() {
 		return idx;
@@ -80,11 +80,11 @@ public class InfoDTO {
 	public void setReview_count(int review_count) {
 		this.review_count = review_count;
 	}
-	public double getLongtitue() {
-		return longtitue;
+	public double getLongtitude() {
+		return longtitude;
 	}
-	public void setLongtitue(double longtitue) {
-		this.longtitue = longtitue;
+	public void setLongtitude(double longtitude) {
+		this.longtitude = longtitude;
 	}
 	public double getLatitude() {
 		return latitude;

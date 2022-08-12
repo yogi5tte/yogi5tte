@@ -426,7 +426,7 @@ function searchHandler(event) {
 	
 }
 
-function scrollHandler(event) {
+function reviewScrollHandler(event) {
 	if(event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight) {
 		const Ul = document.querySelector('.review_scroll > ul')
 		for(let i= 0; i < 5; i++) {
@@ -447,6 +447,8 @@ function scrollHandler(event) {
 		}
 	}
 }
+
+
 
 // 숙소 정보 모달 
 function closeModal() {

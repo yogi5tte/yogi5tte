@@ -13,6 +13,11 @@
 <script type="text/javascript" src="${cpath }/resources/js/main/daterangepicker.js"></script>
 
 <!-- 지도 소스 -->
+<script>
+	var longtitude = +'${info.longtitude}'
+	var latitude = +'${info.latitude}'
+	var name = '${info.name}'
+</script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35832996ddcf2ae6df4b95be1e09b25a&libraries=services,clusterer,drawing"></script>
 <script type="text/javascript" src="${cpath }/resources/js/main/map.js"></script>
 
@@ -61,10 +66,10 @@
 		    	</div>
 		    	<div class="right">
 		        	<div class="info">
-		            <h2>더미 모텔</h2>
+		            <h2>${info.name }</h2>
 		            <div class="score_cnt">
 		                <span>9.7</span>
-						최고에요<b id="review_cnt">&nbsp;리뷰<em>5,555개</em></b>
+						최고에요<b id="review_cnt">&nbsp;리뷰<em>${info.review_count }개</em></b>
 		            </div>
 		            <p class="address">더미 주소</p>
 		        	</div>
@@ -73,7 +78,7 @@
 					    
 		            </div>
 		            <div class="comment"><strong>사장님 한마디</strong><button>더보기</button>
-                		<div class="clamp">${dto.seller_text }<br>
+                		<div class="clamp">${info.seller_text }<br>
 							
 						</div>
             		</div>
@@ -95,14 +100,62 @@
 					<input id="daterangepicker" type="text" placeholder="예약날짜">
 					</div>
 					<div class="room">
-							<p class="pic_view"><img class="lazy" src="//image.goodchoice.kr/resize_370x220/adimg_new/70794/447572/e08f40f32e03e55dd2c76f64debb010e.jpg"></p>
-							<strong class="title">디럭스 더블(dto.roomName)</strong>
+							<p class="pic_view"><img class="lazy" src="${cpath }/resources/image/${room[0].room_img}"></p>
+							<strong class="title">${room[0].name }</strong>
 							<div class="info">
 								<div class="motel">
 									<div class="price">
 										<strong>가격</strong>
 										<div>
-											<p><b>dto.price원</b></p>
+											<p><b>${room[0].price }원</b></p>
+										</div>
+										<button type="button">객실 이용 안내</button>
+									</div>
+									<button type="button" onclick="location.href='${cpath}/rsvn/reservation'" class="gra_left_right_red">예약</button>
+								</div>
+							</div>
+						</div>
+						<div class="room">
+							<p class="pic_view"><img class="lazy" src="${cpath }/resources/image/${room[1].room_img}"></p>
+							<strong class="title">${room[1].name }</strong>
+							<div class="info">
+								<div class="motel">
+									<div class="price">
+										<strong>가격</strong>
+										<div>
+											<p><b>${room[1].price }원</b></p>
+										</div>
+										<button type="button">객실 이용 안내</button>
+									</div>
+									<button type="button" onclick="location.href='${cpath}/rsvn/reservation'" class="gra_left_right_red">예약</button>
+								</div>
+							</div>
+						</div>
+						<div class="room">
+							<p class="pic_view"><img class="lazy" src="${cpath }/resources/image/${room[2].room_img}"></p>
+							<strong class="title">${room[2].name }</strong>
+							<div class="info">
+								<div class="motel">
+									<div class="price">
+										<strong>가격</strong>
+										<div>
+											<p><b>${room[2].price }원</b></p>
+										</div>
+										<button type="button">객실 이용 안내</button>
+									</div>
+									<button type="button" onclick="location.href='${cpath}/rsvn/reservation'" class="gra_left_right_red">예약</button>
+								</div>
+							</div>
+						</div>
+						<div class="room">
+							<p class="pic_view"><img class="lazy" src="${cpath }/resources/image/${room[3].room_img}"></p>
+							<strong class="title">${room[3].name }</strong>
+							<div class="info">
+								<div class="motel">
+									<div class="price">
+										<strong>가격</strong>
+										<div>
+											<p><b>${room[3].price }원</b></p>
 										</div>
 										<button type="button">객실 이용 안내</button>
 									</div>
@@ -349,7 +402,7 @@
 				<section>
 					<strong>선택 날짜</strong>
 					<ul class="dot_txt">
-						<li>dto.date</li>
+						<li></li>
 					</ul>
 				</section>
 			</div>
@@ -369,12 +422,12 @@
 	const cmtbtn = document.querySelector('.comment > button')
 	const exitBtn = document.querySelector('.fix_title > button')
 	const overlay = document.querySelector('.overlay')
-	const infbtn = document.querySelector('.price > button')
+	const infbtnArray = Array.from(document.querySelectorAll('.price > button'))
 	
 	cmtbtn.addEventListener('click', cmtbtnHandler)
 	exitBtn.addEventListener('click', closeModal)
 	overlay.addEventListener('click', closeModal)
-	infbtn.addEventListener('click', dtopenModal)
+	infbtnArray.forEach(button => button.addEventListener('click', dtopenModal))
 	
 	
 	const nextBtn = document.querySelector('.button_next')
@@ -383,13 +436,15 @@
 	prevBtn.onclick = move_prev
 	
 	const reviewBox = document.querySelector('.review_scroll')
-	reviewBox.addEventListener('scroll',scrollHandler)
+	reviewBox.addEventListener('scroll',reviewScrollHandler)
 	
 	
 </script>
 
 <!-- 달력 호출 함수 -->
 <script>
+let sysDate = new Date()
+sysDate.setDate(sysDate.getDate()+1)
 $('#daterangepicker').daterangepicker({
 	
 	"locale": {
@@ -409,19 +464,21 @@ $('#daterangepicker').daterangepicker({
 		
 	},
 	"startDate": new Date(),
-	"endDate": new Date(),
+	"endDate": sysDate,
 	"drops": "auto",
 	"minDate": new Date(),
 })
-const dateBtn = document.querySelector('.applyBtn')
-dateBtn.addEventListener('click', getDateHandler)
+ const dateBtn = document.querySelector('.applyBtn')
+ dateBtn.addEventListener('click', getDateHandler)
 </script>
 
 <!-- 지도 호출 함수 -->
 <script>
+
+
 var container = document.getElementById('map')
 var options = {
-	center: new kakao.maps.LatLng(35.167054, 129.132861),
+	center: new kakao.maps.LatLng(longtitude, latitude),
 	level: 3
 }
 var map = new kakao.maps.Map(container, options)
