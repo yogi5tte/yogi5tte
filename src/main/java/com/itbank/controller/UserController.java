@@ -107,4 +107,26 @@ public class UserController {
 	public void joindrop2() {
 		
 	}
+	
+	@RequestMapping("/host_join")
+	public String host_join() {
+		return "host_join";
+	}
+	
+	@RequestMapping("/host_join2")
+	public String host_join2() {
+		return "host_join2";
+	}
+	
+	@RequestMapping("/host_join3")
+	public String host_join3() {
+		return "host_join3";
+	}
+	
+	@RequestMapping("/host_home")
+	public String host_home() {
+		return "host_home";
+	}
+	
+	
 }
