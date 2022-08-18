@@ -15,14 +15,9 @@ public class ListController {
 
 	@Autowired private RoomService roomService;
 	
-	@GetMapping("/listload/{idx}")
-	public List<MotelDTO> list(@PathVariable int idx) {
-		
-		return roomService.selectList(idx);
+	@GetMapping("/listload/{category}/{pType}/{human_count}")
+	public List<MotelDTO> list(@PathVariable int category, @PathVariable int pType, @PathVariable int human_count) {
+		return roomService.selectList(category, pType, human_count);
 	}
 	
-//	@GetMapping("/main/list")
-//	public List<MotelDTO> mainList() {
-//		return roomService.showList();
-//	}
 }

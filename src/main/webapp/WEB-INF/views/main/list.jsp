@@ -33,7 +33,7 @@
 							<div class="iscroll_01">
 								<div class="scroller">
 									<ul class="city">
-										<li><p class="on">서울</p></li>
+										<li><p>서울</p></li>
 										<li><p>부산</p></li>
 									</ul>
 								</div>
@@ -41,7 +41,7 @@
 							<div class="iscroll_02">
 								<div class="scroller">
 									<ul class="city_child on">
-									    <li><p class="on" idx="1001">강남/역삼/삼성/논현</p></li>
+									    <li><p idx="1001">강남/역삼/삼성/논현</p></li>
 									    <li><p idx="1002">서초/신사/방배</p></li>
 									    <li><p idx="1003">잠실/방이</p></li>
 									    <li><p idx="1004">잠실새내/신천</p></li>
@@ -80,7 +80,7 @@
 							<h3>상세 조건</h3>
 							<div class="btn_wrap">
 								<button type="button" onClick="window.location.reload()">초기화</button>
-								<button type="submit">적용</button>
+								<button type="submit" class="subBtn">적용</button>
 							</div>
 							<section>
 								<strong>카테고리</strong>
@@ -123,7 +123,7 @@
 								<strong>인원</strong>
 								<div class="cnt_people" data-min="2" data-max="10" data-def="2">
 									<button type="button" class="dn">-</button>
-									<input type="hidden" id="persons" name="persons"><span id="result">1</span>
+									<input type="hidden"><span id="result"></span>
 									<button type="button" class="up">+</button>
 								</div>
 							</section>			
@@ -180,6 +180,7 @@
 	const mapbtn = document.querySelector('.btn_map')
 	const dnbtn = document.querySelector('.filter_wrap > section > .cnt_people > .dn')
    	const upbtn = document.querySelector('.filter_wrap > section > .cnt_people > .up')
+   	const subBtn = document.querySelector('.filter_wrap > .btn_wrap > .subBtn')
    	
 	ctg.addEventListener('mouseover', function(event) {
 		areaPop.style.display = 'block'
@@ -199,6 +200,8 @@
 	mapbtn.addEventListener('click', openModal)
 	dnbtn.addEventListener('click', listDncount)
    	upbtn.addEventListener('click', listUpcount)
+   	subBtn.addEventListener('click', listSubHandler)
+   	
    	window.addEventListener('load', listLoadHandler)
 </script>
 

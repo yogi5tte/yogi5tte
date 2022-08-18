@@ -99,21 +99,14 @@ function listConvert(dto) {
 	const li = document.createElement('li')
 	li.className = 'list_1'
 	
-	if(dto.city == 2) {
-		dto.city = '부산'
-	}
-	else {
-		dto.city = '서울'
-	}
-	
 	li.innerHTML += `
 		<a href="#">
-			<p class="pic"><img class="lazy" src=${dto.product_img}></p>
+		<p class="pic"><div class="lazy" style="background:url(${cpath}/resources/image/product_img/${dto.product_img})"></div>
 			<div class="stage">
 				<div class="name">
 					<strong> ${dto.name} </strong>
 					<p class="score">
-						<em>dto.reviewValue</em>&nbsp;<span>${dto.seller_text}</span>&nbsp;(dto.reviewNum)
+						<em>dto.reviewValue</em>&nbsp;<span>${dto.seller_text}</span>&nbsp;(${dto.review_count})
 				    </p>
 					<p>${dto.city} / ${dto.gu}</p>
 				</div>
@@ -125,28 +118,40 @@ function listConvert(dto) {
 	`
 	return li
 }
-//지역 -> 구 선택하면 해당 지역만 나오는 함수
+// 지역 -> 구 선택하면 해당 지역만 나오는 함수
 function clickListHandler(event) {
 	const product_list = document.getElementById('product_list_area')
 	product_list.innerHTML = ''
 	
-	// 지역 선택시 버튼 텍스트 바뀌는 기능
-	let city = document.querySelector('.city > li > p.on').innerText
+	const city = document.querySelector('.city > li > p.on').innerText
 	
 	dloOneArray.forEach(dlo => dlo.classList.remove('on'))
 	event.target.classList.add('on')
-//	console.log(event.target.getAttribute('idx'))
 	
-	let idx = event.target.getAttribute('idx')
+	const category = event.target.getAttribute('idx')
+	const pType = sessionStorage.getItem('pType')
+	const human_count = sessionStorage.getItem('human_count')
 	
-	let target = event.target.innerText
+	let title = ''
 	
-	let btn_area = document.querySelector('.btn_area')
+	const target = event.target.innerText
+	const btn_area = document.querySelector('.btn_area')
+	const sub_top = document.querySelector('.sub_top_wrap > .sub_top > h2')
+	const cnt_people = document.querySelector('.cnt_people > span')
+	
 	btn_area.innerHTML = ''
 	btn_area.innerHTML += `<span>${city}</span>${target}`
+	cnt_people.innerText = ''
+	cnt_people.innerText += `${human_count}`
 		
-	const url = cpath + '/listload/' + idx
+	if(pType == 101) title = '모텔'
+	else if(pType == 102) title = '호텔·리조트'
+	else if(pType == 103) title = '펜션'
+		
+	sub_top.innerText = ''
+	sub_top.innerText += title
 	
+	const url = `${cpath}/listload/${category}/${pType}/${human_count}`
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {
@@ -155,93 +160,68 @@ function clickListHandler(event) {
 	const area_pop = document.querySelector('.area_pop')
 	area_pop.style.display = 'none'
 }
-//메인페이지 검색 함수
-function searchHandler(event) {
+function listSubHandler(event) {
 	event.preventDefault()
 	const product_list = document.getElementById('product_list_area')
-	let cat = (document.querySelector('.main_link > ul > li.selected').innerText)
-	let loc = (document.querySelector('.main_link > .selectctg > .btn_loc > span').innerText)
-	let peo = (document.querySelector('.main_link > .selectctg > .btn_many > span').innerText).split('명')[0]
+	product_list.innerHTML = ''
 	
-	sessionStorage.setItem('cat', cat)
-	sessionStorage.setItem('loc', loc)
-	sessionStorage.setItem('peo', peo)
+	const city = document.querySelector('.city > li > p.on').innerText
+	let human_count = document.querySelector('.cnt_people > span')
+	human_count = human_count.innerText
+	let title = ''
 	
-//	const form = document.createElement('form')
-//	form.innerHTML += `<input type="hidden" name="cat" value="${cat}">
-//					   <input type="hidden" name="loc" value="${loc}">
-//					   <input type="hidden" name="peo" value="${peo}">`
-//	const formData = new FormData(form)
-//		
-//	const url = cpath + '/main'
-//	const opt = {
-//		method: 'POST',
-//		body: formData
-//	}
-//	fetch(url, opt)
-//	.then(resp => resp.json())
-//	.then(json => {
-//		console.log(json)
-//		json.forEach(dto => product_list.appendChild(listConvert(dto)))
-//	})
+	const cnt_people = document.querySelector('.cnt_people > span')
+	cnt_people.innerText = ''
+	cnt_people.innerText += `${human_count}`
+		
+	let category = document.querySelector('.city_child > li > p.on')
+	console.log(category)
+	category = category.getAttribute('idx')
+	const pType = sessionStorage.getItem('pType')
 	
-	if(loc != '다음 숙소는 어디로?' && peo != '몇명에서 떠나시나요?') {
+	console.log(category)
+	
+	const url = `${cpath}/listload/${category}/${pType}/${human_count}`
+	fetch(url)
+	.then(resp => resp.json())
+	.then(json => {
+		json.forEach(dto => product_list.appendChild(listConvert(dto)))
+	})
+}
+// 메인페이지 검색 후 sessionStorage저장
+function searchHandler(event) {
+	event.preventDefault()
+	
+	let pType = (document.querySelector('.main_link > ul > li.selected > a > p').getAttribute('cidx'))
+	let city = (document.querySelector('.main_link > .selectctg > .btn_loc > span').innerText)
+	let human_count = (document.querySelector('.main_link > .selectctg > .btn_many > span').innerText).split('명')[0]
+	
+	sessionStorage.setItem('pType', pType)
+	sessionStorage.setItem('city', city)
+	sessionStorage.setItem('human_count', human_count)
+
+	if(city != '다음 숙소는 어디로?' && human_count != '몇') {
 		location.href = cpath + '/main/list'
 	}
 	else {
 		alert('지역과 인원수를 선택해주세요!')
 	}
 }
+// 메인페이지 검색
+function listLoadHandler() {
+   	const city = sessionStorage.getItem('city')
+   	
+   	const target = Array.from(document.querySelectorAll('ul.city > li')).filter(li => li.innerText == city)[0]
+   	const index = Array.from(document.querySelectorAll('ul.city > li')).indexOf(target)
+   	
+   	const target2 = document.querySelectorAll('.iscroll_02 > .scroller > .city_child')[index].querySelector('li')
 
-function listLoadHandler(event) {
-	const product_list = document.getElementById('product_list_area')
-	product_list.innerHTML = ''
-		
-	let city = document.querySelector('.city > li > p.on').innerText
-	let target = document.querySelector('.city_child > li > p.on').innerText
-	
-	let btn_area = document.querySelector('.btn_area')
-	btn_area.innerHTML = ''
-	btn_area.innerHTML += `<span>${city}</span>${target}`	
+	const event = new MouseEvent('mouseover')
+	const event2 = new MouseEvent('click')
+   	target.querySelector('p').dispatchEvent(event)
+	target2.querySelector('p').dispatchEvent(event2)
 }
 
-
-// 메인페이지 에서 검색후 목록으로 왔을때 목록 출력하는 함수
-function listHandler(event) {
-	const product_list = document.getElementById('product_list_area')
-	product_list.innerHTML = ''
-	// 숙소 유형 카테고리 change
-	const title = document.querySelector('.sub_top > h2')
-	title.innerText = `${sessionStorage.getItem('cat')}`
-	// 인원 change
-	const peo = document.getElementById('result')	
-	result.innerText = sessionStorage.getItem('peo')
-	// 지역 change
-	const loc = document.querySelector('.btn_area')
-	if(sessionStorage.getItem('loc') == '서울') {
-		loc.innerHTML += `<span>${sessionStorage.getItem('loc')}</span>강남/역삼/삼성/논현`
-	}
-	else {
-		loArray.forEach(lo => lo.classList.remove('on'))
-		loArray[1].classList.add('on')
-		dloArray.forEach(dlo => dlo.classList.remove('on'))
-		dloArray[1].classList.add('on')
-		dloOneArray.forEach(dlo => dlo.classList.remove('on'))
-		let dlooneArray = document.querySelectorAll('.city_child.on > li > p')
-		dlooneArray[0].classList.add('on')
-		loc.innerHTML += `<span>${sessionStorage.getItem('loc')}</span>해운대/재송`
-	}
-	
-//	const url = cpath + '/listload'
-	
-//	fetch(url)
-//	.then(resp => resp.json())
-//	.then(json => {
-//		console.log(json)
-//		json.forEach(dto => product_list.appendChild(listConvert(dto)))
-//	})
-
-}
 // 모달 제거하는 함수
 function closeModal() {
 	document.getElementById('modal').classList.add('hidden')
@@ -323,7 +303,6 @@ function clickwhere(event) {
 }
 // 대문 페이지 인원 선택하는 함수
 function clickmany(event) {
-
    const many = document.querySelector('.selectctg > .many')
    
    if(many.classList.contains('hidden')) {
@@ -460,26 +439,6 @@ function dtopenModal(event) {
 	const selectDivArray = Array.from(document.querySelectorAll('.gallery_btm_wrap > div'))
 	selectDivArray.forEach(div => div.classList.remove('selectView'))
 	selectDiv.classList.add('selectView')
-}
-// 메인페이지 검색 함수
-function searchHandler(event) {
-	event.preventDefault()
-	
-	let cat = (document.querySelector('.main_link > ul > li.selected').innerText)
-	let loc = (document.querySelector('.main_link > .selectctg > .btn_loc > span').innerText)
-	let peo = (document.querySelector('.main_link > .selectctg > .btn_many > span').innerText).split('명')[0]
-	
-	sessionStorage.setItem('cat', cat)
-	sessionStorage.setItem('loc', loc)
-	sessionStorage.setItem('peo', peo)
-	
-	if(loc != '다음 숙소는 어디로?' && peo != '몇명에서 떠나시나요?') {
-		location.href = cpath + '/main/list'
-	}
-	else {
-		alert('지역과 인원수를 선택해주세요!')
-	}
-	
 }
 
 function reviewScrollHandler(event) {
