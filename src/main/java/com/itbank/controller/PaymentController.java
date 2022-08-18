@@ -17,5 +17,6 @@ public class PaymentController {
 	@GetMapping("rsvn/reservation_approve")
 	public void reservation_apporve() {
 	}
+	
 	//카카오페이 컨트롤러도 이곳에.
 }

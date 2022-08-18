@@ -1,8 +1,11 @@
 package com.itbank.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.itbank.room.MotelDTO;
 import com.itbank.user.User_nonsocialDAO;
 import com.itbank.user.User_nonsocialDTO;
 
@@ -23,6 +26,12 @@ public class UserService {
 		
 	public int join(User_nonsocialDTO dto) {
 		return dao.join(dto);
+	}
+
+
+
+	public List<MotelDTO> selectList() {
+		return dao.selectList();
 	}
 		
 		

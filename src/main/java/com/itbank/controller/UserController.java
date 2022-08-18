@@ -2,6 +2,7 @@ package com.itbank.controller;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
@@ -9,13 +10,17 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.itbank.room.MotelDTO;
 import com.itbank.service.MailService;
 import com.itbank.service.UserService;
+import com.itbank.user.User_nonsocialDAO;
 import com.itbank.user.User_nonsocialDTO;
 
 @Controller
@@ -26,6 +31,7 @@ public class UserController {
 	
 	@Autowired MailService mailservice;
 	
+	@Autowired User_nonsocialDAO nonUserDAO;
 	
 	@RequestMapping("/join")
 	public void join() {
@@ -83,19 +89,23 @@ public class UserController {
 	}
 	
 	
+	@GetMapping("/my_reservation")
+	public void get_my_reservation() {
+	}
+	
 	//마이 페이지 및 예약 내역
 	@RequestMapping("/my_reservation")
-	public void my_reservation() {
-		
+	public List<MotelDTO> my_reservation() {
+		return userService.selectList();
 	}
 	
 	@RequestMapping("/my_reservation_detail")
 	public void my_reservation_detail() {
 	}
 	
-	@RequestMapping("/mypage")
+	@GetMapping("/mypage")
 	public void mypage() {
-		
+	
 	}
 	
 	@RequestMapping("/joindrop")

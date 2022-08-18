@@ -43,72 +43,72 @@
 									가 있을까요?
 								</span>
 							</div> 
-						<ul data-v-492799f4="" class="radio-list">
+						<ul class="radio-list">
 						
-							<li data-v-492799f4="" class="radio-list__item">
-								<div data-v-492799f4="" class="select-item-area">
-									<div data-v-492799f4="" style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
+							<li class="radio-list__item">
+								<div class="select-item-area">
+									<div style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
 										<input name="check_inp" onclick="checkOnlyOne(this)" type="checkbox" id="terms" value="N" class="inp_chk_02 chk_default terms_checkbox rq" require="">
 								</div>
-								<span data-v-492799f4="">사용을 잘 안하게 돼요</span>
+								<span>사용을 잘 안하게 돼요</span>
 							</div>
 							</li>
 							
-							<li data-v-492799f4="" class="radio-list__item">
-								<div data-v-492799f4="" class="select-item-area">
-									<div data-v-492799f4="" style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
+							<li class="radio-list__item">
+								<div class="select-item-area">
+									<div style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
 										<input name="check_inp" onclick="checkOnlyOne(this)" type="checkbox" id="teenager" value="N" class="inp_chk_02 chk_default terms_checkbox rq" require="">
 									</div> 
-									<span data-v-492799f4="">예약하고 싶은 숙소가 없어요</span>
+									<span>예약하고 싶은 숙소가 없어요</span>
 								</div>
 							</li>
 							
-							<li data-v-492799f4="" class="radio-list__item">
-								<div data-v-492799f4="" class="select-item-area">
-									<div data-v-492799f4="" style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
+							<li class="radio-list__item">
+								<div class="select-item-area">
+									<div style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
 										<input name="check_inp" onclick="checkOnlyOne(this)" type="checkbox" id="privacy" value="N" class="inp_chk_02 chk_default terms_checkbox rq" require="">
 									</div> 
-									<span data-v-492799f4="">예약, 취소 등 사용이 어려워요
+									<span>예약, 취소 등 사용이 어려워요
 									</span>
 								</div> 
 							</li>
 							
-							<li data-v-492799f4="" class="radio-list__item">
-								<div data-v-492799f4="" class="select-item-area">
-									<div data-v-492799f4="" style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
+							<li class="radio-list__item">
+								<div class="select-item-area">
+									<div style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
 										<input name="check_inp" onclick="checkOnlyOne(this)" type="checkbox" id="privacy_auxiliary_policy" value="N" class="inp_chk_02 chk_default terms_checkbox">
 									</div> 
-									<span data-v-492799f4="">개인정보 보호를 위해 삭제할 정보가 있어요</span>
+									<span>개인정보 보호를 위해 삭제할 정보가 있어요</span>
 								</div> 
 							</li>
 							
-							<li data-v-492799f4="" class="radio-list__item">
-								<div data-v-492799f4="" class="select-item-area">
-									<div data-v-492799f4="" style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
+							<li class="radio-list__item">
+								<div class="select-item-area">
+									<div style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
 										<input name="check_inp" onclick="checkOnlyOne(this)" type="checkbox" id="marketing" value="N" class="inp_chk_02 chk_default terms_checkbox">
 									</div> 
-									<span data-v-492799f4="">다른 계정이 있어요</span>
+									<span>다른 계정이 있어요</span>
 								</div> 
 							</li>
 							
-							<li data-v-492799f4="" class="radio-list__item">
-								<div data-v-492799f4="" class="select-item-area">
-									<div data-v-492799f4="" style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
+							<li class="radio-list__item">
+								<div class="select-item-area">
+									<div style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
 										<input name="check_inp" onclick="checkOnlyOne(this)" type="checkbox" id="location" value="N" class="inp_chk_02 chk_default terms_checkbox">
 									</div> 
-									<span data-v-492799f4="">기타</span>
+									<span>기타</span>
 								</div> 
 							</li>
 							
 						</ul>
 						
-						<form data-v-492799f4="" class="bottom-section">
-							<div data-v-492799f4="" class="password-area">
-								<label data-v-492799f4="" for="password" class="password-area__label">비밀번호 입력</label> 
-								<input data-v-492799f4="" id="password" type="password" autocomplete="off" placeholder="비밀번호를 입력하세요." class="password-area__input">
+						<form class="bottom-section">
+							<div class="password-area">
+								<label for="password" class="password-area__label">비밀번호 입력</label> 
+								<input id="password" type="password" autocomplete="off" placeholder="비밀번호를 입력하세요." class="password-area__input">
 							</div> 
-							<div data-v-492799f4="" class="button-area">
-								<button data-v-492799f4="" class="btn_link button-area__button is-accept">다음 단계로</button>
+							<div class="button-area">
+								<button class="btn_link button-area__button is-accept">다음 단계로</button>
 							</div>
 						</form>
 					</div>
