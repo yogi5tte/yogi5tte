@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.itbank.room.MotelDAO;
-import com.itbank.room.MotelDTO;
+import com.itbank.room.RoomDAO;
+import com.itbank.room.RoomDTO;
 
 @Service
 public class RoomService {
 	
-	@Autowired private MotelDAO motelDAO;
+	@Autowired private RoomDAO motelDAO;
 	
-	public List<MotelDTO> selectList() {
+	public List<RoomDTO> selectList() {
 		return motelDAO.selectList();
 	}
 

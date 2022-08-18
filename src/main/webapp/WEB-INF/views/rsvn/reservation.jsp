@@ -8,11 +8,17 @@
 
 </head>
 <body>
+<script>
+var name= '${infoDto.name}'
+var roomName = '${roomDto.roomName}'
+var check_in = '${param.check_in}'
+var check_out = '${param.check_out}'
+var difference = '${param.difference}'
+</script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script src="${cpath }/resources/js/reservation/reservation.js"></script>
 <script src="${cpath }/resources/js/pay/kakaopay.js"></script>
-
 <div id="reservation_root">
 	<div class="left">
 		<div class="form_skin">
@@ -30,17 +36,17 @@
 			<h3>결제 수단 선택</h3>
 			<select id="payment_select" class="select_type" >
 		
-						<option data-minprice="0" selected="selected" value="KAKAO" >
+						<option  selected="selected" value="KAKAO">
                           	  카카오페이
                         </option>
                         
-                        <option data-minprice="0" value="TOSS" >
+                        <option  value="TOSS" >
                         	    토스
                         </option>
-                        <option data-minprice="0" value="CARD" >
+                        <option  value="CARD" >
                          	   신용/체크카드             
                         </option>
-                        <option data-minprice="0" value="CELLPHONE" >
+                        <option  value="CELLPHONE" >
                           	  휴대폰결제
                         </option>
                </select>
@@ -56,20 +62,21 @@
 	
 	</div>
 	
+	
 	<div class="right">
 		<div class="reservation_info">
 			<p><strong>숙소이름</strong></p>
-			{dto.name}
+			${infoDto.name}
 			<p><strong>객실타입/기간</strong></p>
-			{dto.roomname}/{dto.day}일
+			${roomDto.roomName}/ ${param.difference }박
 			<p><strong>체크인</strong></p>
-			{dto.checkin}
+			${param.check_in}
 			<p><strong>체크아웃</strong></p>
-			{dto.checkout}
+			${param.check_out}
 			<hr>
 			<div class="reservation_price_info">
 			<p><strong>총 결제 금액(VAT 포함)</strong></p>
-			<p id="price_final"><strong>{price }원</strong></p>
+			<p id="price_final"><strong>${roomDto.price }원</strong></p>
 			</div>
 			<ul>
 				<li>해당 객실가는 세금,봉사료가 포함된 금액입니다</li>

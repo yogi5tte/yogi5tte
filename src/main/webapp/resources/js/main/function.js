@@ -449,6 +449,21 @@ function reviewScrollHandler(event) {
 }
 
 
+//숙소 예약 버튼 (값 전달)
+function getCheckHandler() { 
+   const start = document.getElementById('daterangepicker').value.split('~')[0]
+   const end = document.getElementById('daterangepicker').value.split('~')[1]
+   let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
+   let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
+   let difference = Math.floor((endDate.getTime() - startDate.getTime())/(1000 * 3600 * 24))
+   
+   location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + 
+   '&check_in=' + start + '&check_out=' + end + '&difference=' + difference 
+   
+   
+   
+}
+
 
 // 숙소 정보 모달 
 function closeModal() {
