@@ -396,7 +396,7 @@ function dtopenModal(event) {
 			
 		topNum += 490
 		topWrap.dataset.num = topNum
-		topWrap.style.transform = `translateX(${-topNum}px`
+		topWrap.style.transform = `translateX(${-topNum}px)`
 	}
 	
 	let viewNum = btmNum == 1309 ? 12 :(119 + btmNum) / 119
@@ -426,38 +426,94 @@ function searchHandler(event) {
 	
 }
 
-function reviewScrollHandler(event) {
-	if(event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight) {
-		const Ul = document.querySelector('.review_scroll > ul')
-		for(let i= 0; i < 5; i++) {
-			Ul.innerHTML += `<li>
-				<div class="guest">
-				<p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_23.png"></p>
-				<strong>리뷰제목</strong>
-				<div class="score_wrap_sm">
-					<div class="score_star star_50"></div>
-					<div class="num">10.0</div>
-				</div>
-				<div class="name"><b>방이름 객실 이용 · </b>작성자닉네임</div>
-				<div class="txt">리뷰내용</div>
-				<span class="date">	</span>
-			</div>
-			<hr>
-		</li>`
+function convert(dto) {
+	const Ul = document.querySelector('.review_scroll > ul')
+	const li = document.createElement('li')
+	li.setAttribute('idx', dto.idx)
+	
+	const guest = document.createElement('div')
+	guest.classList.add('guest')
+	
+	for(let key in dto){
+		switch(key) {
+		case 'idx':
+		case 'char':
+		case 'isDeleted':
+		case 'reservation_approved_idx':
+		case 'user_idx':
+		case 'info_idx':
+		case 'room_idx':
+			continue;
+		case 'review_img':
+			guest.innerHTML += `<p class="pic">
+								<img src="${cpath}/resources/image/${dto[key]}">
+								</p>`
+				break
+		case 'title':
+			guest.innerHTML += `<strong>${dto[key]}</strong>`
+				break
+		case 'star':	
+			guest.innerHTML += `<div class="score_wrap_sm">
+								<div class="score_star start_50>${dto[key]}</div>
+								<div class="num">${dto[key] * 2}
+								</div>`
+				break
+		case 'nickName':
+			guest.innerHTML += `<div class="name">
+								<b>방이름 객실 이용 · </b> ${dto[key]}
+								</div>`
+				break
+		case 'content':
+			guest.innerHTML += `<div class="txt">${dto[key]}</div>`
+				break
+		case 'writeDate':
+			const writeD = new Date(dto[key]).toISOString().split('T')[0]
+			guest.innerHTML += `<span class="date"> ${writeD}</span>`
 		}
+	}
+	guest.appendChild(guest.querySelector('.txt'))
+	
+	li.appendChild(guest)
+	li.innerHTML += `<hr>`
+	Ul.appendChild(li)
+		return Ul
+}
+
+function reviewList(event){
+	const reviewBox = document.querySelector('.review_scroll')
+	let offset = reviewBox.getAttribute('offset')
+	let info_idx = reviewBox.getAttribute('info_idx')
+	const url = cpath + '/main/detail/' + info_idx + '/' + offset
+	
+	console.log(info_idx, offset)
+	
+	fetch(url)
+	.then(resp => resp.json())
+	.then(json => {
+		json.forEach(dto => reviewBox.appendChild(convert(dto)))
+	})
+	reviewBox.setAttribute('offset', +offset + 5)
+}
+
+function reviewScrollHandler(event) {
+	
+	if(event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight) {
+		reviewList()
 	}
 }
 
 // 숙소 예약 버튼 (값 전달)
-function getCheckHandler() { 
+function getCheckHandler(event) { 
 	const start = document.getElementById('daterangepicker').value.split('~')[0]
 	const end = document.getElementById('daterangepicker').value.split('~')[1]
 	
 	let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
 	let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
-	let difference = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24))
+	let quantity = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24))
 	
-	location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + '&check_in=' + start + '&check_out=' + end + '&difference=' + difference
+	let info_idx = event.target.getAttribute('info_idx')
+	
+	location.href = cpath + '/rsvn/reservation?info_idx=' + info_idx + '&idx=' + event.target.getAttribute('idx') + '&check_in=' + start + '&check_out=' + end + '&quantity=' + quantity 
 	
 	
 	
@@ -477,9 +533,9 @@ function dtopenModal(event) {
 function getDateHandler(event) {
 	 let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
 	 let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
-	 let difference = endDate.getTime() - startDate.getTime()
+	 let quantity = endDate.getTime() - startDate.getTime()
 	
-	 if( difference/(1000 * 3600 * 24)  > 8){
+	 if( quantity/(1000 * 3600 * 24)  > 8){
 		 alert('최대 7박까지만 가능합니다')
 		 location.reload()
 	 }

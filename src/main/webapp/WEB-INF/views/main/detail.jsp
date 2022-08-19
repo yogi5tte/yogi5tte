@@ -172,7 +172,7 @@
 									<button type="button">객실 이용 안내</button>
 								</div>
 								<button type="button" class="res_btn gra_left_right_red"
-									idx="${room.idx }">예약</button>
+									idx="${room.idx }" info_idx="${info.idx }">예약</button>
 								<%--${cpath}/rsvn/reservation?idx=${room.idx }&check_in=&check_out= --%>
 							</div>
 						</div>
@@ -266,190 +266,9 @@
 					전체 리뷰 <b>777</b> <span>|</span> 제휴점 답변 <b>777</b>
 				</p>
 			</div>
-			<div class="review_scroll">
+			<div class="review_scroll" offset="0" info_idx="${info.idx }">
 				<ul>
-
-					<li>
-						<div class="guest">
-							<p class="pic">
-								<img src="//image.goodchoice.kr/profile/ico/ico_23.png">
-							</p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name">
-								<b>방이름 객실 이용 · </b>작성자닉네임
-							</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date"> </span>
-						</div>
-						<hr>
-					</li>
-
-					<li>
-						<div class="guest">
-							<p class="pic">
-								<img src="//image.goodchoice.kr/profile/ico/ico_23.png">
-							</p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name">
-								<b>방이름 객실 이용 · </b>작성자닉네임
-							</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date"> </span>
-						</div>
-						<hr>
-					</li>
-					<li>
-						<div class="guest">
-							<p class="pic">
-								<img src="//image.goodchoice.kr/profile/ico/ico_23.png">
-							</p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name">
-								<b>방이름 객실 이용 · </b>작성자닉네임
-							</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date"> </span>
-						</div>
-						<hr>
-					</li>
-					<li>
-						<div class="guest">
-							<p class="pic">
-								<img src="//image.goodchoice.kr/profile/ico/ico_23.png">
-							</p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name">
-								<b>방이름 객실 이용 · </b>작성자닉네임
-							</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date"> </span>
-						</div>
-						<hr>
-					</li>
-					<li>
-						<div class="guest">
-							<p class="pic">
-								<img src="//image.goodchoice.kr/profile/ico/ico_23.png">
-							</p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name">
-								<b>방이름 객실 이용 · </b>작성자닉네임
-							</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date"> </span>
-						</div>
-						<hr>
-					</li>
-					<li>
-						<div class="guest">
-							<p class="pic">
-								<img src="//image.goodchoice.kr/profile/ico/ico_23.png">
-							</p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name">
-								<b>방이름 객실 이용 · </b>작성자닉네임
-							</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date"> </span>
-						</div>
-						<hr>
-					</li>
-					<li>
-						<div class="guest">
-							<p class="pic">
-								<img src="//image.goodchoice.kr/profile/ico/ico_23.png">
-							</p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name">
-								<b>방이름 객실 이용 · </b>작성자닉네임
-							</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date"> </span>
-						</div>
-						<hr>
-					</li>
-					<li>
-						<div class="guest">
-							<p class="pic">
-								<img src="//image.goodchoice.kr/profile/ico/ico_23.png">
-							</p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name">
-								<b>방이름 객실 이용 · </b>작성자닉네임
-							</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date"> </span>
-						</div>
-						<hr>
-					</li>
-					<li>
-						<div class="guest">
-							<p class="pic">
-								<img src="//image.goodchoice.kr/profile/ico/ico_23.png">
-							</p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name">
-								<b>방이름 객실 이용 · </b>작성자닉네임
-							</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date"> </span>
-						</div>
-						<hr>
-					</li>
-					<li>
-						<div class="guest">
-							<p class="pic">
-								<img src="//image.goodchoice.kr/profile/ico/ico_23.png">
-							</p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name">
-								<b>방이름 객실 이용 · </b>작성자닉네임
-							</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date"> </span>
-						</div>
-						<hr>
-					</li>
+					
 				</ul>
 			</div>
 		</article>
@@ -518,6 +337,8 @@
 	const prevBtn = document.querySelector('.button_prev')
 	prevBtn.onclick = move_prev
 	
+	
+	window.addEventListener('load',reviewList)
 	const reviewBox = document.querySelector('.review_scroll')
 	reviewBox.addEventListener('scroll',reviewScrollHandler)
 	
