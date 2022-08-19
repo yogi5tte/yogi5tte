@@ -34,4 +34,5 @@
 	<mybatis-spring:scan base-package="com.itbank.room"/>
 	<mybatis-spring:scan base-package="com.itbank.user"/>
 	<mybatis-spring:scan base-package="com.itbank.info"/>
+	<mybatis-spring:scan base-package="com.itbank.reservation"/>
 </beans>

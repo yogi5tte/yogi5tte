@@ -12,41 +12,55 @@ import java.sql.Date;
     quantity        number          not null,   -- 수량(박)
     human_count     number          not null,
     isdeleted char(1)   default 'n' check(isdeleted in ('n','y')),
-    user_idx        number          not null,   --유저 테이블 참조
     info_idx        number          not null,   --정보 테이블 참조
     room_idx         number          not null  --방 테이블 참조
  */
 public class ReservationDTO {
 	private int idx;
-	private String user_name;
-	private String phone_number;
+	private String userName;
+	private String phoneNumber;
 	private int total_amount;
+	private int human_count;
 	private Date check_in,check_out;
 	private char isdeleted;
-	private int user_idx,info_idx,room_idx;
+	private int info_idx,room_idx;
+	
+	public int getHuman_count() {
+		return human_count;
+	}
+	public void setHuman_count(int human_count) {
+		this.human_count = human_count;
+	}
+	private int quantity;
 	public int getIdx() {
 		return idx;
 	}
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	public String getUser_name() {
-		return user_name;
+	public String getUserName() {
+		return userName;
 	}
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-	public String getPhone_number() {
-		return phone_number;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
-	public void setPhone_number(String phone_number) {
-		this.phone_number = phone_number;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 	public int getTotal_amount() {
 		return total_amount;
 	}
 	public void setTotal_amount(int total_amount) {
 		this.total_amount = total_amount;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	public Date getCheck_in() {
 		return check_in;
@@ -66,12 +80,6 @@ public class ReservationDTO {
 	public void setIsdeleted(char isdeleted) {
 		this.isdeleted = isdeleted;
 	}
-	public int getUser_idx() {
-		return user_idx;
-	}
-	public void setUser_idx(int user_idx) {
-		this.user_idx = user_idx;
-	}
 	public int getInfo_idx() {
 		return info_idx;
 	}
@@ -84,5 +92,6 @@ public class ReservationDTO {
 	public void setRoom_idx(int room_idx) {
 		this.room_idx = room_idx;
 	}
+	
 	
 }

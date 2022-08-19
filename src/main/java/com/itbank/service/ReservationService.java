@@ -17,7 +17,8 @@ public class ReservationService {
 
 	@Autowired RoomDAO roomDAO;
 	@Autowired InfoDAO infoDAO;
-//	@Autowired ReservationDAO rsvnDAO;
+	@Autowired ReservationDAO rsvnDAO;
+	
 	public RoomDTO checkRoom(HashMap<String, String> room_idx) {
 		RoomDTO roomDto = roomDAO.checkRoom(room_idx);
 		return roomDto;
@@ -26,10 +27,12 @@ public class ReservationService {
 		InfoDTO infoDto = infoDAO.checkProduct(room_idx);
 		return infoDto;
 	}
-//	public int insertReservation(ReservationDTO rsvnDto) {
-//		
-//		return rsvnDAO.inserReservation(rsvnDto);
-//	}
+
+	public int insertReservation(ReservationDTO rsvnDto) {
+		
+		return  rsvnDAO.insertReservation(rsvnDto);
+		
+	}
 	
 
 }

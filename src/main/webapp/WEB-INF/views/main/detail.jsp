@@ -109,7 +109,7 @@
                            <div class="price">
                               <strong>가격</strong>
                               <div>
-                                 <p><b>${room.price }원</b></p>
+                                 <p><b><fmt:formatNumber type="number" value="${room.price }"/>원</b></p>
                               </div>
                               <button type="button">객실 이용 안내</button>
                            </div>

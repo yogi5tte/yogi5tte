@@ -53,7 +53,7 @@ function openModal(event){
 		item.innerHTML += `<div class="mo_content_info">`
 
 		item.innerHTML += `<p class="mo_info_product">${name}</p>`
-		item.innerHTML += `<p class="mo_info_roomName">${roomName} / ${difference}박</p>`
+		item.innerHTML += `<p class="mo_info_roomName">${roomName} / ${quantity}박</p>`
 
 		item.innerHTML += `<p class="mo_info_check_in"><span>체크인</span><strong>${check_in}</strong></p>`
 		item.innerHTML +=`<p class="mo_info_check_out"><span>체크아웃</span><strong>${check_out}</strong></p>`
@@ -64,18 +64,60 @@ function openModal(event){
 		item.innerHTML += `</div>`
 		item.innerHTML += `<hr>`
 														
-		item.innerHTML += `<div class="mo_btn"><button class="mo_cancel"><span id="cancel">취소</span></button><button class="mo_move_payment"><span>동의 후 결제</button></a></div>`
+		item.innerHTML += `<div class="mo_btn"><button class="mo_cancel"><span id="cancel">취소</span></button><button onclick="insertRsvnHandler(),kakaopaymentReady()" class="mo_move_payment"><span>동의 후 결제</button></a></div>`
 															
 	document.querySelector('.reservation_modal').classList.remove('hidden')
 	
 	const mo_cancel = document.querySelector('.mo_cancel')
 	mo_cancel.addEventListener('click',closeModal)
 	
-	const mo_move_payment = document.querySelector('.mo_move_payment')
-	
-	mo_move_payment.addEventListener('click',kakaopaymentReady)
+//	const mo_move_payment = document.querySelector('.mo_move_payment')
+//	
+//	mo_move_payment.addEventListener('click',insertRsvnHandler)
 	
 }
+
+	 async function insertRsvnHandler(event){
+//		event.preventDefault()
+//		let target = event.target
+		let target = document.forms[0]
+		const formData = new FormData(target)
+		const pList = document.querySelectorAll('.rsvn_el')
+		
+		const ob = {}
+		
+		for(let key of formData.keys()){
+			ob[key] = formData.get(key)
+		}
+		//v -> div의 value 
+		for(let v of pList){
+//			console.log(v.id, v.innerText)
+			ob[v.id] = v.innerText
+		}
+		
+		console.log(ob)
+		
+		
+		const url = cpath + '/rsvn/reservation'
+		const opt = {
+			method : 'POST',
+			body : JSON.stringify(ob),
+			headers:{
+				'Content-type': 'application/json;charset=utf-8'
+			}
+		}
+		await fetch(url,opt)
+		.then(resp=>resp.text())
+//		.then(text=>{
+//			if(text == 1){
+//				let click_event = new Event("click")
+//				event.target.dispatchEvent(click_event);
+//				event.target.addEventListener('click',kakaopaymentReady)
+//			}
+//		})
+		
+	}
+
 	
 	//전체 동의 후, 개별 동의 1개라도 체크가 안되어있을 시, 전체동의 체크 풀리는 핸들러(민철)
 	function checkAll(){
