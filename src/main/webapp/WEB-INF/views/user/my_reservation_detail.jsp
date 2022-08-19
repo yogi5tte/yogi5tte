@@ -48,21 +48,20 @@
                  <section>
                     <div>
                        <p>
-                       <strong>체크인</strong>2022.08.30 화 15:00</p> 
+                       <strong>체크인</strong>${list[0].check_In}</p> 
                        <p>
-                       <strong>체크아웃</strong>2022.08.31 수 12:00</p>
+                       <strong>체크아웃</strong>${list[0].check_Out }</p>
                     </div> 
-                    <div>
+                    <div> 
                        <p>
-                       <strong>예약번호</strong>101695233</p> 
-                       <p>
-                       <strong>예약자 이름</strong>권진혁</p>         
+                       <strong>예약자 이름</strong>${list[0].user_Name}
+                       </p>         
                     </div> 
                     <div class="total">
                        <p>결제정보</p> 
                        <p>
                        <strong>총 결제금액</strong> 
-                       <b>33,000원</b>
+                       <b>${list[0].total_Amount }원</b>
                        </p>
                     </div>
                  </section>

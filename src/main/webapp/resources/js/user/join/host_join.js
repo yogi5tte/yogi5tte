@@ -3,8 +3,6 @@
 function sendHandler(event) {
 	event.preventDefault()
 	alert('이메일로 인증을 보냅니다')
-	authForm.classList.remove('hidden')
-	authForm_btn.classList.remove('hidden')
 	authForm.querySelector('input').focus()
 	
 	const ob = {}
@@ -14,7 +12,7 @@ function sendHandler(event) {
 		ob[key] = formData.get(key)
 		console.log(ob[key])
 	}
-	let url = cpath + '/user/join2'
+	let url = cpath + 'user/host_join'
 	
  	fetch(url,{
  		method: 'POST',
@@ -44,14 +42,8 @@ function authHandler(event) {
 	
 	if(ob['authNumber'] == (sessionStorage.getItem('confirm'))){
 		alert('인증되었습니다')
-		location.href = cpath + '/user/join3'
+		location.href = cpath + 'uesr/host_join2'
 	}else{
 		alert('인증 실패')
 	}
 }
-
-const send_inp = document.getElementById('send_inp')
-
-send_inp.addEventListener('keypress', (event) => {
-	sendMailForm_btn.classList.add('gra_left_right_red')
-})

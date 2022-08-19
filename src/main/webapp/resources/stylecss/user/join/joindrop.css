@@ -9,6 +9,19 @@ body {
     -webkit-text-size-adjust: none;
 }
 
+
+#inp_div {
+	display: inline-block; 
+	vertical-align: text-top; 
+	width: 20px; height: 20px; 
+	overflow: hidden; 
+	margin-right: 12px;
+}
+
+button {
+	cursor: pointer;
+}
+
 .withdraw_popup_container {
     display: flex;
     flex-direction: column;
@@ -259,7 +272,7 @@ form {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 .fill_red {
-	background: rgb(244, 88, 88);
+	background: rgb(244, 88, 88) !important;
 }
 input [type=checkbox] {
     display: none;

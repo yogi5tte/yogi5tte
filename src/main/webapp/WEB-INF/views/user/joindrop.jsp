@@ -21,24 +21,21 @@
 	</script>
 </c:if>
 
-		<div class="withdraw_popup_container" data-v-21c46902 data-v-35e02141>
-			<div class="withdraw_popup" data-v-21c46902="">
-				<div class="withdraw_popup__header" data-v-21c46902="">
-					<div class="withdraw_title" data-v-21c46902="">
-						<p data-v-21c46902="">회원탈퇴</p> 
-						<svg id="drop_svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" data-v-21c46902="" class="">
-							<path d="M10 8.586l5.657-5.657 1.414 1.414L11.414 10l5.657 5.657-1.414 1.414L10 11.414l-5.657 5.657-1.414-1.414L8.586 10 2.929 4.343l1.414-1.414z" data-v-21c46902=""></path>
-						</svg>
+		<div class="withdraw_popup_container">
+			<div class="withdraw_popup">
+				<div class="withdraw_popup__header">
+					<div class="withdraw_title">
+						<p>회원탈퇴</p>
 					</div>
 				</div> 
-				<div class="withdraw_popup__content" data-v-21c46902="" data-v-35e02141="">
-					<div class="content_div" data-v-55995f3a="" data-v-35e02141="" assets-info="[object Object]" data-v-21c46902="">
-						<div data-v-492799f4="" data-v-55995f3a="" class="withdraw-survey-container">
-							<div data-v-492799f4="" class="withdraw-survey-title">
-								<span class="content_span" data-v-492799f4="">왜 떠나시는지 
+				<div class="withdraw_popup__content">
+					<div class="content_div" assets-info="[object Object]">
+						<div class="withdraw-survey-container">
+							<div class="withdraw-survey-title">
+								<span class="content_span">왜 떠나시는지 
 								</span> 
-								<span data-v-492799f4="">
-									<span data-v-492799f4="" class="emphasis">이유
+								<span>
+									<span class="emphasis">이유
 									</span>
 									가 있을까요?
 								</span>
@@ -47,7 +44,7 @@
 						
 							<li class="radio-list__item">
 								<div class="select-item-area">
-									<div style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
+									<div id="inp_div">
 										<input name="check_inp" onclick="checkOnlyOne(this)" type="checkbox" id="terms" value="N" class="inp_chk_02 chk_default terms_checkbox rq" require="">
 								</div>
 								<span>사용을 잘 안하게 돼요</span>
@@ -56,7 +53,7 @@
 							
 							<li class="radio-list__item">
 								<div class="select-item-area">
-									<div style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
+									<div id="inp_div">
 										<input name="check_inp" onclick="checkOnlyOne(this)" type="checkbox" id="teenager" value="N" class="inp_chk_02 chk_default terms_checkbox rq" require="">
 									</div> 
 									<span>예약하고 싶은 숙소가 없어요</span>
@@ -65,7 +62,7 @@
 							
 							<li class="radio-list__item">
 								<div class="select-item-area">
-									<div style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
+									<div id="inp_div">
 										<input name="check_inp" onclick="checkOnlyOne(this)" type="checkbox" id="privacy" value="N" class="inp_chk_02 chk_default terms_checkbox rq" require="">
 									</div> 
 									<span>예약, 취소 등 사용이 어려워요
@@ -75,7 +72,7 @@
 							
 							<li class="radio-list__item">
 								<div class="select-item-area">
-									<div style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
+									<div id="inp_div">
 										<input name="check_inp" onclick="checkOnlyOne(this)" type="checkbox" id="privacy_auxiliary_policy" value="N" class="inp_chk_02 chk_default terms_checkbox">
 									</div> 
 									<span>개인정보 보호를 위해 삭제할 정보가 있어요</span>
@@ -84,7 +81,7 @@
 							
 							<li class="radio-list__item">
 								<div class="select-item-area">
-									<div style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
+									<div id="inp_div">
 										<input name="check_inp" onclick="checkOnlyOne(this)" type="checkbox" id="marketing" value="N" class="inp_chk_02 chk_default terms_checkbox">
 									</div> 
 									<span>다른 계정이 있어요</span>
@@ -93,7 +90,7 @@
 							
 							<li class="radio-list__item">
 								<div class="select-item-area">
-									<div style="display: inline-block; vertical-align: text-top; width: 20px; height: 20px; overflow: hidden; margin-right: 12px;">
+									<div id="inp_div">
 										<input name="check_inp" onclick="checkOnlyOne(this)" type="checkbox" id="location" value="N" class="inp_chk_02 chk_default terms_checkbox">
 									</div> 
 									<span>기타</span>

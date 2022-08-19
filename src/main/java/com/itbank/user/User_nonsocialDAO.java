@@ -15,7 +15,7 @@ public interface User_nonsocialDAO {
 	@Insert("insert into user_nonsocial (email, password, nickName) values (#{email},#{password},#{nickName})")
 	int join(User_nonsocialDTO dto);
 
-	@Select("select * from reservation where user_name=#{user_name} and check_in=#{check_in} and check_out=#{check_out} order by user_idx")
+	@Select("select * from reservation where user_name=#{user_name} and check_in=#{check_in} and check_out=#{check_out} order by room_idx")
 	List<MotelDTO> selectList();
 
 }

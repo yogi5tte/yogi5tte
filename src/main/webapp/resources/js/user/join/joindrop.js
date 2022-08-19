@@ -3,9 +3,9 @@
 
 function chkHandler(event) {
 	
-	console.log(1)
+//	console.log(1)
 	// 하위 6개 버튼
-	const item = document.querySelectorAll('.terms_checkbox')
+	const item = Array.from(document.querySelectorAll('.terms_checkbox'))
 	
 	// password 입력 input
 	const password = document.getElementById('password')
@@ -13,9 +13,11 @@ function chkHandler(event) {
 	// 다음 버튼
 	const nextbtn = document.querySelector('.btn_link')
 	
+	console.log(item.filter(i => i.checked).length)
+	
 	
 	let allflag = (item[0].checked || item[1].checked || item[2].checked || item[3].checked || item[4].checked || item[5].checked)
-	if(allflag && password.value != '') {
+	if(item.filter(i => i.checked).length != 0 && password.value != '') {
 		nextbtn.classList.add('fill_red')
 	}
 	else {
@@ -44,7 +46,7 @@ function btnHandler(event) {
 	let allflag = (item[0].checked || item[1].checked || item[2].checked || item[3].checked || item[4].checked || item[5].checked)
 	
 	if(allflag) {
-		location.href = '${cpath}/join2'
+		location.href = cpath	
 	}
 }
 

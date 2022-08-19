@@ -50,8 +50,8 @@
                    </p> 
                    <a href="${cpath }/user/my_reservation_detail" class="product-title">
                    <i class="">예약확정</i> 
-                   <strong>${reservation.user_name }</strong> 
-                   <span>체크인 : ${reservation.check_in }, 체크아웃 : ${reservation.check_out }</span>
+                   <strong>${list[0].user_Name}</strong> 
+                   <span>체크인 : ${list[0].check_In}<br> 체크아웃 : ${list[0].check_Out }</span>
                    <b>예약 상세 &gt;</b>
                    </a> <!---->
                    </div>

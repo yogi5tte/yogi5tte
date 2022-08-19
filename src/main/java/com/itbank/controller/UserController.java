@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.itbank.reservation.ReservationDAO;
+import com.itbank.reservation.ReservationDTO;
 import com.itbank.room.MotelDTO;
 import com.itbank.service.MailService;
 import com.itbank.service.UserService;
@@ -32,6 +34,8 @@ public class UserController {
 	@Autowired MailService mailservice;
 	
 	@Autowired User_nonsocialDAO nonUserDAO;
+	
+	@Autowired ReservationDAO resDAO;
 	
 	@RequestMapping("/join")
 	public void join() {
@@ -90,53 +94,51 @@ public class UserController {
 	
 	
 	@GetMapping("/my_reservation")
-	public void get_my_reservation() {
+	public ModelAndView my_reservation() {
+		ModelAndView mav = new ModelAndView();
+		List<ReservationDTO> list = resDAO.getReserList();
+		mav.addObject("list", list);
+		return mav;
 	}
 	
-	//마이 페이지 및 예약 내역
-	@RequestMapping("/my_reservation")
-	public List<MotelDTO> my_reservation() {
-		return userService.selectList();
-	}
+//	//마이 페이지 및 예약 내역
+//	@RequestMapping("/my_reservation")
+//	public List<MotelDTO> my_reservation() {
+//		return userService.selectList();
+//	}
 	
 	@RequestMapping("/my_reservation_detail")
-	public void my_reservation_detail() {
+	public ModelAndView my_reservation_detail() {
+		ModelAndView mav = new ModelAndView();
+		List<ReservationDTO> list = resDAO.getReserList();
+		mav.addObject("list", list);
+		return mav;
 	}
 	
 	@GetMapping("/mypage")
-	public void mypage() {
-	
-	}
+	public void mypage() {}
 	
 	@RequestMapping("/joindrop")
-	public void joindrop() {
-		
-	}
-	
-	@RequestMapping("/joindrop2")
-	public void joindrop2() {
-		
-	}
+	public void joindrop() {}
 	
 	@RequestMapping("/host_join")
-	public String host_join() {
-		return "host_join";
+	public void host_join() {}
+	
+	@PostMapping(value="/host_join", produces="text/plain; charset=utf-8",consumes="text/plain; charset=utf-8")
+	@ResponseBody
+	public String host_join(@RequestBody String answer) throws IOException,MessagingException{
+		String isOK = mailservice.sendConfirm(answer);
+		return isOK;
 	}
 	
 	@RequestMapping("/host_join2")
-	public String host_join2() {
-		return "host_join2";
-	}
+	public void host_join2() {}
 	
 	@RequestMapping("/host_join3")
-	public String host_join3() {
-		return "host_join3";
-	}
+	public void host_join3() {}
 	
 	@RequestMapping("/host_home")
-	public String host_home() {
-		return "host_home";
-	}
+	public void host_home() {}
 	
 	
 }
