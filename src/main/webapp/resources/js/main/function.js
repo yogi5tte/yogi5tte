@@ -58,18 +58,6 @@ function liHandler(event) {
     divarray.forEach(div => div.classList.remove('on'))   
     divarray[index].classList.add('on')               
 }
-// list.jsp 가격 낮은 순, 가격 높은 순 정렬 버튼
-function btnHandler(event) {
-   btnArray.forEach(btn => btn.classList.remove('on'))
-   
-   let target = event.target
-   
-   while(target.classList.contains('sp')) {
-      target = target.parentNode
-   }
-   
-   target.classList.add('on')
-}
 // 사장님 한마디 더보기<->접기
 function cmtbtnHandler(event) {
    const div = document.querySelector('.comment > div')
@@ -128,7 +116,7 @@ function clickListHandler(event) {
 	dloOneArray.forEach(dlo => dlo.classList.remove('on'))
 	event.target.classList.add('on')
 	
-	const category = event.target.getAttribute('idx')
+	const category = document.querySelector('.city_child > li > p.on').getAttribute('idx')
 	const pType = sessionStorage.getItem('pType')
 	const human_count = sessionStorage.getItem('human_count')
 	
@@ -141,6 +129,7 @@ function clickListHandler(event) {
 	
 	btn_area.innerHTML = ''
 	btn_area.innerHTML += `<span>${city}</span>${target}`
+
 	cnt_people.innerText = ''
 	cnt_people.innerText += `${human_count}`
 		
@@ -155,37 +144,80 @@ function clickListHandler(event) {
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {
-		json.forEach(dto => product_list.appendChild(listConvert(dto)))
+		json.sort(function (a,b) {
+			return a.price - b.price
+		})
+ 		json.forEach(dto => product_list.appendChild(listConvert(dto)))
 	})
 	const area_pop = document.querySelector('.area_pop')
 	area_pop.style.display = 'none'
 }
 function listSubHandler(event) {
 	event.preventDefault()
+	const btntarget = document.querySelector('.pc > .btn_wrap > button.on')
+	
 	const product_list = document.getElementById('product_list_area')
 	product_list.innerHTML = ''
 	
 	const city = document.querySelector('.city > li > p.on').innerText
+	
 	let human_count = document.querySelector('.cnt_people > span')
 	human_count = human_count.innerText
-	let title = ''
 	
+	let title = ''
+
 	const cnt_people = document.querySelector('.cnt_people > span')
 	cnt_people.innerText = ''
 	cnt_people.innerText += `${human_count}`
 		
 	let category = document.querySelector('.city_child > li > p.on')
-	console.log(category)
 	category = category.getAttribute('idx')
 	const pType = sessionStorage.getItem('pType')
-	
-	console.log(category)
 	
 	const url = `${cpath}/listload/${category}/${pType}/${human_count}`
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {
+		if(btntarget.classList.contains('lowPrice')) {
+			json.sort(function (a,b) {
+				return a.price - b.price
+			})
+		}
+		else {
+			json.sort(function (a,b) {
+				return b.price - a.price
+			})
+		}
 		json.forEach(dto => product_list.appendChild(listConvert(dto)))
+	})
+}
+function sortHandler(event) {
+	btnArray.forEach(btn => btn.classList.remove('on'))
+	let btntarget = event.currentTarget
+	btntarget.classList.add('on')
+	
+	const product_list = document.getElementById('product_list_area')
+	product_list.innerHTML = ''
+	
+	const category = document.querySelector('.city_child > li > p.on').getAttribute('idx')
+	const pType = sessionStorage.getItem('pType')
+	const human_count = sessionStorage.getItem('human_count')
+	
+	const url = `${cpath}/listload/${category}/${pType}/${human_count}`
+	fetch(url)
+	.then(resp => resp.json())
+	.then(json => {
+		if(btntarget.classList.contains('lowPrice')) {
+			json.sort(function (a,b) {
+				return a.price - b.price
+			})
+		}
+		else {
+			json.sort(function (a,b) {
+				return b.price - a.price
+			})
+		}
+ 		json.forEach(dto => product_list.appendChild(listConvert(dto)))
 	})
 }
 // 메인페이지 검색 후 sessionStorage저장
@@ -209,6 +241,7 @@ function searchHandler(event) {
 }
 // 메인페이지 검색
 function listLoadHandler() {
+	
    	const city = sessionStorage.getItem('city')
    	
    	const target = Array.from(document.querySelectorAll('ul.city > li')).filter(li => li.innerText == city)[0]

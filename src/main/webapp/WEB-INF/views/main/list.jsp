@@ -86,36 +86,36 @@
 								<strong>카테고리</strong>
 								<ul>
 									<li>
-										<input type="checkbox" id="ctg_0" class="inp_chk">
-										<label for="ctg_0" class="label_chk">무인텔</label>
+										<input type="checkbox" id="op1" class="inp_chk">
+										<label for="op1" class="label_chk">무인텔</label>
 									</li>
 									<li>
-										<input type="checkbox" id="ctg_1" class="inp_chk">
-										<label for="ctg_1" class="label_chk">거울룸</label>
+										<input type="checkbox" id="op2" class="inp_chk">
+										<label for="op2" class="label_chk">거울룸</label>
 									</li>
 									<li>
-										<input type="checkbox" id="ctg_2" class="inp_chk">
-										<label for="ctg_2" class="label_chk">야외테라스</label>
+										<input type="checkbox" id="op3" class="inp_chk">
+										<label for="op3" class="label_chk">야외테라스</label>
 									</li>
 									<li>
-										<input type="checkbox" id="ctg_3" class="inp_chk">
-										<label for="ctg_3" class="label_chk">복층룸</label>
+										<input type="checkbox" id="op4" class="inp_chk">
+										<label for="op4" class="label_chk">복층룸</label>
 									</li>
 									<li>
-										<input type="checkbox" id="ctg_4" class="inp_chk">
-										<label for="ctg_4" class="label_chk">트윈베드</label>
+										<input type="checkbox" id="op5" class="inp_chk">
+										<label for="op5" class="label_chk">트윈베드</label>
 									</li>
 									<li>
-										<input type="checkbox" id="ctg_5" class="inp_chk">
-										<label for="ctg_5" class="label_chk">스파/월풀</label>
+										<input type="checkbox" id="op6" class="inp_chk">
+										<label for="op6" class="label_chk">스파/월풀</label>
 									</li>
 									<li>
-										<input type="checkbox" id="ctg_6" class="inp_chk">
-										<label for="ctg_6" class="label_chk">사우나찜질방</label>
+										<input type="checkbox" id="op7" class="inp_chk">
+										<label for="op7" class="label_chk">사우나찜질방</label>
 									</li>
 									<li>
-										<input type="checkbox" id="ctg_7" class="inp_chk">
-										<label for="ctg_7" class="label_chk">안마의자</label>
+										<input type="checkbox" id="op8" class="inp_chk">
+										<label for="op8" class="label_chk">안마의자</label>
 									</li>
 								</ul>
 							</section>
@@ -134,31 +134,13 @@
 						<div class="top_sort">
 							<div class="pc">
 								<div class="btn_wrap">
-									<button type="button" data-sort="LOWPRICE" class="on"><span class="sp">가격 낮은 순</span></button>
-									<button type="button" data-sort="HIGHPRICE"><span class="sp">가격 높은 순</span></button>
+									<button type="button" class="lowPrice on"><span class="sp">가격 낮은 순</span></button>
+									<button type="button" class="highPrice"><span class="sp">가격 높은 순</span></button>
 								</div>
 								<button type="button" class="btn_map">지도</button>
 							</div>
 						</div>
-						<div id="product_list_area">
-<!-- 							<li class="list_1"> -->
-<!-- 								<a href="#"> -->
-<%-- 									<p class="pic"><img class="lazy" src="${cpath }/resources/image/roomSample.jpg"></p> --%>
-<!-- 									<div class="stage"> -->
-<!-- 										<div class="name"> -->
-<!-- 											<strong> dto.name </strong> -->
-<!-- 											<p class="score"> -->
-<!--                        							<em>dto.reviewValue</em>&nbsp;<span>추천해요</span>&nbsp;(dto.reviewNum) -->
-<!--                        					    </p> -->
-<!-- 											<p>dto.location</p> -->
-<!-- 										</div> -->
-<!-- 										<div class="price"> -->
-<!-- 											<p><b>dto.price원</b></p> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 								</a> -->
-<!-- 							</li> -->
-						</div>
+						<div id="product_list_area"></div>
 					</div>
 				</div>
 			</div>
@@ -170,7 +152,7 @@
 </div>
 
 <script>
-	const btnArray = Array.from(document.querySelectorAll('.btn_wrap > button'))
+	const btnArray = Array.from(document.querySelectorAll('.pc > .btn_wrap > button'))
 	const ctg = document.querySelector('.btn_area')
 	const areaPop = document.querySelector('.area_pop')
 	const loArray = Array.from(document.querySelectorAll('.city > li > p'))
@@ -192,17 +174,16 @@
 		areaPop.style.display = 'none'
 	})
 	
-	btnArray.forEach(btn => btn.addEventListener('click', btnHandler))
 	loArray.forEach(lo => lo.addEventListener('mouseover', loHandler))
 	dloOneArray.forEach(dto => dto.addEventListener('click', clickListHandler))
+	btnArray.forEach(btn => btn.addEventListener('click', sortHandler))
+   	window.addEventListener('load', listLoadHandler)
 	
 	overlay.addEventListener('click', closeModal)
 	mapbtn.addEventListener('click', openModal)
 	dnbtn.addEventListener('click', listDncount)
    	upbtn.addEventListener('click', listUpcount)
    	subBtn.addEventListener('click', listSubHandler)
-   	
-   	window.addEventListener('load', listLoadHandler)
 </script>
 
 <script>
