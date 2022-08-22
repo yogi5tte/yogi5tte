@@ -31,7 +31,6 @@
                     <form id="sendMailForm" class="inp_wrap remove">
                         <input id="send_inp" type="email" name="email" required>
 <!--                     	<input type="submit" class="btn_send btn_confirm" value="인증번호 전송"> 활성화 클래스 'active' -->
-                        <input type="email" name="email">
 <!--                         <button type="button" class="btn_checked">확인</button> -->
                     </form>
                     <button id="sendMailForm_btn" type="submit" form="sendMailForm" class="btn_confirm">인증번호 전송</button>
@@ -42,7 +41,6 @@
                 <section>
                     <form id="authForm" class="inp_wrap remove hidden">
                         <input id="auth_inp" type="text" name="authNumber">
-                        <input type="text" name="authNumber">
                         <span class="timer">&nbsp;</span>
 <!-- 	                    <input type="submit" class="btn_ok btn_confirm" data-verification-type="call" data-verification-next="joinTemplate" value="확인"> -->
                     </form>

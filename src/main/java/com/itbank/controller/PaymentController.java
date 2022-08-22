@@ -1,8 +1,5 @@
 package com.itbank.controller;
 
-
-
-
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +17,6 @@ import com.itbank.reservation.ReservationDTO;
 import com.itbank.room.RoomDTO;
 import com.itbank.service.ReservationService;
 
-
-
 @Controller
 @RequestMapping("/")
 public class PaymentController {
@@ -34,14 +29,14 @@ public class PaymentController {
 	
 	 @GetMapping("rsvn/reservation") //idx = room_idx
 	 public ModelAndView reservationReady(@RequestParam HashMap<String,String> param){
-		  System.out.println(param);
-		  ModelAndView mav = new ModelAndView("rsvn/reservation");
-		  RoomDTO roomDto = rsvnService.checkRoom(param);
-		  InfoDTO infoDto = rsvnService.checkProduct(param);
-		  mav.addObject("roomDto",roomDto);
-		  mav.addObject("infoDto",infoDto);
-		  return mav;  
-	  }
+		 System.out.println(param);
+		 ModelAndView mav = new ModelAndView("rsvn/reservation");
+		 RoomDTO roomDto = rsvnService.checkRoom(param);
+		 InfoDTO infoDto = rsvnService.checkProduct(param);
+		 mav.addObject("roomDto",roomDto);
+		 mav.addObject("infoDto",infoDto);
+		 return mav;  
+	 }
 	 
 	 @ResponseBody
 	 @PostMapping("rsvn/reservation")
@@ -50,7 +45,6 @@ public class PaymentController {
 		 return rsvnService.insertReservation(rsvnDto);
 	 }
  
-	 
 	
 	@GetMapping("rsvn/reservation_approve")
 	public void reservation_apporve() {
