@@ -14,6 +14,10 @@ let roomName = '${roomDto.roomName}'
 let check_in = '${param.check_in}'
 let check_out = '${param.check_out}'
 let quantity = '${param.quantity}'
+let total_amount = '${rsvnDto.total_amount}'
+let userName = '${rsvnDto.userName}'
+let phoneNumber = '${rsvnDto.phoneNumber}'
+let idx = ''
 
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>

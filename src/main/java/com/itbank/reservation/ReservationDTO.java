@@ -24,7 +24,14 @@ public class ReservationDTO {
 	private Date check_in,check_out;
 	private char isdeleted;
 	private int info_idx,room_idx;
+	private String imp_uid;
 	
+	public String getImp_uid() {
+		return imp_uid;
+	}
+	public void setImp_uid(String imp_uid) {
+		this.imp_uid = imp_uid;
+	}
 	public int getHuman_count() {
 		return human_count;
 	}
