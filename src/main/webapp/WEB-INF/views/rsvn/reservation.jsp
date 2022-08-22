@@ -8,11 +8,18 @@
 
 </head>
 <body>
+<script>
+let name= '${infoDto.name}'
+let roomName = '${roomDto.roomName}'
+let check_in = '${param.check_in}'
+let check_out = '${param.check_out}'
+let quantity = '${param.quantity}'
+
+</script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script src="${cpath }/resources/js/reservation/reservation.js"></script>
 <script src="${cpath }/resources/js/pay/kakaopay.js"></script>
-
 <div id="reservation_root">
 	<div class="left">
 		<div class="form_skin">
@@ -30,17 +37,17 @@
 			<h3>결제 수단 선택</h3>
 			<select id="payment_select" class="select_type" >
 		
-						<option data-minprice="0" selected="selected" value="KAKAO" >
+						<option  selected="selected" value="KAKAO">
                           	  카카오페이
                         </option>
                         
-                        <option data-minprice="0" value="TOSS" >
+                        <option  value="TOSS" >
                         	    토스
                         </option>
-                        <option data-minprice="0" value="CARD" >
+                        <option  value="CARD" >
                          	   신용/체크카드             
                         </option>
-                        <option data-minprice="0" value="CELLPHONE" >
+                        <option  value="CELLPHONE" >
                           	  휴대폰결제
                         </option>
                </select>
@@ -56,20 +63,26 @@
 	
 	</div>
 	
+	
+	
+	
+	
 	<div class="right">
 		<div class="reservation_info">
-			<p><strong>숙소이름</strong></p>
-			{dto.name}
-			<p><strong>객실타입/기간</strong></p>
-			{dto.roomname}/{dto.day}일
+			<span id="info_idx" class="rsvn_el">${infoDto.idx }</span>
+			<span id="room_idx" class="rsvn_el">${roomDto.idx }</span>
+			<p id="info_name"><strong>숙소이름/객실 타입</strong></p>
+			${infoDto.name}/${roomDto.roomName}
+			<p><strong>인원/기간</strong></p>
+			<span id= "human_count" class="rsvn_el">4</span>명/ <span id="quantity" class="rsvn_el">${param.quantity }</span>박
 			<p><strong>체크인</strong></p>
-			{dto.checkin}
+			<span id="check_in" class="rsvn_el">${param.check_in}</span>
 			<p><strong>체크아웃</strong></p>
-			{dto.checkout}
+			<span id="check_out" class="rsvn_el">${param.check_out}</span>
 			<hr>
 			<div class="reservation_price_info">
 			<p><strong>총 결제 금액(VAT 포함)</strong></p>
-			<p id="price_final"><strong>{price }원</strong></p>
+			<p ><strong><span id="total_amount" class="rsvn_el">${roomDto.price * param.quantity }</span>원</strong></p>
 			</div>
 			<ul>
 				<li>해당 객실가는 세금,봉사료가 포함된 금액입니다</li>

@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="${cpath }/resources/stylecss/main/common.css">
 <link rel="stylesheet" href="${cpath }/resources/stylecss/main/detail.css">
 
-
 <!-- 달력 소스  -->
 <link rel="stylesheet" type="text/css" media="all" href="${cpath }/resources/stylecss/main/daterangepicker.css" />
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -21,26 +20,24 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35832996ddcf2ae6df4b95be1e09b25a&libraries=services,clusterer,drawing"></script>
 <script type="text/javascript" src="${cpath }/resources/js/main/map.js"></script>
 
-
 		<div id="content" class="detail">
 			<div class="top">
 		    	<div class="left">
 		        	<div class="gallery_pc">
 		            	<div class="gallery_top">
-
 							<div class="gallery_top_wrap" data-num="0">
 								<div class="item_Limg1" ><img src="${cpath }/resources/image/센텀드림월드1.jfif"></div>
 								<div class="item_Limg2" ><img src="${cpath }/resources/image/센텀드림월드2.jfif"></div>
 								<div class="item_Limg3" ><img src="${cpath }/resources/image/센텀드림월드3.jfif"></div>
 								<div class="item_Limg4" ><img src="${cpath }/resources/image/센텀드림월드4.jfif"></div>
 								<div class="item_Limg5" ><img src="${cpath }/resources/image/kakao_login.png"></div>
-								<div class="item_Limg6" ><img src="${cpath }/resources/image/요기오때빨간색로고.png"></div>
+								<div class="item_Limg6" ><img src="${cpath }/resources/image/yogired.png"></div>
 								<div class="item_Limg7" ><img src="${cpath }/resources/image/kakao_login.png"></div>
-								<div class="item_Limg8" ><img src="${cpath }/resources/image/요기오때빨간색로고.png"></div>
+								<div class="item_Limg8" ><img src="${cpath }/resources/image/yogired.png"></div>
 								<div class="item_Limg9" ><img src="${cpath }/resources/image/kakao_login.png"></div>
-								<div class="item_Limg10" ><img src="${cpath }/resources/image/요기오때빨간색로고.png"></div>
+								<div class="item_Limg10" ><img src="${cpath }/resources/image/yogired.png"></div>
 								<div class="item_Limg11" ><img src="${cpath }/resources/image/kakao_login.png"></div>
-								<div class="item_Limg12" ><img src="${cpath }/resources/image/요기오때빨간색로고.png"></div>
+								<div class="item_Limg12" ><img src="${cpath }/resources/image/yogired.png"></div>
 							</div>
 		            	</div>
 			            <div class="gallery_btm">
@@ -58,10 +55,9 @@
 								<div class="item_img11" ><img src="${cpath }/resources/image/kakao_login.png"></div>
 								<div class="item_img12" ><img src="${cpath }/resources/image/요기오때빨간색로고.png"></div>
 							</div>
-							
 			            </div>
-			          <button class="button_prev"></button>
-			            <button class="button_next"></button>
+						<button class="button_prev"></button>
+						<button class="button_next"></button>
 		        	</div>
 		    	</div>
 		    	<div class="right">
@@ -74,13 +70,9 @@
 		            <p class="address">더미 주소</p>
 		        	</div>
 		            <!-- 업체 이벤트 -->
-					<div class="map" id="map">
-					    
-		            </div>
+					<div class="map" id="map"></div>
 		            <div class="comment"><strong>사장님 한마디</strong><button>더보기</button>
-                		<div class="clamp">${info.seller_text }<br>
-							
-						</div>
+                		<div class="clamp">${info.seller_text }</div>
             		</div>
 		        </div>
 	    	</div>
@@ -99,70 +91,27 @@
 					<div class="btn_date">
 					<input id="daterangepicker" type="text" placeholder="예약날짜">
 					</div>
-					<div class="room">
-							<p class="pic_view"><img class="lazy" src="${cpath }/resources/image/${room[0].room_img}"></p>
-							<strong class="title">${room[0].name }</strong>
-							<div class="info">
-								<div class="motel">
-									<div class="price">
-										<strong>가격</strong>
-										<div>
-											<p><b>${room[0].price }원</b></p>
-										</div>
-										<button type="button">객실 이용 안내</button>
-									</div>
-									<button type="button" onclick="location.href='${cpath}/rsvn/reservation'" class="gra_left_right_red">예약</button>
-								</div>
-							</div>
-						</div>
-						<div class="room">
-							<p class="pic_view"><img class="lazy" src="${cpath }/resources/image/${room[1].room_img}"></p>
-							<strong class="title">${room[1].name }</strong>
-							<div class="info">
-								<div class="motel">
-									<div class="price">
-										<strong>가격</strong>
-										<div>
-											<p><b>${room[1].price }원</b></p>
-										</div>
-										<button type="button">객실 이용 안내</button>
-									</div>
-									<button type="button" onclick="location.href='${cpath}/rsvn/reservation'" class="gra_left_right_red">예약</button>
-								</div>
-							</div>
-						</div>
-						<div class="room">
-							<p class="pic_view"><img class="lazy" src="${cpath }/resources/image/${room[2].room_img}"></p>
-							<strong class="title">${room[2].name }</strong>
-							<div class="info">
-								<div class="motel">
-									<div class="price">
-										<strong>가격</strong>
-										<div>
-											<p><b>${room[2].price }원</b></p>
-										</div>
-										<button type="button">객실 이용 안내</button>
-									</div>
-									<button type="button" onclick="location.href='${cpath}/rsvn/reservation'" class="gra_left_right_red">예약</button>
-								</div>
-							</div>
-						</div>
-						<div class="room">
-							<p class="pic_view"><img class="lazy" src="${cpath }/resources/image/${room[3].room_img}"></p>
-							<strong class="title">${room[3].name }</strong>
-							<div class="info">
-								<div class="motel">
-									<div class="price">
-										<strong>가격</strong>
-										<div>
-											<p><b>${room[3].price }원</b></p>
-										</div>
-										<button type="button">객실 이용 안내</button>
-									</div>
-									<button type="button" onclick="location.href='${cpath}/rsvn/reservation'" class="gra_left_right_red">예약</button>
-								</div>
-							</div>
-						</div>
+					
+				<c:forEach var="room" items="${room }" begin="0" end="3" step="1">
+                  <div class="room">
+                     <p class="pic_view"><img class="lazy" src="${cpath }/resources/image/${room.room_img}"></p>
+                     <strong class="title">${room.roomName }</strong>
+                     <div class="info">
+                        <div class="motel">
+                           <div class="price">
+                              <strong>가격</strong>
+                              <div>
+                                 <p><b><fmt:formatNumber type="number" value="${room.price }"/>원</b></p>
+                              </div>
+                              <button type="button">객실 이용 안내</button>
+                           </div>
+                           <button type="button" class="res_btn gra_left_right_red" idx="${room.idx }">예약</button>
+                        </div>
+                     </div>
+                  </div>
+               </c:forEach>	
+						
+						
 				</article>
 			</form>
 		</div>
@@ -415,29 +364,23 @@
 <script>
 	const liarray = Array.from(document.querySelectorAll('.tab > button'))
 	const divarray = Array.from(document.querySelectorAll('.div_tab > div'))
-	const btn = document.querySelectorAll('.tab > button')
-	
-	liarray.forEach(li => li.addEventListener('click', liHandler))	
-	
 	const cmtbtn = document.querySelector('.comment > button')
 	const exitBtn = document.querySelector('.fix_title > button')
 	const overlay = document.querySelector('.overlay')
 	const infbtnArray = Array.from(document.querySelectorAll('.price > button'))
-	
-	cmtbtn.addEventListener('click', cmtbtnHandler)
-	exitBtn.addEventListener('click', closeModal)
-	overlay.addEventListener('click', closeModal)
-	infbtnArray.forEach(button => button.addEventListener('click', dtopenModal))
-	
+	const reviewBox = document.querySelector('.review_scroll')
 	
 	const nextBtn = document.querySelector('.button_next')
 	nextBtn.onclick = move_next
 	const prevBtn = document.querySelector('.button_prev')
 	prevBtn.onclick = move_prev
 	
-	const reviewBox = document.querySelector('.review_scroll')
-	reviewBox.addEventListener('scroll',detailscrollHandler)
+	cmtbtn.addEventListener('click', cmtbtnHandler)
+	exitBtn.addEventListener('click', closeModal)
+	overlay.addEventListener('click', closeModal)
 	reviewBox.addEventListener('scroll',reviewScrollHandler)
+	liarray.forEach(li => li.addEventListener('click', liHandler))
+	infbtnArray.forEach(button => button.addEventListener('click', dtopenModal))
 	
 </script>
 
@@ -468,9 +411,14 @@ $('#daterangepicker').daterangepicker({
 	"drops": "auto",
 	"minDate": new Date(),
 })
+
  const dateBtn = document.querySelector('.applyBtn')
  dateBtn.addEventListener('click', getDateHandler)
+ 
+ const resBtn = document.querySelectorAll('.res_btn')
+ resBtn.forEach(btn => btn.addEventListener('click',getCheckHandler))
 </script>
+
 
 <!-- 지도 호출 함수 -->
 <script>

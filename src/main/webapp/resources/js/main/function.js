@@ -21,7 +21,6 @@ function mainLiHandler(event) {
     	target = target.parentNode
     }
 	target.classList.add('selected')               
-//   const index = liarray.indexOf(event.target)            
 }
 // 대문페이지 이벤트 이미지 슬라이드되는 함수
 function slide(event) {
@@ -47,13 +46,13 @@ function scrollToTop(event) {
    
    target.scrollTop = 0
 }
-/* 탭 메뉴 */
+// 상세페이지 탭메뉴
 function liHandler(event) {
-   liarray.forEach(li => li.classList.remove('on'))
+	liarray.forEach(li => li.classList.remove('on'))
    
-   event.target.classList.add('on')
+	event.target.classList.add('on')
    
-   const index = liarray.indexOf(event.target)         
+	const index = liarray.indexOf(event.target)         
 
     divarray.forEach(div => div.classList.remove('on'))   
     divarray[index].classList.add('on')               
@@ -85,6 +84,7 @@ function loHandler(event) {
 function listConvert(dto) {
 	const li = document.createElement('li')
 	li.className = 'list_1'
+	li.setAttribute('idx',`${dto.idx}`)
 	
 	li.innerHTML += `
 		<a href="#">
@@ -230,7 +230,6 @@ function sortHandler(event) {
  		json.forEach(dto => product_list.appendChild(listConvert(dto)))
 	})
 }
-// 메인페이지 검색 후 sessionStorage저장
 function searchHandler(event) {
 	event.preventDefault()
 	
@@ -251,7 +250,6 @@ function searchHandler(event) {
 }
 // 메인페이지 검색
 function listLoadHandler() {
-	
    	const city = sessionStorage.getItem('city')
    	
    	const target = Array.from(document.querySelectorAll('ul.city > li')).filter(li => li.innerText == city)[0]
@@ -264,23 +262,87 @@ function listLoadHandler() {
    	target.querySelector('p').dispatchEvent(event)
 	target2.querySelector('p').dispatchEvent(event2)
 }
-
-// 모달 제거하는 함수
+function convert(dto) {
+	const Ul = document.querySelector('.review_scroll > ul')
+	const li = document.createElement('li')
+	li.setAttribute('idx', dto.idx)
+	
+	const guest = document.createElement('div')
+	guest.classList.add('guest')
+	
+	for(let key in dto){
+		switch(key) {
+		case 'idx':
+		case 'char':
+		case 'isDeleted':
+		case 'reservation_approved_idx':
+		case 'user_idx':
+		case 'info_idx':
+		case 'room_idx':
+			continue;
+		case 'review_img':
+			guest.innerHTML += `<p class="pic">
+								<img src="${cpath}/resources/image/${dto[key]}">
+								</p>`
+				break
+		case 'title':
+			guest.innerHTML += `<strong>${dto[key]}</strong>`
+				break
+		case 'star':	
+			guest.innerHTML += `<div class="score_wrap_sm">
+								<div class="score_star start_50>${dto[key]}</div>
+								<div class="num">${dto[key] * 2}
+								</div>`
+				break
+		case 'nickName':
+			guest.innerHTML += `<div class="name">
+								<b>방이름 객실 이용 · </b> ${dto[key]}
+								</div>`
+				break
+		case 'content':
+			guest.innerHTML += `<div class="txt">${dto[key]}</div>`
+				break
+		case 'writeDate':
+			const writeD = new Date(dto[key]).toISOString().split('T')[0]
+			guest.innerHTML += `<span class="date"> ${writeD}</span>`
+		}
+	}
+	guest.appendChild(guest.querySelector('.txt'))
+	
+	li.appendChild(guest)
+	li.innerHTML += `<hr>`
+	Ul.appendChild(li)
+		return Ul
+}
+function reviewList(event){
+	const reviewBox = document.querySelector('.review_scroll')
+	let offset = reviewBox.getAttribute('offset')
+	let info_idx = reviewBox.getAttribute('info_idx')
+	const url = cpath + '/main/detail/' + info_idx + '/' + offset
+	
+	console.log(info_idx, offset)
+	
+	fetch(url)
+	.then(resp => resp.json())
+	.then(json => {
+		json.forEach(dto => reviewBox.appendChild(convert(dto)))
+	})
+	reviewBox.setAttribute('offset', +offset + 5)
+}
+// 모달 제거
 function closeModal() {
 	document.getElementById('modal').classList.add('hidden')
 }
-// 목록 페이지 지도 모달 함수
+// 목록 페이지 모달 등장
 function openModal(event) {
 	document.getElementById('modal').classList.remove('hidden')
 }
-//상세 페이지 객실 이용 안내 모달
+// 상세 페이지 모달 등장
 function dtopenModal(event) {
 	document.getElementById('modal').classList.remove('hidden')
 }
-
 // 대문페이지 인원수 감소 함수
 function dncount(event) {
-
    const resultElement = document.getElementById('result');
    const txtResultElement = document.getElementById('txtResult')
    let number = resultElement.innerText
@@ -307,7 +369,6 @@ function listDncount(event) {
 }
 // 대문 페이지 인원수 증가 함수
 function upcount(event) {
-
    const resultElement = document.getElementById('result');
    const txtResultElement = document.getElementById('txtResult')
    let number = resultElement.innerText
@@ -370,14 +431,11 @@ function locationHandler(event) {
 }
 // 상세페이지 이미지 슬라이더 
 function move_prev(event) {
-
    const btmWrap = document.querySelector('.gallery_btm_wrap')
    let btmNum = +btmWrap.dataset.num 
    
    const topWrap = document.querySelector('.gallery_top_wrap')
    let topNum = +topWrap.dataset.num
-   
-   
    
    if(btmNum > 0){
       btmNum -= 119   
@@ -404,7 +462,6 @@ function move_prev(event) {
 }
 // 상세페이지 이미지 슬라이더
 function move_next(event) {
-
    const btmWrap = document.querySelector('.gallery_btm_wrap')
 //   const arr = Array.from(document.querySelectorAll('.item_img'))
    let btmNum = +btmWrap.dataset.num
@@ -432,7 +489,6 @@ function move_next(event) {
    selectDivArray.forEach(div => div.classList.remove('selectView'))
    selectDiv.classList.add('selectView')
 }
-
 // 예약 인터셉터 핸들러
 function interceptorHandler(event) {
    let login = sessionStorage.getItem('login')
@@ -445,45 +501,6 @@ function interceptorHandler(event) {
       location.href = cpath + '/rsvn/reservation'
    }
 }
-
-// 숙소 정보 모달 
-function closeModal() {
-   document.getElementById('modal').classList.add('hidden')
-}
-function openModal(event) {
-   document.getElementById('modal').classList.remove('hidden')
-}
-function dtopenModal(event) {
-   document.getElementById('modal').classList.remove('hidden')
-
-	const btmWrap = document.querySelector('.gallery_btm_wrap')
-//	const arr = Array.from(document.querySelectorAll('.item_img'))
-	let btmNum = +btmWrap.dataset.num
-	
-	const topWrap = document.querySelector('.gallery_top_wrap')
-	let topNum = +topWrap.dataset.num
-	
-	if(btmNum < 1309) {
-		btmNum += 119
-		btmWrap.style.transitionDuration = '0.3s'
-		btmWrap.dataset.num = btmNum
-		
-		if(btmNum < 1071) btmWrap.style.transform = `translateX(${-btmNum}px)`
-		
-//			arr.push(arr.shift())	
-			
-		topNum += 490
-		topWrap.dataset.num = topNum
-		topWrap.style.transform = `translateX(${-topNum}px`
-	}
-	
-	let viewNum = btmNum == 1309 ? 12 :(119 + btmNum) / 119
-	const selectDiv = document.querySelector(`.item_img${viewNum}`)
-	const selectDivArray = Array.from(document.querySelectorAll('.gallery_btm_wrap > div'))
-	selectDivArray.forEach(div => div.classList.remove('selectView'))
-	selectDiv.classList.add('selectView')
-}
-
 function reviewScrollHandler(event) {
 	if(event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight) {
 		const Ul = document.querySelector('.review_scroll > ul')
@@ -505,26 +522,27 @@ function reviewScrollHandler(event) {
 		}
 	}
 }
-
-
-
-// 숙소 정보 모달 
-function closeModal() {
-	document.getElementById('modal').classList.add('hidden')
+//숙소 예약 버튼 (값 전달)
+function getCheckHandler() { 
+ const start = document.getElementById('daterangepicker').value.split('~')[0]
+ const end = document.getElementById('daterangepicker').value.split('~')[1]
+ let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
+ let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
+ let quantity = Math.floor((endDate.getTime() - startDate.getTime())/(1000 * 3600 * 24))
+ 
+ location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + 
+ '&check_in=' + start + '&check_out=' + end + '&quantity=' + quantity
 }
-function openModal(event) {
-	document.getElementById('modal').classList.remove('hidden')
-}
-function dtopenModal(event) {
-	document.getElementById('modal').classList.remove('hidden')
-}
+
+//7박까지 제한하는 로직 핸들러
 function getDateHandler(event) {
 	 let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
 	 let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
-	 let difference = endDate.getTime() - startDate.getTime()
+	 let quantity = endDate.getTime() - startDate.getTime()
 	
-	 if( difference/(1000 * 3600 * 24)  > 8) {
+	 if(quantity/(1000 * 3600 * 24)  > 8){
 		 alert('최대 7박까지만 가능합니다')
 		 location.reload()
 	 }
 }
+

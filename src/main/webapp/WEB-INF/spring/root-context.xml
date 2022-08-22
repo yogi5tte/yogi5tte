@@ -14,6 +14,7 @@
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.1.100:1521:xe" />
 		<property name="username" value="c##yogi5tte" />
 		<property name="password" value="1234" />
+
 	</bean>
 	
 	<bean id="ds" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
@@ -33,4 +34,7 @@
 	<mybatis-spring:scan base-package="com.itbank.room"/>
 	<mybatis-spring:scan base-package="com.itbank.user"/>
 	<mybatis-spring:scan base-package="com.itbank.info"/>
+	<mybatis-spring:scan base-package="com.itbank.reservation"/>
+	<mybatis-spring:scan base-package="com.itbank.review"/>
+	
 </beans>
