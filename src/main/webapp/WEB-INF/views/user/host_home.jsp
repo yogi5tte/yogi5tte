@@ -9,8 +9,8 @@
 <title>Insert title here</title>
 
 <link rel="stylesheet" href="${cpath }/resources/stylecss/common.css">
-<link rel="stylesheet" href="${cpath }/resources/stylecss/host_home.css">
-<script src="${cpath }/resources/js/host_home.js"></script> 
+<link rel="stylesheet" href="${cpath }/resources/stylecss/user/host/host_home.css">
+<script src="${cpath }/resources/js/user/join/host_home.js"></script> 
 
 </head>
 <body id="main">

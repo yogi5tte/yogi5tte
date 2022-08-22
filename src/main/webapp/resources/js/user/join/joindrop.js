@@ -45,9 +45,27 @@ function btnHandler(event) {
 	
 	let allflag = (item[0].checked || item[1].checked || item[2].checked || item[3].checked || item[4].checked || item[5].checked)
 	
-	if(allflag) {
-		location.href = cpath	
+	const ob = {}
+	let target = document.forms[0]
+	const formData = new FormData(target)
+	
+	for(let key of formData.keys()){
+		ob[key] = formData.get(key)
 	}
+	console.log(ob)
+	const url = cpath + "/user/joinDrop"
+	const opt = {
+			method:'POST',
+			body: JSON.Stringify(formData),
+			headers: {
+				'Content-Type' : 'application/json;charset=utf-8'
+			}
+	}
+	fetch(url,opt)
+	.then(resp=>resp.text())
+	
+		
+	
 }
 
 

@@ -121,6 +121,12 @@ public class UserController {
 	@RequestMapping("/joindrop")
 	public void joindrop() {}
 	
+	@GetMapping("/joindrop/{idx}")
+	public String joindrop(@PathVariable int idx) {
+		int row = userService.delete(idx);
+		return "redirect:/";
+	}
+	
 	@RequestMapping("/host_join")
 	public void host_join() {}
 	

@@ -50,15 +50,15 @@
         </div>
         <div class="modal_body">
             <strong>이메일</strong>
-            <form id="sendMailForm" class="num_input">
-                <input class="form-control" type="email" name="email" placeholder="이메일을 입력해주세요." required>
-            </form>
-                <button class="modal_btn" type="submit" form="sendMailForm">인증번호 전송</button>
+	            <form id="sendMailForm" class="num_input">
+	                <input class="form-control" type="email" name="email" placeholder="이메일을 입력해주세요." required>
+	                <button class="modal_btn" type="submit">인증번호 전송</button>
+	            </form>            
             <strong>인증번호</strong>
-            <form id="authForm" class="num_input">
-                <input class="form-control" type="text" name="authNumber" placeholder="인증번호를 입력해주세요.">
-            </form>
-            <button class="modal_btn" type="submit">확인</button>
+	            <form id="authForm" class="num_input">
+	                <input class="form-control" type="text" name="authNumber" placeholder="인증번호를 입력해주세요.">
+		            <button class="modal_btn" type="submit">확인</button>
+	            </form>
         </div>
     </div>
 </div>

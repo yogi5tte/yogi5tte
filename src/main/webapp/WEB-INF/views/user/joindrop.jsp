@@ -105,7 +105,7 @@
 								<input id="password" type="password" autocomplete="off" placeholder="비밀번호를 입력하세요." class="password-area__input">
 							</div> 
 							<div class="button-area">
-								<button class="btn_link button-area__button is-accept">다음 단계로</button>
+								<button class="btn_link button-area__button is-accept">회원 탈퇴</button>
 							</div>
 						</form>
 					</div>
@@ -126,6 +126,8 @@
 	
  	const password = document.getElementById('password')
  	password.addEventListener('keypress', chkHandler)
+ 	
+ 	
  </script>
 
 		
