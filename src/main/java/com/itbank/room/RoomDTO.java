@@ -11,10 +11,10 @@ package com.itbank.room;
 //	district        varchar2(50)    not null   --구
 //	);
 
-public class MotelDTO {
+public class RoomDTO {
 	
 	private int idx, price, human_count;		// 2001부터 시작하는 idx
-	private String name, week, room_img, city, district;	// 테마
+	private String roomName, week, room_img, city, district;	// 테마
 	public int getIdx() {
 		return idx;
 	}
@@ -33,11 +33,11 @@ public class MotelDTO {
 	public void setHuman_count(int human_count) {
 		this.human_count = human_count;
 	}
-	public String getName() {
-		return name;
+	public String getRoomName() {
+		return roomName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
 	}
 	public String getWeek() {
 		return week;

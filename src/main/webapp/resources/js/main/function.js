@@ -449,6 +449,21 @@ function reviewScrollHandler(event) {
 }
 
 
+//숙소 예약 버튼 (값 전달)
+function getCheckHandler() { 
+   const start = document.getElementById('daterangepicker').value.split('~')[0]
+   const end = document.getElementById('daterangepicker').value.split('~')[1]
+   let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
+   let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
+   let quantity = Math.floor((endDate.getTime() - startDate.getTime())/(1000 * 3600 * 24))
+   
+   location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + 
+   '&check_in=' + start + '&check_out=' + end + '&quantity=' + quantity
+   
+   
+   
+}
+
 
 // 숙소 정보 모달 
 function closeModal() {
@@ -460,12 +475,14 @@ function openModal(event) {
 function dtopenModal(event) {
 	document.getElementById('modal').classList.remove('hidden')
 }
+
+//7박까지 제한하는 로직 핸들러
 function getDateHandler(event) {
 	 let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
 	 let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
-	 let difference = endDate.getTime() - startDate.getTime()
+	 let quantity = endDate.getTime() - startDate.getTime()
 	
-	 if( difference/(1000 * 3600 * 24)  > 8){
+	 if( quantity/(1000 * 3600 * 24)  > 8){
 		 alert('최대 7박까지만 가능합니다')
 		 location.reload()
 	 }

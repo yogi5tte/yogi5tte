@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.itbank.room.MotelDTO;
+import com.itbank.room.RoomDTO;
 import com.itbank.service.RoomService;
 
 @RestController
@@ -15,7 +15,7 @@ public class ListController {
 	@Autowired private RoomService roomService;
 	
 	@GetMapping("/listload")
-	public List<MotelDTO> list() {
+	public List<RoomDTO> list() {
 		return roomService.selectList();
 	}
 	

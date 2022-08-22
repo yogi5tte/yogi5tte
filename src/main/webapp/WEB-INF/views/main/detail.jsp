@@ -99,70 +99,27 @@
 					<div class="btn_date">
 					<input id="daterangepicker" type="text" placeholder="예약날짜">
 					</div>
-					<div class="room">
-							<p class="pic_view"><img class="lazy" src="${cpath }/resources/image/${room[0].room_img}"></p>
-							<strong class="title">${room[0].name }</strong>
-							<div class="info">
-								<div class="motel">
-									<div class="price">
-										<strong>가격</strong>
-										<div>
-											<p><b>${room[0].price }원</b></p>
-										</div>
-										<button type="button">객실 이용 안내</button>
-									</div>
-									<button type="button" onclick="location.href='${cpath}/rsvn/reservation'" class="gra_left_right_red">예약</button>
-								</div>
-							</div>
-						</div>
-						<div class="room">
-							<p class="pic_view"><img class="lazy" src="${cpath }/resources/image/${room[1].room_img}"></p>
-							<strong class="title">${room[1].name }</strong>
-							<div class="info">
-								<div class="motel">
-									<div class="price">
-										<strong>가격</strong>
-										<div>
-											<p><b>${room[1].price }원</b></p>
-										</div>
-										<button type="button">객실 이용 안내</button>
-									</div>
-									<button type="button" onclick="location.href='${cpath}/rsvn/reservation'" class="gra_left_right_red">예약</button>
-								</div>
-							</div>
-						</div>
-						<div class="room">
-							<p class="pic_view"><img class="lazy" src="${cpath }/resources/image/${room[2].room_img}"></p>
-							<strong class="title">${room[2].name }</strong>
-							<div class="info">
-								<div class="motel">
-									<div class="price">
-										<strong>가격</strong>
-										<div>
-											<p><b>${room[2].price }원</b></p>
-										</div>
-										<button type="button">객실 이용 안내</button>
-									</div>
-									<button type="button" onclick="location.href='${cpath}/rsvn/reservation'" class="gra_left_right_red">예약</button>
-								</div>
-							</div>
-						</div>
-						<div class="room">
-							<p class="pic_view"><img class="lazy" src="${cpath }/resources/image/${room[3].room_img}"></p>
-							<strong class="title">${room[3].name }</strong>
-							<div class="info">
-								<div class="motel">
-									<div class="price">
-										<strong>가격</strong>
-										<div>
-											<p><b>${room[3].price }원</b></p>
-										</div>
-										<button type="button">객실 이용 안내</button>
-									</div>
-									<button type="button" onclick="location.href='${cpath}/rsvn/reservation'" class="gra_left_right_red">예약</button>
-								</div>
-							</div>
-						</div>
+					
+				<c:forEach var="room" items="${room }" begin="0" end="3" step="1">
+                  <div class="room">
+                     <p class="pic_view"><img class="lazy" src="${cpath }/resources/image/${room.room_img}"></p>
+                     <strong class="title">${room.roomName }</strong>
+                     <div class="info">
+                        <div class="motel">
+                           <div class="price">
+                              <strong>가격</strong>
+                              <div>
+                                 <p><b><fmt:formatNumber type="number" value="${room.price }"/>원</b></p>
+                              </div>
+                              <button type="button">객실 이용 안내</button>
+                           </div>
+                           <button type="button" class="res_btn gra_left_right_red" idx="${room.idx }">예약</button>
+                        </div>
+                     </div>
+                  </div>
+               </c:forEach>	
+						
+						
 				</article>
 			</form>
 		</div>
@@ -468,9 +425,14 @@ $('#daterangepicker').daterangepicker({
 	"drops": "auto",
 	"minDate": new Date(),
 })
+
  const dateBtn = document.querySelector('.applyBtn')
  dateBtn.addEventListener('click', getDateHandler)
+ 
+ const resBtn = document.querySelectorAll('.res_btn')
+ resBtn.forEach(btn => btn.addEventListener('click',getCheckHandler))
 </script>
+
 
 <!-- 지도 호출 함수 -->
 <script>

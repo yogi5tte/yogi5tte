@@ -13,15 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.itbank.info.InfoDAO;
 import com.itbank.info.InfoDTO;
-import com.itbank.room.MotelDAO;
-import com.itbank.room.MotelDTO;
+import com.itbank.room.RoomDAO;
+import com.itbank.room.RoomDTO;
 
 @Controller
 @RequestMapping("/")
 public class HomeController {
 	
 	@Autowired private InfoDAO infoDAO;
-	@Autowired private MotelDAO motelDAO;
+	@Autowired private RoomDAO motelDAO;
 	
 	@GetMapping("main")
 	public String main() {
@@ -32,7 +32,7 @@ public class HomeController {
 	public ModelAndView detail(@PathVariable int idx) {
 		ModelAndView mav = new ModelAndView("main/detail");
 		InfoDTO info = infoDAO.selectInfo(idx);
-		List<MotelDTO> mtRoom = motelDAO.selectRoom(idx);
+		List<RoomDTO> mtRoom = motelDAO.selectRoom(idx);
 		mav.addObject("info", info);
 		mav.addObject("room", mtRoom);
 		return mav;
