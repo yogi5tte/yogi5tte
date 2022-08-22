@@ -86,35 +86,35 @@
 								<strong>카테고리</strong>
 								<ul>
 									<li>
-										<input type="checkbox" id="op1" class="inp_chk">
+										<input type="checkbox" id="op1" class="inp_chk" name="theme">
 										<label for="op1" class="label_chk">무인텔</label>
 									</li>
 									<li>
-										<input type="checkbox" id="op2" class="inp_chk">
+										<input type="checkbox" id="op2" class="inp_chk" name="theme">
 										<label for="op2" class="label_chk">거울룸</label>
 									</li>
 									<li>
-										<input type="checkbox" id="op3" class="inp_chk">
+										<input type="checkbox" id="op3" class="inp_chk" name="theme">
 										<label for="op3" class="label_chk">야외테라스</label>
 									</li>
 									<li>
-										<input type="checkbox" id="op4" class="inp_chk">
+										<input type="checkbox" id="op4" class="inp_chk" name="theme">
 										<label for="op4" class="label_chk">복층룸</label>
 									</li>
 									<li>
-										<input type="checkbox" id="op5" class="inp_chk">
+										<input type="checkbox" id="op5" class="inp_chk" name="theme">
 										<label for="op5" class="label_chk">트윈베드</label>
 									</li>
 									<li>
-										<input type="checkbox" id="op6" class="inp_chk">
+										<input type="checkbox" id="op6" class="inp_chk" name="theme">
 										<label for="op6" class="label_chk">스파/월풀</label>
 									</li>
 									<li>
-										<input type="checkbox" id="op7" class="inp_chk">
+										<input type="checkbox" id="op7" class="inp_chk" name="theme">
 										<label for="op7" class="label_chk">사우나찜질방</label>
 									</li>
 									<li>
-										<input type="checkbox" id="op8" class="inp_chk">
+										<input type="checkbox" id="op8" class="inp_chk" name="theme">
 										<label for="op8" class="label_chk">안마의자</label>
 									</li>
 								</ul>

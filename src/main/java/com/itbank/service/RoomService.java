@@ -13,7 +13,7 @@ public class RoomService {
 	
 	@Autowired private MotelDAO motelDAO;
 
-	public List<MotelDTO> selectList( int category, int pType, int human_count) {
+	public List<MotelDTO> selectList(int category, int pType, int human_count) {
 		return motelDAO.selectList(category, pType, human_count);
 	}
 

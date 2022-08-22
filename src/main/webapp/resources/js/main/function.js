@@ -72,7 +72,6 @@ function cmtbtnHandler(event) {
 }
 // list.jsp 지역 카테고리 선택
 function loHandler(event) {
-
    loArray.forEach(lo => lo.classList.remove('on'))
    
    let target = event.target
@@ -164,8 +163,6 @@ function listSubHandler(event) {
 	let human_count = document.querySelector('.cnt_people > span')
 	human_count = human_count.innerText
 	
-	let title = ''
-
 	const cnt_people = document.querySelector('.cnt_people > span')
 	cnt_people.innerText = ''
 	cnt_people.innerText += `${human_count}`
@@ -173,8 +170,20 @@ function listSubHandler(event) {
 	let category = document.querySelector('.city_child > li > p.on')
 	category = category.getAttribute('idx')
 	const pType = sessionStorage.getItem('pType')
-	
+
 	const url = `${cpath}/listload/${category}/${pType}/${human_count}`
+		
+	// theme 체크
+	for(let i = 0; i < 8; i++) {
+		const themeChk = document.querySelectorAll('.inp_chk')
+//		const ob = {}
+		
+//		if(themeChk[i].checked) {
+//			ob.push(themeChk[i].id) 
+//		}
+//		console.log(ob)
+	}
+	
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {
@@ -201,7 +210,8 @@ function sortHandler(event) {
 	
 	const category = document.querySelector('.city_child > li > p.on').getAttribute('idx')
 	const pType = sessionStorage.getItem('pType')
-	const human_count = sessionStorage.getItem('human_count')
+	let human_count = document.querySelector('.cnt_people > span')
+	human_count = human_count.innerText
 	
 	const url = `${cpath}/listload/${category}/${pType}/${human_count}`
 	fetch(url)

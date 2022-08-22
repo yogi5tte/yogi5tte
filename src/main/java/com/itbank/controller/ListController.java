@@ -16,7 +16,9 @@ public class ListController {
 	@Autowired private RoomService roomService;
 	
 	@GetMapping("/listload/{category}/{pType}/{human_count}")
-	public List<MotelDTO> list(@PathVariable int category, @PathVariable int pType, @PathVariable int human_count) {
+	public List<MotelDTO> list(@PathVariable int category,
+							   @PathVariable int pType,
+							   @PathVariable int human_count) {
 		return roomService.selectList(category, pType, human_count);
 	}
 	
