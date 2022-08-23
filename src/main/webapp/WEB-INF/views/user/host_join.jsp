@@ -59,6 +59,11 @@
 	                <input class="form-control" type="text" name="authNumber" placeholder="인증번호를 입력해주세요.">
 		            <button class="modal_btn" type="submit">확인</button>
 	            </form>
+	        <strong>비밀번호</strong>
+	            <form id="passwordForm" class="num_input">
+	                <input type="password" name="password" class="form-control" minlength="8" maxlength="16" placeholder="영문, 숫자, 특수문자 혼합 8자 이상" title="비밀번호">
+		            <button class="modal_btn" type="submit">확인</button>
+	            </form>
         </div>
     </div>
 </div>
