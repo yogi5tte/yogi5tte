@@ -1,9 +1,5 @@
 'use strict'
 
-
-
-
-
 //버튼 클릭하면 실행
 async function kakaopaymentReady(event){
 	closeModal(event);
@@ -20,9 +16,7 @@ async function kakaopaymentReady(event){
 	}).then(resp => resp.json()).then(json => json)
 	
 	console.log(rsvnJSON)
-	
-	
-	
+
 	const ob = {
 		pg: 'kakaopay.TC0ONETIME',
 		pay_method : 'card',

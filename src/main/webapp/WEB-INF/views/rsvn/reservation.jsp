@@ -14,10 +14,9 @@ let roomName = '${roomDto.roomName}'
 let check_in = '${param.check_in}'
 let check_out = '${param.check_out}'
 let quantity = '${param.quantity}'
-let total_amount = '${rsvnDto.total_amount}'
+let total_amount = '${roomDto.price * param.quantity}'
 let userName = '${rsvnDto.userName}'
-let phoneNumber = '${rsvnDto.phoneNumber}'
-let idx = ''
+let phoneNumer = '${rsvnDto.phoneNumber}'
 
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -55,45 +54,52 @@ let idx = ''
                           	  휴대폰결제
                         </option>
                </select>
-      </div>
-      <div id="reservation_agree">
-         <label><input type="checkbox" name="agree_all" class="inp_chk" required><span>전체 동의</span></label>
-         <label><input type="checkbox" name="agree" class="inp_chk"><span>숙소 이용 규칙 및 취소/환불규정 동의<span id="sec_span">(필수)</span></span></label>
-         <label><input type="checkbox" name="agree" class="inp_chk"><span>개인정보 수집 및 이용 동의<span id="sec_span">(필수)</span></span></label>
-         <label><input type="checkbox" name="agree" class="inp_chk"><span>개인 정보 제 3자 제공 동의<span id="sec_span">(필수)</span></span></label>
-         <label><input type="checkbox" name="agree" class="inp_chk"><span>만 14세 이상 확인<span id="sec_span">(필수)</span></span></label>
-      </div>
-      
-   
-   </div>
-   
-   <div class="right">
-      <div class="reservation_info">
-         <p><strong>숙소이름</strong></p>
-         ${infoDto.name}
-         <p><strong>객실타입/기간</strong></p>
-         ${roomDto.roomName}/${param.difference }박
-         <p><strong>체크인</strong></p>
-         ${param.check_in}
-         <p><strong>체크아웃</strong></p>
-         ${param.check_out}
-         <hr>
-         <div class="reservation_price_info">
-         <p><strong>총 결제 금액(VAT 포함)</strong></p>
-         <p id="price_final"><strong>${roomDto.price }원</strong></p>
-         </div>
-         <ul>
-            <li>해당 객실가는 세금,봉사료가 포함된 금액입니다</li>
-            <li>결제완료 후 예약자 이름으로 바로 체크인 하시면 됩니다</li>
-         </ul>
-         <p><button type="button" class="reservation_btn right_red">결제하기</button></p>
-      </div>
-    </div>
-    <div class="reservation_modal hidden">
-       <div class="modal_content">
-       </div>
-       <div class="modal_overlay"></div>
-    </div>
+		</div>
+		<div id="reservation_agree">
+			<label><input type="checkbox" name="agree_all" class="inp_chk" required><span>전체 동의</span></label>
+			<label><input type="checkbox" name="agree" class="inp_chk"><span>숙소 이용 규칙 및 취소/환불규정 동의<span id="sec_span">(필수)</span></span></label>
+			<label><input type="checkbox" name="agree" class="inp_chk"><span>개인정보 수집 및 이용 동의<span id="sec_span">(필수)</span></span></label>
+			<label><input type="checkbox" name="agree" class="inp_chk"><span>개인 정보 제 3자 제공 동의<span id="sec_span">(필수)</span></span></label>
+			<label><input type="checkbox" name="agree" class="inp_chk"><span>만 14세 이상 확인<span id="sec_span">(필수)</span></span></label>
+		</div>
+		
+	
+	</div>
+	
+	
+	
+	
+	
+	<div class="right">
+		<div class="reservation_info">
+			<span id="info_idx" class="rsvn_el hidden">${infoDto.idx }</span>
+			<span id="room_idx" class="rsvn_el hidden">${roomDto.idx }</span>
+			<p id="info_name"><strong>숙소이름/객실 타입</strong></p>
+			${infoDto.name}/${roomDto.roomName}
+			<p><strong>인원/기간</strong></p>
+			<span id= "human_count" class="rsvn_el">4</span>명/ <span id="quantity" class="rsvn_el">${param.quantity }</span>박
+			<p><strong>체크인</strong></p>
+			<span id="check_in" class="rsvn_el">${param.check_in}</span>
+			<p><strong>체크아웃</strong></p>
+			<span id="check_out" class="rsvn_el">${param.check_out}</span>
+			<hr>
+			<div class="reservation_price_info">
+			<p><strong>총 결제 금액(VAT 포함)</strong></p>
+			<p id="amount_p"><strong><span id="total_amount" class="rsvn_el">${roomDto.price * param.quantity }</span>원</strong></p>
+			</div>
+			<ul>
+				<li>해당 객실가는 세금,봉사료가 포함된 금액입니다</li>
+				<li>결제완료 후 예약자 이름으로 바로 체크인 하시면 됩니다</li>
+			</ul>
+			<p><button type="button" class="reservation_btn right_red">결제하기</button></p>
+		</div>
+	 </div>
+	 <div class="reservation_modal hidden">
+	 	<div class="modal_content">
+	 	</div>
+	 	<div class="modal_overlay"></div>
+	 </div>
+
 
 </div>
 
@@ -101,19 +107,20 @@ let idx = ''
 <%@ include file="../main/footer.jsp" %>
 
 <script>
-   
-   //전체동의 체크
-   const agreeCheckAll = document.querySelector('#reservation_agree> label > input[name=agree_all]')
-   const agreeCheck = document.querySelectorAll('#reservation_agree> label > input[name=agree]')
-   //모달창
-   const reservation_btn = document.querySelector('.reservation_btn')
-   
-   
-   agreeCheckAll.addEventListener('change',checkHandler)
-   agreeCheck.forEach(dto=>dto.addEventListener('change',checkAll))
-    reservation_btn.addEventListener('click',inspectConditions)
+	
+	//전체동의 체크
+	const agreeCheckAll = document.querySelector('#reservation_agree> label > input[name=agree_all]')
+	const agreeCheck = document.querySelectorAll('#reservation_agree> label > input[name=agree]')
+	//모달창
+	const reservation_btn = document.querySelector('.reservation_btn')
+	
+	
+	agreeCheckAll.addEventListener('change',checkHandler)
+	agreeCheck.forEach(dto=>dto.addEventListener('change',checkAll))
+ 	reservation_btn.addEventListener('click',inspectConditions)
 
-     
+  	
 </script>
+
 
 
