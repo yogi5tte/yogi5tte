@@ -1,15 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="header.jsp"%>
 
-<link rel="stylesheet" href="${cpath }/resources/stylecss/main/common.css">
-<link rel="stylesheet" href="${cpath }/resources/stylecss/main/detail.css">
+<link rel="stylesheet"
+	href="${cpath }/resources/stylecss/main/common.css">
+<link rel="stylesheet"
+	href="${cpath }/resources/stylecss/main/detail.css">
 
 <!-- 달력 소스  -->
-<link rel="stylesheet" type="text/css" media="all" href="${cpath }/resources/stylecss/main/daterangepicker.css" />
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
-<script type="text/javascript" src="${cpath }/resources/js/main/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" media="all"
+	href="${cpath }/resources/stylecss/main/daterangepicker.css" />
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+<script type="text/javascript"
+	src="${cpath }/resources/js/main/daterangepicker.js"></script>
 
 <!-- 지도 소스 -->
 <script>
@@ -17,7 +23,8 @@
 	var latitude = +'${info.latitude}'
 	var name = '${info.name}'
 </script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35832996ddcf2ae6df4b95be1e09b25a&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35832996ddcf2ae6df4b95be1e09b25a&libraries=services,clusterer,drawing"></script>
 <script type="text/javascript" src="${cpath }/resources/js/main/map.js"></script>
 
 		<div id="content" class="detail">
@@ -76,254 +83,145 @@
             		</div>
 		        </div>
 	    	</div>
-		</div>
-	
-	<div class="tab">
-		<button class="on">객실안내/예약</button>
-        <button>숙소정보</button>
-        <button class="tab_review">리뷰</button>
-	</div>
-	
-	<div class="div_tab">
-		<div class="on">
-			<form>
-				<article class="room_info">
-					<div class="btn_date">
+
+
+<div class="tab">
+	<button class="on">객실안내/예약</button>
+	<button>숙소정보</button>
+	<button class="tab_review">리뷰</button>
+</div>
+
+<div class="div_tab">
+	<div class="on">
+		<form>
+			<article class="room_info">
+				<div class="btn_date">
 					<input id="daterangepicker" type="text" placeholder="예약날짜">
-					</div>
-					
+				</div>
+
 				<c:forEach var="room" items="${room }" begin="0" end="3" step="1">
-                  <div class="room">
-                     <p class="pic_view"><img class="lazy" src="${cpath }/resources/image/${room.room_img}"></p>
-                     <strong class="title">${room.roomName }</strong>
-                     <div class="info">
-                        <div class="motel">
-                           <div class="price">
-                              <strong>가격</strong>
-                              <div>
-                                 <p><b><fmt:formatNumber type="number" value="${room.price }"/>원</b></p>
-                              </div>
-                              <button type="button">객실 이용 안내</button>
-                           </div>
-                           <button type="button" class="res_btn gra_left_right_red" idx="${room.idx }">예약</button>
-                        </div>
-                     </div>
-                  </div>
-               </c:forEach>	
-						
-						
+					<div class="room">
+						<p class="pic_view">
+							<img class="lazy"
+								src="${cpath }/resources/image/${room.room_img}">
+						</p>
+						<strong class="title">${room.roomName }</strong>
+						<div class="info">
+							<div class="motel">
+								<div class="price">
+									<strong>가격</strong>
+									<div>
+										<p>
+											<b>${room.price } 원</b>
+										</p>
+									</div>
+									<button type="button">객실 이용 안내</button>
+								</div>
+								<button type="button" class="res_btn gra_left_right_red"
+									idx="${room.idx }" info_idx="${info.idx }">예약</button>
+								<%--${cpath}/rsvn/reservation?idx=${room.idx }&check_in=&check_out= --%>
+							</div>
+						</div>
+					</div>
+					</c:forEach>					
 				</article>
 			</form>
 		</div>
-		<div>
-			<article class="detail_info">
-				<div class="accordion" id="accordionExample">
-					<div class="accordion-item">
-						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-								기본정보 및 요금정보
-					    </button>
-					    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-						    <div class="accordion-body">
-						    	<section class="default_info" style="display: block;">
-									<ul>
-										<li>테스트</li><li>테스트</li><li>테스트</li><li>테스트</li><li>테스트</li><li>테스트</li><li>테스트</li>
-										<li>테스트</li><li>테스트</li><li>테스트</li><li>테스트</li><li>테스트</li><li>테스트</li><li>테스트</li>
-										<li>테스트</li><li>테스트</li><li>테스트</li><li>테스트</li><li>테스트</li><li>테스트</li><li>테스트</li>
-										<li>테스트</li><li>테스트</li><li>테스트</li><li>테스트</li><li>테스트</li><li>테스트</li><li>테스트</li>
-									</ul>
-						        </section>
-						    </div>
-					    </div>
-					</div>
-					<div class="accordion-item">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-							편의시설 및 서비스
-						</button>
-					    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-							<div class="accordion-body">
-								<section class="table_wrap">
-						    		<ul>
-						    			<li class="theme_1">와이파이</li>
-						    			<li class="theme_2">카페</li>
-						    			<li class="theme_3">TV</li>
-						    			<li class="theme_4">에어컨</li>
-						    			<li class="theme_5">객실 샤워실</li>
-						    			<li class="theme_6">드라이기</li>
-						    			<li class="theme_7">금연</li>
-										
-						    		</ul>
-						    	</section>
-					      	</div>
-					    </div>
+
+	<div>
+		<article class="detail_info">
+			<div class="accordion" id="accordionExample">
+				<div class="accordion-item">
+					<button class="accordion-button" type="button"
+						data-bs-toggle="collapse" data-bs-target="#collapseOne"
+						aria-expanded="true" aria-controls="collapseOne">기본정보 및
+						요금정보</button>
+					<div id="collapseOne" class="accordion-collapse collapse show"
+						aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+						<div class="accordion-body">
+							<section class="default_info" style="display: block;">
+								<ul>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+									<li>테스트</li>
+								</ul>
+							</section>
+						</div>
 					</div>
 				</div>
-			</article>
-		</div>
-		<div>
-			<article class="review">
-				<div class="score_top">
-					<strong>추천해요</strong>
-					<div class="score_wrap">
-						<div class="score_star star_45"></div>
-						<div class="num">9.3</div>
+				<div class="accordion-item">
+					<button class="accordion-button collapsed" type="button"
+						data-bs-toggle="collapse" data-bs-target="#collapseThree"
+						aria-expanded="false" aria-controls="collapseThree">편의시설
+						및 서비스</button>
+					<div id="collapseThree" class="accordion-collapse collapse"
+						aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+						<div class="accordion-body">
+							<section class="table_wrap">
+								<ul>
+									<li class="theme_1">와이파이</li>
+									<li class="theme_2">카페</li>
+									<li class="theme_3">TV</li>
+									<li class="theme_4">에어컨</li>
+									<li class="theme_5">객실 샤워실</li>
+									<li class="theme_6">드라이기</li>
+									<li class="theme_7">금연</li>
+
+								</ul>
+							</section>
+						</div>
 					</div>
-					<p>
-						전체 리뷰 <b>777</b>
-						<span>|</span>
-						제휴점 답변 <b>777</b>
-					</p>
 				</div>
-				<div class="review_scroll">
-				<ul>
-				
-					<li>
-						<div class="guest">
-							<p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_23.png"></p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name"><b>방이름 객실 이용 · </b>작성자닉네임</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date">	</span>
-						</div>
-							<hr>
-					</li>
-				
-					<li>
-						<div class="guest">
-							<p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_23.png"></p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name"><b>방이름 객실 이용 · </b>작성자닉네임</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date">	</span>
-						</div>
-						<hr>
-					</li>
-					<li>
-						<div class="guest">
-							<p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_23.png"></p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name"><b>방이름 객실 이용 · </b>작성자닉네임</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date">	</span>
-						</div>
-						<hr>
-					</li>
-					<li>
-						<div class="guest">
-							<p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_23.png"></p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name"><b>방이름 객실 이용 · </b>작성자닉네임</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date">	</span>
-						</div>
-						<hr>
-					</li>
-					<li>
-						<div class="guest">
-							<p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_23.png"></p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name"><b>방이름 객실 이용 · </b>작성자닉네임</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date">	</span>
-						</div>
-						<hr>
-					</li>
-					<li>
-						<div class="guest">
-							<p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_23.png"></p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name"><b>방이름 객실 이용 · </b>작성자닉네임</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date">	</span>
-						</div>
-						<hr>
-					</li>
-					<li>
-						<div class="guest">
-							<p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_23.png"></p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name"><b>방이름 객실 이용 · </b>작성자닉네임</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date">	</span>
-						</div>
-						<hr>
-					</li>
-					<li>
-						<div class="guest">
-							<p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_23.png"></p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name"><b>방이름 객실 이용 · </b>작성자닉네임</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date">	</span>
-						</div>
-						<hr>
-					</li>
-					<li>
-						<div class="guest">
-							<p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_23.png"></p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name"><b>방이름 객실 이용 · </b>작성자닉네임</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date">	</span>
-						</div>
-						<hr>
-					</li>
-					<li>
-						<div class="guest">
-							<p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_23.png"></p>
-							<strong>리뷰제목</strong>
-							<div class="score_wrap_sm">
-								<div class="score_star star_50"></div>
-								<div class="num">10.0</div>
-							</div>
-							<div class="name"><b>방이름 객실 이용 · </b>작성자닉네임</div>
-							<div class="txt">리뷰내용</div>
-							<span class="date">	</span>
-						</div>
-						<hr>
-					</li>
-				</ul>
-				</div>
-			</article>
-		</div>
+			</div>
+		</article>
 	</div>
-<%@ include file="footer.jsp" %>
-	
+	<div>
+		<article class="review">
+			<div class="score_top">
+				<strong>추천해요</strong>
+				<div class="score_wrap">
+					<div class="score_star star_45"></div>
+					<div class="num">9.3</div>
+				</div>
+				<p>
+					전체 리뷰 <b>777</b> <span>|</span> 제휴점 답변 <b>777</b>
+				</p>
+			</div>
+			<div class="review_scroll" offset="0" info_idx="${info.idx }">
+				<ul>
+					
+				</ul>
+			</div>
+		</article>
+	</div>
+</div>
+<%@ include file="footer.jsp"%>
+
 <!-- Modal -->
 <div id="modal" class="hidden">
 	<div class="content">
@@ -345,7 +243,8 @@
 				<section>
 					<strong>편의 시설</strong>
 					<ul class="dot_txt">
-						<li>TV, 쇼파, 금고, 옷장, 에어컨, 냉장고, 고급식기류, 욕조, 어메니티, 헤어드라이기, 세제, 누하스 안마의자 (일부객실), 커피머신, 몽제 매트리스 제공</li>
+						<li>TV, 쇼파, 금고, 옷장, 에어컨, 냉장고, 고급식기류, 욕조, 어메니티, 헤어드라이기, 세제,
+							누하스 안마의자 (일부객실), 커피머신, 몽제 매트리스 제공</li>
 					</ul>
 				</section>
 				<section>
@@ -375,6 +274,9 @@
 	const prevBtn = document.querySelector('.button_prev')
 	prevBtn.onclick = move_prev
 	
+
+	
+	window.addEventListener('load',reviewList)
 	cmtbtn.addEventListener('click', cmtbtnHandler)
 	exitBtn.addEventListener('click', closeModal)
 	overlay.addEventListener('click', closeModal)
@@ -409,14 +311,14 @@ $('#daterangepicker').daterangepicker({
 	"startDate": sessionStorage.getItem('start'),
 	"endDate": sessionStorage.getItem('end'),
 	"drops": "auto",
-	"minDate": new Date(),
+	"minDate": new Date()
 })
-
- const dateBtn = document.querySelector('.applyBtn')
- dateBtn.addEventListener('click', getDateHandler)
+	
+ 	const dateBtn = document.querySelector('.applyBtn')
+	dateBtn.addEventListener('click', getDateHandler)
+	const resBtn = document.querySelectorAll('.res_btn')
+	resBtn.forEach(btn => btn.addEventListener('click',getCheckHandler))
  
- const resBtn = document.querySelectorAll('.res_btn')
- resBtn.forEach(btn => btn.addEventListener('click',getCheckHandler))
 </script>
 
 

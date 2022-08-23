@@ -3,9 +3,11 @@ package com.itbank.room;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
+
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Param;
+
 
 @Repository
 public interface RoomDAO {
@@ -29,5 +31,6 @@ public interface RoomDAO {
 	@Select("select * from room a left join info b "
 			+ "on b.idx = a.info_idx where a.idx=#{idx}")
 	RoomDTO checkRoom(HashMap<String, String> room_idx);
+
 
 }

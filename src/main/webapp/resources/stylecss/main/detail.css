@@ -432,7 +432,7 @@ em {
     text-align: center;
 }
 .review > .review_scroll {
-	height: 2140px;
+	height: 1070px;
 	overflow: scroll;
 
 }
