@@ -196,8 +196,6 @@
 		    <version>2.13.3</version>
 		</dependency>
 		
-		
-		
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<!-- Java Object <-> JavaScript Object Notation -->
 		<dependency>
@@ -211,6 +209,7 @@
 		<artifactId>iamport-rest-client-java</artifactId>
 		<version>0.2.22</version>
 		</dependency>
+
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>

@@ -2,6 +2,8 @@ package com.itbank.reservation;
 
 import java.sql.Date;
 
+
+
 /*
  * idx             number          default reservation_seq.nextval PRIMARY key,
     user_name       varchar2(50)         not null,           --예약자 이름
@@ -102,4 +104,5 @@ public class ReservationDTO {
 	
 	
 }
+
 
