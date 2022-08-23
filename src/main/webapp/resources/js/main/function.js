@@ -87,7 +87,7 @@ function listConvert(dto) {
 	li.setAttribute('idx',`${dto.idx}`)
 	
 	li.innerHTML += `
-		<a href="#">
+		<a href="${cpath}/main/detail/${dto.idx}">
 		<p class="pic"><div class="lazy" style="background:url(${cpath}/resources/image/product_img/${dto.product_img})"></div>
 			<div class="stage">
 				<div class="name">
@@ -237,6 +237,11 @@ function searchHandler(event) {
 	let city = (document.querySelector('.main_link > .selectctg > .btn_loc > span').innerText)
 	let human_count = (document.querySelector('.main_link > .selectctg > .btn_many > span').innerText).split('명')[0]
 	
+	const start = document.getElementById('daterangepicker').value.split('~')[0]
+	const end = document.getElementById('daterangepicker').value.split('~')[1]
+	
+	sessionStorage.setItem('start', start)
+	sessionStorage.setItem('end', end)
 	sessionStorage.setItem('pType', pType)
 	sessionStorage.setItem('city', city)
 	sessionStorage.setItem('human_count', human_count)
@@ -261,6 +266,13 @@ function listLoadHandler() {
 	const event2 = new MouseEvent('click')
    	target.querySelector('p').dispatchEvent(event)
 	target2.querySelector('p').dispatchEvent(event2)
+	
+	let start = document.getElementById('daterangepicker').value.split('~')[0]
+	let end = document.getElementById('daterangepicker').value.split('~')[1]
+	
+   	start = sessionStorage.getItem('start')
+   	end = sessionStorage.getItem('end')
+   	
 }
 function convert(dto) {
 	const Ul = document.querySelector('.review_scroll > ul')
