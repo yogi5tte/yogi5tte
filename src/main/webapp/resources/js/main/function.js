@@ -340,7 +340,18 @@ function reviewList(event){
 	})
 	reviewBox.setAttribute('offset', +offset + 5)
 }
-
+//모달 제거
+function closeModal() {
+	document.getElementById('modal').classList.add('hidden')
+}
+// 목록 페이지 모달 등장
+function openModal(event) {
+	document.getElementById('modal').classList.remove('hidden')
+}
+// 상세 페이지 모달 등장
+function dtopenModal(event) {
+	document.getElementById('modal').classList.remove('hidden')
+}
 // 대문페이지 인원수 감소 함수
 function dncount(event) {
    const resultElement = document.getElementById('result');

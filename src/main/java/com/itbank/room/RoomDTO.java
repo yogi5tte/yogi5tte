@@ -1,21 +1,10 @@
 package com.itbank.room;
 
-
-//	create table room(
-//	idx             number          default room_seq.nextval primary key,
-//	name            varchar2(50)    not null,
-//	price           number          not null,
-//	week            varchar2(20)    check(week in ('주중','주말')),
-//	room_img        varchar2(255)   not null,
-//	human_count     number          not null, --min 1 / max 4
-//	city            varchar2(20)    not null,   --시
-//	district        varchar2(50)    not null   --구
-//	);
-
 public class RoomDTO {
 	
-	private int idx, price, human_count;		// 2001부터 시작하는 idx
-	private String roomName, week, room_img, city, district;	// 테마
+	private int idx, price, human_count, review_count, category, gu, pType;		
+	private String roomName, week, room_img, city, district, name, seller_text, product_img;
+	
 	public int getIdx() {
 		return idx;
 	}
@@ -33,6 +22,30 @@ public class RoomDTO {
 	}
 	public void setHuman_count(int human_count) {
 		this.human_count = human_count;
+	}
+	public int getReview_count() {
+		return review_count;
+	}
+	public void setReview_count(int review_count) {
+		this.review_count = review_count;
+	}
+	public int getCategory() {
+		return category;
+	}
+	public void setCategory(int category) {
+		this.category = category;
+	}
+	public int getGu() {
+		return gu;
+	}
+	public void setGu(int gu) {
+		this.gu = gu;
+	}
+	public int getpType() {
+		return pType;
+	}
+	public void setpType(int pType) {
+		this.pType = pType;
 	}
 	public String getRoomName() {
 		return roomName;
@@ -62,7 +75,25 @@ public class RoomDTO {
 		return district;
 	}
 	public void setDistrict(String district) {
-		this.district = district;	
+		this.district = district;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getSeller_text() {
+		return seller_text;
+	}
+	public void setSeller_text(String seller_text) {
+		this.seller_text = seller_text;
+	}
+	public String getProduct_img() {
+		return product_img;
+	}
+	public void setProduct_img(String product_img) {
+		this.product_img = product_img;
 	}
 	
 }
