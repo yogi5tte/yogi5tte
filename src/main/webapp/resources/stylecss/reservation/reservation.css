@@ -117,7 +117,7 @@ input[type="checkbox"].inp_chk:checked {
 	margin-top:20px;
 	
 }
-.reservation_price_info>#price_final{
+.reservation_price_info>#total_amount{
 	color:red;
 }
 .reservation_info> ul >li{

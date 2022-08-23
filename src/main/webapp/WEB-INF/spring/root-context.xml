@@ -12,9 +12,14 @@
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.1.100:1521:xe" />
+<<<<<<< HEAD
 
 		<property name="username" value="C##ONEPLUS" />
+=======
+		<property name="username" value="c##yogi5tte" />
+>>>>>>> branch 'main' of https://github.com/yogi5tte/yogi5tte.git
 		<property name="password" value="1234" />
+
 	</bean>
 	
 	<bean id="ds" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
@@ -35,4 +40,9 @@
 	<mybatis-spring:scan base-package="com.itbank.user"/>
 	<mybatis-spring:scan base-package="com.itbank.info"/>
 	<mybatis-spring:scan base-package="com.itbank.reservation"/>
+<<<<<<< HEAD
+=======
+	<mybatis-spring:scan base-package="com.itbank.review"/>
+	
+>>>>>>> branch 'main' of https://github.com/yogi5tte/yogi5tte.git
 </beans>
