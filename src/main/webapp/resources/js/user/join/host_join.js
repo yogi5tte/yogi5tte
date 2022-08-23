@@ -46,7 +46,7 @@ function sendHandler(event) {
 	.then(resp => resp.text())
 	.then(text => {
 		sessionStorage.setItem('confirm', text)
-	)}
+	})
 }
 
 function authHandler(event) {

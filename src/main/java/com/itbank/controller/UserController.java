@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -131,6 +132,7 @@ public class UserController {
 	public String host_join(@RequestBody HashMap<String, String> dto, HttpSession session)throws NoSuchAlgorithmException {
 		System.out.println(dto.get("email"));
 		System.out.println(dto.get("password"));
+		System.out.println(dto);
 		User_sellerDTO login  = userService.seller_login(dto);
 		if(login == null) {
 			return "/user/host_join";
