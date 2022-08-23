@@ -518,8 +518,8 @@ function interceptorHandler(event) {
 function weekendCount() {
 	let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
 	let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
-	
 	let count = 0
+//	let TF = $('#daterangepicker').data('daterangepicker').locale['daysOfWeek']
 
 	while(true) {
 		let tmp_date = startDate
@@ -530,7 +530,7 @@ function weekendCount() {
 		}
 		else{
 			let tmp = tmp_date.getDay()
-			
+	
 			if(tmp == 5 || tmp == 6) {
 				console.log('주말')
 				count++
@@ -556,8 +556,13 @@ function getCheckHandler() {
  let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
  let quantity = Math.floor((endDate.getTime() - startDate.getTime())/(1000 * 3600 * 24))
  let weekendCnt = weekendCount()
- 
- 
+ let price1 = price
+ console.log(price)
+ if(quantity == 1 && weekendCnt == 2){
+	 weekendCnt = 1
+ }else if(weekendCnt == 1 && startDate.getDay() == 4){
+	 weekendCnt = 0
+ }
  
  location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + 
  '&check_in=' + start + '&check_out=' + end + '&quantity=' + quantity + '&weekendCnt=' + weekendCnt

@@ -274,7 +274,6 @@
 	const prevBtn = document.querySelector('.button_prev')
 	prevBtn.onclick = move_prev
 	
-
 	
 	window.addEventListener('load',reviewList)
 	cmtbtn.addEventListener('click', cmtbtnHandler)
@@ -313,12 +312,11 @@ $('#daterangepicker').daterangepicker({
 	"drops": "auto",
 	"minDate": new Date()
 })
-	const weekEnd = $('#daterangepicker').data('daterangepicker').locale['daysOfWeek']
-	console.log(weekEnd)
  	const dateBtn = document.querySelector('.applyBtn')
 	dateBtn.addEventListener('click', getDateHandler)
 	const resBtn = document.querySelectorAll('.res_btn')
 	resBtn.forEach(btn => btn.addEventListener('click',getCheckHandler))
+	
 </script>
 
 
