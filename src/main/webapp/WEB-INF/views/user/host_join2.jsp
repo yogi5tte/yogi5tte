@@ -9,7 +9,7 @@
 <title>요기오때</title>
 
 <link rel="stylesheet" href="${cpath }/resources/stylecss/common.css">
-<link rel="stylesheet" href="${cpath }/resources/stylecss/host_join2.css">
+<link rel="stylesheet" href="${cpath }/resources/stylecss/user/host/host_join2.css">
 <script src="${cpath }/resources/js/host_join2.js"></script> 
 
 </head>

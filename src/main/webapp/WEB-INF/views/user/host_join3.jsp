@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 
 <link rel="stylesheet" href="${cpath }/resources/stylecss/common.css">
-<link rel="stylesheet" href="${cpath }/resources/stylecss/host_join3.css">
+<link rel="stylesheet" href="${cpath }/resources/stylecss/user/host/host_join3.css">
 <script src="${cpath }/resources/js/host_join3.js"></script> 
 
 </head>
