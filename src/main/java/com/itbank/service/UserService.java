@@ -1,7 +1,6 @@
 package com.itbank.service;
 
 import java.util.HashMap;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +31,33 @@ public class UserService {
 
 		
 	public int join(User_nonsocialDTO dto) {
+		String result = "";
+		String newUserID = dto.getEmail();
+
+		if(newUserID.contains("naver")) {
+			
+			newUserID += ".com";
+			dto.setEmail(newUserID);
+		}
+		else if(newUserID.contains("nate")) {
+			
+			newUserID += ".com";
+			dto.setEmail(newUserID);
+		}
+		else if(newUserID.contains("gmail")) {
+			
+			newUserID += ".com";
+			dto.setEmail(newUserID);
+		}
+		else if(newUserID.contains("hanmail")) {
+			
+			newUserID += ".net";
+			dto.setEmail(newUserID);
+		}
+		System.out.println("newUserID : " + newUserID);
+		
+		
+		
 		return dao.join(dto);
 	}
 

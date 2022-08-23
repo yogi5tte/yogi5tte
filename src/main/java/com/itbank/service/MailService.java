@@ -82,7 +82,7 @@ public class MailService {
 
 		mimeMessage.setFrom(new InternetAddress("vlvkdksgo@naver.com")); //wmc1205@naver.com
 		mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(answer));
-		mimeMessage.setSubject("스프링 메일 전송 테스트");
+		mimeMessage.setSubject("스프링 메일 전송 테스트!");
 		mimeMessage.setText(resultNum);
 //		mimeMessage.setContent(obj,type);
 		
