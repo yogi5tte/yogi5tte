@@ -3,6 +3,7 @@ package com.itbank.controller;
 
 
 
+
 import java.io.IOException;
 
 import java.util.Locale;
@@ -27,14 +28,13 @@ import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 
 
-
-
 @Controller
 @RequestMapping("/")
 public class PaymentController {
 	
 	 private IamportClient iamportClient;
 	
+
 	 //생성자를 통해 Rest API / Rest API secret 입력
 	 public PaymentController() {
 		 String apiKey = "1078805824161077";
@@ -52,7 +52,7 @@ public class PaymentController {
 			 @PathVariable(value="imp_uid") String imp_uid) throws IamportResponseException, IOException{
 		  return iamportClient.paymentByImpUid(imp_uid);
 	  }
-	 
-	  
+
 	
+
 }

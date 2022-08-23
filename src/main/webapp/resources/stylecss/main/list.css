@@ -465,7 +465,7 @@ input[type=checkbox].inp_chk:checked + label.label_chk{
     overflow: hidden;
     position: relative;
     height: 280px;
-    background-color: black;
+/*     background-color: black; */
 }
 .list_1:nth-child(1) {
 	margin-top: 15px;	
@@ -475,15 +475,17 @@ input[type=checkbox].inp_chk:checked + label.label_chk{
     height: 280px;
     color: #fff;
 }
-.list_1 .pic img {
+.list_1 .lazy {
 	display: block;
 	position: absolute;
     top: 50%;
     left: 0;
-    margin-top: -159px;
+    margin-top: -140px;
     z-index: 1;
     width: 100%;
     min-height: 280px;
+	background-size: 635px 352px !important;
+	background-repeat: no-repeat !important;
 }
 .list_1 .stage {
     position: absolute;
