@@ -2,8 +2,8 @@ package com.itbank.room;
 
 public class RoomDTO {
 	
-	private int idx, price, human_count, review_count, category, gu, pType;		
-	private String roomName, week, room_img, city, district, name, seller_text, product_img;
+	private int idx, price, human_count, review_count, category, pType;		
+	private String roomName, week, room_img, city, district, name, seller_text, product_img, gu;
 	
 	public int getIdx() {
 		return idx;
@@ -34,12 +34,6 @@ public class RoomDTO {
 	}
 	public void setCategory(int category) {
 		this.category = category;
-	}
-	public int getGu() {
-		return gu;
-	}
-	public void setGu(int gu) {
-		this.gu = gu;
 	}
 	public int getpType() {
 		return pType;
@@ -94,6 +88,12 @@ public class RoomDTO {
 	}
 	public void setProduct_img(String product_img) {
 		this.product_img = product_img;
+	}
+	public String getGu() {
+		return gu;
+	}
+	public void setGu(String gu) {
+		this.gu = gu;
 	}
 	
 }
