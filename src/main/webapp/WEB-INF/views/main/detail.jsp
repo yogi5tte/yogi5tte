@@ -316,7 +316,7 @@ $('#daterangepicker').daterangepicker({
 	dateBtn.addEventListener('click', getDateHandler)
 	const resBtn = document.querySelectorAll('.res_btn')
 	resBtn.forEach(btn => btn.addEventListener('click',getCheckHandler))
-	
+	// 아
 </script>
 
 
