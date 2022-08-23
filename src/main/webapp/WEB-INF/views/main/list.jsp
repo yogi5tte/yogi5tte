@@ -204,14 +204,14 @@
 	      "monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
 	      
 	   },
-	   "startDate": new Date(),
-	   "endDate": new Date(),
-	   "drops": "auto",
+	   "startDate": sessionStorage.getItem('start'),
+	   "endDate": sessionStorage.getItem('end'),
+	   "drops": "auto",	
 	   "minDate": new Date()
 	   
 	}, function (start, end, label) {
-	   console.log('New date range selected:' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
-	   
+		sessionStorage.setItem('start', start.format('YYYY-MM-DD'))
+		sessionStorage.setItem('end', end.format('YYYY-MM-DD'))
 	});
 	const dateBtn = document.querySelector('.applyBtn')
 	dateBtn.addEventListener('click', getDateHandler)
