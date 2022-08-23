@@ -47,7 +47,6 @@ public class HomeController {
 	@GetMapping("main/detail/{idx}/{offset}")
 	public List<ReviewDTO> reviewList(@PathVariable int idx, @PathVariable int offset){
 		List<ReviewDTO> list = reviewDAO.reviewList(idx, offset);
-		
 		return list;
 	}
 	

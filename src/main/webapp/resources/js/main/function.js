@@ -1,4 +1,5 @@
 'use strict';
+
 // 스크롤시 헤더 변경되는 함수
 function scrollHandler(event) {
 	let target = document.documentElement
@@ -85,8 +86,11 @@ function listConvert(dto) {
 	const li = document.createElement('li')
 	li.className = 'list_1'
 	li.setAttribute('idx',`${dto.idx}`)
+	
+	let human_count = document.querySelector('.cnt_people > span').innerText
+	
 	li.innerHTML += `
-		<a href="${cpath}/main/detail/${dto.idx}">
+		<a href="${cpath}/main/detail/${dto.idx}?human_countS=${human_count}">
 		<p class="pic"><div class="lazy" style="background:url(${cpath}/resources/image/product_img/${dto.product_img})"></div>
 			<div class="stage">
 				<div class="name">
@@ -349,6 +353,14 @@ function closeModal() {
 // 목록 페이지 모달 등장
 function openModal(event) {
 	document.getElementById('modal').classList.remove('hidden')
+	
+	var container = document.getElementById('map');
+	var options = {
+		center: new kakao.maps.LatLng(35.167025, 129.132796),
+		level: 5
+	};
+	
+	var map = new kakao.maps.Map(container, options)
 }
 // 상세 페이지 모달 등장
 function dtopenModal(event) {
@@ -517,6 +529,7 @@ function interceptorHandler(event) {
 }
 
 
+
 //주말 체크 핸들러
 function weekendCount() {
    let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
@@ -552,6 +565,7 @@ function weekendCount() {
 }
 
 
+
 //숙소 예약 버튼 (값 전달)
 function getCheckHandler() { 
  const start = document.getElementById('daterangepicker').value.split('~')[0]
@@ -580,59 +594,12 @@ function getDateHandler(event) {
 }
 
 
-
-// list.jsp 가격 낮은 순, 가격 높은 순 정렬 버튼
-function btnHandler(event) {
-   btnArray.forEach(btn => btn.classList.remove('on'))
-   
-   let target = event.target
-   
-   while(target.classList.contains('sp')) {
-      target = target.parentNode
-   }
-   
-   target.classList.add('on')
-}
-
-
-// 메인페이지 에서 검색후 목록으로 왔을때 목록 출력하는 함수
-function listHandler(event) {
-	// 숙소 유형 카테고리 change
-	const title = document.querySelector('.sub_top > h2')
-	title.innerText = `${sessionStorage.getItem('cat')}`
-	// 인원 change
-	const peo = document.getElementById('result')	
-	result.innerText = sessionStorage.getItem('peo')
-	// 지역 change
-	const loc = document.querySelector('.btn_area')
-	if(sessionStorage.getItem('loc') == '서울') {
-		loc.innerHTML += `<span>${sessionStorage.getItem('loc')}</span>강남/역삼/삼성/논현`
-	}
-	else {
-		loArray.forEach(lo => lo.classList.remove('on'))
-		loArray[1].classList.add('on')
-		dloArray.forEach(dlo => dlo.classList.remove('on'))
-		dloArray[1].classList.add('on')
-		dloOneArray.forEach(dlo => dlo.classList.remove('on'))
-		let dlooneArray = document.querySelectorAll('.city_child.on > li > p')
-		dlooneArray[0].classList.add('on')
-		loc.innerHTML += `<span>${sessionStorage.getItem('loc')}</span>해운대/재송`
-	}
-	
-	const product_list = document.getElementById('product_list_area')
-	product_list.innerHTML = ''
-		
-}
-
 function reviewScrollHandler(event) {
 	
 	if(event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight) {
 		reviewList()
 	}
 }
-
-
-
 
 
 
