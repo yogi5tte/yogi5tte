@@ -34,6 +34,9 @@
             <div class="link_half">
                 <div><a href="${cpath }/user/join"><span>회원가입</span></a></div>
             </div>
+            <div class="link_half">
+                <div><a href="${cpath }/user/host_join"><span>사장님은 여기로</span></a></div>
+            </div>
         </form>
     </section>
 </div>
