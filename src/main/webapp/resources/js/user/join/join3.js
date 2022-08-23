@@ -219,9 +219,7 @@ function allCheck(event){
 		
 	}
 	else{
-		
 		alert('성공')
-		
 	}
 	
 	
