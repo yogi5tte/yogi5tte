@@ -85,7 +85,6 @@ function listConvert(dto) {
 	const li = document.createElement('li')
 	li.className = 'list_1'
 	li.setAttribute('idx',`${dto.idx}`)
-	
 	li.innerHTML += `
 		<a href="#">
 		<p class="pic"><div class="lazy" style="background:url(${cpath}/resources/image/product_img/${dto.product_img})"></div>
@@ -329,18 +328,7 @@ function reviewList(event){
 	})
 	reviewBox.setAttribute('offset', +offset + 5)
 }
-// 모달 제거
-function closeModal() {
-	document.getElementById('modal').classList.add('hidden')
-}
-// 목록 페이지 모달 등장
-function openModal(event) {
-	document.getElementById('modal').classList.remove('hidden')
-}
-// 상세 페이지 모달 등장
-function dtopenModal(event) {
-	document.getElementById('modal').classList.remove('hidden')
-}
+
 // 대문페이지 인원수 감소 함수
 function dncount(event) {
    const resultElement = document.getElementById('result');
@@ -501,27 +489,8 @@ function interceptorHandler(event) {
       location.href = cpath + '/rsvn/reservation'
    }
 }
-function reviewScrollHandler(event) {
-	if(event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight) {
-		const Ul = document.querySelector('.review_scroll > ul')
-		for(let i= 0; i < 5; i++) {
-			Ul.innerHTML += `<li>
-				<div class="guest">
-				<p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_23.png"></p>
-				<strong>리뷰제목</strong>
-				<div class="score_wrap_sm">
-					<div class="score_star star_50"></div>
-					<div class="num">10.0</div>
-				</div>
-				<div class="name"><b>방이름 객실 이용 · </b>작성자닉네임</div>
-				<div class="txt">리뷰내용</div>
-				<span class="date">	</span>
-			</div>
-			<hr>
-		</li>`
-		}
-	}
-}
+
+
 //숙소 예약 버튼 (값 전달)
 function getCheckHandler() { 
  const start = document.getElementById('daterangepicker').value.split('~')[0]
@@ -545,4 +514,61 @@ function getDateHandler(event) {
 		 location.reload()
 	 }
 }
+
+
+
+// list.jsp 가격 낮은 순, 가격 높은 순 정렬 버튼
+function btnHandler(event) {
+   btnArray.forEach(btn => btn.classList.remove('on'))
+   
+   let target = event.target
+   
+   while(target.classList.contains('sp')) {
+      target = target.parentNode
+   }
+   
+   target.classList.add('on')
+}
+
+
+// 메인페이지 에서 검색후 목록으로 왔을때 목록 출력하는 함수
+function listHandler(event) {
+	// 숙소 유형 카테고리 change
+	const title = document.querySelector('.sub_top > h2')
+	title.innerText = `${sessionStorage.getItem('cat')}`
+	// 인원 change
+	const peo = document.getElementById('result')	
+	result.innerText = sessionStorage.getItem('peo')
+	// 지역 change
+	const loc = document.querySelector('.btn_area')
+	if(sessionStorage.getItem('loc') == '서울') {
+		loc.innerHTML += `<span>${sessionStorage.getItem('loc')}</span>강남/역삼/삼성/논현`
+	}
+	else {
+		loArray.forEach(lo => lo.classList.remove('on'))
+		loArray[1].classList.add('on')
+		dloArray.forEach(dlo => dlo.classList.remove('on'))
+		dloArray[1].classList.add('on')
+		dloOneArray.forEach(dlo => dlo.classList.remove('on'))
+		let dlooneArray = document.querySelectorAll('.city_child.on > li > p')
+		dlooneArray[0].classList.add('on')
+		loc.innerHTML += `<span>${sessionStorage.getItem('loc')}</span>해운대/재송`
+	}
+	
+	const product_list = document.getElementById('product_list_area')
+	product_list.innerHTML = ''
+		
+}
+
+function reviewScrollHandler(event) {
+	
+	if(event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight) {
+		reviewList()
+	}
+}
+
+
+
+
+
 
