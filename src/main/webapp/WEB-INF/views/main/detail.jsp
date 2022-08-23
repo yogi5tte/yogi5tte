@@ -112,15 +112,7 @@
 									<strong>가격</strong>
 									<div>
 										<p>
-										<c:choose>
-											<c:when test="${weekEnd[0] or weekEnd[6]}">
-											<b>${room.price + 10000} 원</b>
-											</c:when>
-											<c:otherwise>
 											<b>${room.price } 원</b>
-										</c:otherwise>
-										</c:choose>
-										
 										</p>
 									</div>
 									<button type="button">객실 이용 안내</button>
@@ -327,7 +319,6 @@ $('#daterangepicker').daterangepicker({
 	dateBtn.addEventListener('click', getDateHandler)
 	const resBtn = document.querySelectorAll('.res_btn')
 	resBtn.forEach(btn => btn.addEventListener('click',getCheckHandler))
-	
 </script>
 
 

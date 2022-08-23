@@ -514,6 +514,39 @@ function interceptorHandler(event) {
    }
 }
 
+// 주말 체크 핸들러
+function weekendCount() {
+	let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
+	let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
+	
+	let count = 0
+
+	while(true) {
+		let tmp_date = startDate
+		
+		if(tmp_date.getTime() > endDate) {
+			console.log("count : " + count)
+			break
+		}
+		else{
+			let tmp = tmp_date.getDay()
+			
+			if(tmp == 5 || tmp == 6) {
+				console.log('주말')
+				count++
+			}
+			else {
+				console.log('평일')
+			}
+			tmp_date.setDate(startDate.getDate() + 1)
+		}
+	}
+	if(count == 3){
+		count = 2
+	}
+	 
+	return count
+}
 
 //숙소 예약 버튼 (값 전달)
 function getCheckHandler() { 
@@ -522,9 +555,12 @@ function getCheckHandler() {
  let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
  let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
  let quantity = Math.floor((endDate.getTime() - startDate.getTime())/(1000 * 3600 * 24))
+ let weekendCnt = weekendCount()
+ 
+ 
  
  location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + 
- '&check_in=' + start + '&check_out=' + end + '&quantity=' + quantity
+ '&check_in=' + start + '&check_out=' + end + '&quantity=' + quantity + '&weekendCnt=' + weekendCnt
 }
 
 //7박까지 제한하는 로직 핸들러
