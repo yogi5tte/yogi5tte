@@ -317,5 +317,23 @@ label, button {
     cursor: pointer;
 }
 
+.submit-layer {
+    width: 980px;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 8px 0 32px 0;
+}
+.submit-layer .btn-submit {
+    width: 177px;
+    height: 48px;
+    font-size: 18px;
+    line-height: 0;
+    border: 0;
+}
+.btn-yeogi {
+    background-color: #f2114c;
+    color: #fff;
+    font-weight: 500;
+}
 
 
