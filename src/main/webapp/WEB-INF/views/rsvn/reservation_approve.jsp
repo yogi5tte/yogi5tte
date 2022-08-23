@@ -30,19 +30,19 @@
 			</p>
 			
 			<p class="info"><strong>숙소이름</strong></p>
-			{dto.name}
+			${param.name}
 			<p class="info"><strong>객실타입/기간</strong></p>
-			{dto.roomname}/{dto.day}일
+			${param.roomName}/${rsvnDto.quantity}일
 			<p class="info"><strong>체크인</strong></p>
-			{dto.checkin}
-			<img id="logo_img" src="${cpath }/resources/image/요기오때빨간색로고.png">
+			${rsvnDto.check_in}
+			<img id="logo_img" src="${cpath }/resources/image/yogired.png">
 			<p class="info"><strong>체크아웃</strong></p>
-			{dto.checkout}
+			${rsvnDto.check_out}
 			
 			<p class="info"><strong>예약자</strong></p>
-			{dto.name}
+			${rsvnDto.userName}
 			<p class="info"><strong>전화번호</strong></p>
-			{dto.phoneNumber}
+			${rsvnDto.phoneNumber}
 			<ul>
 				<li>휴대 번호는 예약한 숙소에 전송되며, 퇴실 후 7일간 보관됩니다.</li>
 			</ul>
@@ -51,7 +51,7 @@
 				<p class="pay_info"><strong>결제 정보</strong></p>
 				<div class="account">
 				<p><strong>총 결제금액</strong></p>
-				<p id="price_final"><strong>{price }원</strong></p>
+				<p id="price_final"><strong>${rsvnDto.total_amount }원</strong></p>
 				</div>
 			<p class="cancel_info">예약 취소는 여기어때 앱에서 가능합니다.</p>
 			</div>

@@ -340,7 +340,7 @@ function reviewList(event){
 	})
 	reviewBox.setAttribute('offset', +offset + 5)
 }
-//모달 제거
+// 모달 제거
 function closeModal() {
 	document.getElementById('modal').classList.add('hidden')
 }
@@ -589,6 +589,7 @@ function reviewScrollHandler(event) {
 		reviewList()
 	}
 }
+
 
 
 
