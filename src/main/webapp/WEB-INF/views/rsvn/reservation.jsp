@@ -14,6 +14,9 @@ let roomName = '${roomDto.roomName}'
 let check_in = '${param.check_in}'
 let check_out = '${param.check_out}'
 let quantity = '${param.quantity}'
+let total_amount = '${roomDto.price * param.quantity}'
+let userName = '${rsvnDto.userName}'
+let tel = '${rsvnDto.phoneNumber}'
 
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -21,34 +24,34 @@ let quantity = '${param.quantity}'
 <script src="${cpath }/resources/js/reservation/reservation.js"></script>
 <script src="${cpath }/resources/js/pay/kakaopay.js"></script>
 <div id="reservation_root">
-	<div class="left">
-		<div class="form_skin">
-			<h3>예약자 정보</h3>
-			
-			<form id="reservation_form">
-				<strong>예약자 이름</strong>
-				<p><input type="text" name="userName" placeholder="체크인시 필요한 정보입니다." maxlength="20" required autofocus><p>
-				<strong>휴대폰 번호</strong>
-				<p><input type="tel" id="phoneNumber" name="phoneNumber"  placeholder="체크인시 필요한 정보입니다." maxlength="20" required><p>
-			</form>
-		</div>
-		<hr>
-		<div class="form_skin">
-			<h3>결제 수단 선택</h3>
-			<select id="payment_select" class="select_type" >
-		
-						<option  selected="selected" value="KAKAO">
-                          	  카카오페이
+   <div class="left">
+      <div class="form_skin">
+         <h3>예약자 정보</h3>
+         
+         <form id="reservation_form">
+            <strong>예약자 이름</strong>
+            <p><input type="text" name="userName" placeholder="체크인시 필요한 정보입니다." maxlength="20" required autofocus><p>
+            <strong>휴대폰 번호</strong>
+            <p><input type="tel" id="phoneNumber" name="phoneNumber"  placeholder="체크인시 필요한 정보입니다." maxlength="20" required><p>
+         </form>
+      </div>
+      <hr>
+      <div class="form_skin">
+         <h3>결제 수단 선택</h3>
+         <select id="payment_select" class="select_type" >
+      
+                  <option  selected="selected" value="KAKAO">
+                               카카오페이
                         </option>
                         
                         <option  value="TOSS" >
-                        	    토스
+                               토스
                         </option>
                         <option  value="CARD" >
-                         	   신용/체크카드             
+                               신용/체크카드             
                         </option>
                         <option  value="CELLPHONE" >
-                          	  휴대폰결제
+                               휴대폰결제
                         </option>
                </select>
       </div>
@@ -63,20 +66,26 @@ let quantity = '${param.quantity}'
    
    </div>
    
+   
+   
+   
+   
    <div class="right">
       <div class="reservation_info">
-         <p><strong>숙소이름</strong></p>
-         ${infoDto.name}
-         <p><strong>객실타입/기간</strong></p>
-         ${roomDto.roomName}/${param.difference }박
+         <span id="info_idx" class="rsvn_el hidden">${infoDto.idx }</span>
+         <span id="room_idx" class="rsvn_el hidden">${roomDto.idx }</span>
+         <p id="info_name"><strong>숙소이름/객실 타입</strong></p>
+         ${infoDto.name}/${roomDto.roomName}
+         <p><strong>인원/기간</strong></p>
+         <span id= "human_count" class="rsvn_el">4</span>명/ <span id="quantity" class="rsvn_el">${param.quantity }</span>박
          <p><strong>체크인</strong></p>
-         ${param.check_in}
+         <span id="check_in" class="rsvn_el">${param.check_in}</span>
          <p><strong>체크아웃</strong></p>
-         ${param.check_out}
+         <span id="check_out" class="rsvn_el">${param.check_out}</span>
          <hr>
          <div class="reservation_price_info">
          <p><strong>총 결제 금액(VAT 포함)</strong></p>
-         <p id="price_final"><strong>${roomDto.price }원</strong></p>
+         <p id="amount_p"><strong><span id="total_amount" class="rsvn_el">${roomDto.price * param.quantity }</span>원</strong></p>
          </div>
          <ul>
             <li>해당 객실가는 세금,봉사료가 포함된 금액입니다</li>
@@ -90,6 +99,7 @@ let quantity = '${param.quantity}'
        </div>
        <div class="modal_overlay"></div>
     </div>
+
 
 </div>
 
