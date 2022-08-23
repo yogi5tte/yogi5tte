@@ -1,9 +1,5 @@
 'use strict'
 
-
-
-
-
 //버튼 클릭하면 실행
 async function kakaopaymentReady(event){
    closeModal(event);
@@ -35,30 +31,32 @@ async function kakaopaymentReady(event){
       //price: ${bid.b_bid},
       //가격
         buyer_email:"testiamport@naver.com",
-      buyer_name: rsvnJSON.userName,
+
+		buyer_name: rsvnJSON.userName,
         buyer_tel : rsvnJSON.phoneNumber,
-      //구매자 이름, 구매자 정보도 model값으로 교체
-      buyer_postcode: '123-456',
-   }
-   IMP.init('imp28456871');
-      IMP.request_pay(ob, function(rsp){
-         console.log(rsp);
-         $.ajax({
-            type: 'POST',
-            url : cpath + '/rsvn/reservation/verifyIamport/' + rsp.imp_uid
-         }).done(function(data){
-            
-            if(rsp.paid_amount == data.response.amount){
-               alert('결제 및 결제 검증 완료');
-               const idx = rsvnJSON.idx;
-               
-               location.href = cpath + '/rsvn/reservation_approve/' + idx +'?name=' + name + '&roomName='+ roomName
-   
-            }else{
-               alert('결제 실패');
-               history.back();
-            }
-         })
-         
-      });
+		//구매자 이름, 구매자 정보도 model값으로 교체
+		buyer_postcode: '123-456',
+	}
+	IMP.init('imp28456871');
+		IMP.request_pay(ob, function(rsp){
+			console.log(rsp);
+			$.ajax({
+				type: 'POST',
+				url : cpath + '/rsvn/reservation/verifyIamport/' + rsp.imp_uid
+			}).done(function(data){
+				
+				if(rsp.paid_amount == data.response.amount){
+					alert('결제 및 결제 검증 완료');
+					const idx = rsvnJSON.idx;
+					
+					location.href = cpath + '/rsvn/reservation_approve/' + idx +'?name=' + name + '&roomName='+ roomName
+	
+				}else{
+					alert('결제 실패');
+					history.back();
+				}
+			})
+			
+		});
 }
+

@@ -29,12 +29,21 @@ public class ReservationService {
 		return infoDto;
 	}
 
+	
 	public int insertReservation(ReservationDTO rsvnDto) {
 		
 		return  rsvnDAO.insertReservation(rsvnDto);
 		
 	}
+	public ReservationDTO getRsvnDTO(HashMap<String, Object> param) {
+		return rsvnDAO.selectReservation(param);
+	}
+	public ReservationDTO checkReservation(int idx) {
+		
+		return rsvnDAO.checkReservation(idx);
+	}
 	
+
 
 }
 

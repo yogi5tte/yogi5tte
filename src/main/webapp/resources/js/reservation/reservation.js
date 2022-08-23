@@ -64,7 +64,8 @@ function openModal(event){
 		item.innerHTML += `</div>`
 		item.innerHTML += `<hr>`
 														
-		item.innerHTML += `<div class="mo_btn"><button class="mo_cancel"><span id="cancel">취소</span></button><button onclick="insertRsvnHandler(),kakaopaymentReady()" class="mo_move_payment"><span>동의 후 결제</button></a></div>`
+		item.innerHTML += `<div class="mo_btn"><button class="mo_cancel"><span id="cancel">취소</span></button><button onclick="insertRsvnHandler(),kakaopaymentReady()" class="mo_move_payment" ><span>동의 후 결제</button></a></div>`
+			
 															
 	document.querySelector('.reservation_modal').classList.remove('hidden')
 	
