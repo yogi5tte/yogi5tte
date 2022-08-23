@@ -5,7 +5,12 @@
 <link rel="stylesheet" href="${cpath }/resources/stylecss/main/header.css">
 <link rel="stylesheet" href="${cpath }/resources/stylecss/reservation/approve.css">
     
-
+<c:if test="${empty header.referer }">
+	<script>
+		alert('정상적인 접근이 아닙니다')
+		
+	</script>
+</c:if>
 
 </head>
 <body>
