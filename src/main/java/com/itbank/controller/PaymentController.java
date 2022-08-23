@@ -28,18 +28,9 @@ import com.siot.IamportRestClient.response.Payment;
 @Controller
 @RequestMapping("/")
 public class PaymentController {
-	
-<<<<<<< HEAD
-	//예약 관련 컨트롤러
-	@GetMapping("rsvn/reservation")
-	public void reservation() {//@PathVariable int idx
-	}
-	@GetMapping("rsvn/reservation_approve")
-	public void reservation_apporve() {
-	}
-	
-	//카카오페이 컨트롤러도 이곳에.
-=======
+
+
+
 	 private IamportClient iamportClient;
 	
 
@@ -61,7 +52,7 @@ public class PaymentController {
 		  return iamportClient.paymentByImpUid(imp_uid);
 	  }
 
->>>>>>> branch 'main' of https://github.com/yogi5tte/yogi5tte.git
+
 }
 
 

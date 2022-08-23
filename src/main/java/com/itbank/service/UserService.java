@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.itbank.room.MotelDTO;
+
 import com.itbank.user.User_nonsocialDAO;
 import com.itbank.user.User_nonsocialDTO;
 import com.itbank.user.User_sellerDAO;
@@ -35,12 +35,6 @@ public class UserService {
 		return dao.join(dto);
 	}
 
-
-	public List<MotelDTO> selectList() {
-		return dao.selectList();
-	}
-		
-	
 	public User_sellerDTO seller_login(HashMap<String, String> dto) {
 //		System.out.println("dto:"+ dto.getEmail());
 //		System.out.println("dto:"+ dto.getPassword());

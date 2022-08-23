@@ -11,18 +11,19 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itbank.reservation.ReservationDAO;
 import com.itbank.reservation.ReservationDTO;
-import com.itbank.room.MotelDTO;
+
 import com.itbank.service.MailService;
+import com.itbank.service.ReservationService;
 import com.itbank.service.UserService;
 import com.itbank.user.User_nonsocialDAO;
 import com.itbank.user.User_nonsocialDTO;
@@ -39,6 +40,8 @@ public class UserController {
 	@Autowired User_nonsocialDAO nonUserDAO;
 	
 	@Autowired ReservationDAO resDAO;
+	
+	@Autowired ReservationService resService;
 	
 	@RequestMapping("/join")
 	public void join() {
@@ -97,12 +100,7 @@ public class UserController {
 	
 	
 	@GetMapping("/my_reservation")
-	public ModelAndView my_reservation() {
-		ModelAndView mav = new ModelAndView();
-		List<ReservationDTO> list = resDAO.getReserList();
-		mav.addObject("list", list);
-		return mav;
-	}
+	public void my_reservation() {}
 	
 //	//마이 페이지 및 예약 내역
 //	@RequestMapping("/my_reservation")
@@ -111,12 +109,7 @@ public class UserController {
 //	}
 	
 	@RequestMapping("/my_reservation_detail")
-	public ModelAndView my_reservation_detail() {
-		ModelAndView mav = new ModelAndView();
-		List<ReservationDTO> list = resDAO.getReserList();
-		mav.addObject("list", list);
-		return mav;
-	}
+	public void my_reservation_detail() {}
 	
 	@GetMapping("/mypage")
 	public void mypage() {}
