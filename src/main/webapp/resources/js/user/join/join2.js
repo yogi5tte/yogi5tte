@@ -49,3 +49,9 @@ function authHandler(event) {
 		alert('인증 실패')
 	}
 }
+
+const send_inp = document.getElementById('send_inp')
+
+send_inp.addEventListener('keypress', (event) => {
+	sendMailForm_btn.classList.add('gra_left_right_red')
+})
