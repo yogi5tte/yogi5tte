@@ -10,7 +10,7 @@ package com.itbank.user;
 //	    
 //	);
 public class User_nonsocialDTO {
-	private String email, password, nickName, deleted;
+	private String email, password, nickName;
 	private int idx, type;
 	
 	
@@ -43,12 +43,6 @@ public class User_nonsocialDTO {
 	}
 	public void setType(int type) {
 		this.type = type;
-	}
-	public String getDeleted() {
-		return deleted;
-	}
-	public void setDeleted(String deleted) {
-		this.deleted = deleted;
 	}
 	
 	
