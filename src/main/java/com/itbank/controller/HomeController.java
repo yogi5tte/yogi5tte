@@ -1,7 +1,5 @@
 package com.itbank.controller;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import com.itbank.info.InfoDAO;
 import com.itbank.info.InfoDTO;
+
 import com.itbank.review.ReviewDTO;
-import com.itbank.review.reviewDAO;
+import com.itbank.review.ReviewDAO;
 import com.itbank.room.RoomDAO;
 import com.itbank.room.RoomDTO;
 
@@ -25,7 +25,8 @@ public class HomeController {
 	
 	@Autowired private InfoDAO infoDAO;
 	@Autowired private RoomDAO roomDAO;
-	@Autowired private reviewDAO reviewDAO;
+
+	@Autowired private ReviewDAO reviewDAO;
 	
 	@GetMapping("main")
 	public String main() {
@@ -41,7 +42,7 @@ public class HomeController {
 		mav.addObject("room", mtRoom);
 		return mav;
 	}
-	
+		
 	@ResponseBody
 	@GetMapping("main/detail/{idx}/{offset}")
 	public List<ReviewDTO> reviewList(@PathVariable int idx, @PathVariable int offset){
@@ -52,15 +53,5 @@ public class HomeController {
 	
 	@GetMapping("main/list")
 	public void list() {}
-	
-//	@GetMapping("/list")
-//	public List<MotelDTO> list() {
-//		return roomService.showList();
-//	}
-	
-	
-
-	
-	
 	
 }

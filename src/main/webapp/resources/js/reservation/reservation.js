@@ -7,15 +7,27 @@ function closeModal(event){
 function inspectConditions(){
 	event.preventDefault()
 	let check = document.forms[0]
+	let nameCheck = /^[가-힣a-zA-Z]+$/;
+	let telCheck = /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$/;
 	const agreeCheckAll = document.querySelector('#reservation_agree> label > input[name=agree_all]')
 	if(check.userName.value==""){
 		alert("예약자 이름을 작성해주세요")
 		check.userName.focus();
 		return false;
 	}
+	if(nameCheck.test(check.userName.value) === false){
+		alert("예약자 이름은 한글,영문만 입력 가능합니다")
+		check.userName.focus();
+		return false;
+	}
 	if(check.phoneNumber.value==""){
 		alert("전화번호를 작성해주세요")
 		check.phoneNumber.value.focus();
+		return false;
+	}
+	if(telCheck.test(check.phoneNumber.value)=== false){
+		alert("'010-xxxx-xxxx'형태로 입력해주세요.")
+		check.phoneNumber.focus();
 		return false;
 	}
 	if(agreeCheckAll.checked === false){
@@ -28,67 +40,84 @@ function inspectConditions(){
 }
 
 
-
 function openModal(event){
 
-/*모달에서 이벤트 실행(취소, 결제) -민철
-let target = event.target
-if(target.classList.contains('mo_cancel')){
-	closeModal(event)
-	return
-}
-if(target.classList.contains('mo_move_payment')){
-	kakaopaymentReady(event)
-	return
-}
-*/
-//url, opt fetch - 민철
-/*const reservation_idx =target.getAttribute('idx')
-
-const url = cpath + '/reservation/' + idx
-const opt = {
-	method="GET",
-	headers={
-			'Content-Type' : 'application/json;charset=utf-8'
-			
-	}
-}
-fetch(url,opt)
-.then(resp=>resp.json())
-.then(json=>{
-*/
-	const item = document.querySelector('.modal_content')
-	//modal.classList.toggle("hidden")
+		
+		const item = document.querySelector('.modal_content')
+		
 		item.innerHTML = `<div class="mo_content_info">`
 		item.innerHTML += `<strong class="mo_info">예약내역 확인</strong>`
-		
+
 		item.innerHTML += `<hr>`
-		
+
 		item.innerHTML += `<div class="mo_content_info">`
-			
-		item.innerHTML += `<p class="mo_info_product">{dto.product}</p>`
-		item.innerHTML += `<p class="mo_info_roomName">{dto.roomName} / {dto.day}박</p>`
-		
-		item.innerHTML += `<p class="mo_info_check_in"><span>체크인</span><strong>{dto.check_in}</strong></p>`
-		item.innerHTML +=`<p class="mo_info_check_out"><span>체크아웃</span><strong>{dto.check_out}</strong></p>`
+
+		item.innerHTML += `<p class="mo_info_product">${name}</p>`
+		item.innerHTML += `<p class="mo_info_roomName">${roomName} / ${quantity}박</p>`
+
+		item.innerHTML += `<p class="mo_info_check_in"><span>체크인</span><strong>${check_in}</strong></p>`
+		item.innerHTML +=`<p class="mo_info_check_out"><span>체크아웃</span><strong>${check_out}</strong></p>`
 		item.innerHTML += `<hr>`
-			
+
 		item.innerHTML += `<ul><li><span>취소 및 환불이 불가<span>합니다.</li><br><li>예약 후 15분 이내 고객행복센터로 취소 요청 시 100% 환불 가능합니다.</li></ul>`
-		
+
 		item.innerHTML += `</div>`
 		item.innerHTML += `<hr>`
-		
-		item.innerHTML += `<div class="mo_btn"><button class="mo_cancel"><span id="cancel">취소</span></button><button class="mo_move_payment"><span>동의 후 결제</button></a></div>`
-		
-			
-		document.querySelector('.reservation_modal').classList.remove('hidden')
-		
-		const mo_cancel = document.querySelector('.mo_cancel')
-		mo_cancel.addEventListener('click',closeModal)
-		
-		const mo_move_payment = document.querySelector('.mo_move_payment')
-		mo_move_payment.addEventListener('click',kakaopaymentReady)
+														
+		item.innerHTML += `<div class="mo_btn"><button class="mo_cancel"><span id="cancel">취소</span></button><button onclick="insertRsvnHandler(),kakaopaymentReady()" class="mo_move_payment"><span>동의 후 결제</button></a></div>`
+															
+	document.querySelector('.reservation_modal').classList.remove('hidden')
+	
+	const mo_cancel = document.querySelector('.mo_cancel')
+	mo_cancel.addEventListener('click',closeModal)
+	
+//	const mo_move_payment = document.querySelector('.mo_move_payment')
+//	
+//	mo_move_payment.addEventListener('click',insertRsvnHandler)
+	
 }
+
+	 async function insertRsvnHandler(event){
+//		event.preventDefault()
+//		let target = event.target
+		let target = document.forms[0]
+		const formData = new FormData(target)
+		const pList = document.querySelectorAll('.rsvn_el')
+		
+		const ob = {}
+		
+		for(let key of formData.keys()){
+			ob[key] = formData.get(key)
+		}
+		//v -> div의 value 
+		for(let v of pList){
+//			console.log(v.id, v.innerText)
+			ob[v.id] = v.innerText
+		}
+		
+		console.log(ob)
+		
+		
+		const url = cpath + '/rsvn/reservation'
+		const opt = {
+			method : 'POST',
+			body : JSON.stringify(ob),
+			headers:{
+				'Content-type': 'application/json;charset=utf-8'
+			}
+		}
+		await fetch(url,opt)
+		.then(resp=>resp.text())
+//		.then(text=>{
+//			if(text == 1){
+//				let click_event = new Event("click")
+//				event.target.dispatchEvent(click_event);
+//				event.target.addEventListener('click',kakaopaymentReady)
+//			}
+//		})
+		
+	}
+
 	
 	//전체 동의 후, 개별 동의 1개라도 체크가 안되어있을 시, 전체동의 체크 풀리는 핸들러(민철)
 	function checkAll(){
@@ -125,3 +154,8 @@ fetch(url,opt)
 	else 				agreeArray.forEach(box => box.removeAttribute('checked'))
 	*/
 	}
+	
+
+	
+	
+	

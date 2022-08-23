@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface reviewDAO {
+public interface ReviewDAO {
 	
 	@Select("select * from review "
 			+ "where info_idx = #{idx} and isDeleted = 'n' "
@@ -16,6 +16,4 @@ public interface reviewDAO {
 			+ "fetch next 5 rows only")
 	List<ReviewDTO> reviewList(@Param("idx")int idx, @Param("offset") int offset);
 
-	
-	
 }

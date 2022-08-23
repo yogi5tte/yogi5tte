@@ -21,7 +21,7 @@
 	<div class="approve_wrap">
 		<h2>예약 완료 내역</h2>
 		<div class="btn_set">
-			<button id="home_btn"><span>홈으로 돌아가기</span></button>
+			<button id="home_btn" onclick="location.href='${cpath}'"><span>홈으로 돌아가기</span></button>
 			<button id="pdf_btn"><span>PDF로 저장</span></button>
 		</div>
 	</div>	
@@ -48,7 +48,7 @@
 			</ul>
 			<hr>
 			<div class="price_info">
-				<p><strong>결제 정보</strong></p>
+				<p class="pay_info"><strong>결제 정보</strong></p>
 				<div class="account">
 				<p><strong>총 결제금액</strong></p>
 				<p id="price_final"><strong>{price }원</strong></p>

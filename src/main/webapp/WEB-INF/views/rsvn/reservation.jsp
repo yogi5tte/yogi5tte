@@ -9,43 +9,46 @@
 </head>
 <body>
 <script>
-var name= '${infoDto.name}'
-var roomName = '${roomDto.roomName}'
-   
+let name= '${infoDto.name}'
+let roomName = '${roomDto.roomName}'
+let check_in = '${param.check_in}'
+let check_out = '${param.check_out}'
+let quantity = '${param.quantity}'
+
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script src="${cpath }/resources/js/reservation/reservation.js"></script>
 <script src="${cpath }/resources/js/pay/kakaopay.js"></script>
 <div id="reservation_root">
-   <div class="left">
-      <div class="form_skin">
-         <h3>예약자 정보</h3>
-         
-         <form id="reservation_form">
-            <strong>예약자 이름</strong>
-            <p><input type="text" name="userName" placeholder="체크인시 필요한 정보입니다." maxlength="20" required autofocus><p>
-            <strong>휴대폰 번호</strong>
-            <p><input type="tel" id="phoneNumber" name="phoneNumber"  placeholder="체크인시 필요한 정보입니다." maxlength="20" required><p>
-         </form>
-      </div>
-      <hr>
-      <div class="form_skin">
-         <h3>결제 수단 선택</h3>
-         <select id="payment_select" class="select_type" >
-      
-                  <option  selected="selected" value="KAKAO">
-                               카카오페이
+	<div class="left">
+		<div class="form_skin">
+			<h3>예약자 정보</h3>
+			
+			<form id="reservation_form">
+				<strong>예약자 이름</strong>
+				<p><input type="text" name="userName" placeholder="체크인시 필요한 정보입니다." maxlength="20" required autofocus><p>
+				<strong>휴대폰 번호</strong>
+				<p><input type="tel" id="phoneNumber" name="phoneNumber"  placeholder="체크인시 필요한 정보입니다." maxlength="20" required><p>
+			</form>
+		</div>
+		<hr>
+		<div class="form_skin">
+			<h3>결제 수단 선택</h3>
+			<select id="payment_select" class="select_type" >
+		
+						<option  selected="selected" value="KAKAO">
+                          	  카카오페이
                         </option>
                         
                         <option  value="TOSS" >
-                               토스
+                        	    토스
                         </option>
                         <option  value="CARD" >
-                               신용/체크카드             
+                         	   신용/체크카드             
                         </option>
                         <option  value="CELLPHONE" >
-                               휴대폰결제
+                          	  휴대폰결제
                         </option>
                </select>
       </div>
@@ -87,7 +90,6 @@ var roomName = '${roomDto.roomName}'
        </div>
        <div class="modal_overlay"></div>
     </div>
-
 
 </div>
 

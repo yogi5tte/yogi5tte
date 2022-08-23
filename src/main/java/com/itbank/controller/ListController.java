@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itbank.room.RoomDTO;
@@ -14,14 +15,11 @@ public class ListController {
 
 	@Autowired private RoomService roomService;
 	
-	@GetMapping("/listload")
-	public List<RoomDTO> list() {
-		return roomService.selectList();
+	@GetMapping("/listload/{category}/{pType}/{human_count}")
+	public List<RoomDTO> list(@PathVariable int category,
+							   @PathVariable int pType,
+							   @PathVariable int human_count) {
+		return roomService.selectList(category, pType, human_count);
 	}
 	
-//	@GetMapping("/listload/{target}")
-//	public List<MotelDTO> list(@PathVariable String target) {
-//		System.out.println(target);
-//		return roomService.selectList(target);
-//	}
 }

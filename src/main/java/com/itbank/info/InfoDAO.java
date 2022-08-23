@@ -10,9 +10,9 @@ public interface InfoDAO {
 
 	@Select("select * from info where idx = #{idx}")
 	InfoDTO selectInfo(int idx);
-
+	
 	@Select("select * from info a join room b "
-	         + "on a.idx = b.info_idx where b.idx = #{idx}")
-	   InfoDTO checkProduct(HashMap<String, String> room_idx);
+			+ "on a.idx = b.info_idx where b.idx = #{idx}")
+	InfoDTO checkProduct(HashMap<String, String> room_idx);
 	
 }

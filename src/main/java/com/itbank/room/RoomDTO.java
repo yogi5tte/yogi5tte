@@ -1,5 +1,6 @@
 package com.itbank.room;
 
+
 //	create table room(
 //	idx             number          default room_seq.nextval primary key,
 //	name            varchar2(50)    not null,
@@ -61,7 +62,7 @@ public class RoomDTO {
 		return district;
 	}
 	public void setDistrict(String district) {
-		this.district = district;
+		this.district = district;	
 	}
 	
 }
