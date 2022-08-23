@@ -28,7 +28,9 @@ import com.siot.IamportRestClient.response.Payment;
 @Controller
 @RequestMapping("/")
 public class PaymentController {
-	
+
+
+
 	 private IamportClient iamportClient;
 	
 
@@ -49,6 +51,7 @@ public class PaymentController {
 			 @PathVariable(value="imp_uid") String imp_uid) throws IamportResponseException, IOException{
 		  return iamportClient.paymentByImpUid(imp_uid);
 	  }
+
 
 }
 
