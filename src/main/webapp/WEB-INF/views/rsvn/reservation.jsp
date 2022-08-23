@@ -16,7 +16,7 @@ let check_out = '${param.check_out}'
 let quantity = '${param.quantity}'
 let total_amount = '${roomDto.price * param.quantity}'
 let userName = '${rsvnDto.userName}'
-let tel = '${rsvnDto.phoneNumber}'
+let phoneNumber = '${rsvnDto.phoneNumber}'
 
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
