@@ -35,7 +35,7 @@
 			${param.roomName}/${rsvnDto.quantity}일
 			<p class="info"><strong>체크인</strong></p>
 			${rsvnDto.check_in}
-			<img id="logo_img" src="${cpath }/resources/image/요기오때빨간색로고.png">
+			<img id="logo_img" src="${cpath }/resources/image/yogired.png">
 			<p class="info"><strong>체크아웃</strong></p>
 			${rsvnDto.check_out}
 			

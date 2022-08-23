@@ -112,7 +112,15 @@
 									<strong>가격</strong>
 									<div>
 										<p>
+										<c:choose>
+											<c:when test="${weekEnd[0] or weekEnd[6]}">
+											<b>${room.price + 10000} 원</b>
+											</c:when>
+											<c:otherwise>
 											<b>${room.price } 원</b>
+										</c:otherwise>
+										</c:choose>
+										
 										</p>
 									</div>
 									<button type="button">객실 이용 안내</button>
@@ -308,17 +316,18 @@ $('#daterangepicker').daterangepicker({
 		"monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
 		
 	},
-	"startDate": new Date(),
-	"endDate": sysDate,
+	"startDate": sessionStorage.getItem('start'),
+	"endDate": sessionStorage.getItem('end'),
 	"drops": "auto",
 	"minDate": new Date()
 })
-	
+	const weekEnd = $('#daterangepicker').data('daterangepicker').locale['daysOfWeek']
+	console.log(weekEnd)
  	const dateBtn = document.querySelector('.applyBtn')
 	dateBtn.addEventListener('click', getDateHandler)
 	const resBtn = document.querySelectorAll('.res_btn')
 	resBtn.forEach(btn => btn.addEventListener('click',getCheckHandler))
- 
+	
 </script>
 
 
