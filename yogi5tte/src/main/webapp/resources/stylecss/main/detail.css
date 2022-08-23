@@ -1,0 +1,713 @@
+@charset 'utf-8';
+
+#content {
+	width: 1024px;
+	margin: 100px auto 0 auto;
+}
+.top {
+	overflow: hidden;
+	padding: 0 31px;
+}
+.top > .left {
+	float: left;
+	width: 490px;
+}
+.gallery_pc {
+	display: block;
+	position: relative;
+	
+}
+.gallery_pc > .gallery_top {
+	width: 490px;
+	height: 394px;
+	margin-bottom: 13px;
+	margin-left: 11px;
+	position: relative;
+	overflow: hidden;
+    z-index: 1;
+}
+.gallery_pc > .gallery_top > .gallery_top_wrap {
+	width: 5880px;
+	display: flex;
+
+}
+.gallery_pc > .gallery_top > .gallery_top_wrap > div > img {
+	width: 490px;
+	height: 394px;
+}
+
+
+.gallery_pc > .gallery_btm {
+	width: 480px;
+	height: 94px;
+	margin: 0 0 0 16px;
+	background: #fff;
+	position: relative;
+	overflow: hidden;
+    z-index: 1;
+}
+.gallery_pc > .gallery_btm > .gallery_btm_wrap {
+	width: 1428px;
+	display: flex;
+/* 	transition-duration: 0.5s; */
+	cursor: pointer;
+}
+.gallery_pc > .gallery_btm > .gallery_btm_wrap > div > img {
+	width: 119px;
+	height: 90px;
+	opacity: 90%;
+}
+.gallery_pc .button_prev {
+    top: 400px;
+    left: 4px;
+    width: 15px;
+    height: 100px;
+    margin: 0;
+    background: url("https://image.goodchoice.kr/images/web_v3/ico_arr_gt_3.png") 6px 50% no-repeat;
+    background-size: 8px auto;
+    transform: rotate(180deg);
+    position: absolute;
+    cursor: pointer;
+    z-index: 1;
+    border: none;
+    outline: none;
+}
+.gallery_pc .button_next {
+    top: 400px;
+    left: 493px;
+    width: 15px;
+    height: 100px;
+    margin: 0;
+    background: url("https://image.goodchoice.kr/images/web_v3/ico_arr_gt_3.png") 6px 50% no-repeat;
+    background-size: 8px auto; 
+    position: absolute;
+    cursor: pointer;
+    z-index: 1;
+    border: none;
+    outline: none;
+}
+.selectView {
+	border: 2px solid #f7323f;
+	border-radius: 4px;
+}
+
+.swiper-wrapper {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+}
+.gallery_pc .gallery_btn li {
+    display: inline-block;
+    width: 115px;
+    height: 86px;
+    padding: 2px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+/* right */
+
+.top > .right {
+	float: right;
+	width: 424px;
+}
+.right > .info {
+	padding: 0;
+}
+.right > .info > h2 {
+	display: inline;
+	margin: 9px 0 0 0;
+	font-size: 28px;
+	font-weight: bold;
+}
+.right .info .score_cnt {
+    position: relative;
+    clear: both;
+    margin: 9px 0 6px 0;
+    font-size: 18px;
+    color: rgb(255,167,38);
+}
+.right .info .score_cnt span {
+    display: inline-block;
+    position: relative;
+    top: -3px;
+    height: 18px;
+    margin-right: 7px;
+    padding: 0 4px;
+    border-radius: 4px;
+    background: rgb(255,167,38);
+    font-size: 14px;
+    line-height: 17px;
+    color: #fff;
+}
+.right .info .score_cnt b {
+    font-weight: normal;
+    color: rgba(0,0,0,0.38);
+}
+em {
+	font-style: normal;
+}
+
+.right .info .address {
+    margin: 6px 0 8px 0;
+    font-size: 18px;
+}
+.right .info .address {
+    padding-top: 6px;
+    color: rgba(0,0,0,0.56);
+}
+.right .map {
+/* 	border: 1px dashed red; */
+	height: 248px;
+}
+.right .comment {
+    display: block;
+    position: relative;
+    margin-top: 13px;
+    padding: 26px 24px;
+    background: rgb(250,250,250);
+}
+.right .comment strong {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: rgba(0,0,0,0.87);
+}
+.right .comment button {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: rgb(0,121,107);
+}
+.right .comment .clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 52px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(0,0,0,0.56);
+}
+.right .comment div {
+    display: block;
+    overflow: hidden;
+    height: auto;
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(0,0,0,0.56);
+}
+
+
+/* tab */
+
+.tab {
+    width: 962px;
+    margin: 0 auto;
+    padding: 0 16px;
+    margin-top: 38px;
+    clear: both;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.tab .on {
+    border-bottom: 3px solid rgb(242,17,76);
+    font-weight: bold;
+    color: rgb(230,28,81);
+}
+.tab button {
+    float: none;
+    width: auto;
+    height: 72px;
+    margin-right: 24px;
+    padding: 0;
+    border: none;
+    border-bottom: 2px solid #fff;
+    background: none;
+    font-size: 18px;
+    color: rgba(0,0,0,0.38);
+}
+.tab button:nth-child(2) {
+    width: auto;
+}
+
+.div_tab > div {
+	display: none;
+}
+.div_tab > .on {
+	display: block;
+}
+
+/* 달력	*/
+#daterangepicker {
+	width: 209px;
+	height: 37px;
+	border: none;
+	cursor: pointer;
+	background-color: #FAFAFAB3;
+	border-bottom: 1px solid rgba(0,0,0,0.08);
+	border-right: 1px solid rgba(0,0,0,0.08);
+	border-radius: 4px;
+	outline: none;
+}
+.applyBtn {
+	background-color: #F7323F;
+	border: 1px solid #F7323F;
+}
+
+.applyBtn:hover {
+	background-color: #F7323F;
+	border: 1px solid #F7323F;
+}
+ .applyBtn:disabled { 
+	background-color: #F7323F;
+	border: 1px solid #F7323F;
+}
+
+/* 객실 안내 예약 */
+.room_info {
+    background: #fff;
+    width: 962px;
+    margin: 0 auto;
+}
+.room_info .btn_date {
+    display: inline-block;
+    position: relative;
+    width: 248px;
+    height: 40px;
+    margin: 32px 0;
+    padding: 0 0 0 38px;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 4px;
+    background: rgba(250,250,250,0.7) url("	https://image.goodchoice.kr/images/web_v3/ico_cal_2.png") 3px 50% no-repeat;
+    background-size: 32px auto;
+    font-size: 18px;
+    line-height: 40px;
+    color: rgba(0,0,0,0.87);
+}
+.room_info .room {
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 24px;
+    background: #fff;
+    padding: 24px 24px 24px 424px;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.room_info .pic_view {
+    position: absolute;
+    top: 23px;
+    left: 23px;
+    width: 376px;
+    height: 226px;
+    cursor: pointer;
+}
+.room_info .pic_view img {
+    width: 376px;
+    height: 226px;
+}
+.room_info .room .title {
+	display: block;
+    height: 37px;
+    font-size: 20px;
+}
+.room_info .room .info {
+    overflow: hidden;
+    margin: 0;
+    min-height: 188px;
+}
+.room_info .info .motel .price {
+    position: relative;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    border-bottom: none;
+    box-sizing: border-box;
+}
+.room_info .info .motel .price strong {
+    display: block;
+    padding-top: 41px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    height: 76px;
+    font-size: 16px;
+    line-height: 1;
+}
+.room_info .info .motel .price div {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    font-size: 18px;
+    text-align: right;
+}
+.room_info .info .motel .price div p b {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 1)
+}
+.room_info .info .motel .price button {
+    height: 48px;
+    margin: 12px 0;
+    font-size: 16px;
+    line-height: 48px;
+    padding: 0;
+    background: #fff url("https://image.goodchoice.kr/images/web_v3/ico_arr_gt_2.png") 100% 50% no-repeat;
+    background-size: 12px auto;
+    color: rgba(0,0,0,0.87);
+    text-align: left;
+}
+.room_info .info button {
+    display: block;
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #fff;
+    text-align: center;
+}
+.gra_left_right_red {
+    background: linear-gradient(to right, rgba(255,0,85,1) 1%,rgba(230,34,67,1) 100%);
+}
+
+
+
+
+
+
+
+/* 숙소 정보 */
+.detail_info {
+    width: 962px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.default_info {
+    padding: 12px 57px 48px 57px;
+}
+.detail_info section {
+	overflow: hidden;
+    margin: 0 0 23px 0;
+    border-radius: 5px;
+    background: rgb(250,250,250);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 리뷰 */
+.review {
+    width: 962px;
+    margin: 0 auto;
+}
+.review .score_top {
+	padding: 44px 0;
+	text-align: center;	
+}
+.review .score_top strong {
+    display: block;
+    padding: 0 0 10px 0;
+    font-size: 24px;
+    font-weight: normal;
+    text-align: center;
+}
+.review > .review_scroll {
+	height: 2140px;
+	overflow: scroll;
+
+}
+.review .score_wrap {
+    display: inline-block;
+    overflow: hidden;
+}
+.score_star {
+    display: inline-block;
+    width: 180px;
+    height: 36px;
+    background: url("https://image.goodchoice.kr/images/web_v3/bg_score.png") 0 0 no-repeat;
+    background-size: 180px auto;
+}
+.score_star.star_45 {
+    background-position: -2px -37px;
+}
+.review .score_wrap .num {
+    display: inline-block;
+    top: -1px;
+    padding-left: 12px;
+    font-size: 32px;
+    vertical-align: top;
+}
+.review .score_top p {
+    margin-top: 22px;
+    font-size: 18px;
+    color: #000000DE;
+}
+.review .score_top p b {
+    font-size: 20px;
+    font-weight: normal;
+}
+.review .score_top p span {
+    display: inline-block;
+    width: 32px;
+    color: rgba(0,0,0,0.08);
+}
+.review ul li {
+    position: relative;
+    padding: 47px 0 28px 0;
+    border-top: 1px solidrgba(0,0,0,0.08);
+
+}
+.review .guest .pic {
+    display: inline-block;
+    overflow: hidden;
+    position: absolute;
+    top: 47px;
+    left: 16px;
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+    background: url("https://image.goodchoice.kr/images/web_v3/ico_none.png") 0 0 no-repeat;
+    background-size: 56px auto;
+}
+.review .guest .pic img {
+    width: 56px;
+    height: 56px;
+}
+.review .guest strong {
+    display: block;
+    padding: 0 16px 8px 96px;
+    font-size: 18px;
+    line-height: normal;
+}
+.score_wrap_sm {
+    margin-left: 96px;
+    display: block;
+}
+.score_wrap_sm .score_star {
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+    background: url("https://image.goodchoice.kr/images/web_v3/bg_score.png") 0 0 no-repeat;
+    background-size: 100px auto;
+}
+.score_wrap_sm .num {
+    display: inline-block;
+    position: relative;
+    top: -1px;
+    margin-left: 4px;
+    font-size: 18px;
+    vertical-align: top;
+}
+.review .guest .name {
+    margin-left: 96px;
+    padding-top: 18px;
+    font-size: 16px;
+    color: rgba(0,0,0,0.56);
+}
+.review .guest .name b {
+    font-weight: normal;
+}
+.review .guest .txt {
+    margin: 11px 0 0 96px;
+    font-size: 16px;
+    line-height: 26px;
+}
+.review .guest .date {
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 96px;
+    padding: 13px 0 0 0;
+    color: rgba(0,0,0,0.56);
+}
+
+
+
+/* 부트스트랩 아코디언 */
+.accordion-item {
+    background-color: #fff;
+}
+.accordion-button {
+    height: 80px;
+    padding: 0 16px;
+    font-size: 18px;
+    background: #fff;
+    text-align: left;
+    cursor: pointer;
+}
+.accordion-button:not(.collapsed) {
+    color: black;
+    background-color: white;
+}
+.accordion-button:focus {
+    z-index: 3;
+    border-color: white;
+    outline: 0;
+    box-shadow: none;
+}
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    transform: rotate(-180deg);
+}
+.accordion-body  > .table_wrap >  ul {
+	display: flex;
+	justify-content: space-around;
+}
+.table_wrap > ul > li {
+	width: 91px;
+	height: 60px;
+	margin: auto;
+    padding-top: 43px;
+    background-position: 50% 0 !important;
+    background-size: 35px auto !important;
+    font-size: 13px;
+    color: rgba(0,0,0,0.56);
+    text-align: center;
+}
+.theme_1 {
+	background: url(//image.goodchoice.kr/images/web_v3/theme/ic_facility_wifi_dark_secondary_normal_25px.png) 0 0 no-repeat;
+}
+.theme_2 {
+	background: url('//image.goodchoice.kr/images/web_v3/theme/ic_facility_cafe_dark_secondary_normal_25px.png') 0 0 no-repeat;
+}
+.theme_3 {
+	background: url('//image.goodchoice.kr/images/web_v3/theme/ic_facility_tv_dark_secondary_normal_25px.png') 0 0 no-repeat;
+}
+.theme_4 {
+	background: url('//image.goodchoice.kr/images/web_v3/theme/ic_facility_air_conditioner_dark_secondary_normal_25px.png') 0 0 no-repeat;
+}
+.theme_5 {
+	background: url('//image.goodchoice.kr/images/web_v3/theme/ic_facility_shower_dark_secondary_normal_25px.png') 0 0 no-repeat;
+}
+.theme_6 {
+	background: url('//image.goodchoice.kr/images/web_v3/theme/ic_facility_hair_dryer_dark_secondary_normal_25px.png') 0 0 no-repeat;
+}
+.theme_7 {
+	background: url('//image.goodchoice.kr/images/web_v3/theme/ic_facility_smoke_free_dark_secondary_normal_25px.png') 0 0 no-repeat;
+}
+.hidden {
+	display: none;
+}
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.78);
+	z-index: 400
+}
+.content {
+	width: 600px;
+    margin: -250px 0 0 -265px;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    left: 50%;
+    height: 500px;
+    border-radius: 4px;
+    background: #fff;
+    z-index: 450
+}
+.content .fix_title {
+	display: block !important;
+    position: relative;
+    height: 64px;
+    padding-left: 32px;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    font-size: 18px;
+    line-height: 64px;
+    font-weight: bold;
+    text-align: left;
+}
+.content .fix_title button {
+	top: 10px;
+    right: 17px;
+    display: inline-block;
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: url("https://image.goodchoice.kr/images/web_v3/ico_close.png") 50% 50% no-repeat;
+    background-size: 24px auto;
+    text-indent: -9999px;
+}
+.content .iscroll_up {
+	background: #fff;
+	top: 64px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1;
+	overflow: scroll;
+}
+::-webkit-scrollbar {
+    display: none; 
+}
+.content .iscroll_up .scroller section {
+    margin: 0 32px 0 32px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    font-size: 16px;
+    color: rgba(0,0,0,0.56);
+    text-align: left;
+}
+.content .iscroll_up .scroller section strong {
+	display: block;
+    margin: 37px 0 10px 0;
+}
+.dot_txt {
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(0,0,0,0.56);
+}
+.dot_txt li {
+    line-height: 26px;
+    margin-bottom: 7px;
+    padding-left: 14px;
+    background: url("https://image.goodchoice.kr/images/web_v3/ico_bul_3.png") 0 2px no-repeat;
+    background-size: 12px auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

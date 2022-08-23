@@ -1,0 +1,481 @@
+@charset "utf-8";
+@font-face {
+   font-family: 'yg-jalnan';
+   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+   font-weight: normal;
+   font-style: normal;
+}
+h2 {
+   font-size: 24px;
+    margin-bottom: 35px;
+}
+#content {
+       overflow: hidden;
+}
+.main_spot {
+    width: 1024px;
+    height: 672px;
+    background: #fff url("https://images.unsplash.com/photo-1501117716987-c8c394bb29df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80") 50% 100% no-repeat;
+    background-size: 960px auto;
+    position: relative;
+    margin: 26px auto 40px auto;
+}
+.main_spot > h2 {
+    position: absolute;
+    font-size: 30px;
+    top: 100px;
+    margin-left: 63px;
+    color: white;
+    font-family: 'yg-jalnan';
+}
+.main_link {
+    width: 917px;
+    margin: 45px 54px;
+    position: absolute;
+    padding: 32px 0 29px 0px;
+    background-color: white;
+    top: 108px;
+    overflow: hidden;
+}
+.main_link > ul {
+    overflow: hidden;
+    display: flex;
+    justify-content: space-evenly;
+    height: 170px;
+}
+.main_link li {
+    float: left;
+    width: 123px;
+    height: 100px;
+    margin-right: 20px;
+}
+.main_link li a {
+    display: block;
+    height: 107px;
+    font-size: 18px;
+    color: rgba(0,0,0,0.56);
+    text-align: center;
+    overflow: hidden;
+}
+.main_link li a span {
+    display: inline-block;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto;
+}
+.main_link li a p {
+    height: 20px;
+    padding-top: 7px;
+	color: black;
+    font-family: 'yg-jalnan';
+}
+.main_link ul li.selected a p {
+   color: #f7323f; 
+}
+
+.main_link .ico_01 {
+    background: url("https://image.goodchoice.kr/images/web_v3/ico_category_180801.png") -144px -72px no-repeat;
+    background-size: 216px auto;
+}
+.main_link .ico_02 {
+    background: url("https://image.goodchoice.kr/images/web_v3/ico_category_180801.png") -144px 0 no-repeat;
+    background-size: 216px auto;
+}
+.main_link .ico_03 {
+    background: url("https://image.goodchoice.kr/images/web_v3/ico_category_180801.png") -72px -144px no-repeat;
+    background-size: 216px auto;
+}
+.main_link .selectctg {
+   display: flex;
+   justify-content: space-around;
+   margin: 0 10px;
+}
+
+#myRange {
+   -webkit-appearance: none; 
+    width: 100%; 
+    height: 6px; 
+    border-radius: 5px; 
+    background: rgb(242,17,76);
+    margin-bottom: 15px;
+}
+input[type=range]::-webkit-slider-thumb {
+   -webkit-appereance: none;
+   appearance: none; 
+    width: 20px; 
+    height: 20px; 
+    border-radius: 50%; 
+    background: rgb(242,7,76);
+    cursor: pointer; 
+}
+#value {
+   font-size: 18px;
+   font-weight: bold;
+}
+.btn_loc {
+   display: block;
+    position: relative;
+    width: 246px;
+    height: 40px;
+    padding: 0 0 0 39px;
+    border: 1px solid #dadada;
+    border-radius: 4px;
+    font-size: 18px;
+    line-height: 40px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.btn_loc:after {
+   display: inline-block;
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 6px;
+    width: 32px;
+    height: 32px;
+    background: url("https://img.icons8.com/ios/250/000000/marker.png") 0 0 no-repeat;
+    background-size: 23px auto;
+}
+.btn_loc span {
+   display: block;
+   font-size: 17px;
+   color: rgba(0,0,0,0.56);
+}
+.btn_loc div {
+/*    display: none; */
+   display: block;
+   width: 246px;
+   height: 100px;
+   margin-top: 20px;
+   border: 1px solid black;
+   position: absolute;
+}
+.btn_many {
+   display: block;
+    position: relative;
+    width: 246px;
+    height: 40px;
+    padding: 0 0 0 39px;
+    border: 1px solid #dadada;
+    border-radius: 4px;
+    font-size: 18px;
+    line-height: 40px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.btn_many:after {
+   display: inline-block;
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 6px;
+    width: 32px;
+    height: 32px;
+    background: url("https://img.icons8.com/ios/250/000000/user.png") 0 0 no-repeat;
+    background-size: 23px auto;
+}
+.btn_many span {
+   display: block;
+   font-size: 17px;
+   color: rgba(0,0,0,0.56);
+}
+
+/* 달력   */
+.main_link .selectctg .btn_date {
+    display: inline-block;
+    position: relative;
+    width: 246px;
+    height: 40px;
+    padding: 0 0 0 39px;
+    border: 1px solid #dadada;
+    border-radius: 4px;
+    font-size: 18px;
+    line-height: 40px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.main_link .selectctg .btn_date:after {
+    display: inline-block;
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    width: 32px;
+    height: 32px;
+    background: url("https://image.goodchoice.kr/images/web_v3/ico_cal_2.png") 0 0 no-repeat;
+    background-size: 32px auto;
+}
+#daterangepicker {
+   width: 205px;
+   height: 32px;
+   cursor: pointer;
+   outline: none;
+   border: none;
+   color: rgba(0,0,0,0.56);
+}
+.applyBtn {
+   background-color: #F7323F;
+   border: 1px solid #F7323F;
+}
+.applyBtn:hover {
+   background-color: #F7323F;
+   border: 1px solid #F7323F;
+}
+.applyBtn:disabled { 
+   background-color: #F7323F;
+   border: 1px solid #F7323F;
+}
+.main_link .selectctg button {
+    width: 80px;
+    border: 1px solid rgb(242,7,76);
+    background: rgb(242,7,76);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 16px;
+    height: 40px;
+}
+
+.recommend {
+    width: 1024px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 31px 0 31px;
+}
+.recommend li {
+    overflow: hidden;
+    float: left;
+    position: relative;
+    width: 473px;
+    height: 162px;
+    margin: 0 0 28px 0;
+    padding: 0 24px 0 186px;
+    border: 1px solid rgba(0,0,0,0.08);
+}
+.recommend li:nth-child(even) {
+    margin-left: 16px;
+}
+.recommend li a {
+    display: block;
+    height: 162px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(0,0,0,0.56);
+    box-sizing: border-box;
+}
+.recommend li img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 162px;
+    height: 162px;
+}
+.recommend li strong {
+    display: block;
+    padding: 38px 0 14px 0;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: normal;
+    color: rgb(0,121,107);
+}
+.appdown {
+    display: block;
+    overflow: hidden;
+    width: 962px;
+    height: 320px;
+    margin: 64px auto 78px auto;
+    background: url("https://image.goodchoice.kr/images/web_v3/bg_appdown.png") center center no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+.appdown p {
+    margin: 103px 0 27px 0;
+    font-size: 28px;
+    color: rgba(0,0,0,0.87);
+}
+.appdown div a {
+    display: inline-block;
+    width: 168px;
+    height: 52px;
+    margin: 0 4px;
+}
+.appdown div a img{
+    width: 168px;
+    height: auto;
+}
+.appdown div button{
+      display:none
+}
+.event_main {
+    width: 962px;
+    margin: 0 auto;
+}
+.event_main h2 {
+    padding: 0;
+}
+.swiper-container {
+    width: 962px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.swiper-wrapper {
+    position: relative;
+    width: 3848px;
+    height: 100%;
+    display: flex;
+    box-sizing: content-box;
+    transition-duration: 0.5s;
+}
+.swiper-slide {
+    display: flex;
+    width: 962px;
+    height: 100%;
+    position: relative;
+}
+.swiper-slide > a > img{
+    width: 100%;
+}
+
+/* Ad */
+
+.ad_ask {
+    width: 962px;
+    margin: 24px auto 0 auto;
+}
+.ad_ask .pc {
+    display: block;
+}
+.ad_ask ul li:first-child {
+    float: left;
+    width: 473px;
+    margin-bottom: 8px;
+}
+.ad_ask ul li:last-child {
+    float: right;
+    width: 473px;
+}
+.ad_ask ul li {
+    overflow: hidden;
+    height: 200px;
+    border: 1px solid rgba(0,0,0,0.04);
+}
+.ad_ask ul li a {
+    display: block;
+    height: 200px;
+    padding: 0 0 0;
+}
+.ad_ask ul li a img {
+    width: auto;
+    height: 200px;
+}
+
+/* 지역, 날짜, 인원 선택하는 폼 */
+.hidden {
+   display: none
+}
+.loc {
+   width: 246px;
+   height: 210px;
+   border: 1px solid #dadada;
+   background: #fff;
+   position: absolute;
+   top: 403px;
+   left: 73px;
+   z-index: 10;
+   border-radius: 10px;
+   margin: auto;
+}
+.loc p {
+	width: 100%;
+	height: 70px;
+	font-size: 16px;
+	color: black;
+	text-align: left;
+	padding-left: 10px;
+	line-height: 67px;
+}
+.loc li {
+   width: 100%;
+   height: 70px;
+   font-size: 15px;
+   color: rgba(0,0,0,0.56);
+   text-align: left;
+   padding-left: 10px;
+   line-height: 67px;
+   cursor: pointer;
+}
+.loc li:hover {
+   color: #F7323F;
+}
+.loc li:nth-child(1) {
+   color: black;   
+   font-weight: bold;
+   cursor: default;
+}
+.many {
+   width: 246px;
+   height: 72px;
+   border: 1px solid #dadada;
+   background: #fff;
+   position: absolute;
+   top: 403px;
+   left: 605px;
+   z-index: 10;
+   border-radius: 10px;
+    padding: 27px 10px;
+    border-bottom: none;
+}
+.many strong {
+   display: block;
+    position: relative;
+    margin-bottom: 21px;
+    font-size: 16px;
+    color: black;
+}
+.many .cnt_people {
+    position: absolute;
+    top: 0;
+    right: 24px;
+    width: 140px;
+}
+.many .cnt_people button {
+	border: none;
+    background: none;
+    font-size: 18px;
+    font-weight: bold;
+    vertical-align: top;
+}
+.many .cnt_people button:first-child {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    background: url("https://image.goodchoice.kr/images/web_v3/ico_minus.png") 50% 50% no-repeat;
+    background-size: 20px auto;
+    text-indent: -9999px;
+}
+.many .cnt_people span {
+	display: block;
+	padding-top: 25px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(229,16,72);
+}
+.many .cnt_people button:last-child {
+   position: absolute;
+    top: 25px;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    background: url("https://image.goodchoice.kr/images/web_v3/ico_plus.png") 50% 50% no-repeat;
+    background-size: 20px auto;
+    text-indent: -9999px;
+}
+
+
+
+

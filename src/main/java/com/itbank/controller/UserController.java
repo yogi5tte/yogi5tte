@@ -2,6 +2,7 @@ package com.itbank.controller;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -24,6 +25,7 @@ import com.itbank.service.MailService;
 import com.itbank.service.UserService;
 import com.itbank.user.User_nonsocialDAO;
 import com.itbank.user.User_nonsocialDTO;
+import com.itbank.user.User_sellerDTO;
 
 @Controller
 @RequestMapping("/user")
@@ -121,21 +123,32 @@ public class UserController {
 	@RequestMapping("/joindrop")
 	public void joindrop() {}
 	
-	@GetMapping("/joindrop/{idx}")
-	public String joindrop(@PathVariable int idx) {
-		int row = userService.delete(idx);
-		return "redirect:/";
-	}
-	
-	@RequestMapping("/host_join")
+	@GetMapping("/host_join")
 	public void host_join() {}
 	
-	@PostMapping(value="/host_join", produces="text/plain; charset=utf-8",consumes="text/plain; charset=utf-8")
+	@PostMapping("/host_join")
 	@ResponseBody
-	public String host_join(@RequestBody String answer) throws IOException,MessagingException{
+	public String host_join(@RequestBody HashMap<String, String> dto, HttpSession session)throws NoSuchAlgorithmException {
+		System.out.println(dto.get("email"));
+		System.out.println(dto.get("password"));
+		User_sellerDTO login  = userService.seller_login(dto);
+		if(login == null) {
+			return "/user/host_join";
+		}
+		else {
+			session.setAttribute("login", login);
+			return "/user/host_home";
+		}
+	}
+	
+	
+	@PostMapping(value="/host_send", produces="text/plain; charset=utf-8",consumes="text/plain; charset=utf-8")
+	@ResponseBody
+	public String host_send(@RequestBody String answer) throws IOException,MessagingException{
 		String isOK = mailservice.sendConfirm(answer);
 		return isOK;
 	}
+	
 	
 	@RequestMapping("/host_join2")
 	public void host_join2() {}
@@ -143,8 +156,12 @@ public class UserController {
 	@RequestMapping("/host_join3")
 	public void host_join3() {}
 	
-	@RequestMapping("/host_home")
+	@GetMapping("/host_home")
 	public void host_home() {}
+	
+	
+	@RequestMapping("/host_home2")
+	public void host_home2() {}
 	
 	
 }
