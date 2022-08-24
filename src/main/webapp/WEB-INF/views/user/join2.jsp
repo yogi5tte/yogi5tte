@@ -72,5 +72,3 @@ auth_inp.addEventListener('keypress', (event) => {
 </script>
 
 
-</body>
-</html>
