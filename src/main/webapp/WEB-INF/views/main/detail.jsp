@@ -2,6 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 
+<c:if test="${empty header.referer }">
+	<script>
+		alert('정상적인 접근이 아닙니다')
+		location.href = '${cpath}'
+	</script>
+</c:if>
+
 <link rel="stylesheet"
 	href="${cpath }/resources/stylecss/main/common.css">
 <link rel="stylesheet"

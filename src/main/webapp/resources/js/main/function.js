@@ -89,7 +89,7 @@ function listConvert(dto) {
 	let human_count = document.querySelector('.cnt_people > span').innerText
 	
 	li.innerHTML += `
-		<a href="${cpath}/main/detail/${dto.idx}?human_countS=${human_count}">
+		<a href="${cpath}/main/detail/${dto.idx}?human_count=${human_count}">
 		<p class="pic"><div class="lazy" style="background:url(${cpath}/resources/image/product_img/${dto.product_img})"></div>
 			<div class="stage">
 				<div class="name">
@@ -573,13 +573,66 @@ function getCheckHandler() {
 	 weekendCnt = 0
  }
  
- // 총 금액 입니다dsad
- 
+ // 총 금액 입니다
  let price = document.querySelector('.price > div > p > b').innerText.split(' ')[0]
  	 price = (+price * quantity) + ((price * 0.5) * weekendCnt)
  	 
  location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + 
  '&check_in=' + start + '&check_out=' + end + '&quantity=' + quantity + '&weekendCnt=' + weekendCnt + '&price=' + price
+}
+
+//7박까지 제한하는 로직 핸들러
+function getDateHandler(event) {
+	 let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
+	 let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
+	 let quantity = endDate.getTime() - startDate.getTime()
+	
+	 if(quantity/(1000 * 3600 * 24)  > 8){
+		 alert('최대 7박까지만 가능합니다')
+		 location.reload()
+	 }
+}
+
+// list.jsp 가격 낮은 순, 가격 높은 순 정렬 버튼
+function btnHandler(event) {
+   btnArray.forEach(btn => btn.classList.remove('on'))
+   
+   let target = event.target
+   
+   while(target.classList.contains('sp')) {
+      target = target.parentNode
+   }
+   
+   target.classList.add('on')
+}
+
+// 메인페이지 에서 검색후 목록으로 왔을때 목록 출력하는 함수
+function listHandler(event) {
+	// 숙소 유형 카테고리 change
+	const title = document.querySelector('.sub_top > h2')
+	title.innerText = `${sessionStorage.getItem('cat')}`
+	// 인원 change
+	const peo = document.getElementById('result')	
+	result.innerText = sessionStorage.getItem('peo')
+	// 지역 change
+	const loc = document.querySelector('.btn_area')
+	if(sessionStorage.getItem('loc') == '서울') {
+		loc.innerHTML += `<span>${sessionStorage.getItem('loc')}</span>강남/역삼/삼성/논현`
+	}
+	else {
+		loArray.forEach(lo => lo.classList.remove('on'))
+		loArray[1].classList.add('on')
+		dloArray.forEach(dlo => dlo.classList.remove('on'))
+		dloArray[1].classList.add('on')
+		dloOneArray.forEach(dlo => dlo.classList.remove('on'))
+		let dlooneArray = document.querySelectorAll('.city_child.on > li > p')
+		dlooneArray[0].classList.add('on')
+		loc.innerHTML += `<span>${sessionStorage.getItem('loc')}</span>해운대/재송`
+	}
+	
+	const product_list = document.getElementById('product_list_area')
+	product_list.innerHTML = ''
+		
 }
 
 
