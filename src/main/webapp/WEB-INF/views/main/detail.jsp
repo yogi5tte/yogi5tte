@@ -90,7 +90,7 @@
             		</div>
 		        </div>
 	    	</div>
-
+		</div>
 
 <div class="tab">
 	<button class="on">객실안내/예약</button>
