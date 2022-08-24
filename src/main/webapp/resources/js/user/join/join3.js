@@ -103,7 +103,7 @@ function checkId(event){
 	      }
 	   if(json == true){
 //		   console.log('true')
-		   dto.setEmail(gcuseremail);
+//		   dto.setEmail(gcuseremail);
 		   document.getElementById('checkId').innerHTML='사용가능합니다.';
 	       document.getElementById('checkId').style.color='blue';
 	       document.getElementById('checkId').classList.remove('impo')

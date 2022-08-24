@@ -89,7 +89,7 @@ function listConvert(dto) {
 	let human_count = document.querySelector('.cnt_people > span').innerText
 	
 	li.innerHTML += `
-		<a href="${cpath}/main/detail/${dto.idx}?human_countS=${human_count}">
+		<a href="${cpath}/main/detail/${dto.idx}?human_count=${human_count}">
 		<p class="pic"><div class="lazy" style="background:url(${cpath}/resources/image/product_img/${dto.product_img})"></div>
 			<div class="stage">
 				<div class="name">
@@ -145,9 +145,6 @@ function clickListHandler(event) {
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {
-		json.sort(function (a,b) {
-			return a.price - b.price
-		})
  		json.forEach(dto => product_list.appendChild(listConvert(dto)))
 	})
 	const area_pop = document.querySelector('.area_pop')
@@ -189,12 +186,7 @@ function listSubHandler(event) {
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {
-		if(btntarget.classList.contains('lowPrice')) {
-			json.sort(function (a,b) {
-				return a.price - b.price
-			})
-		}
-		else {
+		if(btntarget.classList.contains('highPrice')) {
 			json.sort(function (a,b) {
 				return b.price - a.price
 			})
@@ -219,12 +211,7 @@ function sortHandler(event) {
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {
-		if(btntarget.classList.contains('lowPrice')) {
-			json.sort(function (a,b) {
-				return a.price - b.price
-			})
-		}
-		else {
+		if(btntarget.classList.contains('highPrice')) {
 			json.sort(function (a,b) {
 				return b.price - a.price
 			})

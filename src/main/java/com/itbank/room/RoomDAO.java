@@ -17,14 +17,14 @@ public interface RoomDAO {
 			+ " where p.idx = i.idx and p.location_idx = l.idx and"
 			+ " t.info_idx = i.idx and r.info_idx = i.idx and"
 			+ " l.category = #{category} and p.pType = #{pType} and"
-			+ " r.human_count >= #{human_count} and t.op1 = 'n'")
+			+ " r.human_count >= #{human_count} and t.op1 = 'n' order by r.price")
 	List<RoomDTO> selectList(@Param("category") int category,
 							  @Param("pType") int pType,
 							  @Param("human_count") int human_count);
 
 	@Select("select * "
 			+ "from room a left join info b "
-			+ "on b.idx = a.info_idx where a.info_idx = #{idx}")
+			+ "on b.idx = a.info_idx where a.info_idx = #{idx}")	
 	List<RoomDTO> selectRoom(int idx);
 	
 	// 예약 시, 방 정보를 조회
