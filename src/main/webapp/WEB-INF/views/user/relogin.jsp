@@ -43,7 +43,9 @@
     </section>
 </div>
 
-
+<script>
+alert('아이디 또는 비밀번호가 틀립니다.')
+</script>
 
 <!-- 카카오 스크립트 -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>

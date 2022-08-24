@@ -61,46 +61,61 @@ function checkPassword2(event) {
 
 function checkId(event){
 	let gcuseremail = document.getElementById('gcuseremail').value;
-	let checkEmail = document.getElementById('mail_Line').value;
 	let rollBackCheck = document.getElementsByClassName('emailCheckBox').selectedIndex;
 	
+
 	if(gcuseremail >= 'ㄱ' && gcuseremail <= 'ㅎ'){
-		document.getElementById('checkId').innerHTML='한글은사용할 수 없습니다.';
+		document.getElementById('checkId').innerHTML='한글은 사용할 수 없습니다.';
     	document.getElementById('checkId').style.color='red';
     	document.getElementById('checkId').classList.add('impo')
-        document.getElementById('checkId').value='';
+        document.getElementById('gcuseremail').value='';
     	return false;
+	}
+	if(gcuseremail.includes('.com') == false && gcuseremail.includes('.net') == false){
+		document.getElementById('checkId').innerHTML='메일형식이 아닙니다.';
+    	document.getElementById('checkId').style.color='red';
+    	document.getElementById('checkId').classList.add('impo')
+        document.getElementById('gcuseremail').value='';
+    	return false;
+		
 	}
 	
     if(gcuseremail == ''){
-    	document.getElementById('checkId').innerHTML='잘못된 아이디입력입니다.';
+    	document.getElementById('checkId').innerHTML='잘못된 아이디 입력입니다.';
     	document.getElementById('checkId').style.color='red';
     	document.getElementById('checkId').classList.add('impo')
-        document.getElementById('checkId').value='';
+        document.getElementById('gcuseremail').value='';
     	return false;
     }
   
 	console.log('gcuseremail : ' + gcuseremail)
-	gcuseremail += '@';
-	gcuseremail += checkEmail
-	console.log('gcuseremail : ' + gcuseremail)
-//	console.log('selected: ' + rollBackCheck[1])
+
 	let url = cpath + '/user/join3/' + gcuseremail 
 	console.log('url : ' + url)
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json=> {
-		console.log(json)
+		 console.log(json)
 		 if(json == false){
 			  console.log('false')
 	          document.getElementById('checkId').innerHTML='사용중인아이디입니다.';
 	          document.getElementById('checkId').style.color='red';
 	          document.getElementById('checkId').value='';
 	          document.getElementById('gcuseremail').value='';
-	          document.getElementById('mail_Line').value= '';
 	          document.getElementById('checkId').classList.add('impo')
 	          return false;
 	      }
+		 if(json == '-1'){
+			 document.getElementById('checkId').innerHTML='아이디 형식에 문제가 있습니다.';
+	          document.getElementById('checkId').style.color='red';
+	          document.getElementById('checkId').value='';
+	          document.getElementById('gcuseremail').value='';
+	          document.getElementById('checkId').classList.add('impo')
+	          return false;
+			 
+			 
+		 }
+		 
 	   if(json == true){
 //		   console.log('true')
 //		   dto.setEmail(gcuseremail);
