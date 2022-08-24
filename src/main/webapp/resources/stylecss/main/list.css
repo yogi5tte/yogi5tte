@@ -486,6 +486,7 @@ input[type=checkbox].inp_chk:checked + label.label_chk{
     min-height: 280px;
 	background-size: 635px 352px !important;
 	background-repeat: no-repeat !important;
+	filter: brightness(75%);
 }
 .list_1 .stage {
     position: absolute;
