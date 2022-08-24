@@ -2,12 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ include file="join.jsp" %>
 
-<%-- <c:if test="${empty header.referer }"> --%>
-<!-- 	<script> -->
-<!-- 		alert('정상적인 접근이 아닙니다') -->
-<%--  		location.href = '${cpath}' --%>
-<!-- 	</script> -->
-<%-- </c:if> --%>
+<c:if test="${empty header.referer }">
+	<script>
+	alert('정상적인 접근이 아닙니다') 
+	location.href = '${cpath}'
+	</script>
+</c:if>
     
     <link rel="stylesheet" href="${cpath }/resources/stylecss/user/join/join3.css">
     <script src="${cpath }/resources/js/user/join/join3.js"></script> 
@@ -30,17 +30,17 @@
                 <strong class="sub_title">회원가입</strong>
                 <b>이메일 아이디</b>
                 <div class="inp_type_2 form-errors"><!-- focus / err -->
-                    <input type="text" name="email" id="gcuseremail" placeholder="이메일아이디 입력" required>
-                    <div class="emailAn">@</div>
-                    <label id="gcuseremail_msg" class="validate_msg_label" style="color: red;"></label>
-	                    <select class="emailCheckBox" id="mail_Line">
-	                   		  <option value="" selected="selected">==메일선택==</option>
-	                   		  <option value="naver">naver.com</option>
-							  <option value="google">google.com</option>
-							  <option value="hanmail">hanmail.net</option>
-							  <option value="nate">nate.com</option>
-							  <option value="kakao">kakao.com</option> 
-	                    </select>
+                    <input type="email" name="email" id="gcuseremail" placeholder="이메일아이디 입력" required>
+<!--                     <div class="emailAn">@</div> -->
+<!--                     <label id="gcuseremail_msg" class="validate_msg_label" style="color: red;"></label> -->
+<!-- 	                    <select class="emailCheckBox" id="mail_Line"> -->
+<!-- 	                   		  <option value="" selected="selected">==메일선택==</option> -->
+<!-- 	                   		  <option value="naver">naver.com</option> -->
+<!-- 							  <option value="google">google.com</option> -->
+<!-- 							  <option value="hanmail">hanmail.net</option> -->
+<!-- 							  <option value="nate">nate.com</option> -->
+<!-- 							  <option value="kakao">kakao.com</option>  -->
+<!-- 	                    </select> -->
                 </div>
                 <div id="checkId" class="impo"></div>    
                 <b>비밀번호</b>
@@ -74,14 +74,14 @@
    <script>
    const new_pw = document.getElementById('new_pw')
    const new_pw_re = document.getElementById('new_pw_re')
-   const mail_Line = document.getElementById('mail_Line')
    const unick = document.getElementById('unick')
    const joinBtn = document.getElementById('joinBtn')
+   const gcuseremail = document.getElementById('gcuseremail')
    
    new_pw.addEventListener('blur', checkPassword1)
    new_pw_re.addEventListener('blur', checkPassword2)
-   mail_Line.addEventListener('blur', checkId)
    unick.addEventListener('blur', checkingNick)
+   gcuseremail.addEventListener('blur', checkId)
    joinBtn.addEventListener('click', allCheck)
    </script>
 
