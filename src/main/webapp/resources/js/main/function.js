@@ -552,6 +552,7 @@ function getCheckHandler() {
  let quantity = Math.floor((endDate.getTime() - startDate.getTime())/(1000 * 3600 * 24))
  let weekendCnt = weekendCount()
 
+
  if(quantity == 1 && weekendCnt == 2 || weekendCnt == 2 && endDate.getDay() == 6){
 	 weekendCnt = 1
  }else if(weekendCnt == 1 && startDate.getDay() != 5){
