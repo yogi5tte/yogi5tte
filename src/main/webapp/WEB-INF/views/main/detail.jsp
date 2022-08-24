@@ -323,9 +323,9 @@ $('#daterangepicker').daterangepicker({
 	
  	const dateBtn = document.querySelector('.applyBtn')
 	dateBtn.addEventListener('click', getDateHandler)
+	
 	const resBtn = document.querySelectorAll('.res_btn')
 	resBtn.forEach(btn => btn.addEventListener('click',getCheckHandler))
- 
 </script>
 
 

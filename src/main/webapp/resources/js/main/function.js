@@ -95,7 +95,7 @@ function listConvert(dto) {
 				<div class="name">
 					<strong> ${dto.name} </strong>
 					<p class="score">
-						<em>dto.reviewValue</em>&nbsp;<span>${dto.seller_text}</span>&nbsp;(${dto.review_count})
+						<span>${dto.seller_text}</span>&nbsp;(${dto.review_count})
 				    </p>
 					<p>${dto.city} / ${dto.gu}</p>
 				</div>
@@ -145,9 +145,6 @@ function clickListHandler(event) {
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {
-		json.sort(function (a,b) {
-			return a.price - b.price
-		})
  		json.forEach(dto => product_list.appendChild(listConvert(dto)))
 	})
 	const area_pop = document.querySelector('.area_pop')
@@ -189,12 +186,7 @@ function listSubHandler(event) {
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {
-		if(btntarget.classList.contains('lowPrice')) {
-			json.sort(function (a,b) {
-				return a.price - b.price
-			})
-		}
-		else {
+		if(btntarget.classList.contains('highPrice')) {
 			json.sort(function (a,b) {
 				return b.price - a.price
 			})
@@ -219,12 +211,7 @@ function sortHandler(event) {
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {
-		if(btntarget.classList.contains('lowPrice')) {
-			json.sort(function (a,b) {
-				return a.price - b.price
-			})
-		}
-		else {
+		if(btntarget.classList.contains('highPrice')) {
 			json.sort(function (a,b) {
 				return b.price - a.price
 			})
@@ -523,7 +510,6 @@ function interceptorHandler(event) {
       location.href = cpath + '/rsvn/reservation'
    }
 }
-
 //주말 체크 핸들러
 function weekendCount() {
 	let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
@@ -557,7 +543,6 @@ function weekendCount() {
 	 
 	return count
 }
-
 //숙소 예약 버튼 (값 전달)
 function getCheckHandler() { 
  const start = document.getElementById('daterangepicker').value.split('~')[0]
@@ -593,55 +578,9 @@ function getDateHandler(event) {
 	 }
 }
 
-// list.jsp 가격 낮은 순, 가격 높은 순 정렬 버튼
-function btnHandler(event) {
-   btnArray.forEach(btn => btn.classList.remove('on'))
-   
-   let target = event.target
-   
-   while(target.classList.contains('sp')) {
-      target = target.parentNode
-   }
-   
-   target.classList.add('on')
-}
-
-// 메인페이지 에서 검색후 목록으로 왔을때 목록 출력하는 함수
-function listHandler(event) {
-	// 숙소 유형 카테고리 change
-	const title = document.querySelector('.sub_top > h2')
-	title.innerText = `${sessionStorage.getItem('cat')}`
-	// 인원 change
-	const peo = document.getElementById('result')	
-	result.innerText = sessionStorage.getItem('peo')
-	// 지역 change
-	const loc = document.querySelector('.btn_area')
-	if(sessionStorage.getItem('loc') == '서울') {
-		loc.innerHTML += `<span>${sessionStorage.getItem('loc')}</span>강남/역삼/삼성/논현`
-	}
-	else {
-		loArray.forEach(lo => lo.classList.remove('on'))
-		loArray[1].classList.add('on')
-		dloArray.forEach(dlo => dlo.classList.remove('on'))
-		dloArray[1].classList.add('on')
-		dloOneArray.forEach(dlo => dlo.classList.remove('on'))
-		let dlooneArray = document.querySelectorAll('.city_child.on > li > p')
-		dlooneArray[0].classList.add('on')
-		loc.innerHTML += `<span>${sessionStorage.getItem('loc')}</span>해운대/재송`
-	}
-	
-	const product_list = document.getElementById('product_list_area')
-	product_list.innerHTML = ''
-		
-}
-
-
 function reviewScrollHandler(event) {
 	
 	if(event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight) {
 		reviewList()
 	}
 }
-
-
-
