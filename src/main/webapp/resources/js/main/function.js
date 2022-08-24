@@ -510,7 +510,6 @@ function interceptorHandler(event) {
       location.href = cpath + '/rsvn/reservation'
    }
 }
-
 //주말 체크 핸들러
 function weekendCount() {
 	let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
@@ -544,7 +543,6 @@ function weekendCount() {
 	 
 	return count
 }
-
 //숙소 예약 버튼 (값 전달)
 function getCheckHandler() { 
  const start = document.getElementById('daterangepicker').value.split('~')[0]
@@ -560,7 +558,7 @@ function getCheckHandler() {
 	 weekendCnt = 0
  }
  
- // 총 금액 입니다dsad
+ // 총 금액 입니다
  
  let price = document.querySelector('.price > div > p > b').innerText.split(' ')[0]
  	 price = (+price * quantity) + ((price * 0.5) * weekendCnt)
@@ -568,14 +566,20 @@ function getCheckHandler() {
  location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + 
  '&check_in=' + start + '&check_out=' + end + '&quantity=' + quantity + '&weekendCnt=' + weekendCnt + '&price=' + price
 }
-
-
+//7박까지 제한하는 로직 핸들러
+function getDateHandler(event) {
+    let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
+    let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
+    let quantity = endDate.getTime() - startDate.getTime()
+   
+    if(quantity/(1000 * 3600 * 24)  > 8){
+       alert('최대 7박까지만 가능합니다')
+       location.reload()
+    }
+}
 function reviewScrollHandler(event) {
 	
 	if(event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight) {
 		reviewList()
 	}
 }
-
-
-
