@@ -12,15 +12,19 @@ import org.apache.ibatis.annotations.Param;
 @Repository
 public interface RoomDAO {
 	
-	@Select("select i.name, i.seller_text, i.product_img, i.review_count, p.pType, r.price, r.human_count, l.city, l.gu, p.idx"
-			+ " from info i, location l, product p, room r, theme t"
-			+ " where p.idx = i.idx and p.location_idx = l.idx and"
-			+ " t.info_idx = i.idx and r.info_idx = i.idx and"
-			+ " l.category = #{category} and p.pType = #{pType} and"
-			+ " r.human_count >= #{human_count} and t.op1 = 'n' order by r.price")
+	@Select(" select P.idx, I.name, I.seller_text, I.product_img, I.review_count, P.pType, R.info_idx, L.city, L.gu, " + 
+			"        min(R.price) as price" + 
+			"            from info I" + 
+			"    join product P  on P.idx = I.idx" + 
+			"    join room R     on R.info_idx = I.idx " + 
+			"    join location L on L.idx = P.location_idx" + 
+			"    join theme T    on t.info_idx = i.idx" + 
+			"    where L.category = #{category} and P.pType = #{pType} and R.human_count >= #{human_count} and T.op1 = 'n' " + 
+			"    group by P.idx, I.name, I.seller_text, I.product_img, I.review_count, P.pType, R.info_idx, L.city, L.gu" + 
+			"    order by price")
 	List<RoomDTO> selectList(@Param("category") int category,
-							  @Param("pType") int pType,
-							  @Param("human_count") int human_count);
+							 @Param("pType") int pType,
+			  				 @Param("human_count") int human_count);
 
 	@Select("select * "
 			+ "from room a left join info b "

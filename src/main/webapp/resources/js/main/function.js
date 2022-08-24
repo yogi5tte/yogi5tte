@@ -95,7 +95,7 @@ function listConvert(dto) {
 				<div class="name">
 					<strong> ${dto.name} </strong>
 					<p class="score">
-						<em>dto.reviewValue</em>&nbsp;<span>${dto.seller_text}</span>&nbsp;(${dto.review_count})
+						<span>${dto.seller_text}</span>&nbsp;(${dto.review_count})
 				    </p>
 					<p>${dto.city} / ${dto.gu}</p>
 				</div>
