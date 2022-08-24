@@ -1,10 +1,14 @@
 package com.itbank.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itbank.room.RoomDTO;
@@ -19,7 +23,19 @@ public class ListController {
 	public List<RoomDTO> list(@PathVariable int category,
 							   @PathVariable int pType,
 							   @PathVariable int human_count) {
+		
 		return roomService.selectList(category, pType, human_count);
+	}
+	
+	@PostMapping(value="/main/listload", produces="application/json; charset=utf-8")
+	public List<RoomDTO> list(@RequestBody HashMap<String, Object> param) {
+		System.out.println(param.get("category"));
+		System.out.println(param.get("pType"));
+		System.out.println(param.get("human_count"));
+		System.out.println(param);
+		
+//		return roomService.selectList(category, pType, human_count);
+		return roomService.themeList(param);
 	}
 	
 }
