@@ -573,7 +573,8 @@ function getCheckHandler() {
 	 weekendCnt = 0
  }
  
- // 총 금액 입니다
+ // 총 금액 입니다dsad
+ 
  let price = document.querySelector('.price > div > p > b').innerText.split(' ')[0]
  	 price = (+price * quantity) + ((price * 0.5) * weekendCnt)
  	 
