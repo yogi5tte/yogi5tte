@@ -511,6 +511,40 @@ function interceptorHandler(event) {
    }
 }
 
+//주말 체크 핸들러
+function weekendCount() {
+	let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
+	let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
+	let count = 0
+//	let TF = $('#daterangepicker').data('daterangepicker').locale['daysOfWeek']
+
+	while(true) {
+		let tmp_date = startDate
+		
+		if(tmp_date.getTime() > endDate) {
+			console.log("count : " + count)
+			break
+		}
+		else{
+			let tmp = tmp_date.getDay()
+	
+			if(tmp == 5 || tmp == 6) {
+				console.log('주말')
+				count++
+			}
+			else {
+				console.log('평일')
+			}
+			tmp_date.setDate(startDate.getDate() + 1)
+		}
+	}
+	if(count == 3){
+		count = 2
+	}
+	 
+	return count
+}
+
 //숙소 예약 버튼 (값 전달)
 function getCheckHandler() { 
  const start = document.getElementById('daterangepicker').value.split('~')[0]
@@ -518,21 +552,21 @@ function getCheckHandler() {
  let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
  let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
  let quantity = Math.floor((endDate.getTime() - startDate.getTime())/(1000 * 3600 * 24))
- 
- location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + 
- '&check_in=' + start + '&check_out=' + end + '&quantity=' + quantity
-}
+ let weekendCnt = weekendCount()
 
-//7박까지 제한하는 로직 핸들러
-function getDateHandler(event) {
-	 let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
-	 let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
-	 let quantity = endDate.getTime() - startDate.getTime()
-	
-	 if(quantity/(1000 * 3600 * 24)  > 8){
-		 alert('최대 7박까지만 가능합니다')
-		 location.reload()
-	 }
+ if(quantity == 1 && weekendCnt == 2 || weekendCnt == 2 && endDate.getDay() == 6){
+	 weekendCnt = 1
+ }else if(weekendCnt == 1 && startDate.getDay() != 5){
+	 weekendCnt = 0
+ }
+ 
+ // 총 금액 입니다dsad
+ 
+ let price = document.querySelector('.price > div > p > b').innerText.split(' ')[0]
+ 	 price = (+price * quantity) + ((price * 0.5) * weekendCnt)
+ 	 
+ location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + 
+ '&check_in=' + start + '&check_out=' + end + '&quantity=' + quantity + '&weekendCnt=' + weekendCnt + '&price=' + price
 }
 
 
