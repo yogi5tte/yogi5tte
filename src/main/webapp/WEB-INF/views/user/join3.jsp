@@ -22,7 +22,7 @@
             <input type="hidden" name="marketing_acceptance">
     
             <div class="fix_title">
-                <h1 class="page_head"><a href="" title="여기어때">여기어때</a></h1>
+                <h1 class="page_head"><a href="${cpath }" title="여기어때">여기어때</a></h1>
             </div>
     	
             <div class="join">

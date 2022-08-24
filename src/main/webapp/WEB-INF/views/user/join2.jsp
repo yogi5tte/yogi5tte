@@ -1,34 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="cpath" value="${pageContext.request.contextPath }" />
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>요기오때</title>
-
-<link rel="stylesheet" href="${cpath }/resources/stylecss/user/join/join.css">
-<script>const cpath = '${cpath}'</script>
-<script src="${cpath }/resources/js/user/join/join.js"></script> 
-
-<link rel="stylesheet" href="${cpath }/resources/stylecss/user/join/join2.css">
-</head>
-<body class="pc">
-
+<%@ include file="join.jsp" %>
 
 <c:if test="${empty header.referer }">
-   <script>
-      alert('정상적인 접근이 아닙니다')
-      location.href = '${cpath}'
-   </script>
+	<script>
+		alert('정상적인 접근이 아닙니다')
+		location.href = '${cpath}'
+	</script>
 </c:if>
 
+<link rel="stylesheet" href="${cpath }/resources/stylecss/user/join/join2.css">
 
 <script src="${cpath }/resources/js/user/join/join2.js"></script> 
 
     <div class="layer_fix pop_login pop_mem_reserve">
-       
+    	
         <section>
         <div class="fix_title">
             <strong>이메일 본인 확인</strong> <!-- 주석 -->
@@ -44,7 +30,7 @@
                 <section>
                     <form id="sendMailForm" class="inp_wrap remove">
                         <input id="send_inp" type="email" name="email" required>
-<!--                        <input type="submit" class="btn_send btn_confirm" value="인증번호 전송"> 활성화 클래스 'active' -->
+<!--                     	<input type="submit" class="btn_send btn_confirm" value="인증번호 전송"> 활성화 클래스 'active' -->
 <!--                         <button type="button" class="btn_checked">확인</button> -->
                     </form>
                     <button id="sendMailForm_btn" type="submit" form="sendMailForm" class="btn_confirm">인증번호 전송</button>
@@ -56,7 +42,7 @@
                     <form id="authForm" class="inp_wrap remove hidden">
                         <input id="auth_inp" type="text" name="authNumber">
                         <span class="timer">&nbsp;</span>
-<!--                        <input type="submit" class="btn_ok btn_confirm" data-verification-type="call" data-verification-next="joinTemplate" value="확인"> -->
+<!-- 	                    <input type="submit" class="btn_ok btn_confirm" data-verification-type="call" data-verification-next="joinTemplate" value="확인"> -->
                     </form>
                     <button id="authForm_btn" type="submit" form="authForm" class="btn_confirm hidden">확인</button>
                 </section>
@@ -77,12 +63,12 @@ const auth_inp = document.getElementById('auth_inp')
 sendMailForm.addEventListener('submit', sendHandler)
 authForm.addEventListener('submit', authHandler)
 
-
+send_inp.addEventListener('keypress', (event) => {
+	sendMailForm_btn.classList.add('gra_left_right_red')
+})
 auth_inp.addEventListener('keypress', (event) => {
-   authForm_btn.classList.add('gra_left_right_red')
+	authForm_btn.classList.add('gra_left_right_red')
 })
 </script>
 
 
-</body>
-</html>
