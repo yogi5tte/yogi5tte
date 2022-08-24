@@ -78,10 +78,8 @@ function checkId(event){
     	document.getElementById('checkId').classList.add('impo')
         document.getElementById('checkId').value='';
     	return false;
-    	
     }
   
-
 	console.log('gcuseremail : ' + gcuseremail)
 	gcuseremail += '@';
 	gcuseremail += checkEmail
@@ -104,15 +102,13 @@ function checkId(event){
 	          return false;
 	      }
 	   if(json == true){
-//		  console.log('true')
-		  document.getElementById('checkId').innerHTML='사용가능합니다.';
-	      document.getElementById('checkId').style.color='blue';
-	      document.getElementById('checkId').classList.remove('impo')
-	      return true;
+//		   console.log('true')
+		   dto.setEmail(gcuseremail);
+		   document.getElementById('checkId').innerHTML='사용가능합니다.';
+	       document.getElementById('checkId').style.color='blue';
+	       document.getElementById('checkId').classList.remove('impo')
+	       return true;
 	  }
-	   
-	  
-	  
 	})
 		
 }
@@ -222,13 +218,4 @@ function allCheck(event){
 		alert('성공')
 	}
 	
-	
-
 }
-
-
-
-
-
- 
-
