@@ -29,8 +29,8 @@
 	
 	<interceptors>
 		<interceptor>
-			<mapping path="/reservation"/>  
-			 <mapping path="/reservation_approve"/> 
+			<mapping path="/rsvn/reservation"/>  
+			 <mapping path="/rsvn/reservation_approve"/> 
 			<beans:bean id="LoginInterceptor"
 						class="com.itbank.interceptor.LoginInterceptor"/>
 			

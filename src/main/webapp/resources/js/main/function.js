@@ -499,17 +499,18 @@ function move_next(event) {
    selectDiv.classList.add('selectView')
 }
 // 예약 인터셉터 핸들러
-function interceptorHandler(event) {
-   let login = sessionStorage.getItem('login')
-   
-   if(login == null) {
-      alert('로그인 먼저 하시오')
-      location.href = cpath + '/user/login'
-   }
-   else {
-      location.href = cpath + '/rsvn/reservation'
-   }
-}
+//function interceptorHandler(event) {
+//   let loginCheck = login
+//   let url = cpath + '/main/detail'
+//   if(loginCheck) {
+//    
+//      location.href = cpath + '/rsvn/reservation'
+//   }
+//   else {
+//	   alert('로그인 먼저 하시오')
+//	      location.href = cpath + '/user/login'
+//   }
+//}
 //주말 체크 핸들러
 function weekendCount() {
 	let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.itbank.user.User_nonsocialDTO;
+
 // 인터셉터 : 요청을 가로채서 사전 체크를 할 수 있고, 여러 주소에 대해 적용할 수 있다
 // 인터셉터는 클래스 상속을 구현한다
 // 인터셉터가 작동할 수 있는 시점은 크게 3가지로 분류한다
@@ -26,21 +28,27 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 							HttpServletResponse response, 
 							Object handler)	throws Exception {
 		HttpSession session = request.getSession();
-		String login = (String)session.getAttribute("login");
+//		String login = String.valueOf(session.getAttribute("login"));
+		User_nonsocialDTO login = (User_nonsocialDTO)session.getAttribute("login");
+	
 		String url = null;
-		url = request.getRequestURL().toString();
+		url = request.getRequestURL().toString();	
+		System.out.println(url);
 		url = URLEncoder.encode(url, "utf-8");	// 특수기호때문에 urlEncoding 처리
+		String queryString = request.getQueryString();
+		System.out.println(queryString);
 		
 		if(login == null) {
 			System.out.println("preHandle (false)");
 			System.out.println("인터셉터에 의해 로그인 페이지로 이동합니다");
 			System.out.println("로그인 이후 이동할 주소 : " + url);
-			response.sendRedirect(request.getContextPath() + "/login?url=" + url);
+			response.sendRedirect(request.getContextPath() + "/user/login?url=" + url + "?" + queryString);
 			return false;	// 로그인이 없으면 일시 정지, 이후 원하는 코드 추가 가능
 		}
 		
 		System.out.println("preHandle (true)");
 		return true;		// 로그인이 있으면 원래 예정대로 계속 진행
+		
 	}
 
 	@Override
