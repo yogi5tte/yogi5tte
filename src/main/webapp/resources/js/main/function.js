@@ -169,7 +169,6 @@ function listSubHandler(event) {
 	let category = document.querySelector('.city_child > li > p.on')
 	category = category.getAttribute('idx')
 	const pType = sessionStorage.getItem('pType')
-
 	
 	const ob = {
 		category: `${category}`,
@@ -184,9 +183,7 @@ function listSubHandler(event) {
 			ob[themeChk[i].id] = themeChk[i].id
 		}
 	}
-	console.log(ob)
 		
-//	const url = `${cpath}/listload/${category}/${pType}/${human_count}`
 	const url = `${cpath}/main/listload`
 	const opt = {
 		method: 'POST',

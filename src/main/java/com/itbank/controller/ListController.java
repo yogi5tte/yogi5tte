@@ -29,12 +29,6 @@ public class ListController {
 	
 	@PostMapping(value="/main/listload", produces="application/json; charset=utf-8")
 	public List<RoomDTO> list(@RequestBody HashMap<String, Object> param) {
-		System.out.println(param.get("category"));
-		System.out.println(param.get("pType"));
-		System.out.println(param.get("human_count"));
-		System.out.println(param);
-		
-//		return roomService.selectList(category, pType, human_count);
 		return roomService.themeList(param);
 	}
 	
