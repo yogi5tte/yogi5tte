@@ -6,8 +6,22 @@
 <link rel="stylesheet" href="${cpath }/resources/stylecss/reservation/reservation.css">
 
 
+<c:if test="${empty header.referer }">
+	<script>
+		alert('정상적인 접근이 아닙니다')
+		history.back();
+	</script>
+</c:if>
 </head>
-<body>
+<script>
+ function noBack(){
+	 window.history.forward();
+	 }
+</script>
+
+<body  onload="noBack();" 
+    onpageshow="if(event.persisted) noBack();" 
+    onunload="">
 <script>
 let name= '${infoDto.name}'
 let roomName = '${roomDto.roomName}'
@@ -17,12 +31,12 @@ let quantity = '${param.quantity}'
 let total_amount = '${roomDto.price * param.quantity}'
 let userName = '${rsvnDto.userName}'
 let phoneNumber = '${rsvnDto.phoneNumber}'
-
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script src="${cpath }/resources/js/reservation/reservation.js"></script>
 <script src="${cpath }/resources/js/pay/kakaopay.js"></script>
+
 <div id="reservation_root">
    <div class="left">
       <div class="form_skin">
@@ -77,7 +91,8 @@ let phoneNumber = '${rsvnDto.phoneNumber}'
          <p id="info_name"><strong>숙소이름/객실 타입</strong></p>
          ${infoDto.name}/${roomDto.roomName}
          <p><strong>인원/기간</strong></p>
-         <span id= "human_count" class="rsvn_el">${param.human_count }</span>명/ <span id="quantity" class="rsvn_el">${param.quantity }</span>박
+
+         <span id= "human_count" class="rsvn_el">${param.human_count}</span>명/ <span id="quantity" class="rsvn_el">${param.quantity }</span>박
          <p><strong>체크인</strong></p>
          <span id="check_in" class="rsvn_el">${param.check_in}</span>
          <p><strong>체크아웃</strong></p>
@@ -113,11 +128,9 @@ let phoneNumber = '${rsvnDto.phoneNumber}'
    const agreeCheck = document.querySelectorAll('#reservation_agree> label > input[name=agree]')
    //모달창
    const reservation_btn = document.querySelector('.reservation_btn')
-   
-   
+  
    agreeCheckAll.addEventListener('change',checkHandler)
    agreeCheck.forEach(dto=>dto.addEventListener('change',checkAll))
     reservation_btn.addEventListener('click',inspectConditions)
 
-     
 </script>

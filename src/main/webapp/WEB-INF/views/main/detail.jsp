@@ -26,7 +26,6 @@
 
 <!-- 지도 소스 -->
 <script>
-	
 	let longtitude = +'${info.longtitude}'
 	let latitude = +'${info.latitude}'
 	let name = '${info.name}'
@@ -92,7 +91,7 @@
             		</div>
 		        </div>
 	    	</div>
-		</div>
+	    </div>
 
 <div class="tab">
 	<button class="on">객실안내/예약</button>
@@ -186,8 +185,8 @@
 				<div class="accordion-item">
 					<button class="accordion-button collapsed" type="button"
 						data-bs-toggle="collapse" data-bs-target="#collapseThree"
-						aria-expanded="false" aria-controls="collapseThree">편의시설
-						및 서비스</button>
+						aria-expanded="false" aria-controls="collapseThree">
+						편의시설 및 서비스</button>
 					<div id="collapseThree" class="accordion-collapse collapse"
 						aria-labelledby="headingThree" data-bs-parent="#accordionExample">
 						<div class="accordion-body">

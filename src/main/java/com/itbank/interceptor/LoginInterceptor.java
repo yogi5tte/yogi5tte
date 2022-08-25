@@ -35,14 +35,16 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		url = request.getRequestURL().toString();	
 		System.out.println(url);
 		url = URLEncoder.encode(url, "utf-8");	// 특수기호때문에 urlEncoding 처리
-		String queryString = request.getQueryString();
-		System.out.println(queryString);
+		String queryString = request.getQueryString().replace("/&/g", "%26");
+		if(queryString != null) {
+			url = request.getRequestURL().append('?').append(queryString).toString();
+		}
 		
 		if(login == null) {
 			System.out.println("preHandle (false)");
 			System.out.println("인터셉터에 의해 로그인 페이지로 이동합니다");
 			System.out.println("로그인 이후 이동할 주소 : " + url);
-			response.sendRedirect(request.getContextPath() + "/user/login?url=" + url + "?" + queryString);
+			response.sendRedirect(request.getContextPath() + "/user/login?url=" + url);
 			return false;	// 로그인이 없으면 일시 정지, 이후 원하는 코드 추가 가능
 		}
 		

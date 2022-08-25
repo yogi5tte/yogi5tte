@@ -4,8 +4,19 @@
 <link rel="stylesheet" href="${cpath }/resources/stylecss/main/common.css">
 <link rel="stylesheet" href="${cpath }/resources/stylecss/main/header.css">
 <link rel="stylesheet" href="${cpath }/resources/stylecss/reservation/approve.css">
-    
 
+<script>
+	let idx = '${rsvnDto.idx}'
+	let roomName = '${param.roomName}'
+	let name = '${param.name}'
+</script>
+  
+<c:if test="${empty header.referer }">
+	<script>
+		alert('정상적인 접근이 아닙니다')
+		history.back();
+	</script>
+</c:if>
 
 </head>
 <body>
@@ -32,7 +43,7 @@
 			<p class="info"><strong>숙소이름</strong></p>
 			${param.name}
 			<p class="info"><strong>객실타입/기간</strong></p>
-			${param.roomName}/${rsvnDto.quantity}일
+			${param.roomName}/${rsvnDto.quantity}박
 			<p class="info"><strong>체크인</strong></p>
 			${rsvnDto.check_in}
 			<img id="logo_img" src="${cpath }/resources/image/yogired.png">
@@ -51,7 +62,7 @@
 				<p class="pay_info"><strong>결제 정보</strong></p>
 				<div class="account">
 				<p><strong>총 결제금액</strong></p>
-				<p id="price_final"><strong>${rsvnDto.total_amount }원</strong></p>
+				<p id="price_final"><strong><fmt:formatNumber value="${rsvnDto.total_amount }"/>원</strong></p>
 				</div>
 			<p class="cancel_info">예약 취소는 여기어때 앱에서 가능합니다.</p>
 			</div>
@@ -64,6 +75,7 @@
 	const pdf_btn = document.getElementById('pdf_btn')
 	
 	pdf_btn.addEventListener('click',PDFConvertHandler)
+	
 </script>
 
 </html> 

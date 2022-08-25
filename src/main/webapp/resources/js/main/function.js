@@ -169,21 +169,30 @@ function listSubHandler(event) {
 	let category = document.querySelector('.city_child > li > p.on')
 	category = category.getAttribute('idx')
 	const pType = sessionStorage.getItem('pType')
-
-	const url = `${cpath}/listload/${category}/${pType}/${human_count}`
-		
+	
+	const ob = {
+		category: `${category}`,
+		pType: `${pType}`,
+		human_count: `${human_count}`,
+	}
+	
 	// theme 체크
 	for(let i = 0; i < 8; i++) {
 		const themeChk = document.querySelectorAll('.inp_chk')
-//		const ob = {}
-		
-//		if(themeChk[i].checked) {
-//			ob.push(themeChk[i].id) 
-//		}
-//		console.log(ob)
+		if(themeChk[i].checked) {
+			ob[themeChk[i].id] = themeChk[i].id
+		}
 	}
-	
-	fetch(url)
+		
+	const url = `${cpath}/main/listload`
+	const opt = {
+		method: 'POST',
+		body: JSON.stringify(ob),
+		headers: {
+			'Content-Type' : 'application/json; charset=utf-8'
+		}
+	}
+	fetch(url, opt)
 	.then(resp => resp.json())
 	.then(json => {
 		if(btntarget.classList.contains('highPrice')) {
@@ -581,7 +590,6 @@ function getDateHandler(event) {
 }
 
 function reviewScrollHandler(event) {
-	
 	if(event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight) {
 		reviewList()
 	}

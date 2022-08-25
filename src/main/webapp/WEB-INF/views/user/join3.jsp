@@ -3,10 +3,10 @@
 <%@ include file="join.jsp" %>
 
 <c:if test="${empty header.referer }">
-	<script>
-	alert('정상적인 접근이 아닙니다') 
-	location.href = '${cpath}'
-	</script>
+   <script>
+   alert('정상적인 접근이 아닙니다') 
+   location.href = '${cpath}'
+   </script>
 </c:if>
     
     <link rel="stylesheet" href="${cpath }/resources/stylecss/user/join/join3.css">
@@ -24,23 +24,23 @@
             <div class="fix_title">
                 <h1 class="page_head"><a href="${cpath }" title="여기어때">여기어때</a></h1>
             </div>
-    	
+       
             <div class="join">
-            	<form>
+               <form>
                 <strong class="sub_title">회원가입</strong>
                 <b>이메일 아이디</b>
                 <div class="inp_type_2 form-errors"><!-- focus / err -->
                     <input type="email" name="email" id="gcuseremail" placeholder="이메일아이디 입력" required>
 <!--                     <div class="emailAn">@</div> -->
 <!--                     <label id="gcuseremail_msg" class="validate_msg_label" style="color: red;"></label> -->
-<!-- 	                    <select class="emailCheckBox" id="mail_Line"> -->
-<!-- 	                   		  <option value="" selected="selected">==메일선택==</option> -->
-<!-- 	                   		  <option value="naver">naver.com</option> -->
-<!-- 							  <option value="google">google.com</option> -->
-<!-- 							  <option value="hanmail">hanmail.net</option> -->
-<!-- 							  <option value="nate">nate.com</option> -->
-<!-- 							  <option value="kakao">kakao.com</option>  -->
-<!-- 	                    </select> -->
+<!--                        <select class="emailCheckBox" id="mail_Line"> -->
+<!--                               <option value="" selected="selected">==메일선택==</option> -->
+<!--                               <option value="naver">naver.com</option> -->
+<!--                        <option value="google">google.com</option> -->
+<!--                        <option value="hanmail">hanmail.net</option> -->
+<!--                        <option value="nate">nate.com</option> -->
+<!--                        <option value="kakao">kakao.com</option>  -->
+<!--                        </select> -->
                 </div>
                 <div id="checkId" class="impo"></div>    
                 <b>비밀번호</b>
@@ -62,7 +62,7 @@
                 <div class="inp_type_2 form-errors btn-add">
                     <input type="text" id="unick" name="nickName" required placeholder="닉네임을 입력하세요.">
                 </div>
-	            <div id="nickCheck" class="impo"></div>
+               <div id="nickCheck" class="impo"></div>
     
                 <button type="submit" id="joinBtn" class="btn_link btn_user_submit"><span>가입하기</span></button> <!-- style="background-color: rgb(250, 250, 250); color: rgba(0, 0, 0, 0.16); border: none; -->
             </div>
