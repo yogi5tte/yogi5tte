@@ -169,21 +169,30 @@ function listSubHandler(event) {
 	let category = document.querySelector('.city_child > li > p.on')
 	category = category.getAttribute('idx')
 	const pType = sessionStorage.getItem('pType')
-
-	const url = `${cpath}/listload/${category}/${pType}/${human_count}`
-		
+	
+	const ob = {
+		category: `${category}`,
+		pType: `${pType}`,
+		human_count: `${human_count}`,
+	}
+	
 	// theme 체크
 	for(let i = 0; i < 8; i++) {
 		const themeChk = document.querySelectorAll('.inp_chk')
-//		const ob = {}
-		
-//		if(themeChk[i].checked) {
-//			ob.push(themeChk[i].id) 
-//		}
-//		console.log(ob)
+		if(themeChk[i].checked) {
+			ob[themeChk[i].id] = themeChk[i].id
+		}
 	}
-	
-	fetch(url)
+		
+	const url = `${cpath}/main/listload`
+	const opt = {
+		method: 'POST',
+		body: JSON.stringify(ob),
+		headers: {
+			'Content-Type' : 'application/json; charset=utf-8'
+		}
+	}
+	fetch(url, opt)
 	.then(resp => resp.json())
 	.then(json => {
 		if(btntarget.classList.contains('highPrice')) {
@@ -551,6 +560,7 @@ function getCheckHandler() {
  let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
  let quantity = Math.floor((endDate.getTime() - startDate.getTime())/(1000 * 3600 * 24))
  let weekendCnt = weekendCount()
+ let human_count = humanCnt 
 
  if(quantity == 1 && weekendCnt == 2 || weekendCnt == 2 && endDate.getDay() == 6){
 	 weekendCnt = 1
@@ -559,26 +569,26 @@ function getCheckHandler() {
  }
  
  // 총 금액 입니다
- 
  let price = document.querySelector('.price > div > p > b').innerText.split(' ')[0]
  	 price = (+price * quantity) + ((price * 0.5) * weekendCnt)
  	 
  location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + 
- '&check_in=' + start + '&check_out=' + end + '&quantity=' + quantity + '&weekendCnt=' + weekendCnt + '&price=' + price
+ '&check_in=' + start + '&check_out=' + end + '&human_count=' + human_count + '&quantity=' + quantity  + '&price=' + price
 }
+
 //7박까지 제한하는 로직 핸들러
 function getDateHandler(event) {
-    let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
-    let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
-    let quantity = endDate.getTime() - startDate.getTime()
-   
-    if(quantity/(1000 * 3600 * 24)  > 8){
-       alert('최대 7박까지만 가능합니다')
-       location.reload()
-    }
-}
-function reviewScrollHandler(event) {
+	 let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
+	 let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
+	 let quantity = endDate.getTime() - startDate.getTime()
 	
+	 if(quantity/(1000 * 3600 * 24)  > 8){
+		 alert('최대 7박까지만 가능합니다')
+		 location.reload()
+	 }
+}
+
+function reviewScrollHandler(event) {
 	if(event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight) {
 		reviewList()
 	}

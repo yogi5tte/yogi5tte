@@ -33,37 +33,47 @@ public class UserAjexController {
 					
 				}
 				else if(gcuseremail.contains("naver") == true){
+
 					System.out.println("1실행했니?");
+
+
 					result = userCheckService.checkId(gcuseremail); 		
-					System.out.println("result : " + result);
+					//System.out.println("result : " + result);
 					
 					
 					return result;	
 					
 				}
 				else if(gcuseremail.contains("nate") == true){
+
 					System.out.println("2실행했니?");
+
+
 					result = userCheckService.checkId(gcuseremail); 		
-					System.out.println("result : " + result);
+					//System.out.println("result : " + result);
 					
 					
 					return result;	
 					
 				}
 				else if(gcuseremail.contains("gmail") == true){
+
 					System.out.println("3실행했니?");
 				
+
 					result = userCheckService.checkId(gcuseremail); 		
-					System.out.println("result : " + result);
+					//System.out.println("result : " + result);
 					
 					
 					return result;	
 				}
 				else if(gcuseremail.contains("hanmail") == true){
+
 					System.out.println("4실행했니?");
 					System.out.println("4gcuseremail:" + gcuseremail);
+
 					result = userCheckService.checkId(gcuseremail); 		
-					System.out.println("result : " + result);
+					//System.out.println("result : " + result);
 					
 					
 					return result;	
@@ -71,7 +81,7 @@ public class UserAjexController {
 				}
 				else {
 					result = "-1";
-					System.out.println(result);
+					//System.out.println(result);
 					return "-1";	
 				}
 				

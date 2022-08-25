@@ -19,7 +19,7 @@
             <button type="button" id="kakao-login-btn" class="btn_start btn_kakao"></button>
             
             <p class="space_or"><span>또는</span></p>
-	
+   
             <div class="inp_type_1">
                 <input type="email" name="email" placeholder="이메일 주소" required/>
             </div>
@@ -58,9 +58,11 @@ function kakaoLogin() {
         Kakao.API.request({
           url: '/v2/user/me',
           success: function (response) {
+
         	  console.log(response)
 //         	  sessionStorage.setItem('response', response.properties)
 //         	  console.log(sessionStorage.getItem('response'))
+
           },
           fail: function (error) {
             console.log(error)
@@ -78,7 +80,7 @@ function kakaoLogout() {
       Kakao.API.request({
         url: '/v1/user/unlink',
         success: function (response) {
-        	console.log(response)
+           console.log(response)
         },
         fail: function (error) {
           console.log(error)

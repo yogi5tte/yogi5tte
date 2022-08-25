@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+ 			"-//mybatis.org//DTD Mapper 3.0//EN"
+ 			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 			
+
+<mapper namespace="com.itbank.room.RoomDAO">
+
+	<select id="themeList"
+	 		parameterType="hashmap"
+	 		resultType="room">
+		select P.idx, I.name, I.seller_text, I.product_img,
+		I.review_count, P.pType, R.info_idx, L.city, L.gu,
+			min(R.price) as price
+				from info I
+		join product P  on P.idx = I.idx
+    	join room R     on R.info_idx = I.idx 
+    	join location L on L.idx = P.location_idx
+    	join theme T    on t.info_idx = i.idx
+			<where>
+				L.category = #{category} and P.pType = #{pType} and 
+				R.human_count >= #{human_count}
+				<if test="op1 != null">
+					and op1 = 'y'
+				</if>
+				<if test="op2 != null">
+					and op2 = 'y'
+				</if>
+				<if test="op3 != null">
+					and op3 = 'y'
+				</if>
+				<if test="op4 != null">
+					and op4 = 'y'
+				</if>
+				<if test="op5 != null">
+					and op5 = 'y'
+				</if>
+				<if test="op6 != null">
+					and op6 = 'y'
+				</if>
+				<if test="op7 != null">
+					and op7 = 'y'
+				</if>
+				<if test="op8 != null">
+					and op8 = 'y'
+				</if>
+			</where>
+			group by P.idx, I.name, I.seller_text, I.product_img, I.review_count, P.pType, R.info_idx, L.city, L.gu
+			order by price
+	</select>
+	
+</mapper>

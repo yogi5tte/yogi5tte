@@ -8,7 +8,7 @@
             box-sizing: border-box;
         }
         .layer_fix.fix_disable {
-          	overflow: auto;
+             overflow: auto;
 /*             position: relative; */
             touch-action: auto;
         }
@@ -84,7 +84,7 @@
             margin-bottom: 38px;
         }
         .inp_type_2 {
-        	display: flex;
+           display: flex;
             position: relative;
             height: 48px;
             margin-bottom: 38px;
@@ -107,14 +107,14 @@
             -webkit-tap-highlight-color: rgba(0,0,0,0);
         }
         .emailAn{
-			padding-top: 10px;
-			font-size: 20px;
-        	
+         padding-top: 10px;
+         font-size: 20px;
+           
         }
         .emailCheckBox{
-        	padding-left: 10px;
-        	font-size: 15px;
-        	
+           padding-left: 10px;
+           font-size: 15px;
+           
         }
         
         .validate_msg_label {
@@ -138,6 +138,6 @@
             border: none;
         }
         .gra_left_right_red {
-        	background: linear-gradient(to right, rgba(255,0,85,1) 1%,rgba(230,34,67,1) 100%);
-    	}
+           background: linear-gradient(to right, rgba(255,0,85,1) 1%,rgba(230,34,67,1) 100%);
+       }
         

@@ -1,5 +1,6 @@
 package com.itbank.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,10 @@ public class RoomService {
 	
 	public List<RoomDTO> selectList(int category, int pType, int human_count) {
 		return roomDAO.selectList(category, pType, human_count);
+	}
+	
+	public List<RoomDTO> themeList(HashMap<String, Object> param) {
+		return roomDAO.themeList(param);
 	}
 	
 }

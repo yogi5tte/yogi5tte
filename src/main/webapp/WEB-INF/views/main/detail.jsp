@@ -2,6 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 
+<c:if test="${empty header.referer }">
+	<script>
+		alert('정상적인 접근이 아닙니다')
+		location.href = '${cpath}'
+	</script>
+</c:if>
+
 <link rel="stylesheet"
 	href="${cpath }/resources/stylecss/main/common.css">
 <link rel="stylesheet"
@@ -19,9 +26,12 @@
 
 <!-- 지도 소스 -->
 <script>
-	var longtitude = +'${info.longtitude}'
-	var latitude = +'${info.latitude}'
-	var name = '${info.name}'
+
+	let longtitude = +'${info.longtitude}'
+	let latitude = +'${info.latitude}'
+	let name = '${info.name}'
+
+	let humanCnt = +'${param.human_count}'
 </script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35832996ddcf2ae6df4b95be1e09b25a&libraries=services,clusterer,drawing"></script>
@@ -83,7 +93,7 @@
             		</div>
 		        </div>
 	    	</div>
-
+	    </div>
 
 <div class="tab">
 	<button class="on">객실안내/예약</button>
@@ -177,8 +187,8 @@
 				<div class="accordion-item">
 					<button class="accordion-button collapsed" type="button"
 						data-bs-toggle="collapse" data-bs-target="#collapseThree"
-						aria-expanded="false" aria-controls="collapseThree">편의시설
-						및 서비스</button>
+						aria-expanded="false" aria-controls="collapseThree">
+						편의시설 및 서비스</button>
 					<div id="collapseThree" class="accordion-collapse collapse"
 						aria-labelledby="headingThree" data-bs-parent="#accordionExample">
 						<div class="accordion-body">
