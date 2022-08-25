@@ -46,7 +46,8 @@ async function kakaopaymentReady(event){
 					alert('결제 및 결제 검증 완료');
 					const idx = rsvnJSON.idx;
 					
-					location.href = cpath + '/rsvn/reservation_approve/' + idx +'?name=' + name + '&roomName='+ roomName
+					let url = cpath + '/rsvn/reservation_approve/' + idx +'?name=' + name + '&roomName='+ roomName
+					location.href = url
 	
 				}else{
 					alert('결제 실패');

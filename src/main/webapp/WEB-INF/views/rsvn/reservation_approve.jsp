@@ -4,11 +4,17 @@
 <link rel="stylesheet" href="${cpath }/resources/stylecss/main/common.css">
 <link rel="stylesheet" href="${cpath }/resources/stylecss/main/header.css">
 <link rel="stylesheet" href="${cpath }/resources/stylecss/reservation/approve.css">
-    
+
+<script>
+	let idx = '${rsvnDto.idx}'
+	let roomName = '${param.roomName}'
+	let name = '${param.name}'
+</script>
+  
 <c:if test="${empty header.referer }">
 	<script>
 		alert('정상적인 접근이 아닙니다')
-		
+		history.back();
 	</script>
 </c:if>
 
@@ -69,6 +75,7 @@
 	const pdf_btn = document.getElementById('pdf_btn')
 	
 	pdf_btn.addEventListener('click',PDFConvertHandler)
+	
 </script>
 
 </html> 

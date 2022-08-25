@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itbank.reservation.ReservationDAO;
-import com.itbank.reservation.ReservationDTO;
+
 
 import com.itbank.service.MailService;
 import com.itbank.service.ReservationService;

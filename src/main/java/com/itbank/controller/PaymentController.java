@@ -32,8 +32,6 @@ public class PaymentController {
 
 
 	 private IamportClient iamportClient;
-	
-
 	 //생성자를 통해 Rest API / Rest API secret 입력
 	 public PaymentController() {
 		 String apiKey = "1078805824161077";
