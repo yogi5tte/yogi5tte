@@ -41,7 +41,7 @@ a {
     padding-left: 20px;
     padding-right: 20px;
     margin-bottom: 16px;
-    background: url('../../../image/요기오때흰색로고.png') no-repeat;
+    background: url('../../../image/yogiwhite.png') no-repeat;
     background-size: 190px auto;
     text-indent: -9999px;
 }
@@ -233,7 +233,7 @@ label, button {
     border-radius: 6px;
     top: 0px;
     width: 500px;
-    height: 400px;
+    height: 300px;
     box-shadow: 0 5px 15px rgb(0 0 0 / 50%);
 }
 .modal_header {
