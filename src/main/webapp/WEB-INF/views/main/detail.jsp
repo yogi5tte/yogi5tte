@@ -22,6 +22,7 @@
 	var longtitude = +'${info.longtitude}'
 	var latitude = +'${info.latitude}'
 	var name = '${info.name}'
+	let humanCnt = +'${param.human_count}'
 </script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35832996ddcf2ae6df4b95be1e09b25a&libraries=services,clusterer,drawing"></script>
@@ -316,9 +317,9 @@ $('#daterangepicker').daterangepicker({
 	
  	const dateBtn = document.querySelector('.applyBtn')
 	dateBtn.addEventListener('click', getDateHandler)
+	
 	const resBtn = document.querySelectorAll('.res_btn')
 	resBtn.forEach(btn => btn.addEventListener('click',getCheckHandler))
- 
 </script>
 
 

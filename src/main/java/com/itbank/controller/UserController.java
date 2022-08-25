@@ -65,6 +65,9 @@ public class UserController {
 	
 	@PostMapping("/join3") // login
 	public String join(User_nonsocialDTO dto) throws NoSuchAlgorithmException {
+		System.out.println(dto.getEmail());
+		System.out.println(dto.getPassword());
+		System.out.println(dto.getNickName());
 		int row = userService.join(dto);
 		System.out.println(row != 0 ? "가입 성공" : "가입 실패");
 		return "redirect:"+ "/";
@@ -81,7 +84,7 @@ public class UserController {
 		User_nonsocialDTO login  = userService.login(dto);
 		if(login == null) {
 		
-			return "redirect:"+ "/relogin";
+			return "redirect:"+ "/user/relogin";
 		}
 		else {
 		session.setAttribute("login", login);
@@ -91,6 +94,11 @@ public class UserController {
 		}
 		
 	}
+	
+	@GetMapping("/relogin")
+	public void relogin() {}
+
+	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		 session.invalidate();
@@ -124,6 +132,7 @@ public class UserController {
 	public String host_join(@RequestBody HashMap<String, String> dto, HttpSession session)throws NoSuchAlgorithmException {
 		System.out.println(dto.get("email"));
 		System.out.println(dto.get("password"));
+		
 		System.out.println(dto);
 		User_sellerDTO login  = userService.seller_login(dto);
 		if(login == null) {

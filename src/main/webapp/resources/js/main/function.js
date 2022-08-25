@@ -90,13 +90,13 @@ function listConvert(dto) {
 	let human_count = document.querySelector('.cnt_people > span').innerText
 	
 	li.innerHTML += `
-		<a href="${cpath}/main/detail/${dto.idx}?human_countS=${human_count}">
+		<a href="${cpath}/main/detail/${dto.idx}?human_count=${human_count}">
 		<p class="pic"><div class="lazy" style="background:url(${cpath}/resources/image/product_img/${dto.product_img})"></div>
 			<div class="stage">
 				<div class="name">
 					<strong> ${dto.name} </strong>
 					<p class="score">
-						<em>dto.reviewValue</em>&nbsp;<span>${dto.seller_text}</span>&nbsp;(${dto.review_count})
+						<span>${dto.seller_text}</span>&nbsp;(${dto.review_count})
 				    </p>
 					<p>${dto.city} / ${dto.gu}</p>
 				</div>
@@ -146,9 +146,6 @@ function clickListHandler(event) {
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {
-		json.sort(function (a,b) {
-			return a.price - b.price
-		})
  		json.forEach(dto => product_list.appendChild(listConvert(dto)))
 	})
 	const area_pop = document.querySelector('.area_pop')
@@ -190,12 +187,7 @@ function listSubHandler(event) {
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {
-		if(btntarget.classList.contains('lowPrice')) {
-			json.sort(function (a,b) {
-				return a.price - b.price
-			})
-		}
-		else {
+		if(btntarget.classList.contains('highPrice')) {
 			json.sort(function (a,b) {
 				return b.price - a.price
 			})
@@ -220,12 +212,7 @@ function sortHandler(event) {
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {
-		if(btntarget.classList.contains('lowPrice')) {
-			json.sort(function (a,b) {
-				return a.price - b.price
-			})
-		}
-		else {
+		if(btntarget.classList.contains('highPrice')) {
 			json.sort(function (a,b) {
 				return b.price - a.price
 			})
@@ -527,6 +514,12 @@ function interceptorHandler(event) {
       location.href = cpath + '/rsvn/reservation'
    }
 }
+//주말 체크 핸들러
+function weekendCount() {
+	let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
+	let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
+	let count = 0
+//	let TF = $('#daterangepicker').data('daterangepicker').locale['daysOfWeek']
 
 
 
@@ -566,6 +559,34 @@ function weekendCount() {
 
 
 
+
+	while(true) {
+		let tmp_date = startDate
+		
+		if(tmp_date.getTime() > endDate) {
+			console.log("count : " + count)
+			break
+		}
+		else{
+			let tmp = tmp_date.getDay()
+	
+			if(tmp == 5 || tmp == 6) {
+				console.log('주말')
+				count++
+			}
+			else {
+				console.log('평일')
+			}
+			tmp_date.setDate(startDate.getDate() + 1)
+		}
+	}
+	if(count == 3){
+		count = 2
+	}
+	 
+	return count
+}
+
 //숙소 예약 버튼 (값 전달)
 function getCheckHandler() { 
  const start = document.getElementById('daterangepicker').value.split('~')[0]
@@ -574,36 +595,49 @@ function getCheckHandler() {
  let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
  let quantity = Math.floor((endDate.getTime() - startDate.getTime())/(1000 * 3600 * 24))
  let weekendCnt = weekendCount()
+ let human_count = humanCnt
+
  
 
- if(quantity == 1 && weekendCnt == 2){
-    weekendCnt = 1
- }else if(weekendCnt == 1 && startDate.getDay() == 4){
-    weekendCnt = 0
+ if(quantity == 1 && weekendCnt == 2 || weekendCnt == 2 && endDate.getDay() == 6){
+	 weekendCnt = 1
+ }else if(weekendCnt == 1 && startDate.getDay() != 5){
+	 weekendCnt = 0
+	 
  }
  
  location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + 
  '&check_in=' + start + '&check_out=' + end + '&quantity=' + quantity + '&weekendCnt=' + weekendCnt
+
+ if(quantity == 1 && weekendCnt == 2 || weekendCnt == 2 && endDate.getDay() == 6){
+	 weekendCnt = 1
+ }else if(weekendCnt == 1 && startDate.getDay() != 5){
+	 weekendCnt = 0
+ }
+ 
+ // 총 금액 입니다
+ 
+ let price = document.querySelector('.price > div > p > b').innerText.split(' ')[0]
+ 	 price = (+price * quantity) + ((price * 0.5) * weekendCnt)
+ 	 
+ location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + 
+ '&check_in=' + start + '&check_out=' + end +'&human_count=' + human_count + '&quantity=' + quantity  + '&price=' + price
+
 }
 //7박까지 제한하는 로직 핸들러
 function getDateHandler(event) {
-	 let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
-	 let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
-	 let quantity = endDate.getTime() - startDate.getTime()
-	
-	 if(quantity/(1000 * 3600 * 24)  > 8){
-		 alert('최대 7박까지만 가능합니다')
-		 location.reload()
-	 }
+    let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
+    let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
+    let quantity = endDate.getTime() - startDate.getTime()
+   
+    if(quantity/(1000 * 3600 * 24)  > 8){
+       alert('최대 7박까지만 가능합니다')
+       location.reload()
+    }
 }
-
-
 function reviewScrollHandler(event) {
 	
 	if(event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight) {
 		reviewList()
 	}
 }
-
-
-

@@ -31,29 +31,9 @@ public class UserService {
 
 		
 	public int join(User_nonsocialDTO dto) {
-		String result = "";
 		String newUserID = dto.getEmail();
 
-		if(newUserID.contains("naver")) {
-			
-			newUserID += ".com";
-			dto.setEmail(newUserID);
-		}
-		else if(newUserID.contains("nate")) {
-			
-			newUserID += ".com";
-			dto.setEmail(newUserID);
-		}
-		else if(newUserID.contains("gmail")) {
-			
-			newUserID += ".com";
-			dto.setEmail(newUserID);
-		}
-		else if(newUserID.contains("hanmail")) {
-			
-			newUserID += ".net";
-			dto.setEmail(newUserID);
-		}
+
 		System.out.println("newUserID : " + newUserID);
 		
 		

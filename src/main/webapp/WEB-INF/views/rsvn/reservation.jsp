@@ -77,7 +77,7 @@ let phoneNumber = '${rsvnDto.phoneNumber}'
          <p id="info_name"><strong>숙소이름/객실 타입</strong></p>
          ${infoDto.name}/${roomDto.roomName}
          <p><strong>인원/기간</strong></p>
-         <span id= "human_count" class="rsvn_el">4</span>명/ <span id="quantity" class="rsvn_el">${param.quantity }</span>박
+         <span id= "human_count" class="rsvn_el">${param.human_count}</span>명/ <span id="quantity" class="rsvn_el">${param.quantity }</span>박
          <p><strong>체크인</strong></p>
          <span id="check_in" class="rsvn_el">${param.check_in}</span>
          <p><strong>체크아웃</strong></p>
@@ -85,9 +85,7 @@ let phoneNumber = '${rsvnDto.phoneNumber}'
          <hr>
          <div class="reservation_price_info">
          <p><strong>총 결제 금액(VAT 포함)</strong></p>
-<%--         <c:if test="${param.quantity == 1 and param.weekendCnt == 2 }"> --%>
-         <p id="amount_p"><strong><span id="total_amount" class="rsvn_el">${roomDto.price * param.quantity}</span>원</strong></p>
-<%--          </c:if> --%>
+         <p id="amount_p"><strong><span id="total_amount" class="rsvn_el">${param.price}</span>원</strong></p>
          </div>
          <ul>
             <li>해당 객실가는 세금,봉사료가 포함된 금액입니다</li>

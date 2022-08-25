@@ -171,7 +171,7 @@
         border: initial;
     }
     .hidden {
-    	display: none;
+       display: none;
     }
     .gra_left_right_red {
         background: linear-gradient(to right, rgba(255,0,85,1) 1%,rgba(230,34,67,1) 100%);
