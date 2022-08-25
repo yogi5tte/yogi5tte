@@ -13,10 +13,11 @@ public class UserCheckService {
    
    public String checkId(String newUserID) {
       
-      System.out.println("처음: newUserID : " + newUserID);
-      String result=null;
-      
-      
+
+	   System.out.println("처음: newUserID : " + newUserID);
+	   String result=null;
+	   
+	  
 
       if(newUserID.contains("naver")) {
          newUserID += ".com";
@@ -40,11 +41,11 @@ public class UserCheckService {
       System.out.println(user);
      
       if(user == null) {
-         System.out.println("user.getEmail() : true");
-         result ="true";
-         System.out.println("1result"+result);
-         return result;
-         
+    	  System.out.println("user.getEmail() : true");
+    	  result ="true";
+    	  System.out.println("1result"+result);
+    	  return result;
+    	  
       }
       String check = user.getEmail();
       

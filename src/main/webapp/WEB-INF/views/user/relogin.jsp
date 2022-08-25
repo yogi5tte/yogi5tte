@@ -58,9 +58,11 @@ function kakaoLogin() {
         Kakao.API.request({
           url: '/v2/user/me',
           success: function (response) {
-             console.log(response)
-//              sessionStorage.setItem('response', response.properties)
-//              console.log(sessionStorage.getItem('response'))
+
+        	  console.log(response)
+//         	  sessionStorage.setItem('response', response.properties)
+//         	  console.log(sessionStorage.getItem('response'))
+
           },
           fail: function (error) {
             console.log(error)
