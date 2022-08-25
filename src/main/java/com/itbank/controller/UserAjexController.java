@@ -23,14 +23,60 @@ public class UserAjexController {
 
 	@GetMapping("/join3/{gcuseremail}")
 	public String selectList(@PathVariable("gcuseremail") String gcuseremail) {
-				
+				String result;
+		
+		
 				System.out.println("gcuseremail : " + gcuseremail);
-			
-				String newUserID = gcuseremail;
+				System.out.println("gcuseremail.contains(@) :" +  gcuseremail.contains("@"));
 				
-				String result = userCheckService.checkId(newUserID); 		
-						
-				return result;
+				if(gcuseremail.contains("@") == false) {
+					result = "-1";
+					System.out.println(result);
+					return "-1";
+					
+				}
+				else if(gcuseremail.contains("naver") == true){
+					System.out.println("실행했니?");
+					result = userCheckService.checkId(gcuseremail); 		
+					System.out.println("result : " + result);
+					
+					
+					return result;	
+					
+				}
+				else if(gcuseremail.contains("nate") == true){
+					System.out.println("실행했니?");
+					result = userCheckService.checkId(gcuseremail); 		
+					System.out.println("result : " + result);
+					
+					
+					return result;	
+					
+				}
+				else if(gcuseremail.contains("gmail") == true){
+					System.out.println("실행했니?");
+					result = userCheckService.checkId(gcuseremail); 		
+					System.out.println("result : " + result);
+					
+					
+					return result;	
+				}
+				else if(gcuseremail.contains("hanmail") == true){
+					System.out.println("실행했니?");
+					result = userCheckService.checkId(gcuseremail); 		
+					System.out.println("result : " + result);
+					
+					
+					return result;	
+					
+				}
+				else {
+					result = "-1";
+					System.out.println(result);
+					return "-1";	
+				}
+				
+			
 					
 		
 		}
