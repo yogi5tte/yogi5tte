@@ -3,6 +3,7 @@ package com.itbank.controller;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itbank.reservation.ReservationDAO;
+
 
 import com.itbank.service.MailService;
 import com.itbank.service.ReservationService;
@@ -70,6 +72,7 @@ public class UserController {
       System.out.println(row != 0 ? "가입 성공" : "가입 실패");
       return "redirect:"+ "/";
    }
+   
    
    @GetMapping("/login")
    public void login() {}
@@ -185,9 +188,9 @@ public class UserController {
       else {
       session.setAttribute("login", login);
    
+   
       return "redirect:"+ "/";
       }
+      
    }
-
-    
 }
