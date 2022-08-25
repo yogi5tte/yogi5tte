@@ -79,8 +79,8 @@ public class UserController {
    
    @PostMapping("/login")
    public String login(User_nonsocialDTO dto, HttpSession session)throws NoSuchAlgorithmException {
-//      System.out.println(dto.getEmail());
-//      System.out.println(dto.getPassword());
+      System.out.println(dto.getEmail());
+      System.out.println(dto.getPassword());
       User_nonsocialDTO login  = userService.login(dto);
       if(login == null) {
       
@@ -100,8 +100,8 @@ public class UserController {
 
    @PostMapping("/relogin")
    public String relogin(User_nonsocialDTO dto, HttpSession session)throws NoSuchAlgorithmException {
-//      System.out.println(dto.getEmail());
-//      System.out.println(dto.getPassword());
+      System.out.println(dto.getEmail());
+      System.out.println(dto.getPassword());
       User_nonsocialDTO login  = userService.login(dto);
       if(login == null) {
       
@@ -149,10 +149,10 @@ public class UserController {
    @PostMapping("/host_join")
    @ResponseBody
    public String host_join(@RequestBody HashMap<String, String> dto, HttpSession session)throws NoSuchAlgorithmException {
-//      System.out.println(dto.get("email"));
-//      System.out.println(dto.get("password"));
-//      
-//      System.out.println(dto);
+      System.out.println(dto.get("email"));
+      System.out.println(dto.get("password"));
+      
+      System.out.println(dto);
       User_sellerDTO login  = userService.seller_login(dto);
       if(login == null) {
          return "/user/host_join";

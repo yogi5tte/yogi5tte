@@ -177,8 +177,8 @@
 	loArray.forEach(lo => lo.addEventListener('mouseover', loHandler))
 	dloOneArray.forEach(dto => dto.addEventListener('click', clickListHandler))
 	btnArray.forEach(btn => btn.addEventListener('click', sortHandler))
-   	window.addEventListener('load', listLoadHandler)
 	
+   	window.addEventListener('load', listLoadHandler)
 	overlay.addEventListener('click', closeModal)
 	mapbtn.addEventListener('click', openModal)
 	dnbtn.addEventListener('click', listDncount)
