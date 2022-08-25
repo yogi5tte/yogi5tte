@@ -98,6 +98,25 @@ public class UserController {
 	@GetMapping("/relogin")
 	public void relogin() {}
 
+	@PostMapping("/relogin")
+	public String relogin(User_nonsocialDTO dto, HttpSession session)throws NoSuchAlgorithmException {
+		System.out.println(dto.getEmail());
+		System.out.println(dto.getPassword());
+		User_nonsocialDTO login  = userService.login(dto);
+		if(login == null) {
+		
+			return "redirect:"+ "/user/relogin";
+		}
+		else {
+		session.setAttribute("login", login);
+	
+	
+		return "redirect:"+ "/";
+		}
+		
+	}
+	
+	
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
