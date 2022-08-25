@@ -3,6 +3,7 @@ package com.itbank.controller;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itbank.reservation.ReservationDAO;
+
 
 import com.itbank.service.MailService;
 import com.itbank.service.ReservationService;
@@ -71,6 +73,7 @@ public class UserController {
       return "redirect:"+ "/";
    }
    
+   
    @GetMapping("/login")
    public void login() {}
    
@@ -107,15 +110,20 @@ public class UserController {
       else {
       session.setAttribute("login", login);
    
+   
       return "redirect:"+ "/";
       }
+      
    }
+   
+   
    
    @GetMapping("/logout")
    public String logout(HttpSession session) {
        session.invalidate();
       return "redirect:"+ "/";
    }
+   
    
    @GetMapping("/my_reservation")
    public void my_reservation() {}
@@ -155,12 +163,14 @@ public class UserController {
       }
    }
    
+   
    @PostMapping(value="/host_send", produces="text/plain; charset=utf-8",consumes="text/plain; charset=utf-8")
    @ResponseBody
    public String host_send(@RequestBody String answer) throws IOException,MessagingException{
       String isOK = mailservice.sendConfirm(answer);
       return isOK;
    }
+   
    
    @RequestMapping("/host_join2")
    public void host_join2() {}
@@ -171,7 +181,9 @@ public class UserController {
    @GetMapping("/host_home")
    public void host_home() {}
    
+   
    @RequestMapping("/host_home2")
    public void host_home2() {}
+   
    
 }

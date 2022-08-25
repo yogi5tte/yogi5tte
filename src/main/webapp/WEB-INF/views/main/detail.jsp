@@ -26,9 +26,11 @@
 
 <!-- 지도 소스 -->
 <script>
+
 	let longtitude = +'${info.longtitude}'
 	let latitude = +'${info.latitude}'
 	let name = '${info.name}'
+
 	let humanCnt = +'${param.human_count}'
 </script>
 <script type="text/javascript"
