@@ -12,11 +12,14 @@ import org.apache.ibatis.annotations.Param;
 @Repository
 public interface RoomDAO {
 	
+
+	List<RoomDTO> themeList(HashMap<String, Object> param);
+	
 	@Select(" select P.idx, I.name, I.seller_text, I.product_img, I.review_count, P.pType, R.info_idx, L.city, L.gu, " + 
 			"        min(R.price) as price" + 
 			"            from info I" + 
 			"    join product P  on P.idx = I.idx" + 
-			"    join room R     on R.info_idx = I.idx " + 
+			"    join room R     on R.info_idx = I.idx " + 	
 			"    join location L on L.idx = P.location_idx" + 
 			"    join theme T    on t.info_idx = i.idx" + 
 			"    where L.category = #{category} and P.pType = #{pType} and R.human_count >= #{human_count} and T.op1 = 'n' " + 
