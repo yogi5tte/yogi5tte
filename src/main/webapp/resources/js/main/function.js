@@ -1,5 +1,4 @@
 'use strict';
-
 // 스크롤시 헤더 변경되는 함수
 function scrollHandler(event) {
 	let target = document.documentElement
@@ -331,8 +330,6 @@ function reviewList(event){
 	})
 	reviewBox.setAttribute('offset', +offset + 5)
 }
-
-
 // 모달 제거
 function closeModal() {
 	document.getElementById('modal').classList.add('hidden')
@@ -352,7 +349,6 @@ function openModal(event) {
 // 상세 페이지 모달 등장
 function dtopenModal(event) {
 	document.getElementById('modal').classList.remove('hidden')
-
 }
 // 대문페이지 인원수 감소 함수
 function dncount(event) {
@@ -521,45 +517,6 @@ function weekendCount() {
 	let count = 0
 //	let TF = $('#daterangepicker').data('daterangepicker').locale['daysOfWeek']
 
-
-
-//주말 체크 핸들러
-function weekendCount() {
-   let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
-   let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
-   
-   let count = 0
-
-   while(true) {
-      let tmp_date = startDate
-      
-      if(tmp_date.getTime() > endDate) {
-         console.log("count : " + count)
-         break
-      }
-      else{
-         let tmp = tmp_date.getDay()
-         
-         if(tmp == 5 || tmp == 6) {
-            console.log('주말')
-            count++
-         }
-         else {
-            console.log('평일')
-         }
-         tmp_date.setDate(startDate.getDate() + 1)
-      }
-   }
-   if(count == 3){
-      count = 2
-   }
-    
-   return count
-}
-
-
-
-
 	while(true) {
 		let tmp_date = startDate
 		
@@ -586,7 +543,6 @@ function weekendCount() {
 	 
 	return count
 }
-
 //숙소 예약 버튼 (값 전달)
 function getCheckHandler() { 
  const start = document.getElementById('daterangepicker').value.split('~')[0]
@@ -595,30 +551,21 @@ function getCheckHandler() {
  let endDate = new Date($('#daterangepicker').data('daterangepicker').endDate['_d'])
  let quantity = Math.floor((endDate.getTime() - startDate.getTime())/(1000 * 3600 * 24))
  let weekendCnt = weekendCount()
- let human_count = humanCnt
-
- 
+ let human_count = humanCnt 
 
  if(quantity == 1 && weekendCnt == 2 || weekendCnt == 2 && endDate.getDay() == 6){
 	 weekendCnt = 1
  }else if(weekendCnt == 1 && startDate.getDay() != 5){
 	 weekendCnt = 0
-	 
  }
  
- location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + 
- '&check_in=' + start + '&check_out=' + end + '&quantity=' + quantity + '&weekendCnt=' + weekendCnt
-
-
  // 총 금액 입니다
  let price = document.querySelector('.price > div > p > b').innerText.split(' ')[0]
  	 price = (+price * quantity) + ((price * 0.5) * weekendCnt)
  	 
  location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + 
- '&check_in=' + start + '&check_out=' + end +'&human_count=' + human_count + '&quantity=' + quantity  + '&price=' + price
-
-
- 
+ '&check_in=' + start + '&check_out=' + end + '&human_count=' + human_count + '&quantity=' + quantity  + '&price=' + price
+}
 
 //7박까지 제한하는 로직 핸들러
 function getDateHandler(event) {

@@ -24,8 +24,8 @@ public class UserService {
 	
 	
 	public User_nonsocialDTO login(User_nonsocialDTO dto) {
-		System.out.println("dto:"+ dto.getEmail());
-		System.out.println("dto:"+ dto.getPassword());
+//		System.out.println("dto:"+ dto.getEmail());
+//		System.out.println("dto:"+ dto.getPassword());
 		return dao.login(dto) ;
 	}
 
