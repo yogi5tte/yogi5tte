@@ -77,6 +77,7 @@ let phoneNumber = '${rsvnDto.phoneNumber}'
          <p id="info_name"><strong>숙소이름/객실 타입</strong></p>
          ${infoDto.name}/${roomDto.roomName}
          <p><strong>인원/기간</strong></p>
+
          <span id= "human_count" class="rsvn_el">${param.human_count}</span>명/ <span id="quantity" class="rsvn_el">${param.quantity }</span>박
          <p><strong>체크인</strong></p>
          <span id="check_in" class="rsvn_el">${param.check_in}</span>
