@@ -38,7 +38,7 @@ function sendHandler(event) {
 			method: 'POST',
 			body: ob.email,
 			headers: {
-				'Content-Type' : 'application/json; charset=utf-8'
+				'Content-Type' : 'text/plain;charset=utf-8'
 			}
 		}
 	console.log(opt)
@@ -60,6 +60,7 @@ function authHandler(event) {
 	
 	if(ob['authNumber'] == (sessionStorage.getItem('confirm'))) {
 		alert('인증되었습니다')
+		location.href = cpath + '/user/host_join2'
 	}
 	else {
 		alert('인증 실패')

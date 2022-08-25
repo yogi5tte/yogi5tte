@@ -64,7 +64,7 @@
     <!-- //Content  -->
                         
                         
-                        
+ <%@ include file="../main/footer.jsp" %>                       
 
 
 <script>

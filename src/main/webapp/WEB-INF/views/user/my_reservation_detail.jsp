@@ -71,7 +71,7 @@
     <!-- //Content  -->
                         
                         
-                        
+ <%@ include file="../main/footer.jsp" %>                       
                
 
 

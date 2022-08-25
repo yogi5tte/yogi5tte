@@ -45,6 +45,12 @@ public class UserService {
 //		System.out.println("dto:"+ dto.getEmail());
 //		System.out.println("dto:"+ dto.getPassword());
 		return sellerDAO.login(dto);
+	}
+
+
+	public int hostJoin(User_sellerDTO dto) {
+		String newUserId = dto.getEmail();
+		return sellerDAO.join(dto);
 	}	
 		
 		

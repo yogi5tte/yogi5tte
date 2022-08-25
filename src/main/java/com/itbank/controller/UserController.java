@@ -153,17 +153,25 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping("/host_join2")
+	@GetMapping("/host_join2")
 	public void host_join2() {}
 	
-	@RequestMapping("/host_join3")
-	public void host_join3() {}
+	@PostMapping("/host_join2")
+	public String join(User_sellerDTO dto) throws NoSuchAlgorithmException {
+		System.out.println(dto.getEmail());
+		System.out.println(dto.getPassword());
+		System.out.println(dto.getNickName());
+		int row = userService.hostJoin(dto);
+		System.out.println(row != 0 ? "가입 성공" : "가입 실패");
+		return "redirect:"+ "/user/host_join";
+	}
+	
 	
 	@GetMapping("/host_home")
 	public void host_home() {}
 	
 	
-	@RequestMapping("/host_home2")
+	@GetMapping("/host_home2")
 	public void host_home2() {}
 	
 	
