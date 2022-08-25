@@ -175,7 +175,6 @@ public class UserController {
 	public void host_home2() {}
 	
 	
-
    @PostMapping("/relogin")
    public String relogin(User_nonsocialDTO dto, HttpSession session)throws NoSuchAlgorithmException {
       System.out.println(dto.getEmail());

@@ -16,10 +16,7 @@ import com.itbank.service.UserCheckService;
 @RequestMapping("/user")
 public class UserAjexController {
 
-
-
 	@Autowired private UserCheckService userCheckService;
-
 
 	@GetMapping("/join3/{gcuseremail}")
 	public String selectList(@PathVariable("gcuseremail") String gcuseremail) {
@@ -36,7 +33,10 @@ public class UserAjexController {
 					
 				}
 				else if(gcuseremail.contains("naver") == true){
-					//System.out.println("실행했니?");
+
+					System.out.println("1실행했니?");
+
+
 					result = userCheckService.checkId(gcuseremail); 		
 					//System.out.println("result : " + result);
 					
@@ -45,7 +45,10 @@ public class UserAjexController {
 					
 				}
 				else if(gcuseremail.contains("nate") == true){
-					//System.out.println("실행했니?");
+
+					System.out.println("2실행했니?");
+
+
 					result = userCheckService.checkId(gcuseremail); 		
 					//System.out.println("result : " + result);
 					
@@ -54,7 +57,10 @@ public class UserAjexController {
 					
 				}
 				else if(gcuseremail.contains("gmail") == true){
-					//System.out.println("실행했니?");
+
+					System.out.println("3실행했니?");
+				
+
 					result = userCheckService.checkId(gcuseremail); 		
 					//System.out.println("result : " + result);
 					
@@ -62,7 +68,10 @@ public class UserAjexController {
 					return result;	
 				}
 				else if(gcuseremail.contains("hanmail") == true){
-					//System.out.println("실행했니?");
+
+					System.out.println("4실행했니?");
+					System.out.println("4gcuseremail:" + gcuseremail);
+
 					result = userCheckService.checkId(gcuseremail); 		
 					//System.out.println("result : " + result);
 					

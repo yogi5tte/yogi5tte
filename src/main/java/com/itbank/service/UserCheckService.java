@@ -13,8 +13,8 @@ public class UserCheckService {
    
    public String checkId(String newUserID) {
       
-	   System.out.println("newUserID : " + newUserID);
-	   String result = "";
+	   System.out.println("처음: newUserID : " + newUserID);
+	   String result=null;
 	   
 	   
 
@@ -34,23 +34,33 @@ public class UserCheckService {
          
          newUserID += ".net";
       }
-      System.out.println("newUserID : " + newUserID);
+      System.out.println("가공한: newUserID : " + newUserID);
       
       User_nonsocialDTO user = dao.checkId(newUserID); 
-      
-      System.out.println("user : " + user);
-      
+      System.out.println(user);
+     
       if(user == null) {
     	  System.out.println("user.getEmail() : true");
     	  result ="true";
+    	  System.out.println("1result"+result);
+    	  return result;
+    	  
       }
+      String check = user.getEmail();
       
-      else if(user.getEmail() == newUserID) {
+      System.out.println("user : " + user.getEmail());
+      System.out.println("check : " + check);
+      System.out.println("newUserID : " + newUserID);
+      
+      
+      if(check != null) {
          System.out.println("user.getEmail() : false");
          result ="false";
+         System.out.println("2result"+result);
+         return result;
       }
       
-      return result;
+     return result;
    }
 
    
