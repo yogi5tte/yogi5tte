@@ -50,8 +50,4 @@ function authHandler(event) {
 	}
 }
 
-const send_inp = document.getElementById('send_inp')
 
-send_inp.addEventListener('keypress', (event) => {
-	sendMailForm_btn.classList.add('gra_left_right_red')
-})

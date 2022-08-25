@@ -575,12 +575,16 @@ function getCheckHandler() {
  let quantity = Math.floor((endDate.getTime() - startDate.getTime())/(1000 * 3600 * 24))
  let weekendCnt = weekendCount()
  
- 
+
+ if(quantity == 1 && weekendCnt == 2){
+    weekendCnt = 1
+ }else if(weekendCnt == 1 && startDate.getDay() == 4){
+    weekendCnt = 0
+ }
  
  location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + 
  '&check_in=' + start + '&check_out=' + end + '&quantity=' + quantity + '&weekendCnt=' + weekendCnt
 }
-
 //7박까지 제한하는 로직 핸들러
 function getDateHandler(event) {
 	 let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
