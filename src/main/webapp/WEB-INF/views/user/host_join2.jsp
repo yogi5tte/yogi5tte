@@ -24,7 +24,7 @@
         </div>
     </a>
     <form class="form-horizontal" id="join-form" method="post" name="join">
-        <fieldset class="login-layer" style="height: 600px;">
+        <fieldset class="login-layer" style="height: 800px;">
             <div id="veriable-form">
                 <h1>호스트 하우스 회원 가입</h1>
                 <span class="input-title">이메일</span>
@@ -43,6 +43,13 @@
                 <input type="text" id="unick" class="form-control" name="nickName" placeholder="닉네임을 입력하세요." required>
                 <div id="nickCheck" class="impo"></div>
                 
+                <span class="input-title">이름</span>
+                <input type="text" id="userName" class="form-control" name="name" placeholder="이름을 입력하세요." required>
+                
+                <span class="input-title">전화번호</span>
+                <input type="text" id="pNum" class="form-control" name="phoneNumber" placeholder="전화번호를 입력하세요(-포함)." required>
+                <div id="phoneNumber" class="impo"></div>
+                
                 <button class="btn btn-primary login-button" id="joinBtn" type="submit">다음</button>
             </div>
         </fieldset>
@@ -55,14 +62,18 @@
 	const new_pw = document.getElementById('new_pw')
 	const new_pw_re = document.getElementById('new_pw_re')
 	const unick = document.getElementById('unick')
+	const pNum = document.getElementById('pNum')
 	const joinBtn = document.getElementById('joinBtn')
 	
 	gcuseremail.addEventListener('blur', checkId)
 	new_pw.addEventListener('blur', checkPassword1)
    	new_pw_re.addEventListener('blur', checkPassword2)
    	unick.addEventListener('blur', checkingNick)
+   	pNum.addEventListener('blur', pNumHandler)
    	joinBtn.addEventListener('click', allCheck)
 </script>
+
+
 
 </body>
 </html>

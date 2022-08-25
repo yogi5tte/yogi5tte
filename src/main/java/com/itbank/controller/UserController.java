@@ -24,7 +24,7 @@ import com.itbank.service.ReservationService;
 import com.itbank.service.UserService;
 import com.itbank.user.User_nonsocialDAO;
 import com.itbank.user.User_nonsocialDTO;
-import com.itbank.user.User_sellerDTO;
+import com.itbank.user.Users_sellerDTO;
 
 @Controller
 @RequestMapping("/user")
@@ -131,7 +131,7 @@ public class UserController {
 		System.out.println(dto.get("password"));
 		
 		System.out.println(dto);
-		User_sellerDTO login  = userService.seller_login(dto);
+		Users_sellerDTO login  = userService.seller_login(dto);
 		if(login == null) {
 			return "/user/host_join";
 		}
@@ -154,7 +154,7 @@ public class UserController {
 	public void host_join2() {}
 	
 	@PostMapping("/host_join2")
-	public String join(User_sellerDTO dto) throws NoSuchAlgorithmException {
+	public String join(Users_sellerDTO dto) throws NoSuchAlgorithmException {
 		System.out.println(dto.getEmail());
 		System.out.println(dto.getPassword());
 		System.out.println(dto.getNickName());

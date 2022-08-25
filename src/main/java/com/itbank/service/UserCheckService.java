@@ -53,11 +53,17 @@ public class UserCheckService {
       return result;
    }
 
+   
+   
    public String checkNick(String unick) {
-      
-      
       return dao.checkNick(unick);
    }
+
+   
+   
+public String checkpNum(String pNum) {
+	return dao.checkpNum(pNum);
+}
    
    
    

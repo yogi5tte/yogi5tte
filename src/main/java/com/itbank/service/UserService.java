@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.itbank.user.User_nonsocialDAO;
 import com.itbank.user.User_nonsocialDTO;
-import com.itbank.user.User_sellerDAO;
-import com.itbank.user.User_sellerDTO;
+import com.itbank.user.Users_sellerDAO;
+import com.itbank.user.Users_sellerDTO;
 
 
 @Service
@@ -19,7 +19,7 @@ public class UserService {
 	private User_nonsocialDAO dao;
 	
 	@Autowired
-	private User_sellerDAO sellerDAO;
+	private Users_sellerDAO sellerDAO;
 	
 	
 	
@@ -41,14 +41,14 @@ public class UserService {
 		return dao.join(dto);
 	}
 
-	public User_sellerDTO seller_login(HashMap<String, String> dto) {
+	public Users_sellerDTO seller_login(HashMap<String, String> dto) {
 //		System.out.println("dto:"+ dto.getEmail());
 //		System.out.println("dto:"+ dto.getPassword());
 		return sellerDAO.login(dto);
 	}
 
 
-	public int hostJoin(User_sellerDTO dto) {
+	public int hostJoin(Users_sellerDTO dto) {
 		String newUserId = dto.getEmail();
 		return sellerDAO.join(dto);
 	}	

@@ -53,7 +53,7 @@ function checkId(event){
 	      }
 		
 		if(json == '-1'){
-			 document.getElementById('checkId').innerHTML='아이디 형식에 문제가 있습니다.';
+			  document.getElementById('checkId').innerHTML='아이디 형식에 문제가 있습니다.';
 	          document.getElementById('checkId').style.color='red';
 	          document.getElementById('nickCheck').style.fontSize='15px';
 	          document.getElementById('checkId').value='';
@@ -179,7 +179,7 @@ function checkPassword1(event) {
 		  }
 		
 		  if(check_SC == 1){
-			  let url = cpath + '/user/join3/'+ unick
+			  let url = cpath + '/user/host_join2/'+ unick
 				console.log('url : ' + url)
 				const opt = {
 				method: 'POST',
@@ -217,17 +217,94 @@ function checkPassword1(event) {
 	
 	
 	
+	function pNumHandler(event) {
+		let pNum = document.getElementById('pNum').value;
+		  let sc = ["!","@","#","$","%"];
+		  let check_SC = 1;
+		  
+		  for(let i=0;i<pNum.length;i++){
+		      for(let j=0;j<sc.length;j++){
+		    	  console.log('pNum[i] : ' + pNum[i] )
+		    	  console.log('sc[j] : ' + sc[j] )
+		    	  if(pNum[i] == sc[j]){
+		    		  check_SC = 0;
+		    		  console.log('check_SC : ' + check_SC )
+		    		  if(check_SC == 0){
+		    	          document.getElementById('phoneNumber').innerHTML='특수문자가 들어가 있습니다.';
+		    	          document.getElementById('phoneNumber').style.color='red';
+		    	          document.getElementById('phoneNumber').style.fontSize='15px';
+		    	          document.getElementById('phoneNumber').value='';
+		    	          document.getElementById('phoneNumber').classList.add('impo')
+		    	          return false;
+		    	      }
+		    		
+		    	  	  }
+		      }
+		  }
+		  
+		  if(pNum.length < 0 || pNum.length>13){
+		      document.getElementById('phoneNumber').innerHTML='번호는 1개 이상, 11개 이하만 이용 가능합니다.';
+		      document.getElementById('phoneNumber').style.color='red';
+		      document.getElementById('phoneNumber').style.fontSize='15px';
+		      document.getElementById('phoneNumber').classList.add('impo')
+		      pNum.value = "";
+		      pNum.focus();
+		      pNum = false;
+		      return false;
+		      
+		   
+		  }
+		
+		  if(check_SC == 1){
+			  let url = cpath + '/user/host_join2/'+ pNum
+				console.log('url : ' + url)
+				const opt = {
+				method: 'POST',
+				data:pNum,   
+				dataType:'html'
+
+			  }
+				
+				fetch(url,opt)
+				.then(resp => resp.json())
+				.then(json=> {
+//					console.log(json)
+					 if(json == false){
+//						  console.log('false')
+				          document.getElementById('phoneNumber').innerHTML='사용중인전화번호입니다.';
+				          document.getElementById('phoneNumber').style.color='red';
+				          document.getElementById('phoneNumber').style.fontSize='15px';
+				          document.getElementById('phoneNumber').classList.add('impo')
+				          document.getElementById('phoneNumber').value='';
+				          document.getElementById('pNum').value= '';
+				          return false;
+				      }
+				   if(json == true){
+//					  console.log('true')
+					  document.getElementById('phoneNumber').innerHTML='사용가능합니다.';
+					  document.getElementById('phoneNumber').classList.remove('impo')
+				      document.getElementById('phoneNumber').style.color='blue';
+					  document.getElementById('phoneNumber').style.fontSize='15px';
+				      return true;
+				  }
+				})
+		  }
+	}
+	
+	
+	
 	function allCheck(event){
 		
 		const gcuseremail =  document.getElementById('checkId')
 		const new_pw =  document.getElementById('check1')
 		const new_pw_re =  document.getElementById('check2')
 		const unick =  document.getElementById('nickCheck')
+		const pNum = document.getElementById('phoneNumber')
 		const joinBtn = document.getElementById('joinBtn')
 		
 		let allflag = ''
 			
-		if(gcuseremail.classList.contains('impo') || new_pw.classList.contains('impo') || new_pw_re.classList.contains('impo') || unick.classList.contains('impo')) {
+		if(gcuseremail.classList.contains('impo') || new_pw.classList.contains('impo') || new_pw_re.classList.contains('impo') || unick.classList.contains('impo') || pNum.classList.contains('impo')) {
 			allflag = false
 		}
 		else {
