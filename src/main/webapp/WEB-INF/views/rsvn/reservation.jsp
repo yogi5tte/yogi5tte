@@ -15,8 +15,8 @@
 </head>
 <script>
  function noBack(){
-	 alert('만료되었습니다.')
-	 window.history.forward();}
+	 window.history.forward();
+	 }
 </script>
 
 <body  onload="noBack();" 
@@ -28,9 +28,10 @@ let roomName = '${roomDto.roomName}'
 let check_in = '${param.check_in}'
 let check_out = '${param.check_out}'
 let quantity = '${param.quantity}'
-let total_amount = '${roomDto.price * param.quantity}'
+
 let userName = '${rsvnDto.userName}'
 let phoneNumber = '${rsvnDto.phoneNumber}'
+
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
