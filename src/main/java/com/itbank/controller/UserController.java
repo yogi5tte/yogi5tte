@@ -86,8 +86,7 @@ public class UserController {
          return "redirect:"+ "/user/relogin";
       }
       else {
-      session.setAttribute("login", login);
-      
+    	  session.setAttribute("login", login);
       return "redirect:"+ (url == null ? "/" : url);
       }
       
