@@ -99,7 +99,7 @@
     	
     	liarray.forEach(li => li.addEventListener('click', mainLiHandler))
     	setInterval(slide, 3000)
-    	
+		console.log(sessionStorage.getItem('response'))    	
     	dnbtn.addEventListener('click', dncount)
     	upbtn.addEventListener('click', upcount)
     	wherebtn.addEventListener('click', clickwhere)

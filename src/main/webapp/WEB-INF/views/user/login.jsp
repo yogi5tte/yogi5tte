@@ -59,6 +59,38 @@ function kakaoLogin() {
           url: '/v2/user/me',
           success: function (response) {
         	  console.log(response)
+	          console.log(response.email)
+  	       sessionStorage.setItem('response', response.properties)
+           console.log(sessionStorage.getItem('response'))
+        	  
+//         	    for(let key of formDate.keys()){
+//         	        ob[key] = formDate.get(key)
+
+//         	    }
+//         	    const url = cpath + '/gallery'
+// 			    const opt = {
+// 			        method: 'POST',
+// 			        body: JSON.stringify(ob),
+// 			        headers: {
+// 			            'Content-Type': 'application/json; charset=UTF-8'
+// 			        }
+			        
+// 			    }
+        	  
+//         	  fetch(url,opt)
+// 				.then(resp => resp.json())
+// 				.then(json=> {
+// 	//				console.log(json)
+// 					 if(json == false){
+// 	//					  console.log('false')
+// 				          document.getElementById('nickCheck').innerHTML='사용중인닉네임입니다.';
+// 				          document.getElementById('nickCheck').style.color='red';
+// 				          document.getElementById('nickCheck').classList.add('impo')
+// 				          document.getElementById('nickCheck').value='';
+// 				          document.getElementById('unick').value= '';
+// 				          return false;
+// 				      }
+
           },
           fail: function (error) {
             console.log(error)

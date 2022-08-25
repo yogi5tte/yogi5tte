@@ -3,7 +3,7 @@
  			"-//mybatis.org//DTD Mapper 3.0//EN"
  			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  			
-<!-- Board의 메서드에 맞춰 실행될 SQL문을 작성한다 -->
+
 <mapper namespace="com.itbank.room.RoomDAO">
 
 	<select id="themeList"

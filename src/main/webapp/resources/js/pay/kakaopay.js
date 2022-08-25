@@ -1,9 +1,5 @@
 'use strict'
 
-
-
-
-
 //버튼 클릭하면 실행
 async function kakaopaymentReady(event){
 	closeModal(event);
@@ -20,9 +16,7 @@ async function kakaopaymentReady(event){
 	}).then(resp => resp.json()).then(json => json)
 	
 	console.log(rsvnJSON)
-	
-	
-	
+
 	const ob = {
 		pg: 'kakaopay.TC0ONETIME',
 		pay_method : 'card',
@@ -52,7 +46,8 @@ async function kakaopaymentReady(event){
 					alert('결제 및 결제 검증 완료');
 					const idx = rsvnJSON.idx;
 					
-					location.href = cpath + '/rsvn/reservation_approve/' + idx +'?name=' + name + '&roomName='+ roomName
+					let url = cpath + '/rsvn/reservation_approve/' + idx +'?name=' + name + '&roomName='+ roomName
+					location.href = url
 	
 				}else{
 					alert('결제 실패');
