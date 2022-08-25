@@ -564,7 +564,7 @@ function getCheckHandler() {
  	 price = (+price * quantity) + ((price * 0.5) * weekendCnt)
  	 
  location.href = cpath + '/rsvn/reservation?idx=' + event.target.getAttribute('idx') + 
- '&check_in=' + start + '&check_out=' + end + '&human_count=' + human_count + '&quantity=' + quantity + '&weekendCnt=' + weekendCnt + '&price=' + price
+ '&check_in=' + start + '&check_out=' + end + '&human_count=' + human_count + '&quantity=' + quantity  + '&price=' + price
 }
 
 //7박까지 제한하는 로직 핸들러
