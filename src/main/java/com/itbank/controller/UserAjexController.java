@@ -169,7 +169,7 @@ public class UserAjexController {
 	
 	
 	
-	@PostMapping("/host_join2/{unick}")	
+	@PostMapping("/host_unick/{unick}")	
 	public String selectUnick(@PathVariable("unick") String unick) {
 	System.out.println(unick);
 	String result = userCheckService.checkNick(unick); 		
@@ -184,7 +184,7 @@ public class UserAjexController {
 	
 	
 	
-	@PostMapping("/host_join2/{pNum}")	
+	@PostMapping("/host_pNum/{pNum}")	
 	public String selectpNum(@PathVariable("pNum") String pNum) {
 	System.out.println(pNum);
 	String result = userCheckService.checkpNum(pNum);

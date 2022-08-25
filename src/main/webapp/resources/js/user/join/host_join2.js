@@ -179,7 +179,7 @@ function checkPassword1(event) {
 		  }
 		
 		  if(check_SC == 1){
-			  let url = cpath + '/user/host_join2/'+ unick
+			  let url = cpath + '/user/host_unick/'+ unick
 				console.log('url : ' + url)
 				const opt = {
 				method: 'POST',
@@ -256,7 +256,7 @@ function checkPassword1(event) {
 		  }
 		
 		  if(check_SC == 1){
-			  let url = cpath + '/user/host_join2/'+ pNum
+			  let url = cpath + '/user/host_pNum/'+ pNum
 				console.log('url : ' + url)
 				const opt = {
 				method: 'POST',
