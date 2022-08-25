@@ -22,5 +22,14 @@ public class RoomService {
 	public List<RoomDTO> themeList(HashMap<String, Object> param) {
 		return roomDAO.themeList(param);
 	}
+
+	public List<RoomDTO> review(int idx) {
+		List<RoomDTO> list = roomDAO.review(idx);
+		for(int i = 0; i < list.size(); i++) {
+//			System.out.println(list.get(i).getReview_count());
+//			System.out.println(list.get(i).getStar());
+		}
+		return list;
+	}
 	
 }
