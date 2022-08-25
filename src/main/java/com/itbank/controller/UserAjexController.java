@@ -184,7 +184,7 @@ public class UserAjexController {
 	
 	
 	
-	@PostMapping("/host_pNum/{pNum}")	
+	@PostMapping("/host_pNum/{pNum}")	// 휴대폰 번호 유효성 체크
 	public String selectpNum(@PathVariable("pNum") String pNum) {
 	System.out.println(pNum);
 	String result = userCheckService.checkpNum(pNum);

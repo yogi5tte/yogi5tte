@@ -217,7 +217,7 @@ function checkPassword1(event) {
 	
 	
 	
-	function pNumHandler(event) {
+	function pNumHandler(event) { // 휴대폰 번호 유효성 체크
 		let pNum = document.getElementById('pNum').value;
 		  let sc = ["!","@","#","$","%"];
 		  let check_SC = 1;
