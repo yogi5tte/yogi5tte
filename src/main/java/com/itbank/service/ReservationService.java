@@ -10,6 +10,7 @@ import com.itbank.info.InfoDAO;
 import com.itbank.info.InfoDTO;
 import com.itbank.reservation.ReservationDAO;
 import com.itbank.reservation.ReservationDTO;
+import com.itbank.reservation.RsvnApproveDTO;
 import com.itbank.room.RoomDAO;
 import com.itbank.room.RoomDTO;
 
@@ -41,6 +42,11 @@ public class ReservationService {
 	public ReservationDTO checkReservation(int idx) {
 		
 		return rsvnDAO.checkReservation(idx);
+	}
+	
+	public int insertRsvnApprove(RsvnApproveDTO rsvnApproveDto) {
+		
+		return rsvnDAO.insertRsvnApprove(rsvnApproveDto);
 	}
 	
 
