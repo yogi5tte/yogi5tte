@@ -38,11 +38,11 @@
            </nav>
         <div class="align_rt">
               <div class="reserve_detail"><!----> 
-                 <div class="info" style="background-image: url(&quot;https://image.goodchoice.kr/adimg_new/5887/5960/e6e70f195be06b1e0b872b01fc580261.jpg&quot;);">
+                 <div class="info">
                     <div>
                        <i class="">예약확정</i> 
                        <strong>남해 베스트 호텔 &amp;펜션</strong> 
-                       <span>1인전용 게스트룸 •1박</span>
+                       <span>${infoDto.name}/${roomDto.roomName}</span>
                     </div>
                  </div> 
                  <section>
@@ -71,7 +71,7 @@
     <!-- //Content  -->
                         
                         
-                        
+ <%@ include file="../main/footer.jsp" %>                       
                
 
 

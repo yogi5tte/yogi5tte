@@ -10,4 +10,7 @@ public interface UsercheckDAO {
 	@Select("select * from total_user where nickName=#{unick}")
 	String checkNick(String unick);
 
+	@Select("select * from users_seller where phonenumber=#{phonenumber}")
+	String checkpNum(String pNum);
+
 }

@@ -63,12 +63,17 @@ const auth_inp = document.getElementById('auth_inp')
 sendMailForm.addEventListener('submit', sendHandler)
 authForm.addEventListener('submit', authHandler)
 
-send_inp.addEventListener('keypress', (event) => {
+send_inp.addEventListener('keyup', (event) => {
 	sendMailForm_btn.classList.add('gra_left_right_red')
+	if(send_inp.value == '') {
+		sendMailForm_btn.classList.remove('gra_left_right_red')
+	}
 })
-auth_inp.addEventListener('keypress', (event) => {
+auth_inp.addEventListener('keyup', (event) => {
 	authForm_btn.classList.add('gra_left_right_red')
+	if(auth_inp.value == '') {
+		authForm_btn.classList.remove('gra_left_right_red')
+	}
 })
 </script>
-
 
