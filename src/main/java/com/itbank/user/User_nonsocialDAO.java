@@ -2,9 +2,13 @@ package com.itbank.user;
 
 
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+
+import com.itbank.reservation.ReservationDTO;
 
 
 
@@ -19,6 +23,9 @@ public interface User_nonsocialDAO {
 
 	@Update("update user_nonsocial set deleted='y' where idx=#{idx}")
 	int delete(int idx);
+
+	@Select("select * from reservation order by idx")
+	List<ReservationDTO> selectRsvnList();
 	
 	
 	

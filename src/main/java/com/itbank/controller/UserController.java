@@ -19,8 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itbank.reservation.ReservationDAO;
-
-
+import com.itbank.reservation.ReservationDTO;
 import com.itbank.service.MailService;
 import com.itbank.service.ReservationService;
 import com.itbank.service.UserService;
@@ -38,9 +37,11 @@ public class UserController {
    
    @Autowired User_nonsocialDAO nonUserDAO;
    
-   @Autowired ReservationDAO resDAO;
+   @Autowired ReservationDAO rsvnDAO;
    
    @Autowired ReservationService resService;
+   
+
    
    @RequestMapping("/join")
    public void join() {
@@ -127,7 +128,11 @@ public class UserController {
 	
 	
 	@GetMapping("/my_reservation")
-	public void my_reservation() {}
+	public List<ReservationDTO> my_reservation() {
+		List<ReservationDTO> rsvnList = userService.selectRsvnList();
+		return rsvnList;
+		
+	}
 	
 //	//마이 페이지 및 예약 내역
 //	@RequestMapping("/my_reservation")

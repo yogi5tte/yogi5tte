@@ -1,11 +1,12 @@
 package com.itbank.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.itbank.reservation.ReservationDTO;
 import com.itbank.user.User_nonsocialDAO;
 import com.itbank.user.User_nonsocialDTO;
 import com.itbank.user.User_sellerDAO;
@@ -45,6 +46,12 @@ public class UserService {
 //		System.out.println("dto:"+ dto.getEmail());
 //		System.out.println("dto:"+ dto.getPassword());
 		return sellerDAO.login(dto);
+	}
+
+
+	public List<ReservationDTO> selectRsvnList() {
+		
+		return dao.selectRsvnList();
 	}	
 		
 		
