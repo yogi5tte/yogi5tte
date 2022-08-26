@@ -2,7 +2,8 @@ package com.itbank.room;
 
 public class RoomDTO {
 	
-	private int idx, price, human_count, review_count, category, pType;		
+	private int idx, price, human_count, review_count, category, pType;
+	private double star;
 	private String roomName, week, room_img, city, district, name, seller_text, product_img, gu;
 	
 	public int getIdx() {
@@ -94,6 +95,12 @@ public class RoomDTO {
 	}
 	public void setGu(String gu) {
 		this.gu = gu;
+	}
+	public double getStar() {
+		return star;
+	}
+	public void setStar(double star) {
+		this.star = star;
 	}
 	
 }

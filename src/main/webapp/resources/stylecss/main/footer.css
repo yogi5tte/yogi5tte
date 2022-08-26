@@ -12,6 +12,9 @@ footer {
 footer a {
     color: rgba(0,0,0,0.38);
 }
+footer a:hover {
+	color: inherit;
+}
 footer .align {
     width: 1024px;
     margin: 0 auto;
