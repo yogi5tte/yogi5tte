@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.itbank.info.InfoDTO;
 import com.itbank.reservation.ReservationDTO;
-
+import com.itbank.reservation.RsvnApproveDTO;
 import com.itbank.room.RoomDTO;
 import com.itbank.service.ReservationService;
 
@@ -46,11 +46,20 @@ public class ReservationController {
 		 return rsvnService.insertReservation(rsvnDto);
 	 }
 	 //결제 페이지에서 데이터를 받아서 결제 요청
-	 @PostMapping("rsvn/getrsvndto")
+	 @PostMapping("rsvn/getRsvnDto")
 	 @ResponseBody
 	 public ReservationDTO getrsvndto(@RequestBody HashMap<String, Object> param) {
 		 ReservationDTO dto = rsvnService.getRsvnDTO(param);
 		 return dto;
+	 }
+	 
+	 //결제 완료 후, 예약 완료 페이지에 데이터 추가
+	 @PostMapping("rsvn/insertRsvnApprove")
+	 @ResponseBody
+	 public int insertRsvnApprove(@RequestBody RsvnApproveDTO rsvnApproveDto) {
+		 System.out.println("test" + rsvnApproveDto.getName());
+		 return rsvnService.insertRsvnApprove(rsvnApproveDto);
+		 
 	 }
 	
 	 

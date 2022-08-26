@@ -25,6 +25,13 @@ public interface ReservationDAO {
 	@Select("select * from reservation a, info b, room c " + 
 			"where a.idx = #{idx} and a.info_idx = b.idx and a.room_idx = c.idx")
 	ReservationDTO checkReservation(int idx);
+	
+	@Insert("insert into reservation_approve "
+			+ "(name,roomName,check_in,check_out,reservation_idx,user_idx)"
+			+ "values(#{name},#{roomName},#{check_in},#{check_out},#{reservation_idx},#{user_idx})")
+	int insertRsvnApprove(RsvnApproveDTO rsvnApproveDto);
+
+	
 
 	
 
