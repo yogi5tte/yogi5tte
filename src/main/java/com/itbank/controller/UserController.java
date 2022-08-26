@@ -88,6 +88,7 @@ public class UserController {
       }
       else {
       session.setAttribute("login", login);
+      
    
    
       return "redirect:"+ "/";

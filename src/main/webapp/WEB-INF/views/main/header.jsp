@@ -44,6 +44,7 @@
                         </c:if>
                         <c:if test="${not empty login }">
                         <a href="${cpath }/user/mypage">${login.nickName}환영합니다.</a>
+<%--                         <a href="${cpath }/user/mypage">${login.idx}환영합니다.</a>                         --%>
                         <a href="${cpath }/user/logout">[로그아웃]</a>
                         </c:if>
                     </li>
