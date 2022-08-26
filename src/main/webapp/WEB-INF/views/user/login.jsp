@@ -58,15 +58,16 @@ function kakaoLogin() {
         Kakao.API.request({
           url: '/v2/user/me',
           success: function (response) {
-        	  console.log(response)
-	          console.log(response.email)
-  	       sessionStorage.setItem('response', response.properties)
-           console.log(sessionStorage.getItem('response'))
         	  
-//         	    for(let key of formDate.keys()){
-//         	        ob[key] = formDate.get(key)
-
-//         	    }
+        	  
+              console.log(response.kakao_account.email)
+        	  
+        	  
+	          console.log(response.keys(kakao_account.email))
+	          console.log(response.keys(kakao_account.email))
+			  	
+	          
+	          
 //         	    const url = cpath + '/gallery'
 // 			    const opt = {
 // 			        method: 'POST',
