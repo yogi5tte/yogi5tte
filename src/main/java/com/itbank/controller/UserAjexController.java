@@ -77,10 +77,6 @@ public class UserAjexController {
                System.out.println(result);
                return "-1";   
             }
-            
-         
-               
-      
       }
    
 

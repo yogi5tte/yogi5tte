@@ -24,10 +24,10 @@ public interface User_nonsocialDAO {
 	@Update("update user_nonsocial set deleted='y' where idx=#{idx}")
 	int delete(int idx);
 
-	@Select("select * from reservation order by idx")
-	List<ReservationDTO> selectRsvnList();
 	
-	
+	//회원의 예약 내역 조회
+	@Select("select * from reservation_approve where user_idx = {idx}")
+	List<ReservationDTO> selectRsvnList(int idx);
 	
 	
 

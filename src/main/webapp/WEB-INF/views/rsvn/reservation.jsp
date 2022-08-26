@@ -32,6 +32,8 @@ let quantity = '${param.quantity}'
 let userName = '${rsvnDto.userName}'
 let phoneNumber = '${rsvnDto.phoneNumber}'
 
+let user_idx = '${login.idx}'
+console.log(user_idx);
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>

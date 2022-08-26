@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -105,8 +105,9 @@ public class UserController {
 	}
 	
 	
-	@GetMapping("/my_reservation")
-	public void my_reservation() {
+	@GetMapping("/my_reservation/{idx}")
+	public List<ReservationDTO> my_reservation(@PathVariable int idx) {
+		return userService.selectRsvnList(idx);
 	}
 	
 //	//마이 페이지 및 예약 내역
