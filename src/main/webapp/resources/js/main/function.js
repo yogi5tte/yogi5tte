@@ -1,4 +1,4 @@
-'use strict';
+\'use strict';
 // 스크롤시 헤더 변경되는 함수
 function scrollHandler(event) {
 	let target = document.documentElement
