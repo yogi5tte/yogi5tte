@@ -49,7 +49,6 @@ public class UserService {
 
 
 	public int hostJoin(Users_sellerDTO dto) {
-		String newUserId = dto.getEmail();
 		return sellerDAO.join(dto);
 	}	
 		

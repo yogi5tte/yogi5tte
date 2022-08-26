@@ -49,7 +49,7 @@
                    <img loading="lazy" alt="남해 베스트 호텔 &amp;펜션" class="align">
                    </p> 
                    <a href="${cpath }/user/my_reservation_detail" class="product-title">
-                   <i class="">예약확정</i> 
+                   <i>예약확정</i> 
                    <strong></strong> 
                    <span>체크인 :<br> 체크아웃 :</span>
                    <b>예약 상세 &gt;</b>
