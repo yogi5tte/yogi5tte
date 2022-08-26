@@ -83,6 +83,7 @@ public class UserAjexController {
       
       }
    
+
    @PostMapping("/join3/{unick}")   
       public String selectNick(@PathVariable("unick") String unick) {
       System.out.println(unick);
