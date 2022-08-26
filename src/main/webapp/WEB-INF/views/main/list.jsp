@@ -67,7 +67,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div>	
 					<!-- 좌측 카테고리 및 날짜 선택 -->
 					<form>
 						<div class="filter_wrap">
