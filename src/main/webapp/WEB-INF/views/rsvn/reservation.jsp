@@ -15,8 +15,8 @@
 </head>
 <script>
  function noBack(){
-	 alert('만료되었습니다.')
-	 window.history.forward();}
+	 window.history.forward();
+	 }
 </script>
 
 <body  onload="noBack();" 
