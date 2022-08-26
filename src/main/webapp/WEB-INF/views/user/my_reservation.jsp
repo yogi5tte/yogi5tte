@@ -46,12 +46,12 @@
                 <li class="reservation-detail">
                    <div><!----> 
                    <p class="pic">
-                   <img loading="lazy" srcset="https://image.goodchoice.kr/resize_354x184/adimg_new/5887/5960/e6e70f195be06b1e0b872b01fc580261.jpg, https://image.goodchoice.kr/resize_531x276/adimg_new/5887/5960/e6e70f195be06b1e0b872b01fc580261.jpg 1.5x , https://image.goodchoice.kr/resize_708x368/adimg_new/5887/5960/e6e70f195be06b1e0b872b01fc580261.jpg 2x" src="https://image.goodchoice.kr/resize_354x184/adimg_new/5887/5960/e6e70f195be06b1e0b872b01fc580261.jpg" alt="남해 베스트 호텔 &amp;펜션" class="align">
+                   <img loading="lazy" alt="남해 베스트 호텔 &amp;펜션" class="align">
                    </p> 
                    <a href="${cpath }/user/my_reservation_detail" class="product-title">
                    <i class="">예약확정</i> 
-                   <strong>${list[0].user_Name}</strong> 
-                   <span>체크인 : ${list[0].check_In}<br> 체크아웃 : ${list[0].check_Out }</span>
+                   <strong></strong> 
+                   <span>체크인 :<br> 체크아웃 :</span>
                    <b>예약 상세 &gt;</b>
                    </a> <!---->
                    </div>
@@ -64,7 +64,7 @@
     <!-- //Content  -->
                         
                         
-                        
+ <%@ include file="../main/footer.jsp" %>                       
 
 
 <script>
