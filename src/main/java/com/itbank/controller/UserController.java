@@ -82,6 +82,7 @@ public class UserController {
 //      System.out.println(dto.getEmail());
 //      System.out.println(dto.getPassword());
       User_nonsocialDTO login  = userService.login(dto);
+     
       if(login == null) {
          return "redirect:"+ "/user/relogin";
       }

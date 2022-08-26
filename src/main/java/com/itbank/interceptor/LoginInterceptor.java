@@ -33,14 +33,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	
 		String url = null;
 		url = request.getRequestURL().toString();	
-		url = URLEncoder.encode(url, "utf-8");	// 특수기호때문에 urlEncoding 처리
-		String queryString = request.getQueryString().replaceAll("/&/g", "%26");
+		String queryString = request.getQueryString();
 
 		if(queryString != null) {
 			url = request.getRequestURL().append("?").append(queryString).toString();
 		}
 		
-		
+		url = URLEncoder.encode(url, "UTF-8");
 		
 		if(login == null) {
 			System.out.println("preHandle (false)");
