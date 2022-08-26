@@ -1,4 +1,4 @@
-\'use strict';
+'use strict';
 // 스크롤시 헤더 변경되는 함수
 function scrollHandler(event) {
 	let target = document.documentElement
@@ -94,7 +94,6 @@ function listConvert(dto) {
 		fetch(url)
 		.then(resp => resp.json())
 		.then(json => {
-			console.log(json)
 			li.innerHTML += `
 				<a href="${cpath}/main/detail/${dto.idx}?human_count=${human_count}">
 				<p class="pic"><div class="lazy" style="background:url(${cpath}/resources/image/product_img/${dto.product_img})"></div>
@@ -102,7 +101,7 @@ function listConvert(dto) {
 						<div class="name">
 							<strong> ${dto.name} </strong>
 							<p class="score">
-								<em>${dto.star}</em>&nbsp;<span>${dto.seller_text}</span>&nbsp;(${json})
+								<em>${json[0].star}</em>&nbsp;<span>${json[0].seller_text}</span>&nbsp;(${json[0].review_count})
 						    </p>
 							<p>${dto.city} / ${dto.gu}</p>
 						</div>
