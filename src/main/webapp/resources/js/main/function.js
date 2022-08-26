@@ -371,8 +371,8 @@ function openModal(event) {
 		center: new kakao.maps.LatLng(35.167025, 129.132796),
 		level: 5
 	};
-	
 	var map = new kakao.maps.Map(container, options)
+
 }
 // 상세 페이지 모달 등장
 function dtopenModal(event) {
