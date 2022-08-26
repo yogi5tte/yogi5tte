@@ -24,7 +24,7 @@
         </div>
     </a>
     <form class="form-horizontal" id="join-form" method="post" name="join">
-        <fieldset class="login-layer" style="height: 800px;">
+        <fieldset class="login-layer" style="height: 850px;">
             <div id="veriable-form">
                 <h1>호스트 하우스 회원 가입</h1>
                 <span class="input-title">이메일</span>

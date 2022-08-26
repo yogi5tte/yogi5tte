@@ -136,13 +136,32 @@ public class UserController {
 		System.out.println(dto);
 		Users_sellerDTO login  = userService.seller_login(dto);
 		if(login == null) {
-			return "/user/host_join";
+			return "/user/host_relogin";
 		}
 		else {
 			session.setAttribute("login", login);
 			return "/user/host_home";
 		}
 	}
+	
+	@GetMapping("/host_relogin")
+	public void host_relogin() {}
+	
+	@PostMapping("/host_relogin")
+	@ResponseBody
+	public String host_relogin(@RequestBody HashMap<String, String> dto, HttpSession session)throws NoSuchAlgorithmException {
+	  System.out.println(dto.get("email"));
+	  System.out.println(dto.get("password"));
+      Users_sellerDTO login  = userService.seller_login(dto);
+      if(login == null) {
+    	  return "/user/host_relogin";
+      }
+      else {
+      session.setAttribute("login", login);
+      return "/user/host_home";
+      }
+      
+   }
 	
 	
 	@PostMapping(value="/host_send", produces="text/plain; charset=utf-8",consumes="text/plain; charset=utf-8")

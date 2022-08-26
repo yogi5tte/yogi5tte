@@ -9,9 +9,8 @@
 	<select id="themeList"
 	 		parameterType="hashmap"
 	 		resultType="room">
-		select P.idx, I.name, I.seller_text, I.product_img,
-		I.review_count, P.pType, R.info_idx, L.city, L.gu, V.star,
-			min(R.price) as price
+		select P.idx, I.name, I.product_img, P.pType,
+		R.info_idx, L.city, L.gu, min(R.price) as price
 				from info I
 		join product P  on P.idx = I.idx
     	join room R     on R.info_idx = I.idx 
@@ -46,7 +45,7 @@
 					and op8 = 'y'
 				</if>
 			</where>
-			group by P.idx, I.name, I.seller_text, I.product_img, I.review_count, P.pType, R.info_idx, L.city, L.gu, V.star
+			group by P.idx, I.name, I.product_img, P.pType, R.info_idx, L.city, L.gu
 			order by price
 	</select>
 	
