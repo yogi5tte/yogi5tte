@@ -6,6 +6,7 @@
     
 <link rel="stylesheet" href="${cpath }/resources/stylecss/main/common.css">
 <link rel="stylesheet" href="${cpath }/resources/stylecss/user/login.css">
+    <script src="${cpath }/resources/js/user/join/kakaoLogin.js"></script> 
 
 <div class="layer_fix">
     <section>
@@ -51,6 +52,10 @@ const kakao_login_btn = document.getElementById('kakao-login-btn')
 kakao_login_btn.addEventListener('click', kakaoLogin)
 Kakao.init('3ee173c91ef4a1fde193a487e1aeee37'); //발급받은 키 중 javascript키를 사용해준다.
 console.log(Kakao.isInitialized()); // sdk초기화여부판단
+
+</script>
+
+
 
 
 </body>

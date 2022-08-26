@@ -19,6 +19,18 @@ function kakaoLogin() {
         	  	  email : `${response.kakao_account.email}`
         	  }
 	          const url = cpath + '/user/login'+kakaoLogin
+	          
+	          const opt = {
+	      			method:'POST',
+	      			body: JSON.Stringify(ob),
+	      			headers: {
+	      				'Content-Type' : 'application/json;charset=utf-8'
+	      			}
+	      	}
+	      	fetch(url,opt)
+	      	.then(resp=>resp.text())
+	          
+	          
           },
           fail: function (error) {
             console.log(error)
