@@ -26,8 +26,15 @@ public class RoomService {
 	public List<RoomDTO> review(int idx) {
 		List<RoomDTO> list = roomDAO.review(idx);
 		for(int i = 0; i < list.size(); i++) {
-//			System.out.println(list.get(i).getReview_count());
-//			System.out.println(list.get(i).getStar());
+			if(list.get(i).getStar() >= 9.5) {
+				list.get(i).setSeller_text("최고에요");
+			}
+			else if (list.get(i).getStar() >= 9.0) {
+				list.get(i).setSeller_text("추천해요");
+			}
+			else {
+				list.get(i).setSeller_text("만족해요");
+			}
 		}
 		return list;
 	}
