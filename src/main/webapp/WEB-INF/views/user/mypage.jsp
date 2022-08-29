@@ -33,8 +33,8 @@
         <!-- Nav -->
             <nav>
             <ul>
-                <li><a class="" href="${cpath }/user/my_reservation">예약 내역</a></li>
-                <li><a class="active" href="${cpath }/user">내 정보 관리</a></li>
+                <li><a class="" href="${cpath }/user/my_reservation/${login.idx}">예약 내역</a></li>
+                <li><a class="active" href="${cpath }/user/mypage">내 정보 관리</a></li>
             </ul>
         </nav>
         <div class="align_rt">
