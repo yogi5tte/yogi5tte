@@ -3,12 +3,19 @@ package com.itbank.reservation;
 import java.sql.Date;
 
 public class RsvnApproveDTO {
+ private int idx;		
  private String name; 
  private String roomName;
  private Date check_in;
  private Date check_out;
  private int reservation_idx;
  private int user_idx;
+ public int getIdx() {
+	 return idx;
+ }
+ public void setIdx(int idx) {
+	 this.idx = idx;
+ }
 public String getName() {
 	return name;
 }

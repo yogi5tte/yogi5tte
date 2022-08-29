@@ -34,7 +34,7 @@
                     <li>
                   <!-- 로그인이 되어있지 않다면 로그인 페이지로 리다이렉트-->
                   		<c:if test="${not empty login }">	
-                        <a href="${cpath }/user/my_reservation">예약내역</a>
+                        <a href="${cpath }/user/my_reservation/${login.idx}">예약내역</a>
                         </c:if>
                     </li>
                     <li>

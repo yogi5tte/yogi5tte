@@ -7,11 +7,14 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.stereotype.Repository;
 
 import com.itbank.reservation.ReservationDTO;
+import com.itbank.reservation.RsvnApproveDTO;
 
 
 
+@Repository
 public interface User_nonsocialDAO {
 	
 
@@ -26,8 +29,8 @@ public interface User_nonsocialDAO {
 
 	
 	//회원의 예약 내역 조회
-	@Select("select * from reservation_approve where user_idx = {idx}")
-	List<ReservationDTO> selectRsvnList(int idx);
+	@Select("select * from reservation_approve where user_idx = #{idx}")
+	List<RsvnApproveDTO> selectRsvnList(int idx);
 	
 	
 
