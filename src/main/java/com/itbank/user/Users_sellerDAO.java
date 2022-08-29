@@ -4,7 +4,9 @@ import java.util.HashMap;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface Users_sellerDAO {
 
 	@Select("select * from users_seller where email=#{email} and password=#{password}")

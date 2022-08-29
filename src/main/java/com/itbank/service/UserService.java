@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itbank.reservation.ReservationDTO;
+import com.itbank.reservation.RsvnApproveDTO;
 import com.itbank.user.User_nonsocialDAO;
 import com.itbank.user.User_nonsocialDTO;
 import com.itbank.user.Users_sellerDAO;
@@ -58,8 +59,7 @@ public class UserService {
 	}
 
 
-	public List<ReservationDTO> selectRsvnList(int idx) {
-		
+	public List<RsvnApproveDTO> selectRsvnList(int idx) {
 		return dao.selectRsvnList(idx);
 	}	
 		

@@ -32,7 +32,7 @@
         <!-- Nav -->
             <nav>
                <ul>
-                   <li><a href="${cpath }/user/my_reservation">예약 내역</a></li>
+                   <li><a href="${cpath }/user/my_reservation/${login.idx}">예약 내역</a></li>
                    <li><a href="${cpath }/user/mypage">내 정보 관리</a></li>
                </ul>
            </nav>
@@ -41,27 +41,26 @@
                  <div class="info">
                     <div>
                        <i class="">예약확정</i> 
-                       <strong>남해 베스트 호텔 &amp;펜션</strong> 
+                       <strong>${approveDto.idx }</strong> 
                        <span>${infoDto.name}/${roomDto.roomName}</span>
                     </div>
                  </div> 
                  <section>
                     <div>
-                       <p>
-                       <strong>체크인</strong>${list[0].check_In}</p> 
-                       <p>
-                       <strong>체크아웃</strong>${list[0].check_Out }</p>
+                       
+                       <p><strong>체크인</strong>${rsvnDto.check_in}</p> 
+                      <p><strong>체크아웃</strong>${rsvnDto.check_out }</p>
                     </div> 
                     <div> 
                        <p>
-                       <strong>예약자 이름</strong>${list[0].user_Name}
+                       <strong>예약자 이름</strong>${rsvnDto.userName }
                        </p>         
                     </div> 
                     <div class="total">
                        <p>결제정보</p> 
                        <p>
                        <strong>총 결제금액</strong> 
-                       <b>${list[0].total_Amount }원</b>
+                       <b>${rsvnDto.total_amount }원</b>
                        </p>
                     </div>
                  </section>
