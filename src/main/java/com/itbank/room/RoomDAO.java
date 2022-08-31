@@ -21,22 +21,24 @@ public interface RoomDAO {
 			"    join location L on L.idx = P.location_idx" + 
 			"    join theme T    on t.info_idx = i.idx" +	
 			"	 join review V   on v.info_idx = i.idx" +
-			"    where L.category = #{category} and P.pType = #{pType} and R.human_count >= #{human_count} and T.op1 = 'n' " + 
+			"    where L.category = #{category} and P.pType = #{pType} and" +
+			" 	 R.human_count >= #{human_count} and T.op1 = 'n' " + 
 			"    group by P.idx, I.name, I.product_img, P.pType, R.info_idx, L.city, L.gu" + 
 			"    order by price")
 	List<RoomDTO> selectList(@Param("category") int category,
 							 @Param("pType") int pType,
 			  				 @Param("human_count") int human_count);
 
-	@Select("select * "
-			+ "from room a left join info b "
-			+ "on b.idx = a.info_idx where a.info_idx = #{idx}")	
-	List<RoomDTO> selectRoom(int idx);
 	
 	// 예약 시, 방 정보를 조회
 	@Select("select * from room a left join info b "
 			+ "on b.idx = a.info_idx where a.idx=#{idx}")
 	RoomDTO checkRoom(HashMap<String, String> room_idx);
+	
+	@Select("select * "
+			+ "from room a left join info b "
+			+ "on b.idx = a.info_idx where a.info_idx = #{idx}")	
+	List<RoomDTO> selectRoom(int idx);
 
 	@Select("select count(*) as review_count, avg(star) as star from review V where V.info_idx = #{idx}")
 	List<RoomDTO> review(int idx);

@@ -25,15 +25,14 @@ public class ListController {
 		return roomService.selectList(category, pType, human_count);
 	}
 	
-	@GetMapping("/listload/review_count/{idx}")
-	public List<RoomDTO> list(@PathVariable int idx) {
-		return roomService.review(idx);
-	}
-	
 	@PostMapping(value="/main/listload", produces="application/json; charset=utf-8")
 	public List<RoomDTO> list(@RequestBody HashMap<String, Object> param) {
 		return roomService.themeList(param);
 	}
 	
+	@GetMapping("/listload/review_count/{idx}")
+	public List<RoomDTO> list(@PathVariable int idx) {
+		return roomService.review(idx);
+	}
 	
 }

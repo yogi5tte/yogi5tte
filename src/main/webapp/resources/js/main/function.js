@@ -245,7 +245,6 @@ function sortHandler(event) {
 		}
 		json.forEach(dto => product_list.appendChild(listConvert(dto)))
 	})
-	
 }
 function searchHandler(event) {
 	event.preventDefault()
