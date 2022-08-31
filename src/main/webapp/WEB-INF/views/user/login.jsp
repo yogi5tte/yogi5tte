@@ -6,7 +6,10 @@
     
 <link rel="stylesheet" href="${cpath }/resources/stylecss/main/common.css">
 <link rel="stylesheet" href="${cpath }/resources/stylecss/user/login.css">
-    <script src="${cpath }/resources/js/user/join/kakaoLogin.js"></script> 
+<script> 
+	const cpath = '${cpath}'
+</script>
+<script src="${cpath }/resources/js/user/join/kakaoLogin.js"></script> 
 
 <div class="layer_fix">
     <section>

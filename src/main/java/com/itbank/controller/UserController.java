@@ -9,6 +9,7 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -19,14 +20,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itbank.reservation.ReservationDAO;
-
-
+import com.itbank.service.KakaoService;
 import com.itbank.service.MailService;
 import com.itbank.service.ReservationService;
 import com.itbank.service.UserService;
 import com.itbank.user.User_nonsocialDAO;
 import com.itbank.user.User_nonsocialDTO;
 import com.itbank.user.User_sellerDTO;
+import com.itbank.user.User_socialDTO;
 
 @Controller
 @RequestMapping("/user")
@@ -41,6 +42,9 @@ public class UserController {
    @Autowired ReservationDAO resDAO;
    
    @Autowired ReservationService resService;
+   
+   @Autowired private KakaoService kakaoService;
+ 
    
    @RequestMapping("/join")
    public void join() {
@@ -65,6 +69,7 @@ public class UserController {
    
    @PostMapping("/join3") // login
    public String join(User_nonsocialDTO dto) throws NoSuchAlgorithmException {
+	  System.out.println("====================join3으로 접근했습니다!!======================");
       System.out.println(dto.getEmail());
       System.out.println(dto.getPassword());
       System.out.println(dto.getNickName());
@@ -186,6 +191,25 @@ public class UserController {
 	
 	@RequestMapping("/host_home2")
 	public void host_home2() {}
+	
+	@GetMapping("/kakaoJoin")
+	   public String kakaoJoin(){
+	     System.out.println("kakaoJoin접근성공");
+	     
+		 return "/user/kakaoJoin";
+	   }
+	
+	@PostMapping("/kakaoJoin") // login
+	   public String kakaoJoin(User_socialDTO dto) throws NoSuchAlgorithmException {
+		  System.out.println("===============kakaojoinPost접근성공=======================");
+	      System.out.println(dto.getEmail());
+	      System.out.println(dto.getPassword());
+	      System.out.println(dto.getNickName());
+	    
+	      int row = kakaoService.kakaojoin(dto);
+	      System.out.println(row != 0 ? "가입 성공" : "가입 실패");
+	      return "redirect:"+ "/";
+	   }
 	
 	
 }

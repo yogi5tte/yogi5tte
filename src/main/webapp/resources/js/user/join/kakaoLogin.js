@@ -2,33 +2,52 @@
 
 
 
-function kakaoLogin() {
+function kakaoLogin(event) {
     Kakao.Auth.login({
       success: function (response) {
         Kakao.API.request({
           url: '/v2/user/me',
           success: function (response) {
-        	  const ob = {}
+        	  let ob = {}
         	  console.log(response)
         	  
         	  console.log(response.properties.nickname)
               console.log(response.kakao_account.email)
               
+              
+              
               ob = {
-        		  nickname : `${response.properties.nickname}`
-        	  	  email : `${response.kakao_account.email}`
+        		  nickName : `${response.properties.nickname}`,
+        		  email : `${response.kakao_account.email}`        		  
         	  }
-	          const url = cpath + '/user/login'+kakaoLogin
+
+        	  
+        	  
+        	  console.log(ob)
+        	  
+	          let url = cpath + '/user/kakaoLogin'
 	          
 	          const opt = {
 	      			method:'POST',
-	      			body: JSON.Stringify(ob),
+	      			body: JSON.stringify(ob),
 	      			headers: {
-	      				'Content-Type' : 'application/json;charset=utf-8'
+	      				'Content-Type' : 'application/json; charset=utf-8'
 	      			}
 	      	}
 	      	fetch(url,opt)
 	      	.then(resp=>resp.text())
+      	    .then(json => {
+        if(json == 0){
+        	alert('회원가입페이지로 이동')
+        	location.href = cpath + '/user/kakaoJoin'
+        	  
+        	
+        	}
+        else{
+        	alert('로그인성공')
+    		location.replace(cpath)
+        	}
+      	    })
 	          
 	          
           },
@@ -44,18 +63,26 @@ function kakaoLogin() {
   }
   
 
-function kakaoLogout() {
-    if (Kakao.Auth.getAccessToken()) {
-      Kakao.API.request({
-        url: '/v1/user/unlink',
-        success: function (response) {
-        	console.log(response)
-        },
-        fail: function (error) {
-          console.log(error)
-        },
-      })
-      Kakao.Auth.setAccessToken(undefined)
-    }
-  }  
+function kakaoLogout(event) {
+	Kakao.init(event)
+	Kakao.isInitialized()
+//    if (Kakao.Auth.getAccessToken()) {
+//      Kakao.API.request({
+//        url: '/v1/user/unlink',
+//        success: function (response) {
+//        	console.log(response)
+//        },
+//        fail: function (error) {
+//          console.log(error)
+//        },
+//      })
+//    }
+	if(!Kakao.Auth.getAccessToken()) {
+		return;
+	}
+	
+	Kakao.Auth.logout(function() {
+		
+	})
+}  
 

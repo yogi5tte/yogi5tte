@@ -10,6 +10,8 @@ import com.itbank.user.User_nonsocialDAO;
 import com.itbank.user.User_nonsocialDTO;
 import com.itbank.user.User_sellerDAO;
 import com.itbank.user.User_sellerDTO;
+import com.itbank.user.User_socialDAO;
+import com.itbank.user.User_socialDTO;
 
 
 @Service
@@ -17,6 +19,8 @@ public class UserService {
 
 	@Autowired
 	private User_nonsocialDAO dao;
+	
+
 	
 	@Autowired
 	private User_sellerDAO sellerDAO;
@@ -32,10 +36,12 @@ public class UserService {
 		
 	public int join(User_nonsocialDTO dto) {
 		String newUserID = dto.getEmail();
-
+		String newUserPw = dto.getPassword();
+		String newUserNick = dto.getNickName();
 
 		System.out.println("newUserID : " + newUserID);
-		
+		System.out.println("newUserPw : " + newUserPw);
+		System.out.println("newUsernick : " + newUserNick);
 		
 		
 		return dao.join(dto);
@@ -45,7 +51,10 @@ public class UserService {
 //		System.out.println("dto:"+ dto.getEmail());
 //		System.out.println("dto:"+ dto.getPassword());
 		return sellerDAO.login(dto);
-	}	
+	}
+
+
+
 		
 		
 	
