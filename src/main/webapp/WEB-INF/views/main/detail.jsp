@@ -62,13 +62,13 @@
 								<div class="item_img3" ><img src="${cpath }/resources/image/센텀드림월드3.jfif"></div>
 								<div class="item_img4" ><img src="${cpath }/resources/image/센텀드림월드4.jfif"></div>
 								<div class="item_img5" ><img src="${cpath }/resources/image/kakao_login.png"></div>
-								<div class="item_img6" ><img src="${cpath }/resources/image/요기오때빨간색로고.png"></div>
+								<div class="item_img6" ><img src="${cpath }/resources/image/yogired.png"></div>
 								<div class="item_img7" ><img src="${cpath }/resources/image/kakao_login.png"></div>
-								<div class="item_img8" ><img src="${cpath }/resources/image/요기오때빨간색로고.png"></div>
+								<div class="item_img8" ><img src="${cpath }/resources/image/yogired.png"></div>
 								<div class="item_img9" ><img src="${cpath }/resources/image/kakao_login.png"></div>
-								<div class="item_img10" ><img src="${cpath }/resources/image/요기오때빨간색로고.png"></div>
+								<div class="item_img10" ><img src="${cpath }/resources/image/yogired.png"></div>
 								<div class="item_img11" ><img src="${cpath }/resources/image/kakao_login.png"></div>
-								<div class="item_img12" ><img src="${cpath }/resources/image/요기오때빨간색로고.png"></div>
+								<div class="item_img12" ><img src="${cpath }/resources/image/yogired.png"></div>
 							</div>
 			            </div>
 						<button class="button_prev"></button>
