@@ -6,6 +6,10 @@
     
 <link rel="stylesheet" href="${cpath }/resources/stylecss/main/common.css">
 <link rel="stylesheet" href="${cpath }/resources/stylecss/user/login.css">
+<script> 
+	const cpath = '${cpath}'
+</script>
+<script src="${cpath }/resources/js/user/join/kakaoLogin.js"></script> 
 
 <div class="layer_fix">
     <section>
@@ -19,7 +23,7 @@
             <button type="button" id="kakao-login-btn" class="btn_start btn_kakao"></button>
             
             <p class="space_or"><span>또는</span></p>
-   
+	
             <div class="inp_type_1">
                 <input type="email" name="email" placeholder="이메일 주소" required/>
             </div>
@@ -51,45 +55,8 @@ const kakao_login_btn = document.getElementById('kakao-login-btn')
 kakao_login_btn.addEventListener('click', kakaoLogin)
 Kakao.init('3ee173c91ef4a1fde193a487e1aeee37'); //발급받은 키 중 javascript키를 사용해준다.
 console.log(Kakao.isInitialized()); // sdk초기화여부판단
-//카카오로그인
-function kakaoLogin() {
-    Kakao.Auth.login({
-      success: function (response) {
-        Kakao.API.request({
-          url: '/v2/user/me',
-          success: function (response) {
 
-        	  console.log(response)
-//         	  sessionStorage.setItem('response', response.properties)
-//         	  console.log(sessionStorage.getItem('response'))
-
-          },
-          fail: function (error) {
-            console.log(error)
-          },
-        })
-      },
-      fail: function (error) {
-        console.log(error)
-      },
-    })
-  }
-//카카오로그아웃  
-function kakaoLogout() {
-    if (Kakao.Auth.getAccessToken()) {
-      Kakao.API.request({
-        url: '/v1/user/unlink',
-        success: function (response) {
-           console.log(response)
-        },
-        fail: function (error) {
-          console.log(error)
-        },
-      })
-      Kakao.Auth.setAccessToken(undefined)
-    }
-  }  
-</script> 
+</script>
 
 <script>
 alert('아이디 또는 비밀번호가 틀립니다.')
