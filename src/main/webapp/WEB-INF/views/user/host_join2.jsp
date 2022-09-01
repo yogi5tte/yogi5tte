@@ -8,6 +8,14 @@
 <meta charset="UTF-8">
 <title>요기오때</title>
 
+
+<c:if test="${empty header.referer }">
+	<script>
+		alert('정상적인 접근이 아닙니다')
+		location.href = '${cpath}'
+	</script>
+</c:if>
+
 <link rel="stylesheet" href="${cpath }/resources/stylecss/main/common.css">
 <link rel="stylesheet" href="${cpath }/resources/stylecss/user/host/host_join2.css">
 <script> cpath = '${cpath}'</script>
