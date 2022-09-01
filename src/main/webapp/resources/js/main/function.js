@@ -130,7 +130,17 @@ function clickListHandler(event) {
 	
 	const target = event.target.innerText
 	const btn_area = document.querySelector('.btn_area')
+	const sub_top = document.querySelector('.sub_top_wrap > .sub_top > h2')
 	const cnt_people = document.querySelector('.cnt_people > span')
+	let title = ''
+		
+	if(pType == 101) title = '모텔'
+	else if(pType == 102) title = '호텔·리조트'
+	else if(pType == 103) title = '펜션'
+		
+	sub_top.innerText = ''
+	sub_top.innerText += title
+
 	
 	btn_area.innerHTML = ''
 	btn_area.innerHTML += `<span>${city}</span>${target}`
@@ -288,7 +298,6 @@ function listLoadHandler() {
 	
    	start = sessionStorage.getItem('start')
    	end = sessionStorage.getItem('end')
-   	
 }
 function convert(dto) {
 	const Ul = document.querySelector('.review_scroll > ul')
