@@ -10,8 +10,11 @@ import com.itbank.reservation.ReservationDTO;
 import com.itbank.reservation.RsvnApproveDTO;
 import com.itbank.user.User_nonsocialDAO;
 import com.itbank.user.User_nonsocialDTO;
+import com.itbank.user.User_socialDAO;
+import com.itbank.user.User_socialDTO;
 import com.itbank.user.Users_sellerDAO;
 import com.itbank.user.Users_sellerDTO;
+
 
 
 @Service
@@ -34,10 +37,13 @@ public class UserService {
 		
 	public int join(User_nonsocialDTO dto) {
 		String newUserID = dto.getEmail();
-
+		String newUserPw = dto.getPassword();
+		String newUserNick = dto.getNickName();
+		
 
 		System.out.println("newUserID : " + newUserID);
-		
+		System.out.println("newUserPw : " + newUserPw);
+		System.out.println("newUsernick : " + newUserNick);
 		
 		
 		return dao.join(dto);
@@ -46,6 +52,7 @@ public class UserService {
 	public List<RsvnApproveDTO> selectRsvnList(int idx) {
 		return dao.selectRsvnList(idx);
 	}	
+	
 	
 	
 	

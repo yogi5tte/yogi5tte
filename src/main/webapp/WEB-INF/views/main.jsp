@@ -138,6 +138,8 @@
 	dateBtn.addEventListener('click', getDateHandler)
 </script>
 
+
+
 <%@ include file="main/footer.jsp" %>
 
 </body>
