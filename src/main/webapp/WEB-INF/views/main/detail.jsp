@@ -282,8 +282,6 @@
 	const prevBtn = document.querySelector('.button_prev')
 	prevBtn.onclick = move_prev
 	
-
-	
 	window.addEventListener('load',reviewList)
 	cmtbtn.addEventListener('click', cmtbtnHandler)
 	exitBtn.addEventListener('click', closeModal)
@@ -299,7 +297,6 @@
 let sysDate = new Date()
 sysDate.setDate(sysDate.getDate()+1)
 $('#daterangepicker').daterangepicker({
-	
 	"locale": {
 		linkedCalendars: true,
 		autoUpdateInput: true,
@@ -321,7 +318,6 @@ $('#daterangepicker').daterangepicker({
 	"drops": "auto",
 	"minDate": new Date()
 })
-	
  	const dateBtn = document.querySelector('.applyBtn')
 	dateBtn.addEventListener('click', getDateHandler)
 	
@@ -329,23 +325,17 @@ $('#daterangepicker').daterangepicker({
 	resBtn.forEach(btn => btn.addEventListener('click',getCheckHandler))
 </script>
 
-
 <!-- 지도 호출 함수 -->
 <script>
-
-
-var container = document.getElementById('map')
-var options = {
-	center: new kakao.maps.LatLng(longtitude, latitude),
-	level: 3
-}
-var map = new kakao.maps.Map(container, options)
-marker.setMap(map)
-kakao.maps.event.addListener(marker, 'click', function(){
-	infowindow.open(map, marker)
-});
+	var container = document.getElementById('map')
+	var options = {
+		center: new kakao.maps.LatLng(longtitude, latitude),
+		level: 3
+	}
+	var map = new kakao.maps.Map(container, options)
+	marker.setMap(map)
+	kakao.maps.event.addListener(marker, 'click', function(){
+		infowindow.open(map, marker)
+	});
 //clusterer.addMarker(marker)
 </script>
-
-</body>
-</html>

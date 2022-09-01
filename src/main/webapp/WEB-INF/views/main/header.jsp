@@ -45,8 +45,7 @@
                         <a href="${cpath }/user/login"><span>로그인</span></a>
                         </c:if>
                         <c:if test="${not empty login }">
-                        <a href="${cpath }/user/mypage">${login.nickName}환영합니다.</a>
-                        <div class="kakaLogout"><a href="${cpath }/user/logout">[로그아웃]</a></div>
+                        <a href="${cpath }/user/mypage" style="margin-right:10px">${login.nickName}환영합니다.</a><a href="${cpath }/user/logout">[로그아웃]</a>
                         </c:if>
                     </li>
                 </ul>

@@ -76,11 +76,17 @@
 	
     const open = document.getElementById('open');
     const modal = document.querySelector('.modal')
+    const overlay = document.querySelector('.modal_overlay')
+    overlay.addEventListener('click', closeModal)
 
     const openModal = () => {
         modal.classList.remove('hidden')
     }
 
+    function closeModal() {
+    	document.querySelector('.modal').classList.add('hidden')
+    }
+    
     open.addEventListener('click', openModal);
   </script>
 

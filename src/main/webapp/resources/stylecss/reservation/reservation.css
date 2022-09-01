@@ -150,12 +150,11 @@ input[type="checkbox"].inp_chk:checked {
   );
 }
 
-/*modal*/
 .reservation_modal{
 	display:flex;
 	justify-content: center;
 	align-items:center;
-	position:fixed;
+	position: absolute;
 	top:0;
 	bottom: 0;
 	left:0;
@@ -163,28 +162,31 @@ input[type="checkbox"].inp_chk:checked {
 	width:100%;
 	height:100%;
 }
-.modal_overlay {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.9);
-		z-index: 1;
-	}
-
 .modal_content{
-		width: 15%;
-		height:40%;
-		text-align: center;
-		z-index: 2;
-		position:relative;
-		padding:10px 25px;
-		margin: auto;
-		background-color: #eeeeee;
-		border-radius:10px;
-		display:fixed;
-		line-height:25px;
-		min-width:250px;
+	width: 15%;
+	height:40%;
+	text-align: center;
+	z-index: 450;
+	position:relative;
+	padding:10px 25px;
+	margin: auto;
+	background-color: #eeeeee;
+	border-radius:10px;
+	display:fixed;
+	line-height:25px;
+	min-width:250px;
 }
+.modal_overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.78);
+	z-index: 400;
+}
+
+
 .modal_content  li >span {
 	font-weight:bold;
 	color:red;
