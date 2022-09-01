@@ -509,6 +509,7 @@ em {
     height: 20px;
     background: url("https://image.goodchoice.kr/images/web_v3/bg_score.png") 0 0 no-repeat;
     background-size: 100px auto;
+    background-position: -2px 0px;
 }
 .score_wrap_sm .num {
     display: inline-block;

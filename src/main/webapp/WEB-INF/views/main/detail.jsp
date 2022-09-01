@@ -214,10 +214,10 @@
 				<strong>추천해요</strong>
 				<div class="score_wrap">
 					<div class="score_star star_45"></div>
-					<div class="num">9.3</div>
+					<div class="num"><fmt:formatNumber pattern="###.#">${reviewAvg}</fmt:formatNumber></div>
 				</div>
 				<p>
-					전체 리뷰 <b>777</b> <span>|</span> 제휴점 답변 <b>777</b>
+					전체 리뷰 <b>${reviewCnt}</b> <span>|</span> 제휴점 답변 <b>0</b>
 				</p>
 			</div>
 			<div class="review_scroll" offset="0" info_idx="${info.idx }">

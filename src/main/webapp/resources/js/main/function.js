@@ -319,14 +319,34 @@ function convert(dto) {
 				break
 		case 'star':	
 			guest.innerHTML += `<div class="score_wrap_sm">
-								<div class="score_star start_50>${dto[key]}</div>
-								<div class="num">${dto[key] * 2}
+								<div class="score_star start_50"></div>
+								<div class="num"></div>
 								</div>`
+				let ypx = 190
+				let num = +`${dto[key]}`
+				if(num >= 7){
+				
+				ypx = ypx - (num * 19)
+				}
+				else if(num >= 4){
+				ypx = ypx - (num * 18)
+				}
+				else if(num == 3){
+				ypx = ypx - (num * 17)
+				}
+				else if(num == 2){
+				ypx = ypx - (num * 15)
+				}
+				else if(num == 1){
+				ypx = ypx - (num * 11)
+				}
+							guest.querySelector('.score_star.start_50').style.backgroundPosition='-2px ' + -ypx + 'px'
 				break
 		case 'nickName':
 			guest.innerHTML += `<div class="name">
 								<b>방이름 객실 이용 · </b> ${dto[key]}
 								</div>`
+								
 				break
 		case 'content':
 			guest.innerHTML += `<div class="txt">${dto[key]}</div>`

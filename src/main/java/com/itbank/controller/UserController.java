@@ -100,7 +100,7 @@ public class UserController {
       
    
    
-      return "redirect:"+ "/";
+      return "redirect:" + (url == null ? "/" : url);
 
       }
       
