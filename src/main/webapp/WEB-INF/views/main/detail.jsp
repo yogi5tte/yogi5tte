@@ -62,13 +62,13 @@
 								<div class="item_img3" ><img src="${cpath }/resources/image/센텀드림월드3.jfif"></div>
 								<div class="item_img4" ><img src="${cpath }/resources/image/센텀드림월드4.jfif"></div>
 								<div class="item_img5" ><img src="${cpath }/resources/image/kakao_login.png"></div>
-								<div class="item_img6" ><img src="${cpath }/resources/image/요기오때빨간색로고.png"></div>
+								<div class="item_img6" ><img src="${cpath }/resources/image/yogired.png"></div>
 								<div class="item_img7" ><img src="${cpath }/resources/image/kakao_login.png"></div>
-								<div class="item_img8" ><img src="${cpath }/resources/image/요기오때빨간색로고.png"></div>
+								<div class="item_img8" ><img src="${cpath }/resources/image/yogired.png"></div>
 								<div class="item_img9" ><img src="${cpath }/resources/image/kakao_login.png"></div>
-								<div class="item_img10" ><img src="${cpath }/resources/image/요기오때빨간색로고.png"></div>
+								<div class="item_img10" ><img src="${cpath }/resources/image/yogired.png"></div>
 								<div class="item_img11" ><img src="${cpath }/resources/image/kakao_login.png"></div>
-								<div class="item_img12" ><img src="${cpath }/resources/image/요기오때빨간색로고.png"></div>
+								<div class="item_img12" ><img src="${cpath }/resources/image/yogired.png"></div>
 							</div>
 			            </div>
 						<button class="button_prev"></button>
@@ -214,10 +214,10 @@
 				<strong>추천해요</strong>
 				<div class="score_wrap">
 					<div class="score_star star_45"></div>
-					<div class="num">9.3</div>
+					<div class="num"><fmt:formatNumber pattern="###.#">${reviewAvg}</fmt:formatNumber></div>
 				</div>
 				<p>
-					전체 리뷰 <b>777</b> <span>|</span> 제휴점 답변 <b>777</b>
+					전체 리뷰 <b>${reviewCnt}</b> <span>|</span> 제휴점 답변 <b>0</b>
 				</p>
 			</div>
 			<div class="review_scroll" offset="0" info_idx="${info.idx }">

@@ -87,34 +87,34 @@ public class UserController {
    public void login() {}
    
    @PostMapping("/login")
-   public String login(User_nonsocialDTO dto, HttpSession session, String url)throws NoSuchAlgorithmException {
+   public String login(User_nonsocialDTO dto, User_socialDTO sdto, HttpSession session, String url)throws NoSuchAlgorithmException {
 //      System.out.println(dto.getEmail());
 //      System.out.println(dto.getPassword());
       User_nonsocialDTO login  = userService.login(dto);
+      User_socialDTO socialLogin = userService.socialLogin(sdto);
      
-      if(login == null) {
-         return "redirect:"+ "/user/relogin";
-      }
-      else {
-      session.setAttribute("login", login);
-      
-   
-   
-      return "redirect:"+ "/";
+  
+    	  if(login.getEmail() == null) {
+    		  session.setAttribute("login", socialLogin);
+    	  }
+    	  else {
+    		  session.setAttribute("login", login);
+    	  }
 
-      }
       
+   
+      return "redirect:"+ (url == null ? "/" : url);
    }
    
    @GetMapping("/relogin")
    public void relogin() {}
 	
    
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-		 session.invalidate();
-		return "redirect:"+ "/";
-	}
+   @GetMapping("/logout")
+   public String logout(HttpSession session) {
+	   session.invalidate();
+	   return "redirect:"+ "/";
+   }
 	
 	
 	//예약내역 조회

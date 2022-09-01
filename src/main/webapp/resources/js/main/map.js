@@ -1,6 +1,3 @@
-
-
-
 var markerPosition = new kakao.maps.LatLng(longtitude, latitude)
 var marker = new kakao.maps.Marker({
 	position: markerPosition,
