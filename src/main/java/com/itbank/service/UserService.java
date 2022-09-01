@@ -68,6 +68,10 @@ public class UserService {
 	}
 
 
+	public int postjoindrop(int idx) {
+		return dao.postjoindrop(idx);
+	}
+
 	
 	
 }

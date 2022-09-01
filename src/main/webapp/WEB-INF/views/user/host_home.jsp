@@ -85,7 +85,7 @@
                             <div class="form-layer mb_08">
                                 <span class="form-title">업체명</span>
                                 <span class="form-body">
-                                    <input class="form-control normal-size" type="text" name="corporate" placeholder="업체 상호명을 입력하세요." value="">
+                                    <input class="form-control normal-size" type="text" name="name" placeholder="업체 상호명을 입력하세요.">
                                 </span>
                             </div>
                             <div class="form-layer mb_24">

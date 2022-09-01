@@ -99,13 +99,13 @@
 							
 						</ul>
 						
-						<form class="bottom-section">
+						<form class="bottom-section" method="post">
 							<div class="password-area">
 								<label for="password" class="password-area__label">비밀번호 입력</label> 
-								<input id="password" type="password" autocomplete="off" placeholder="비밀번호를 입력하세요." class="password-area__input">
+								<input id="password" type="password" name="password" placeholder="비밀번호를 입력하세요." class="password-area__input">
 							</div> 
 							<div class="button-area">
-								<button class="btn_link button-area__button is-accept">회원 탈퇴</button>
+								<input class="btn_link button-area__button is-accept" type="submit" value="회원 탈퇴">
 							</div>
 						</form>
 					</div>
@@ -121,11 +121,8 @@
  	// chkAll 각 요소들을 btn이라고 할때 btn이 'change' event가 일어나면 chkHandler를 작동해라
  	chkAll.forEach(btn => btn.addEventListener('change', chkHandler))
 	
- 	const nextbtn = document.querySelector('.btn_link')
- 	nextbtn.addEventListener('click', btnHandler)
-	
  	const password = document.getElementById('password')
- 	password.addEventListener('keypress', chkHandler)
+ 	password.addEventListener('keyup', chkHandler)
  	
  	
  </script>

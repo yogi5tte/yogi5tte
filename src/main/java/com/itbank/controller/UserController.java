@@ -163,6 +163,22 @@ public class UserController {
 	
 	
 	
+	@PostMapping("/joindrop")
+	public String postjoindrop(String password, HttpSession session) {
+		
+		User_nonsocialDTO dto = (User_nonsocialDTO)session.getAttribute("login");
+		System.out.println(dto.getPassword());
+		
+		if(password.equals(dto.getPassword())) {
+			int idx = dto.getIdx();
+			int row = userService.postjoindrop(idx);
+			session.invalidate();
+			return "redirect:" + "/";
+		}else {
+			return "redirect:" + "/user/mypage";
+		}
+		
+	}
 	
 	
 	
