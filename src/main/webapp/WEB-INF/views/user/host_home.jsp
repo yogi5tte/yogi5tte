@@ -181,23 +181,9 @@
         </form>
     </div>
 
+
+
 <script>
-	const region = document.getElementById('region')
-	
-	
-	function busanHandler(event) {
-		const region = document.getElementById('region').options[document.getElementById('region').selectedIndex].value;
-		const city = document.getElementById('city')
-		if(region == "0"){
-			for(let i = 0; i < city.value[9]; i++){
-				city.value[i];
-			}
-		}
-	}
-	
-	region.addEventListener('change', busanHandler)
-	
-	
 	
 	const form = document.forms[0]
 	
@@ -224,9 +210,7 @@
 	}
 	
 	
-// 	form.addEventListener('submit', submitHandler)
-	
-	
+	form.addEventListener('submit', submitHandler)
 	
 </script>
 
