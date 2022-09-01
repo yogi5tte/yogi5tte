@@ -140,7 +140,6 @@ function clickListHandler(event) {
 		
 	sub_top.innerText = ''
 	sub_top.innerText += title
-
 	
 	btn_area.innerHTML = ''
 	btn_area.innerHTML += `<span>${city}</span>${target}`
