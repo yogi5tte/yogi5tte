@@ -20,40 +20,32 @@ import com.itbank.user.Users_sellerDTO;
 @Service
 public class UserService {
 
-	@Autowired
-	private User_nonsocialDAO dao;
+	@Autowired private User_nonsocialDAO dao;
 	
-
-	
-	@Autowired
-	private Users_sellerDAO sellerDAO;
-	
-	
+	@Autowired private Users_sellerDAO sellerDAO;
 	
 	public User_nonsocialDTO login(User_nonsocialDTO dto) {
 //		System.out.println("dto:"+ dto.getEmail());
 //		System.out.println("dto:"+ dto.getPassword());
 		return dao.login(dto) ;
 	}
+	public User_socialDTO socialLogin(User_socialDTO dto) {
+		return dao.kakologin(dto) ;
+	}
 
-		
 	public int join(User_nonsocialDTO dto) {
 		String newUserID = dto.getEmail();
 		String newUserPw = dto.getPassword();
 		String newUserNick = dto.getNickName();
-		
 
 		System.out.println("newUserID : " + newUserID);
 		System.out.println("newUserPw : " + newUserPw);
 		System.out.println("newUsernick : " + newUserNick);
 		
-		
 		return dao.join(dto);
 	}
 
 	public Users_sellerDTO seller_login(HashMap<String, String> dto) {
-//		System.out.println("dto:"+ dto.getEmail());
-//		System.out.println("dto:"+ dto.getPassword());
 		return sellerDAO.login(dto);
 	}
 

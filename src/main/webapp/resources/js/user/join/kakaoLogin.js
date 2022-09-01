@@ -61,7 +61,6 @@ function kakaoLogin(event) {
       },
     })
   }
-  
 
 function kakaoLogout(event) {
 	Kakao.init(event)

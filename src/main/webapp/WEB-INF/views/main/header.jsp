@@ -56,10 +56,11 @@
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
 <script>
-const kakaLogout = document.querySelector('.kakaLogout > a')
-console.log(kakaLogout)
+const kakaoLogoutBtn = document.querySelector('.kakaLogout > a')
 
-kakaLogout.addEventListener('click', kakaoLogout)
+if(kakaoLogoutBtn != null) {
+	kakaoLogoutBtn.addEventListener('click', kakaoLogout)
+}
 
 
 Kakao.init('3ee173c91ef4a1fde193a487e1aeee37'); //발급받은 키 중 javascript키를 사용해준다.

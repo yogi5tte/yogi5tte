@@ -18,9 +18,12 @@ import com.itbank.reservation.RsvnApproveDTO;
 public interface User_nonsocialDAO {
 	
 
-	@Select("select * from total_user where email=#{email} and password=#{password}")
+	@Select("select * from user_nonsocial where email=#{email} and password=#{password}")
 	User_nonsocialDTO login(User_nonsocialDTO dto);
-
+	
+	@Select("select * from user_social where email=#{email} and password=#{password}")
+	User_socialDTO kakologin(User_socialDTO dto);
+	
 	@Insert("insert into user_nonsocial (email, password, nickName) values (#{email},#{password},#{nickName})")
 	int join(User_nonsocialDTO dto);
 
@@ -31,6 +34,7 @@ public interface User_nonsocialDAO {
 	//회원의 예약 내역 조회
 	@Select("select * from reservation_approve where user_idx = #{idx}")
 	List<RsvnApproveDTO> selectRsvnList(int idx);
+
 	
 	
 

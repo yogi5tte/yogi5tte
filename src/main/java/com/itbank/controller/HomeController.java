@@ -26,7 +26,6 @@ public class HomeController {
 	
 	@Autowired private InfoDAO infoDAO;
 	@Autowired private RoomDAO roomDAO;
-
 	@Autowired private ReviewDAO reviewDAO;
 	
 	@GetMapping("main")
@@ -60,7 +59,5 @@ public class HomeController {
 	
 	@GetMapping("main/list")
 	public void list() {}
-	
-
 	
 }
