@@ -1,6 +1,6 @@
 'use strict'
 
-//버튼 클릭하면 실행
+//kakaopay API 호출 (결제창만 생성되고, Iamport API 연동 이후 결제 진행)
 async function kakaopaymentReady(event){
 	closeModal(event);
 	
