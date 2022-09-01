@@ -20,7 +20,10 @@ public interface User_nonsocialDAO {
 
 	@Select("select * from total_user where email=#{email} and password=#{password} and deleted != 'y'")
 	User_nonsocialDTO login(User_nonsocialDTO dto);
-
+	
+	@Select("select * from user_social where email=#{email} and password=#{password}")
+	User_socialDTO kakologin(User_socialDTO dto);
+	
 	@Insert("insert into user_nonsocial (email, password, nickName) values (#{email},#{password},#{nickName})")
 	int join(User_nonsocialDTO dto);
 

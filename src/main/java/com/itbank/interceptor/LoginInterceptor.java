@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.itbank.user.User_nonsocialDTO;
+import com.itbank.user.User_socialDTO;
 
 // 인터셉터 : 요청을 가로채서 사전 체크를 할 수 있고, 여러 주소에 대해 적용할 수 있다
 // 인터셉터는 클래스 상속을 구현한다
@@ -29,8 +30,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 							Object handler)	throws Exception {
 		HttpSession session = request.getSession();
 
-		User_nonsocialDTO login = (User_nonsocialDTO)session.getAttribute("login");
-	
 		String url = null;
 		url = request.getRequestURL().toString();	
 		String queryString = request.getQueryString();
@@ -41,7 +40,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		
 		url = URLEncoder.encode(url, "UTF-8");
 		
-		if(login == null) {
+		if(session.getAttribute("login") == null) {
 			System.out.println("preHandle (false)");
 			System.out.println("인터셉터에 의해 로그인 페이지로 이동합니다");
 			System.out.println("로그인 이후 이동할 주소 : " + url);
