@@ -226,8 +226,10 @@ function allCheck(event){
       
    if(allflag == false){
       event.preventDefault()
-
       
+      
+
+     
    }
    else{
       alert('성공')
