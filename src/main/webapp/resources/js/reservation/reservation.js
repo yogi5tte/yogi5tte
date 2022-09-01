@@ -72,10 +72,6 @@ function openModal(event){
 	const mo_cancel = document.querySelector('.mo_cancel')
 	mo_cancel.addEventListener('click',closeModal)
 	
-//	const mo_move_payment = document.querySelector('.mo_move_payment')
-//	
-//	mo_move_payment.addEventListener('click',insertRsvnHandler)
-	
 }
 
 	 async function insertRsvnHandler(event){
