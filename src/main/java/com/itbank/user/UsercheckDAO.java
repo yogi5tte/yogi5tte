@@ -12,6 +12,17 @@ public interface UsercheckDAO {
 	@Select("select * from total_user where nickName=#{unick}")
 	String checkNick(String unick);
 
+
+	
+	
+	
+	// 호스트 관련 함수
+	@Select("select * from users_seller where email=#{gcuseremail}")
+	Users_sellerDTO checkHostId(String gcuseremail);
+
+	@Select("select * from users_seller where nickName=#{unick}")
+	String checkHostNick(String unick);
+	
 	@Select("select * from users_seller where phonenumber=#{phonenumber}")
 	String checkpNum(String pNum);
 

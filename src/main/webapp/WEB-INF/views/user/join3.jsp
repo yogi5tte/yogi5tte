@@ -15,12 +15,6 @@
     <div class="layer_fix pop_login pop_mem_reserve fix_disable">
         <section>
         <form id="joinForm" autocomplete="off" method="post" novalidate="novalidate">
-            <input type="hidden" name="yeogi_token" value="c99c88280b18f8f1e263d593326085b6">
-    
-            <input type="hidden" name="privacy_auxiliary_policy">
-            <input type="hidden" name="location_policy">
-            <input type="hidden" name="marketing_acceptance">
-    
             <div class="fix_title">
                 <h1 class="page_head"><a href="${cpath }" title="여기어때">여기어때</a></h1>
             </div>

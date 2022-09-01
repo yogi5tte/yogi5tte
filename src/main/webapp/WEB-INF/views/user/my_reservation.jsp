@@ -51,6 +51,9 @@
                    <img src="${cpath }/resources/image/product_img/강남.jpg">
                    </p> 
                    <a href="${cpath }/user/my_reservation_detail" class="product-title">
+                   <i>예약확정</i> 
+                   <strong></strong> 
+                   <span>체크인 :<br> 체크아웃 :</span>
                    <span class="status">예약확정</span>
                    <strong>${dto.name }/${dto.roomName }</strong> 
                    

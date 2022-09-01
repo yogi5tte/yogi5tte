@@ -23,7 +23,8 @@ function chkHandler(event) {
 	else {
 		nextbtn.classList.remove('fill_red')
 	}
-   	
+	
+	
 }
 
 
@@ -37,35 +38,5 @@ function checkOnlyOne(element) {
 	element.checked = true; // 파라미터로 전달된 체크박스가 선택되도록 한다(onclick 요소를 통해 체크되면 그 체크박스의 파라미터가 전달된다)
 }
 
-
-function btnHandler(event) {
-	// 하위 6개 버튼
-	const item = document.querySelectorAll('.terms_checkbox')
-	const nextbtn = document.querySelector('.btn_link')
-	
-	let allflag = (item[0].checked || item[1].checked || item[2].checked || item[3].checked || item[4].checked || item[5].checked)
-	
-	const ob = {}
-	let target = document.forms[0]
-	const formData = new FormData(target)
-	
-	for(let key of formData.keys()){
-		ob[key] = formData.get(key)
-	}
-	console.log(ob)
-	const url = cpath + "/user/joinDrop"
-	const opt = {
-			method:'POST',
-			body: JSON.Stringify(formData),
-			headers: {
-				'Content-Type' : 'application/json;charset=utf-8'
-			}
-	}
-	fetch(url,opt)
-	.then(resp=>resp.text())
-	
-		
-	
-}
 
 

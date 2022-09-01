@@ -110,11 +110,30 @@ public class UserController {
    public void relogin() {}
 	
    
-   @GetMapping("/logout")
-   public String logout(HttpSession session) {
-	   session.invalidate();
-	   return "redirect:"+ "/";
+   @PostMapping("/relogin")
+   public String relogin(User_nonsocialDTO dto, HttpSession session)throws NoSuchAlgorithmException {
+	   System.out.println(dto.getEmail());
+	   System.out.println(dto.getPassword());
+	   User_nonsocialDTO login  = userService.login(dto);
+	   if(login == null) {
+		   
+		   return "redirect:"+ "/user/relogin";
+	   }
+	   else {
+		   session.setAttribute("login", login);
+		   
+		   
+		   return "redirect:"+ "/";
+	   }
+	   
    }
+   
+   
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		 session.invalidate();
+		return "redirect:"+ "/";
+	}
 	
 	
 	//예약내역 조회
@@ -142,6 +161,30 @@ public class UserController {
 	@GetMapping("/joindrop")
 	public void joindrop() {}
 	
+	
+	
+	@PostMapping("/joindrop")
+	public String postjoindrop(String password, HttpSession session) {
+		
+		User_nonsocialDTO dto = (User_nonsocialDTO)session.getAttribute("login");
+		System.out.println(dto.getPassword());
+		
+		if(password.equals(dto.getPassword())) {
+			int idx = dto.getIdx();
+			int row = userService.postjoindrop(idx);
+			session.invalidate();
+			return "redirect:" + "/";
+		}else {
+			return "redirect:" + "/user/mypage";
+		}
+		
+	}
+	
+	
+	
+	
+	
+	// 호스트 관련 함수
 	@GetMapping("/host_join")
 	public void host_join() {}
 	
@@ -154,13 +197,32 @@ public class UserController {
 		System.out.println(dto);
 		Users_sellerDTO login  = userService.seller_login(dto);
 		if(login == null) {
-			return "/user/host_join";
+			return "/user/host_relogin";
 		}
 		else {
 			session.setAttribute("login", login);
 			return "/user/host_home";
 		}
 	}
+	
+	@GetMapping("/host_relogin")
+	public void host_relogin() {}
+	
+	@PostMapping("/host_relogin")
+	@ResponseBody
+	public String host_relogin(@RequestBody HashMap<String, String> dto, HttpSession session)throws NoSuchAlgorithmException {
+	  System.out.println(dto.get("email"));
+	  System.out.println(dto.get("password"));
+      Users_sellerDTO login  = userService.seller_login(dto);
+      if(login == null) {
+    	  return "/user/host_relogin";
+      }
+      else {
+      session.setAttribute("login", login);
+      return "/user/host_home";
+      }
+      
+   }
 	
 	
 	@PostMapping(value="/host_send", produces="text/plain; charset=utf-8",consumes="text/plain; charset=utf-8")
@@ -212,21 +274,4 @@ public class UserController {
 	   }
 	
 	
-   @PostMapping("/relogin")
-   public String relogin(User_nonsocialDTO dto, HttpSession session)throws NoSuchAlgorithmException {
-      System.out.println(dto.getEmail());
-      System.out.println(dto.getPassword());
-      User_nonsocialDTO login  = userService.login(dto);
-      if(login == null) {
-      
-         return "redirect:"+ "/user/relogin";
-      }
-      else {
-      session.setAttribute("login", login);
-   
-   
-      return "redirect:"+ "/";
-      }
-      
-   }
 }

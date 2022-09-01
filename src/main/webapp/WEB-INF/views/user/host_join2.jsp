@@ -8,7 +8,15 @@
 <meta charset="UTF-8">
 <title>요기오때</title>
 
-<link rel="stylesheet" href="${cpath }/resources/stylecss/common.css">
+
+<c:if test="${empty header.referer }">
+	<script>
+		alert('정상적인 접근이 아닙니다')
+		location.href = '${cpath}'
+	</script>
+</c:if>
+
+<link rel="stylesheet" href="${cpath }/resources/stylecss/main/common.css">
 <link rel="stylesheet" href="${cpath }/resources/stylecss/user/host/host_join2.css">
 <script> cpath = '${cpath}'</script>
 <script src="${cpath }/resources/js/user/join/host_join2.js"></script> 
@@ -24,7 +32,7 @@
         </div>
     </a>
     <form class="form-horizontal" id="join-form" method="post" name="join">
-        <fieldset class="login-layer" style="height: 800px;">
+        <fieldset class="login-layer" style="height: 850px;">
             <div id="veriable-form">
                 <h1>호스트 하우스 회원 가입</h1>
                 <span class="input-title">이메일</span>
@@ -50,7 +58,7 @@
                 <input type="text" id="pNum" class="form-control" name="phoneNumber" placeholder="전화번호를 입력하세요(-포함)." required>
                 <div id="phoneNumber" class="impo"></div>
                 
-                <button class="btn btn-primary login-button" id="joinBtn" type="submit">다음</button>
+                <input class="btn btn-primary login-button" id="joinBtn" form="join-form" type="submit" value="다음">
             </div>
         </fieldset>
     </form>
@@ -62,14 +70,12 @@
 	const new_pw = document.getElementById('new_pw')
 	const new_pw_re = document.getElementById('new_pw_re')
 	const unick = document.getElementById('unick')
-	const pNum = document.getElementById('pNum')
 	const joinBtn = document.getElementById('joinBtn')
 	
 	gcuseremail.addEventListener('blur', checkId)
 	new_pw.addEventListener('blur', checkPassword1)
    	new_pw_re.addEventListener('blur', checkPassword2)
    	unick.addEventListener('blur', checkingNick)
-   	pNum.addEventListener('blur', pNumHandler)
    	joinBtn.addEventListener('click', allCheck)
 </script>
 

@@ -92,7 +92,87 @@ public class UserAjexController {
          return "false";
          }
       }
+   
+   
+   
+   
+   
+   
+   
+   
+   // 호스트 관련 함수
+   
+   @GetMapping("/host_join2/{gcuseremail}")
+   public String selectHostList(@PathVariable("gcuseremail") String gcuseremail) {
+            String result;
+      
+      
+            System.out.println("gcuseremail : " + gcuseremail);
+            System.out.println("gcuseremail.contains(@) :" +  gcuseremail.contains("@"));
+            
+            if(gcuseremail.contains("@") == false) {
+               result = "-1";
+               System.out.println(result);
+               return "-1";
+               
+            }
+            else if(gcuseremail.contains("naver") == true){
+               System.out.println("1실행했니?");
+               result = userCheckService.checkHostId(gcuseremail);       
+               System.out.println("result : " + result);
+               
+               
+               return result;   
+               
+            }
+            else if(gcuseremail.contains("nate") == true){
+               System.out.println("2실행했니?");
+               result = userCheckService.checkHostId(gcuseremail);       
+               System.out.println("result : " + result);
+               
+               
+               return result;   
+               
+            }
+            else if(gcuseremail.contains("gmail") == true){
+               System.out.println("3실행했니?");
+            
+               result = userCheckService.checkHostId(gcuseremail);       
+               System.out.println("result : " + result);
+               
+               
+               return result;   
+            }
+            else if(gcuseremail.contains("hanmail") == true){
+               System.out.println("4실행했니?");
+               System.out.println("4gcuseremail:" + gcuseremail);
+               result = userCheckService.checkHostId(gcuseremail);       
+               System.out.println("result : " + result);
+               
+               
+               return result;   
+               
+            }
+            else {
+               result = "-1";
+               System.out.println(result);
+               return "-1";   
+            }
+      }
 
+   
+   @PostMapping("/host_unick/{unick}")   
+   public String selectHostNick(@PathVariable("unick") String unick) {
+   System.out.println(unick);
+   String result = userCheckService.checkHostNick(unick);       
+   System.out.println("result : " + result);
+   if(result == null) {
+      return "true";
+   }
+   else {
+      return "false";
+      }
+   }
    
    
    

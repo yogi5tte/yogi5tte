@@ -22,7 +22,9 @@ public class UserService {
 
 	@Autowired private User_nonsocialDAO dao;
 	
-	@Autowired private Users_sellerDAO sellerDAO;
+	@Autowired
+	private Users_sellerDAO sellerDAO;
+	
 	
 	public User_nonsocialDTO login(User_nonsocialDTO dto) {
 //		System.out.println("dto:"+ dto.getEmail());
@@ -45,32 +47,29 @@ public class UserService {
 		return dao.join(dto);
 	}
 
+	public List<RsvnApproveDTO> selectRsvnList(int idx) {
+		return dao.selectRsvnList(idx);
+	}	
+	
+	
+	
+	
+	
+	// 호스트 관련 함수
 	public Users_sellerDTO seller_login(HashMap<String, String> dto) {
 		return sellerDAO.login(dto);
 	}
 
 
-
-
-
 	public int hostJoin(Users_sellerDTO dto) {
-		
 		return sellerDAO.join(dto);
-
 	}
 
 
-	public List<RsvnApproveDTO> selectRsvnList(int idx) {
-		return dao.selectRsvnList(idx);
-	}	
+	public int postjoindrop(int idx) {
+		return dao.postjoindrop(idx);
+	}
 
-		
-		
-	
-
-
-	
-	
 	
 	
 }

@@ -18,7 +18,7 @@ import com.itbank.reservation.RsvnApproveDTO;
 public interface User_nonsocialDAO {
 	
 
-	@Select("select * from user_nonsocial where email=#{email} and password=#{password}")
+	@Select("select * from total_user where email=#{email} and password=#{password} and deleted != 'y'")
 	User_nonsocialDTO login(User_nonsocialDTO dto);
 	
 	@Select("select * from user_social where email=#{email} and password=#{password}")
@@ -27,8 +27,9 @@ public interface User_nonsocialDAO {
 	@Insert("insert into user_nonsocial (email, password, nickName) values (#{email},#{password},#{nickName})")
 	int join(User_nonsocialDTO dto);
 
-	@Update("update user_nonsocial set deleted='y' where idx=#{idx}")
-	int delete(int idx);
+	@Update("update total_user set deleted='y' where idx=#{idx}")
+	int postjoindrop(int idx);
+	
 
 	
 	//회원의 예약 내역 조회
