@@ -36,6 +36,7 @@ public class HomeController {
 	@GetMapping("main/detail/{idx}")
 	public ModelAndView detail(@PathVariable int idx) {
 		ModelAndView mav = new ModelAndView("main/detail");
+		
 		InfoDTO info = infoDAO.selectInfo(idx);
 		List<RoomDTO> mtRoom = roomDAO.selectRoom(idx);
 		mav.addObject("info", info);

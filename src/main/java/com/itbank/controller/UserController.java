@@ -12,22 +12,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.itbank.reservation.ReservationDAO;
 import com.itbank.service.KakaoService;
+import com.itbank.reservation.ReservationDTO;
+import com.itbank.reservation.RsvnApproveDTO;
 import com.itbank.service.MailService;
 import com.itbank.service.ReservationService;
 import com.itbank.service.UserService;
 import com.itbank.user.User_nonsocialDAO;
 import com.itbank.user.User_nonsocialDTO;
-import com.itbank.user.User_sellerDTO;
 import com.itbank.user.User_socialDTO;
+import com.itbank.user.Users_sellerDTO;
 
 @Controller
 @RequestMapping("/user")
@@ -39,12 +42,13 @@ public class UserController {
    
    @Autowired User_nonsocialDAO nonUserDAO;
    
-   @Autowired ReservationDAO resDAO;
+   @Autowired ReservationDAO rsvnDAO;
    
    @Autowired ReservationService resService;
    
    @Autowired private KakaoService kakaoService;
  
+
    
    @RequestMapping("/join")
    public void join() {
@@ -62,7 +66,7 @@ public class UserController {
       return isOK;
    }
    
-   @RequestMapping("/join3")
+   @GetMapping("/join3")
    public void join3() {
       
    }
@@ -83,12 +87,12 @@ public class UserController {
    public void login() {}
    
    @PostMapping("/login")
-   public String login(User_nonsocialDTO dto, HttpSession session)throws NoSuchAlgorithmException {
-      System.out.println(dto.getEmail());
-      System.out.println(dto.getPassword());
+   public String login(User_nonsocialDTO dto, HttpSession session, String url)throws NoSuchAlgorithmException {
+//      System.out.println(dto.getEmail());
+//      System.out.println(dto.getPassword());
       User_nonsocialDTO login  = userService.login(dto);
+     
       if(login == null) {
-      
          return "redirect:"+ "/user/relogin";
       }
       else {
@@ -97,34 +101,15 @@ public class UserController {
    
    
       return "redirect:"+ "/";
+
       }
       
    }
    
    @GetMapping("/relogin")
    public void relogin() {}
-
-
-	@PostMapping("/relogin")
-	public String relogin(User_nonsocialDTO dto, HttpSession session)throws NoSuchAlgorithmException {
-		System.out.println(dto.getEmail());
-		System.out.println(dto.getPassword());
-		User_nonsocialDTO login  = userService.login(dto);
-		if(login == null) {
-		
-			return "redirect:"+ "/user/relogin";
-		}
-		else {
-		session.setAttribute("login", login);
 	
-	
-		return "redirect:"+ "/";
-		}
-		
-	}
-	
-	
-	
+   
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		 session.invalidate();
@@ -132,8 +117,15 @@ public class UserController {
 	}
 	
 	
-	@GetMapping("/my_reservation")
-	public void my_reservation() {}
+	//예약내역 조회
+	@GetMapping("/my_reservation/{idx}")
+	public ModelAndView my_reservation(@PathVariable int idx) {
+		ModelAndView mav = new ModelAndView("/user/my_reservation");
+		List<RsvnApproveDTO> approveDto = userService.selectRsvnList(idx);
+		mav.addObject("approveDto",approveDto);
+		//System.out.println(approveDto.get(0).getCheck_in());
+		return mav;
+	}
 	
 //	//마이 페이지 및 예약 내역
 //	@RequestMapping("/my_reservation")
@@ -147,7 +139,7 @@ public class UserController {
 	@GetMapping("/mypage")
 	public void mypage() {}
 	
-	@RequestMapping("/joindrop")
+	@GetMapping("/joindrop")
 	public void joindrop() {}
 	
 	@GetMapping("/host_join")
@@ -160,7 +152,7 @@ public class UserController {
 		System.out.println(dto.get("password"));
 		
 		System.out.println(dto);
-		User_sellerDTO login  = userService.seller_login(dto);
+		Users_sellerDTO login  = userService.seller_login(dto);
 		if(login == null) {
 			return "/user/host_join";
 		}
@@ -179,17 +171,25 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping("/host_join2")
+	@GetMapping("/host_join2")
 	public void host_join2() {}
 	
-	@RequestMapping("/host_join3")
-	public void host_join3() {}
+	@PostMapping("/host_join2")
+	public String join(Users_sellerDTO dto) throws NoSuchAlgorithmException {
+		System.out.println(dto.getEmail());
+		System.out.println(dto.getPassword());
+		System.out.println(dto.getNickName());
+		int row = userService.hostJoin(dto);
+		System.out.println(row != 0 ? "가입 성공" : "가입 실패");
+		return "redirect:"+ "/user/host_join";
+	}
+	
 	
 	@GetMapping("/host_home")
 	public void host_home() {}
 	
 	
-	@RequestMapping("/host_home2")
+	@GetMapping("/host_home2")
 	public void host_home2() {}
 	
 	@GetMapping("/kakaoJoin")
@@ -212,5 +212,21 @@ public class UserController {
 	   }
 	
 	
+   @PostMapping("/relogin")
+   public String relogin(User_nonsocialDTO dto, HttpSession session)throws NoSuchAlgorithmException {
+      System.out.println(dto.getEmail());
+      System.out.println(dto.getPassword());
+      User_nonsocialDTO login  = userService.login(dto);
+      if(login == null) {
+      
+         return "redirect:"+ "/user/relogin";
+      }
+      else {
+      session.setAttribute("login", login);
+   
+   
+      return "redirect:"+ "/";
+      }
+      
+   }
 }
-

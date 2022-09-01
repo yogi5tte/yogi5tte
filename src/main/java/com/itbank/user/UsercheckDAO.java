@@ -1,7 +1,9 @@
 package com.itbank.user;
 
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface UsercheckDAO {
 
 	@Select("select * from total_user where email=#{gcuseremail}")
@@ -9,5 +11,8 @@ public interface UsercheckDAO {
 
 	@Select("select * from total_user where nickName=#{unick}")
 	String checkNick(String unick);
+
+	@Select("select * from users_seller where phonenumber=#{phonenumber}")
+	String checkpNum(String pNum);
 
 }

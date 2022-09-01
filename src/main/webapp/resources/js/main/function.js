@@ -86,25 +86,32 @@ function listConvert(dto) {
 	li.className = 'list_1'
 	li.setAttribute('idx',`${dto.idx}`)
 	
+	const idx = `${dto.idx}`
+	
 	let human_count = document.querySelector('.cnt_people > span').innerText
 	
-	li.innerHTML += `
-		<a href="${cpath}/main/detail/${dto.idx}?human_count=${human_count}">
-		<p class="pic"><div class="lazy" style="background:url(${cpath}/resources/image/product_img/${dto.product_img})"></div>
-			<div class="stage">
-				<div class="name">
-					<strong> ${dto.name} </strong>
-					<p class="score">
-						<span>${dto.seller_text}</span>&nbsp;(${dto.review_count})
-				    </p>
-					<p>${dto.city} / ${dto.gu}</p>
-				</div>
-				<div class="price">
-					<p><b>${dto.price}원</b></p>
-				</div>
-			</div>
-		</a>
-	`
+	const url = `${cpath}/listload/review_count/${idx}`
+		fetch(url)
+		.then(resp => resp.json())
+		.then(json => {
+			li.innerHTML += `
+				<a href="${cpath}/main/detail/${dto.idx}?human_count=${human_count}">
+				<p class="pic"><div class="lazy" style="background:url(${cpath}/resources/image/product_img/${dto.product_img})"></div>
+					<div class="stage">
+						<div class="name">
+							<strong> ${dto.name} </strong>
+							<p class="score">
+								<em>${json[0].star}</em>&nbsp;<span>${json[0].seller_text}</span>&nbsp;(${json[0].review_count})
+						    </p>
+							<p>${dto.city} / ${dto.gu}</p>
+						</div>
+						<div class="price">
+							<p><b>${dto.price}원</b></p>
+						</div>
+					</div>
+				</a>
+			`
+		})
 	return li
 }
 // 지역 -> 구 선택하면 해당 지역만 나오는 함수
@@ -121,11 +128,8 @@ function clickListHandler(event) {
 	const pType = sessionStorage.getItem('pType')
 	const human_count = sessionStorage.getItem('human_count')
 	
-	let title = ''
-	
 	const target = event.target.innerText
 	const btn_area = document.querySelector('.btn_area')
-	const sub_top = document.querySelector('.sub_top_wrap > .sub_top > h2')
 	const cnt_people = document.querySelector('.cnt_people > span')
 	
 	btn_area.innerHTML = ''
@@ -133,13 +137,6 @@ function clickListHandler(event) {
 
 	cnt_people.innerText = ''
 	cnt_people.innerText += `${human_count}`
-		
-	if(pType == 101) title = '모텔'
-	else if(pType == 102) title = '호텔·리조트'
-	else if(pType == 103) title = '펜션'
-		
-	sub_top.innerText = ''
-	sub_top.innerText += title
 	
 	const url = `${cpath}/listload/${category}/${pType}/${human_count}`
 	fetch(url)
@@ -216,8 +213,29 @@ function sortHandler(event) {
 	let human_count = document.querySelector('.cnt_people > span')
 	human_count = human_count.innerText
 	
-	const url = `${cpath}/listload/${category}/${pType}/${human_count}`
-	fetch(url)
+	const ob = {
+			category: `${category}`,
+			pType: `${pType}`,
+			human_count: `${human_count}`,
+	}
+	
+	// theme 체크
+	for(let i = 0; i < 8; i++) {
+		const themeChk = document.querySelectorAll('.inp_chk')
+		if(themeChk[i].checked) {
+			ob[themeChk[i].id] = themeChk[i].id
+		}
+	}
+		
+	const url = `${cpath}/main/listload`
+	const opt = {
+		method: 'POST',
+		body: JSON.stringify(ob),
+		headers: {
+			'Content-Type' : 'application/json; charset=utf-8'
+		}
+	}
+	fetch(url, opt)
 	.then(resp => resp.json())
 	.then(json => {
 		if(btntarget.classList.contains('highPrice')) {
@@ -225,8 +243,9 @@ function sortHandler(event) {
 				return b.price - a.price
 			})
 		}
- 		json.forEach(dto => product_list.appendChild(listConvert(dto)))
+		json.forEach(dto => product_list.appendChild(listConvert(dto)))
 	})
+	
 }
 function searchHandler(event) {
 	event.preventDefault()
@@ -352,8 +371,8 @@ function openModal(event) {
 		center: new kakao.maps.LatLng(35.167025, 129.132796),
 		level: 5
 	};
-	
 	var map = new kakao.maps.Map(container, options)
+
 }
 // 상세 페이지 모달 등장
 function dtopenModal(event) {
@@ -508,17 +527,18 @@ function move_next(event) {
    selectDiv.classList.add('selectView')
 }
 // 예약 인터셉터 핸들러
-function interceptorHandler(event) {
-   let login = sessionStorage.getItem('login')
-   
-   if(login == null) {
-      alert('로그인 먼저 하시오')
-      location.href = cpath + '/user/login'
-   }
-   else {
-      location.href = cpath + '/rsvn/reservation'
-   }
-}
+//function interceptorHandler(event) {
+//   let loginCheck = login
+//   let url = cpath + '/main/detail'
+//   if(loginCheck) {
+//    
+//      location.href = cpath + '/rsvn/reservation'
+//   }
+//   else {
+//	   alert('로그인 먼저 하시오')
+//	      location.href = cpath + '/user/login'
+//   }
+//}
 //주말 체크 핸들러
 function weekendCount() {
 	let startDate = new Date($('#daterangepicker').data('daterangepicker').startDate['_d'])
