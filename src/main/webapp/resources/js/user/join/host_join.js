@@ -1,6 +1,5 @@
 'use strict';
 
-
 function submitHandler(event) {
 	event.preventDefault()
 	
@@ -22,7 +21,6 @@ function submitHandler(event) {
 	.then(resp => resp.text())
 	.then(text => location.href = cpath + text)
 }
-
 
 function sendHandler(event) {
 	event.preventDefault()

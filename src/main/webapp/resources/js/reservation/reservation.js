@@ -129,7 +129,6 @@ function openModal(event){
 		agreeCheckAll.checked = false;
 	}
 	
-	
 	//개별 동의가 모두 체크되었을 시 전체 동의 자동 체크 (민철)
 	const allflag = (agreeArray[0].checked&&
 			agreeArray[1].checked&&
