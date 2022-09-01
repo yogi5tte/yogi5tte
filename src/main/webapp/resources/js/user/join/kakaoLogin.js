@@ -66,17 +66,7 @@ function kakaoLogin(event) {
 function kakaoLogout(event) {
 	Kakao.init(event)
 	Kakao.isInitialized()
-//    if (Kakao.Auth.getAccessToken()) {
-//      Kakao.API.request({
-//        url: '/v1/user/unlink',
-//        success: function (response) {
-//        	console.log(response)
-//        },
-//        fail: function (error) {
-//          console.log(error)
-//        },
-//      })
-//    }
+
 	if(!Kakao.Auth.getAccessToken()) {
 		return;
 	}

@@ -3,6 +3,7 @@ package com.itbank.user;
 public class User_socialDTO {
 	private int idx, type;
 	private String email, password, nickName;
+	
 	public int getIdx() {
 		return idx;
 	}

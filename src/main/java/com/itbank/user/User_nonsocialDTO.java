@@ -3,9 +3,7 @@ package com.itbank.user;
 //		idx 		                    number			default user_nonSocial_seq.nextval primary key,
 //		email		                    VARCHAR2(45)	UNIQUE NOT NULL,   
 //		password	                    varchar2(100)	not null,
-//	    name                            VARCHAR2(20)    not null,   
 //	    nickname                        VARCHAR2(50)    UNIQUE NOT NULL,
-//	    phoneNumber                     VARCHAR2(50)    UNIQUE NOT NULL,
 //	    type                            number          default 101
 //	    
 //	);

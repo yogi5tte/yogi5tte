@@ -38,6 +38,7 @@ public class UserService {
 		String newUserID = dto.getEmail();
 		String newUserPw = dto.getPassword();
 		String newUserNick = dto.getNickName();
+		
 
 		System.out.println("newUserID : " + newUserID);
 		System.out.println("newUserPw : " + newUserPw);
