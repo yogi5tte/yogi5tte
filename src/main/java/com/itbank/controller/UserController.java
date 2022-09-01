@@ -93,17 +93,15 @@ public class UserController {
       User_nonsocialDTO login  = userService.login(dto);
       User_socialDTO socialLogin = userService.socialLogin(sdto);
      
-      if(login == null && socialLogin == null) {
-         return "redirect:"+ "/user/relogin";
-      }
-      else {
+  
     	  if(login.getEmail() == null) {
     		  session.setAttribute("login", socialLogin);
     	  }
     	  else {
     		  session.setAttribute("login", login);
     	  }
-      }
+
+      
    
       return "redirect:"+ (url == null ? "/" : url);
    }

@@ -1,5 +1,6 @@
 package com.itbank.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +39,14 @@ public class HomeController {
 		
 		InfoDTO info = infoDAO.selectInfo(idx);
 		List<RoomDTO> mtRoom = roomDAO.selectRoom(idx);
+		List<RoomDTO> reviewCount = reviewDAO.selectReviewCount(idx);
+		for(int i = 0; i < reviewCount.size(); i++) {
+			System.out.println(reviewCount.get(i).getReview_count());
+		}
 		mav.addObject("info", info);
 		mav.addObject("room", mtRoom);
+		mav.addObject("reviewCnt", reviewCount.get(0).getReview_count());
+		mav.addObject("reviewAvg", reviewCount.get(0).getStar());
 		return mav;
 	}
 		
