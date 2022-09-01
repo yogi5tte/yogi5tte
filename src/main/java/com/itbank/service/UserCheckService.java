@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.itbank.user.User_nonsocialDTO;
 import com.itbank.user.UsercheckDAO;
+import com.itbank.user.Users_sellerDTO;
 
 @Service
 public class UserCheckService {
@@ -68,6 +69,67 @@ public class UserCheckService {
       
       return dao.checkNick(unick);
    }
+
+   
+   
+   
+   
+   
+   
+   
+   // 호스트 관련 함수
+	public String checkHostId(String newUserID) {
+		System.out.println("처음: newUserID : " + newUserID);
+	      String result=null;
+
+	      if(newUserID.contains("naver")) {
+	         newUserID += ".com";
+	         
+	      }
+	      else if(newUserID.contains("nate")) {
+	         
+	         newUserID += ".com";
+	      }
+	      else if(newUserID.contains("gmail")) {
+	         
+	         newUserID += ".com";
+	      }
+	      else if(newUserID.contains("hanmail")) {
+	         
+	         newUserID += ".net";
+	      }
+	      System.out.println("가공한: newUserID : " + newUserID);
+	      
+	      Users_sellerDTO user = dao.checkHostId(newUserID); 
+	      System.out.println(user);
+	     
+	      if(user == null) {
+	         System.out.println("user.getEmail() : true");
+	         result ="true";
+	         System.out.println("1result"+result);
+	         return result;
+	         
+	      }
+	      String check = user.getEmail();
+	      
+	      System.out.println("user : " + user.getEmail());
+	      System.out.println("check : " + check);
+	      System.out.println("newUserID : " + newUserID);
+	      
+	      
+	      if(check != null) {
+	         System.out.println("user.getEmail() : false");
+	         result ="false";
+	         System.out.println("2result"+result);
+	         return result;
+	      }
+	      
+	     return result;
+	}
+
+	public String checkHostNick(String unick) {
+		return dao.checkHostNick(unick);
+	}
    
    
    

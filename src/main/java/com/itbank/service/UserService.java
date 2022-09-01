@@ -43,9 +43,15 @@ public class UserService {
 		return dao.join(dto);
 	}
 
+	public List<RsvnApproveDTO> selectRsvnList(int idx) {
+		return dao.selectRsvnList(idx);
+	}	
+	
+	
+	
+	
+	// 호스트 관련 함수
 	public Users_sellerDTO seller_login(HashMap<String, String> dto) {
-//		System.out.println("dto:"+ dto.getEmail());
-//		System.out.println("dto:"+ dto.getPassword());
 		return sellerDAO.login(dto);
 	}
 
@@ -55,9 +61,6 @@ public class UserService {
 	}
 
 
-	public List<RsvnApproveDTO> selectRsvnList(int idx) {
-		return dao.selectRsvnList(idx);
-	}	
 	
 	
 }
