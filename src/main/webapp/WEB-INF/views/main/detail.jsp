@@ -79,8 +79,8 @@
 		        	<div class="info">
 		            <h2>${info.name }</h2>
 		            <div class="score_cnt">
-		                <span>9.7</span>
-						최고에요<b id="review_cnt">&nbsp;리뷰<em>${info.review_count }개</em></b>
+		                <span><fmt:formatNumber pattern="###.#">${reviewAvg }</fmt:formatNumber></span>
+						최고에요<b id="review_cnt">&nbsp;리뷰<em>${reviewCnt }개</em></b>
 		            </div>
 		            <p class="address">더미 주소</p>
 		        	</div>
